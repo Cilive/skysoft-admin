@@ -1,0 +1,16 @@
+.bg {
+  position: relative;
+  background: line;
+  /* background-color: #E4E9F7; */
+  background: linear-gradient(to left, #8263e2, var(--main)) no-repeat
+      border-box,
+    #e4e9f7 no-repeat border-box;
+  min-height: 100vh;
+  top: 0;
+  background-size: 100% 50%, 100% 100%;
+  background-position: 0 0, 0 0;
+}
+.card {
+  box-shadow: 0px 0px 10px 1px rgba(49, 75, 224, 0.425);
+  border: 1px solid rgba(49, 75, 224, 0.425);
+}

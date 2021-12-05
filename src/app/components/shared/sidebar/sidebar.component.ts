@@ -87,8 +87,8 @@ export class SidebarComponent implements OnInit, AfterViewInit {
         this.routes = [];
         break;
 
-      // default:
-      //   this.router.navigate(['/login']);
+      default:
+        this.router.navigate(['/login']);
     }
   }
 }
