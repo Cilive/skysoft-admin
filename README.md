@@ -12,14 +12,14 @@ Owner
 user: owner@gmail.com
 password: 1234
 ```
-For persistant data use StoreService
+For persistant data use `StoreService`
 
-For success alerts use AlertService
+For success alerts use `AlertService`
 
-Use boxicons for icons link for https://boxicons.com
+Use `boxicons` for icons link for https://boxicons.com
 
 for form validation use 
 ```typescript 
-validateForm(formId:string)
+validateForm(formId:string) // models/general.ts
 ```
 which uses default validation control and adds boostrap validation theme
