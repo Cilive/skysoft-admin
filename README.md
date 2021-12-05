@@ -15,3 +15,5 @@ password: 1234
 For persistant data use StoreService
 
 For success alerts use AlertService
+
+Use boxicons for icons link for https://boxicons.com
