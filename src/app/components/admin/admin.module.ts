@@ -5,6 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { ExampleComponent } from './example/example.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -22,6 +23,6 @@ const routes: Routes = [
 ];
 @NgModule({
   declarations: [AdminComponent, ExampleComponent, CompanyProfileComponent],
-  imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, SharedModule, RouterModule.forChild(routes), ReactiveFormsModule],
 })
 export class AdminModule { }
