@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     private authentication: AuthenticationService,
     private store: StoreService,
     private route: Router // private hospital:HospitalService
-  ) {}
+  ) { }
   cn = console;
   username = '';
   password = '';
@@ -41,34 +41,34 @@ export class LoginComponent implements OnInit {
     }
   }
   login() {
-    // const login = tempLogin({
-    //   username: this.username,
-    //   password: this.password,
-    // });
-    // if (login) {
-    //   this.ngOnInit();
-    // }
-
-    if (validateForm('form')) {
-      this.authentication
-        .login({
-          password: this.password,
-          email: this.username,
-        })
-        .subscribe((res) => {
-          const user = res.data;
-          if (user !== null) {
-            console.log(user);
-
-            this.store.store('role', user.role);
-            this.store.store('token', user.refreshToken);
-            this.store.store('id', user.accessToken);
-            accessToken.next(user.accessToken);
-            if (user.role === Role.admin) this.route.navigateByUrl('/admin');
-            if (user.role === Role.owner) this.route.navigateByUrl('/owner');
-          }
-        });
+    const login = tempLogin({
+      username: this.username,
+      password: this.password,
+    });
+    if (login) {
+      this.ngOnInit();
     }
+
+    // if (validateForm('form')) {
+    //   this.authentication
+    //     .login({
+    //       password: this.password,
+    //       email: this.username,
+    //     })
+    //     .subscribe((res) => {
+    //       const user = res.data;
+    //       if (user !== null) {
+    //         console.log(user);
+
+    //         this.store.store('role', user.role);
+    //         this.store.store('token', user.refreshToken);
+    //         this.store.store('id', user.accessToken);
+    //         accessToken.next(user.accessToken);
+    //         if (user.role === Role.admin) this.route.navigateByUrl('/admin');
+    //         if (user.role === Role.owner) this.route.navigateByUrl('/owner');
+    //       }
+    //     });
+    // }
   }
   navigate() {
     this.route.navigateByUrl('/forgot_password');

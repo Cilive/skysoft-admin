@@ -1,0 +1,32 @@
+.h-card {
+  // display: flex;
+  // flex-direction: row;
+  margin-left: 5%;
+  margin-bottom: 5%;
+  border-radius: 10px;
+  width: 20%;
+
+  img {
+    height: 70px;
+    float: right;
+    margin-right: 10%;
+    margin-top: -10%;
+  }
+}
+
+.text {
+  text-align: center;
+  width: 60%;
+  height: 30%;
+  margin: 10% 0 5% 10%;
+
+  span {
+    display: flex;
+    margin-top: -5% !important;
+    font-size: 0.7em !important;
+  }
+
+  // h6{
+  //     margin-bottom: -5%;
+  // }
+}
