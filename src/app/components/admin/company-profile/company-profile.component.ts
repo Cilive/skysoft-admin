@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { clearForm, validateForm } from 'src/app/services/general/general.service';
 
 @Component({
   selector: 'app-company-profile',
@@ -16,8 +17,18 @@ export class CompanyProfileComponent implements OnInit {
   }
 
   public onSubmit(): void {
+    validateForm('form');
     console.log(this.companyForm.value);
 
+  }
+
+  public onReset(): void {
+    this.companyForm.reset();
+    clearForm('form');
+  }
+
+  public selectFile(event): void {
+    this.companyForm.value['logo'] = event.target.files[0];
   }
 
   private prepareForm() {

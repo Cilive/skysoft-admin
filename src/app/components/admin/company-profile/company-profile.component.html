@@ -1,45 +1,46 @@
-    <form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="companyForm" id="form" (ngSubmit)="onSubmit()">
       <div class="m-2 d-flex justify-content-between">
         <div class="first">
           <div class="p-2">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">Company Name</label>
-                <input type="text" class="form-control" formControlName="company_name_en">
+                <input type="text" class="form-control" required aria-describedby="helpId" formControlName="company_name_en">
+                <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
               <div class="form-group col-md-6">
                 <label for="company">Place</label>
-                <input type="text" class="form-control" formControlName="place_en">
+                <input type="text" class="form-control" required formControlName="place_en">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">District</label>
-                <input type="text" class="form-control" formControlName="district_en">
+                <input type="text" class="form-control" required formControlName="district_en">
               </div>
               <div class="form-group col-md-6">
                 <label for="company">CR</label>
-                <input type="text" class="form-control" formControlName="cr">
+                <input type="number" class="form-control" required [value]="companyForm.value.cr" formControlName="cr">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">VAT</label>
-                <input type="text" class="form-control" formControlName="vat">
+                <input type="number" class="form-control" required [value]="companyForm.value.vat" formControlName="vat">
               </div>
               <div class="form-group col-md-6">
                 <label for="company">LAN</label>
-                <input type="text" class="form-control" formControlName="lan">
+                <input type="number" class="form-control" required [value]="companyForm.value.lan" formControlName="lan">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">MOBILE</label>
-                <input type="text" class="form-control" formControlName="mobile">
+                <input type="number" class="form-control" required [value]="companyForm.value.mobile" formControlName="mobile">
               </div>
               <div class="form-group col-md-6">
                 <label for="company">LOGO</label>
-                <input type="text" class="form-control" formControlName="logo">
+                <input type="file" (change)="selectFile($event)" class="form-control" required formControlName="logo">
               </div>
             </div>
           </div>
@@ -49,41 +50,41 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">Company Name</label>
-                <input type="text" dir="rtl" class="form-control" formControlName="company_name_ar">
+                <input type="text" dir="rtl" class="form-control" required formControlName="company_name_ar">
               </div>
               <div class="form-group col-md-6">
                 <label for="company">Place</label>
-                <input type="text" dir="rtl" class="form-control" formControlName="place_ar">
+                <input type="text" dir="rtl" class="form-control" required formControlName="place_ar">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">District</label>
-                <input type="text" dir="rtl" class="form-control" formControlName="district_ar">
+                <input type="text" dir="rtl" class="form-control" required formControlName="district_ar">
               </div>
               <div class="form-group col-md-6">
                 <label for="company">CR</label>
-                <input type="text" dir="rtl" class="form-control" formControlName="cr">
+                <input type="number" dir="rtl" class="form-control" [value]="companyForm.value.cr" required formControlName="cr">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">VAT</label>
-                <input type="text" dir="rtl" class="form-control" formControlName="vat">
+                <input type="number" dir="rtl" class="form-control" required [value]="companyForm.value.vat" formControlName="vat">
               </div>
               <div class="form-group col-md-6">
                 <label for="company">LAN</label>
-                <input type="text" dir="rtl" class="form-control" formControlName="lan">
+                <input type="number" dir="rtl" class="form-control" required [value]="companyForm.value.lan" formControlName="lan">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">MOBILE</label>
-                <input type="text" dir="rtl" class="form-control" formControlName="mobile">
+                <input type="number" dir="rtl" class="form-control" required [value]="companyForm.value.mobile" formControlName="mobile">
               </div>
               <div class="form-group col-md-6">
                 <label for="company">LOGO</label>
-                <input type="text" dir="rtl" class="form-control" formControlName="logo">
+                <input type="file" (change)="selectFile($event)" dir="rtl" class="form-control" required formControlName="logo">
               </div>
             </div>
           </div>
@@ -91,6 +92,7 @@
       </div>
       <div class="d-flex justify-content-center">
         <button class="btn-primary" type="submit">Submit</button>
+        <button class="btn-primary" type="button" (click)="onReset()">Reset</button>
       </div>
     </form>
     <div>
