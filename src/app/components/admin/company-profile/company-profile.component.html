@@ -11,36 +11,43 @@
               <div class="form-group col-md-6">
                 <label for="company">Place</label>
                 <input type="text" class="form-control" required formControlName="place_en">
+                <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">District</label>
                 <input type="text" class="form-control" required formControlName="district_en">
+                <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
               <div class="form-group col-md-6">
                 <label for="company">CR</label>
                 <input type="number" class="form-control" required [value]="companyForm.value.cr" formControlName="cr">
+                <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">VAT</label>
                 <input type="number" class="form-control" required [value]="companyForm.value.vat" formControlName="vat">
+                <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
               <div class="form-group col-md-6">
                 <label for="company">LAN</label>
                 <input type="number" class="form-control" required [value]="companyForm.value.lan" formControlName="lan">
+                <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">MOBILE</label>
                 <input type="number" class="form-control" required [value]="companyForm.value.mobile" formControlName="mobile">
+                <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
               <div class="form-group col-md-6">
                 <label for="company">LOGO</label>
                 <input type="file" (change)="selectFile($event)" class="form-control" required formControlName="logo">
+                <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
             </div>
           </div>
@@ -49,42 +56,45 @@
           <div class="p-2">
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="company">Company Name</label>
+                <label for="company">اسم الشركة</label>
                 <input type="text" dir="rtl" class="form-control" required formControlName="company_name_ar">
+                <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
               <div class="form-group col-md-6">
-                <label for="company">Place</label>
+                <label for="company">مكان</label>
                 <input type="text" dir="rtl" class="form-control" required formControlName="place_ar">
+                <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="company">District</label>
+                <label for="company">منطقة</label>
                 <input type="text" dir="rtl" class="form-control" required formControlName="district_ar">
+                <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
               <div class="form-group col-md-6">
-                <label for="company">CR</label>
-                <input type="number" dir="rtl" class="form-control" [value]="companyForm.value.cr" required formControlName="cr">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="company">VAT</label>
-                <input type="number" dir="rtl" class="form-control" required [value]="companyForm.value.vat" formControlName="vat">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="company">LAN</label>
-                <input type="number" dir="rtl" class="form-control" required [value]="companyForm.value.lan" formControlName="lan">
+                <label for="company">سجل تجاري</label>
+                <input type="number" readonly dir="rtl" class="form-control" [value]="companyForm.value.cr" required formControlName="cr">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="company">MOBILE</label>
-                <input type="number" dir="rtl" class="form-control" required [value]="companyForm.value.mobile" formControlName="mobile">
+                <label for="company">التليفون المحمول</label>
+                <input type="number" readonly dir="rtl" class="form-control" required [value]="companyForm.value.vat" formControlName="vat">
               </div>
               <div class="form-group col-md-6">
-                <label for="company">LOGO</label>
-                <input type="file" (change)="selectFile($event)" dir="rtl" class="form-control" required formControlName="logo">
+                <label for="company">هاتف أرضي</label>
+                <input type="number" readonly dir="rtl" class="form-control" required [value]="companyForm.value.lan" formControlName="lan">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="company">هاتف أرضي</label>
+                <input type="number" readonly dir="rtl" class="form-control" required [value]="companyForm.value.mobile" formControlName="mobile">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="company">شعار</label>
+                <input type="text" readonly dir="rtl" class="form-control" [value]="companyForm.value.logo" formControlName="logo">
               </div>
             </div>
           </div>
@@ -107,43 +117,25 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>9876543210</td>
-            <td>123</td>
+          <tr *ngFor="let item of companies; let i=index">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{item.company_name_en}}</td>
+            <td>{{item.mobile}}</td>
+            <td>{{item.vat}}</td>
             <td>
               <div class="actions m-1">
-                <i title="Edit" class='bx bxs-edit'></i>
-                <i title="Delete" class='bx bxs-trash'></i>
-                <i title="Disable" class='bx bx-x-circle'></i>
+                <i title="Edit" class='bx bxs-edit' (click)="onEdit(item)"></i>
+                <i title="Delete" class='bx bxs-trash' (click)="openModal(template)"></i>
+                <i title="Suspend" class='bx bx-x-circle'></i>
               </div>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>1234567890</td>
-            <td>456</td>
-            <td>
-              <div class="actions m-1">
-                <i title="Edit" class='bx bxs-edit'></i>
-                <i title="Delete" class='bx bxs-trash'></i>
-                <i title="Disable" class='bx bx-x-circle'></i>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>6789054321</td>
-            <td>789</td>
-            <td>
-              <div class="actions m-1">
-                <i title="Edit" class='bx bxs-edit'></i>
-                <i title="Delete" class='bx bxs-trash'></i>
-                <i title="Disable" class='bx bx-x-circle'></i>
-              </div>
+
+              <ng-template #template>
+                <div class="modal-body text-center">
+                  <p>Do you want to confirm?</p>
+                  <button type="button" class="btn btn-default" (click)="onDelete(i)">Yes</button>
+                  <button type="button" class="btn btn-primary" (click)="decline()">No</button>
+                </div>
+              </ng-template>
             </td>
           </tr>
         </tbody>
