@@ -5,45 +5,65 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">Company Name</label>
-                <input type="text" class="form-control" required aria-describedby="helpId" formControlName="company_name_en">
+                <input type="text" class="form-control" required aria-describedby="helpId" formControlName="en_name">
                 <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
+              <div class="form-group col-md-6">
+                <label for="company">Email</label>
+                <input type="email" class="form-control" required aria-describedby="helpId" formControlName="email">
+                <small id="helpId" class="invalid-feedback">Field is required</small>
+              </div>
+            </div>
+            <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">Place</label>
-                <input type="text" class="form-control" required formControlName="place_en">
+                <input type="text" class="form-control" required formControlName="en_place">
                 <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
-            </div>
-            <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">District</label>
-                <input type="text" class="form-control" required formControlName="district_en">
+                <input type="text" class="form-control" required formControlName="en_district">
                 <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
+            </div>
+            <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">CR</label>
-                <input type="number" class="form-control" required [value]="companyForm.value.cr" formControlName="cr">
+                <input type="number" class="form-control" required [value]="companyForm.value.cr_no" formControlName="cr_no">
                 <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
-            </div>
-            <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">VAT</label>
-                <input type="number" class="form-control" required [value]="companyForm.value.vat" formControlName="vat">
-                <small id="helpId" class="invalid-feedback">Field is required</small>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="company">LAN</label>
-                <input type="number" class="form-control" required [value]="companyForm.value.lan" formControlName="lan">
+                <input type="number" class="form-control" required [value]="companyForm.value.vat_no" formControlName="vat_no">
                 <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="company">MOBILE</label>
-                <input type="number" class="form-control" required [value]="companyForm.value.mobile" formControlName="mobile">
+                <label for="company">LAN</label>
+                <input type="number" class="form-control" required [value]="companyForm.value.lan_no" formControlName="lan_no">
                 <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
+              <div class="form-group col-md-6">
+                <label for="company">Mobile</label>
+                <input type="number" class="form-control" required [value]="companyForm.value.mobile_no" formControlName="mobile_no">
+                <small id="helpId" class="invalid-feedback">Field is required</small>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="company">Password</label>
+                <input type="password" class="form-control" required [value]="companyForm.value.password" formControlName="password">
+                <small id="helpId" class="invalid-feedback">Field is required</small>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="company">Confirm Password</label>
+                <input type="password" class="form-control" required [value]="companyForm.value.confirm_password" formControlName="confirm_password">
+                <!-- <small id="helpId" class="invalid-feedback">Field is required</small> -->
+                <small *ngIf="passError" style="color: #dc3545;">Password didn`t match</small>
+              </div>
+            </div>
+            <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">LOGO</label>
                 <input type="file" (change)="selectFile($event)" class="form-control" required formControlName="logo">
@@ -57,41 +77,60 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">اسم الشركة</label>
-                <input type="text" dir="rtl" class="form-control" required formControlName="company_name_ar">
+                <input type="text" dir="rtl" class="form-control" required formControlName="ar_name">
                 <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
+              <div class="form-group col-md-6">
+                <label for="company">Email</label>
+                <input type="email" readonly class="form-control" required aria-describedby="helpId" formControlName="email">
+                <small id="helpId" class="invalid-feedback">Field is required</small>
+              </div>
+            </div>
+            <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">مكان</label>
-                <input type="text" dir="rtl" class="form-control" required formControlName="place_ar">
+                <input type="text" dir="rtl" class="form-control" required formControlName="ar_place">
                 <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
-            </div>
-            <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="company">منطقة</label>
-                <input type="text" dir="rtl" class="form-control" required formControlName="district_ar">
+                <input type="text" dir="rtl" class="form-control" required formControlName="ar_district">
+                <small id="helpId" class="invalid-feedback">Field is required</small>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="company">سجل تجاري</label>
+                <input type="number" readonly dir="rtl" class="form-control" [value]="companyForm.value.cr_no" required formControlName="cr_no">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="company">التليفون المحمول</label>
+                <input type="number" readonly dir="rtl" class="form-control" required [value]="companyForm.value.vat_no" formControlName="vat_no">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="company">هاتف أرضي</label>
+                <input type="number" readonly dir="rtl" class="form-control" required [value]="companyForm.value.lan_no" formControlName="lan_no">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="company">هاتف أرضي</label>
+                <input type="number" readonly dir="rtl" class="form-control" required [value]="companyForm.value.mobile_no" formControlName="mobile_no">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="company">Password</label>
+                <input type="password" readonly class="form-control" required [value]="companyForm.value.password" formControlName="password">
                 <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
               <div class="form-group col-md-6">
-                <label for="company">سجل تجاري</label>
-                <input type="number" readonly dir="rtl" class="form-control" [value]="companyForm.value.cr" required formControlName="cr">
+                <label for="company">Confirm Password</label>
+                <input type="password" readonly class="form-control" required [value]="companyForm.value.confirm_password" formControlName="confirm_password">
+                <small id="helpId" class="invalid-feedback">Field is required</small>
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="company">التليفون المحمول</label>
-                <input type="number" readonly dir="rtl" class="form-control" required [value]="companyForm.value.vat" formControlName="vat">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="company">هاتف أرضي</label>
-                <input type="number" readonly dir="rtl" class="form-control" required [value]="companyForm.value.lan" formControlName="lan">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="company">هاتف أرضي</label>
-                <input type="number" readonly dir="rtl" class="form-control" required [value]="companyForm.value.mobile" formControlName="mobile">
-              </div>
               <div class="form-group col-md-6">
                 <label for="company">شعار</label>
                 <input type="text" readonly dir="rtl" class="form-control" [value]="companyForm.value.logo" formControlName="logo">
@@ -101,7 +140,7 @@
         </div>
       </div>
       <div class="d-flex justify-content-center">
-        <button class="btn-primary" type="submit">Submit</button>
+        <button class="btn-primary" type="submit">{{ editMode?'Update':'Submit'}}</button>
         <button class="btn-primary" type="button" (click)="onReset()">Reset</button>
       </div>
     </form>
@@ -119,9 +158,9 @@
         <tbody>
           <tr *ngFor="let item of companies; let i=index">
             <th scope="row">{{i + 1}}</th>
-            <td>{{item.company_name_en}}</td>
-            <td>{{item.mobile}}</td>
-            <td>{{item.vat}}</td>
+            <td>{{item.en_name}}</td>
+            <td>{{item.mobile_no}}</td>
+            <td>{{item.vat_no}}</td>
             <td>
               <div class="actions m-1">
                 <i title="Edit" class='bx bxs-edit' (click)="onEdit(item)"></i>

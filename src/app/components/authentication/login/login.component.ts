@@ -56,16 +56,13 @@ export class LoginComponent implements OnInit {
     //       email: this.username,
     //     })
     //     .subscribe((res) => {
-    //       const user = res.data;
-    //       if (user !== null) {
-    //         console.log(user);
-
-    //         this.store.store('role', user.role);
-    //         this.store.store('token', user.refreshToken);
-    //         this.store.store('id', user.accessToken);
-    //         accessToken.next(user.accessToken);
-    //         if (user.role === Role.admin) this.route.navigateByUrl('/admin');
-    //         if (user.role === Role.owner) this.route.navigateByUrl('/owner');
+    //       if (res) {
+    //         this.store.store('role', res.is_owner ? 1 : 0);
+    //         this.store.store('token', res.access);
+    //         this.store.store('id', res.company_id);
+    //         accessToken.next(res.access);
+    //         if (res.is_super_admin) this.route.navigateByUrl('/admin');
+    //         if (res.is_owner) this.route.navigateByUrl('/owner');
     //       }
     //     });
     // }

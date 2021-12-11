@@ -1,6 +1,7 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { AfterViewInit, Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { CompanyProfileService } from 'src/app/services/company-profile/company-profile.service';
 import { clearForm, validateForm } from 'src/app/services/general/general.service';
 import { CompanyProfile } from './company-profile.model';
 
@@ -9,51 +10,74 @@ import { CompanyProfile } from './company-profile.model';
   templateUrl: './company-profile.component.html',
   styleUrls: ['./company-profile.component.scss']
 })
-export class CompanyProfileComponent implements OnInit {
+export class CompanyProfileComponent implements OnInit, AfterViewInit {
+  passError: boolean;
+  logoData: FormData;
   modalRef?: BsModalRef;
+  editMode: boolean;
   companyForm: FormGroup;
   companies: CompanyProfile[] = [{
-    company_name_en: 'First',
-    company_name_ar: 'second',
-    place_en: 'kerala',
-    place_ar: 'india',
-    district_en: 'malappuram',
-    district_ar: 'kochi',
-    cr: 1,
-    vat: 2,
-    lan: 3,
-    mobile: 4,
+    en_name: 'First',
+    ar_name: 'second',
+    en_place: 'kerala',
+    ar_place: 'india',
+    en_district: 'malappuram',
+    ar_district: 'kochi',
+    cr_no: 1,
+    vat_no: 2,
+    lan_no: 3,
+    mobile_no: 4,
     logo: 'sdfs',
+    email: 'admin@gmail.com',
+    password: 'admin',
+    confirm_password: 'admin',
   }, {
-    company_name_en: 'Second',
-    company_name_ar: 'first',
-    place_en: 'india',
-    place_ar: 'kerala',
-    district_en: 'malappuram',
-    district_ar: 'kochi',
-    cr: 12,
-    vat: 2213,
-    lan: 12123,
-    mobile: 124,
+    en_name: 'Second',
+    ar_name: 'first',
+    en_place: 'india',
+    ar_place: 'kerala',
+    en_district: 'malappuram',
+    ar_district: 'kochi',
+    cr_no: 12,
+    vat_no: 2213,
+    lan_no: 12123,
+    mobile_no: 124,
     logo: 'sdfs',
+    email: 'test@gmail.com',
+    password: 'test',
+    confirm_password: 'test',
   }]
 
-  constructor(private modalService: BsModalService) { }
+  constructor(private modalService: BsModalService,
+    private companyService: CompanyProfileService) { }
 
   ngOnInit(): void {
     this.prepareForm();
+    this.companyService.get_company_proiles().subscribe(res => {
+      console.log(res);
+    });
+  }
+
+  ngAfterViewInit(): void {
+    this.companyForm.get('confirm_password').valueChanges.subscribe(value => {
+      this.checkPassword(value);
+    });
   }
 
   public onSubmit(): void {
-    if (validateForm('form')) {
-      this.companies.push(this.companyForm.value);
-      this.onReset();
+    this.checkPassword(this.companyForm.value['confirm_password']);
+    if (validateForm('form') && this.passError) {
+      this.companyService.post_company_proile(this.companyForm.value).subscribe(res => {
+        console.log(res)
+        // this.onReset();
+      });
     }
   }
 
   public onReset(): void {
     this.companyForm.reset();
     clearForm('form');
+    this.editMode = false;
   }
 
   public selectFile(event): void {
@@ -61,6 +85,7 @@ export class CompanyProfileComponent implements OnInit {
   }
 
   public onEdit(item: CompanyProfile): void {
+    this.editMode = true;
     this.companyForm.setValue(item);
   }
 
@@ -77,19 +102,30 @@ export class CompanyProfileComponent implements OnInit {
     this.modalRef?.hide();
   }
 
+  private checkPassword(value: string) {
+    if (this.companyForm.value['password'] === value) {
+      this.passError = false;
+    } else {
+      this.passError = true;
+    }
+  }
+
   private prepareForm() {
     this.companyForm = new FormGroup({
-      'company_name_en': new FormControl(null, [Validators.required]),
-      'company_name_ar': new FormControl(null, [Validators.required]),
-      'place_en': new FormControl(null, [Validators.required]),
-      'place_ar': new FormControl(null, [Validators.required]),
-      'district_en': new FormControl(null, [Validators.required]),
-      'district_ar': new FormControl(null, [Validators.required]),
-      'cr': new FormControl(null, [Validators.required]),
-      'vat': new FormControl(null, [Validators.required]),
-      'lan': new FormControl(null, [Validators.required]),
-      'mobile': new FormControl(null, [Validators.required]),
-      'logo': new FormControl(null, [Validators.required])
+      'en_name': new FormControl(null, [Validators.required]),
+      'ar_name': new FormControl(null, [Validators.required]),
+      'en_place': new FormControl(null, [Validators.required]),
+      'ar_place': new FormControl(null, [Validators.required]),
+      'en_district': new FormControl(null, [Validators.required]),
+      'ar_district': new FormControl(null, [Validators.required]),
+      'cr_no': new FormControl(null, [Validators.required]),
+      'vat_no': new FormControl(null, [Validators.required]),
+      'lan_no': new FormControl(null, [Validators.required]),
+      'mobile_no': new FormControl(null, [Validators.required]),
+      'logo': new FormControl(null, [Validators.required]),
+      'email': new FormControl(null, [Validators.required]),
+      'password': new FormControl(null, [Validators.required]),
+      'confirm_password': new FormControl(null, [Validators.required]),
     });
   }
 

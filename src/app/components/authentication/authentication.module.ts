@@ -33,4 +33,4 @@ const routes: Routes = [
   declarations: [AuthenticationComponent, LoginComponent],
   imports: [CommonModule, RouterModule.forChild(routes), FormsModule],
 })
-export class AuthenticationModule {}
+export class AuthenticationModule { }

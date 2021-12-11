@@ -13,25 +13,26 @@ import { StoreService } from "../store/store.service";
 import { catchError, timeout } from "rxjs/operators";
 import { Router } from "@angular/router";
 import { AlertService } from "../alert/alert.service";
+import { accessToken } from "../authentication/authentication.service";
 
 export const DEFAULT_TIMEOUT = new InjectionToken<number>("defaultTimeout");
 @Injectable({
   providedIn: "root",
 })
 export class ApiInterceptor implements HttpInterceptor {
-  private token = null;
+  private token: string;
   constructor(
     @Inject(DEFAULT_TIMEOUT) protected defaultTimeout: number,
     private store: StoreService,
     private toast: AlertService,
     private route: Router,
-  ) {}
+  ) { }
 
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    // accessToken.subscribe((res) => (this.token = res));
+    accessToken.subscribe((res) => (this.token = res));
 
     if (this.token) {
       request = request.clone({
@@ -43,6 +44,8 @@ export class ApiInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       timeout(timeoutValueNumeric),
       catchError((err: HttpErrorResponse) => {
+        console.log(err);
+
         let error = err.statusText;
         if (err.status === 0) error = "Server Timeout";
         if (err.status === 403) {
