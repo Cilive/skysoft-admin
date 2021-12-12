@@ -9,17 +9,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 const routes: Routes = [
-  {
-    path: 'example',
-    component: ExampleComponent,
-  },
-  {
-    path: 'companyprofile',
-    component: CompanyProfileComponent,
-  },
+
   {
     path: '',
     component: AdminComponent,
+    children: [
+      {
+        path: 'companyprofile',
+        component: CompanyProfileComponent,
+      },
+    ]
   },
 ];
 @NgModule({

@@ -1,1 +1,23 @@
-<p>owner works!</p>
+<sidebar>
+  <div class="d-flex mt-4">
+    <div class="h-card" style="background: white ; color: #5e72e3" routerLinkActive="rout_active" [routerLink]="['/owner/supplierprofile']">
+      <img src="../../../assets/campus.jpeg" />
+
+      <div class="text">
+        <h6>Supplier Profile</h6>
+        <span style="color: black">Upload and view supplier profiles. </span>
+      </div>
+    </div>
+    <div class="h-card" style="background: white ; color: #5e72e3" routerLinkActive="rout_active" [routerLink]="['/owner/customerprofile']">
+      <img src="../../../assets/campus.jpeg" />
+
+      <div class="text">
+        <h6>Customer Profile</h6>
+        <span style="color: black">Upload and view customer profiles. </span>
+      </div>
+    </div>
+  </div>
+  <div class="m-2">
+    <router-outlet></router-outlet>
+  </div>
+</sidebar>
