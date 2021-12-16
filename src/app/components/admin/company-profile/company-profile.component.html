@@ -1,182 +1,398 @@
-    <form [formGroup]="companyForm" id="form" (ngSubmit)="onSubmit()">
-      <div class="m-2 d-flex justify-content-between">
-        <div class="first">
-          <div class="p-2">
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="company">Company Name</label>
-                <input type="text" class="form-control" required aria-describedby="helpId" formControlName="en_name">
-                <small id="helpId" class="invalid-feedback">Field is required</small>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="company">Email</label>
-                <input type="email" class="form-control" required aria-describedby="helpId" formControlName="email">
-                <small id="helpId" class="invalid-feedback">Field is required</small>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="company">Place</label>
-                <input type="text" class="form-control" required formControlName="en_place">
-                <small id="helpId" class="invalid-feedback">Field is required</small>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="company">District</label>
-                <input type="text" class="form-control" required formControlName="en_district">
-                <small id="helpId" class="invalid-feedback">Field is required</small>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="company">CR</label>
-                <input type="number" class="form-control" required [value]="companyForm.value.cr_no" formControlName="cr_no">
-                <small id="helpId" class="invalid-feedback">Field is required</small>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="company">VAT</label>
-                <input type="number" class="form-control" required [value]="companyForm.value.vat_no" formControlName="vat_no">
-                <small id="helpId" class="invalid-feedback">Field is required</small>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="company">LAN</label>
-                <input type="number" class="form-control" required [value]="companyForm.value.lan_no" formControlName="lan_no">
-                <small id="helpId" class="invalid-feedback">Field is required</small>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="company">Mobile</label>
-                <input type="number" class="form-control" required [value]="companyForm.value.mobile_no" formControlName="mobile_no">
-                <small id="helpId" class="invalid-feedback">Field is required</small>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="company">Password</label>
-                <input type="password" class="form-control" required [value]="companyForm.value.password" formControlName="password">
-                <small id="helpId" class="invalid-feedback">Field is required</small>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="company">Confirm Password</label>
-                <input type="password" class="form-control" required [value]="companyForm.value.confirm_password" formControlName="confirm_password">
-                <!-- <small id="helpId" class="invalid-feedback">Field is required</small> -->
-                <small *ngIf="passError" style="color: #dc3545;">Password didn`t match</small>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="company">LOGO</label>
-                <input type="file" (change)="selectFile($event)" class="form-control" required formControlName="logo">
-                <small id="helpId" class="invalid-feedback">Field is required</small>
-              </div>
-            </div>
+<form [formGroup]="companyForm" class="card" id="form" (ngSubmit)="onSubmit()">
+  <div class="modal-header">
+    <h6>Manage Company Profile</h6>
+  </div>
+  <div class="m-2 d-flex justify-content-between">
+    <div
+      class="border-right"
+      style="border-color: rgb(145, 145, 145) !important"
+    >
+      <div class="p-2">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="company">Company Name</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              aria-describedby="helpId"
+              formControlName="en_name"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+          <div class="form-group col-md-6">
+            <label for="company">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              required
+              aria-describedby="helpId"
+              formControlName="email"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
           </div>
         </div>
-        <div class="second">
-          <div class="p-2">
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="company">اسم الشركة</label>
-                <input type="text" dir="rtl" class="form-control" required formControlName="ar_name">
-                <small id="helpId" class="invalid-feedback">Field is required</small>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="company">Email</label>
-                <input type="email" readonly class="form-control" required aria-describedby="helpId" formControlName="email">
-                <small id="helpId" class="invalid-feedback">Field is required</small>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="company">مكان</label>
-                <input type="text" dir="rtl" class="form-control" required formControlName="ar_place">
-                <small id="helpId" class="invalid-feedback">Field is required</small>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="company">منطقة</label>
-                <input type="text" dir="rtl" class="form-control" required formControlName="ar_district">
-                <small id="helpId" class="invalid-feedback">Field is required</small>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="company">سجل تجاري</label>
-                <input type="number" readonly dir="rtl" class="form-control" [value]="companyForm.value.cr_no" required formControlName="cr_no">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="company">التليفون المحمول</label>
-                <input type="number" readonly dir="rtl" class="form-control" required [value]="companyForm.value.vat_no" formControlName="vat_no">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="company">هاتف أرضي</label>
-                <input type="number" readonly dir="rtl" class="form-control" required [value]="companyForm.value.lan_no" formControlName="lan_no">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="company">هاتف أرضي</label>
-                <input type="number" readonly dir="rtl" class="form-control" required [value]="companyForm.value.mobile_no" formControlName="mobile_no">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="company">Password</label>
-                <input type="password" readonly class="form-control" required [value]="companyForm.value.password" formControlName="password">
-                <small id="helpId" class="invalid-feedback">Field is required</small>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="company">Confirm Password</label>
-                <input type="password" readonly class="form-control" required [value]="companyForm.value.confirm_password" formControlName="confirm_password">
-                <small id="helpId" class="invalid-feedback">Field is required</small>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="company">شعار</label>
-                <input type="text" readonly dir="rtl" class="form-control" [value]="companyForm.value.logo" formControlName="logo">
-              </div>
-            </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="company">Place</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              formControlName="en_place"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+          <div class="form-group col-md-6">
+            <label for="company">District</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              formControlName="en_district"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="company">CR</label>
+            <input
+              type="number"
+              class="form-control"
+              required
+              [value]="companyForm.value.cr_no"
+              formControlName="cr_no"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+          <div class="form-group col-md-6">
+            <label for="company">VAT</label>
+            <input
+              type="number"
+              class="form-control"
+              required
+              [value]="companyForm.value.vat_no"
+              formControlName="vat_no"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="company">LAN</label>
+            <input
+              type="number"
+              class="form-control"
+              required
+              [value]="companyForm.value.lan_no"
+              formControlName="lan_no"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+          <div class="form-group col-md-6">
+            <label for="company">Mobile</label>
+            <input
+              type="number"
+              class="form-control"
+              required
+              [value]="companyForm.value.mobile_no"
+              formControlName="mobile_no"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="company">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              required
+              [value]="companyForm.value.password"
+              formControlName="password"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+          <div class="form-group col-md-6">
+            <label for="company">Confirm Password</label>
+            <input
+              type="password"
+              class="form-control"
+              required
+              [value]="companyForm.value.confirm_password"
+              formControlName="confirm_password"
+            />
+            <!-- <small id="helpId" class="invalid-feedback">Field is required</small> -->
+            <small *ngIf="passError" style="color: #dc3545"
+              >Password didn`t match</small
+            >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="company">LOGO</label>
+            <input
+              type="file"
+              (change)="selectFile($event)"
+              class="form-control"
+              required
+              formControlName="logo"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
           </div>
         </div>
       </div>
-      <div class="d-flex justify-content-center">
-        <button class="btn-primary" type="submit">{{ editMode?'Update':'Submit'}}</button>
-        <button class="btn-primary" type="button" (click)="onReset()">Reset</button>
-      </div>
-    </form>
-    <div>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Company Name</th>
-            <th scope="col">Phone Number</th>
-            <th scope="col">VAT</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of companies; let i=index">
-            <th scope="row">{{i + 1}}</th>
-            <td>{{item.en_name}}</td>
-            <td>{{item.mobile_no}}</td>
-            <td>{{item.vat_no}}</td>
-            <td>
-              <div class="actions m-1">
-                <i title="Edit" class='bx bxs-edit' (click)="onEdit(item)"></i>
-                <i title="Delete" class='bx bxs-trash' (click)="openModal(template)"></i>
-                <i title="Suspend" class='bx bx-x-circle'></i>
-              </div>
-
-              <ng-template #template>
-                <div class="modal-body text-center">
-                  <p>Do you want to confirm?</p>
-                  <button type="button" class="btn btn-default" (click)="onDelete(i)">Yes</button>
-                  <button type="button" class="btn btn-primary" (click)="decline()">No</button>
-                </div>
-              </ng-template>
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
+    <div>
+      <div class="p-2">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label class="col-md-12 text-right ml-auto" for="company"
+              >اسم الشركة</label
+            >
+            <input
+              type="text"
+              dir="rtl"
+              class="form-control"
+              required
+              formControlName="ar_name"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+          <div class="form-group col-md-6">
+            <label for="company">Email</label>
+            <input
+              type="email"
+              readonly
+              class="form-control"
+              required
+              aria-describedby="helpId"
+              formControlName="email"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label class="col-md-12 text-right ml-auto" for="company"
+              >مكان</label
+            >
+            <input
+              type="text"
+              dir="rtl"
+              class="form-control"
+              required
+              formControlName="ar_place"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+          <div class="form-group col-md-6">
+            <label class="col-md-12 text-right ml-auto" for="company"
+              >منطقة</label
+            >
+            <input
+              type="text"
+              dir="rtl"
+              class="form-control"
+              required
+              formControlName="ar_district"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label class="col-md-12 text-right ml-auto" for="company"
+              >سجل تجاري</label
+            >
+            <input
+              type="number"
+              readonly
+              dir="rtl"
+              class="form-control"
+              [value]="companyForm.value.cr_no"
+              required
+              formControlName="cr_no"
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label class="col-md-12 text-right ml-auto" for="company"
+              >التليفون المحمول</label
+            >
+            <input
+              type="number"
+              readonly
+              dir="rtl"
+              class="form-control"
+              required
+              [value]="companyForm.value.vat_no"
+              formControlName="vat_no"
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label class="col-md-12 text-right ml-auto" for="company"
+              >هاتف أرضي</label
+            >
+            <input
+              type="number"
+              readonly
+              dir="rtl"
+              class="form-control"
+              required
+              [value]="companyForm.value.lan_no"
+              formControlName="lan_no"
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label class="col-md-12 text-right ml-auto" for="company"
+              >هاتف أرضي</label
+            >
+            <input
+              type="number"
+              readonly
+              dir="rtl"
+              class="form-control"
+              required
+              [value]="companyForm.value.mobile_no"
+              formControlName="mobile_no"
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="company">Password</label>
+            <input
+              type="password"
+              readonly
+              class="form-control"
+              required
+              [value]="companyForm.value.password"
+              formControlName="password"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+          <div class="form-group col-md-6">
+            <label for="company">Confirm Password</label>
+            <input
+              type="password"
+              readonly
+              class="form-control"
+              required
+              [value]="companyForm.value.confirm_password"
+              formControlName="confirm_password"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label class="col-md-12 text-right ml-auto" for="company"
+              >شعار</label
+            >
+            <input
+              type="text"
+              readonly
+              dir="rtl"
+              class="form-control"
+              [value]="companyForm.value.logo"
+              formControlName="logo"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center modal-footer">
+    <button class="btn btn-outline-primary" type="submit">
+      {{ editMode ? "Update" : "Submit" }}
+    </button>
+    <button class="btn btn-outline-warning" type="button" (click)="onReset()">
+      Reset
+    </button>
+  </div>
+</form>
+<div class="card mt-3">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Company Name</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">VAT</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of companies; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ item.en_name }}</td>
+        <td>{{ item.mobile_no }}</td>
+        <td>{{ item.vat_no }}</td>
+        <td>
+          <div class="d-flex justify-content-around">
+            <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>
+            <i
+              title="Delete"
+              class="bx bxs-trash"
+              (click)="openModal(template)"
+            ></i>
+            <!-- <i title="Suspend" class="bx bx-x-circle"></i> -->
+          </div>
+
+          <ng-template #template>
+            <div class="modal-body text-center">
+              <p>Do you want to confirm?</p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-danger"
+                (click)="onDelete(i)"
+              >
+                Yes
+              </button>
+              <button type="button" class="btn btn-primary" (click)="decline()">
+                No
+              </button>
+            </div>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

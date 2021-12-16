@@ -3,13 +3,11 @@ import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
-import { ExampleComponent } from './example/example.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 const routes: Routes = [
-
   {
     path: '',
     component: AdminComponent,
@@ -18,11 +16,17 @@ const routes: Routes = [
         path: 'companyprofile',
         component: CompanyProfileComponent,
       },
-    ]
+    ],
   },
 ];
 @NgModule({
-  declarations: [AdminComponent, ExampleComponent, CompanyProfileComponent],
-  imports: [CommonModule, SharedModule, RouterModule.forChild(routes), ReactiveFormsModule, ModalModule.forRoot()],
+  declarations: [AdminComponent, CompanyProfileComponent],
+  imports: [
+    CommonModule,
+    SharedModule,
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    ModalModule.forRoot(),
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

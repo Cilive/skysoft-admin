@@ -43,6 +43,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
         document.title = capitalize(e.url.split('/').pop());
       }
     });
+
     this.generateRoutes();
   }
   ngAfterViewInit(): void {}
@@ -74,17 +75,46 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   back() {
     this.location.back();
   }
-
-  private generateRoutes() {
+  /**
+   * Function to generate Routes
+   */
+  private generateRoutes(): void {
     const role = parseInt(new StoreService().retrieve('role'));
     console.log(typeof role);
 
     switch (true) {
       case Role.admin === role:
-        this.routes = [];
+        this.routes = [
+          {
+            path: '/admin/companyprofile',
+            icon: 'bx bxs-business',
+            title: 'Company Profile',
+          },
+        ];
         break;
       case Role.owner === role:
-        this.routes = [];
+        this.routes = [
+          {
+            icon: '',
+            path: '/owner/supplierprofile',
+            title: 'Supplier Profile',
+          },
+          {
+            icon: '',
+            path: '/owner/customerprofile',
+            title: 'Customer Profile',
+          },
+          {
+            icon: '',
+            path: '/owner/vat&fuel',
+            title: 'Vat & Fuel Master',
+          },
+          {
+            icon: '',
+            path: '/owner/salesinvoice',
+            title: 'Sales Invoice',
+          },
+        ];
         break;
 
       default:

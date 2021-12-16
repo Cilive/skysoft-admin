@@ -5,11 +5,15 @@
     <i class="bx bx-menu" style="color: var(--main)" id="btn"></i>
   </div>
 
-  <ul class="nav-list" style="
+  <ul
+    class="nav-list"
+    style="
       display: flex;
       flex-direction: column;
       height: 80vh;
-    ">
+      justify-content: space-between;
+    "
+  >
     <li class="m-0" *ngFor="let route of routes">
       <a routerLink="{{ route.path }}" routerLinkActive="active-link">
         <i [class]="route.icon"></i>
@@ -17,7 +21,7 @@
       </a>
       <span class="tooltip">{{ route.title }}</span>
     </li>
-    <li [routerLink]="['/owner/supplierprofile']" routerLinkActive="active-link">
+    <!-- <li [routerLink]="['/owner/supplierprofile']" routerLinkActive="active-link">
       <a>
         <i class="bx bxs-exit"></i>
         <span class="links_name">Supplier Profile</span>
@@ -44,7 +48,7 @@
         <span class="links_name">Sales Invoice</span>
       </a>
       <span class="tooltip">Sales Invoice</span>
-    </li>
+    </li> -->
     <li (click)="logout()">
       <a>
         <i class="bx bxs-exit"></i>
@@ -57,12 +61,22 @@
 <section class="home-section pb-5">
   <div class="row col-md-12">
     <div class="text row col-md-7 ml-2">
-      <i *ngIf="isTopLevel === false" class="bx bx-arrow-back back ml-4 p-2" (click)="back()">
+      <i
+        *ngIf="isTopLevel === false"
+        class="bx bx-arrow-back back ml-4 p-2"
+        (click)="back()"
+      >
       </i>
       <span class="col-5"> {{ title }}</span>
     </div>
     <div class="col-md-4 m-auto">
-      <i style="font-size: larger" [popover]="logg" [placement]="'bottom'" containerClass="carry" [outsideClick]="true" class="
+      <i
+        style="font-size: larger"
+        [popover]="logg"
+        [placement]="'bottom'"
+        containerClass="carry"
+        [outsideClick]="true"
+        class="
           bx bx-user
           border
           p-1
@@ -71,12 +85,20 @@
           float-right
           m-auto
           profile
-        "></i>
+        "
+      ></i>
 
       <p style="font-weight: 500" class="float-right mt-1 ml-3 mr-3 text-white">
         {{ username }}
       </p>
-      <i style="font-size: larger; position: relative" class="bx bx-bell float-right p-1 m-auto text-white" [popover]="notification" [placement]="'bottom'" containerClass="noti" [outsideClick]="true">
+      <i
+        style="font-size: larger; position: relative"
+        class="bx bx-bell float-right p-1 m-auto text-white"
+        [popover]="notification"
+        [placement]="'bottom'"
+        containerClass="noti"
+        [outsideClick]="true"
+      >
         <!-- Notification badge -->
         <!-- <p
           style="

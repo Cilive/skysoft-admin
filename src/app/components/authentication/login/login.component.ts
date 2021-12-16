@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     private authentication: AuthenticationService,
     private store: StoreService,
     private route: Router // private hospital:HospitalService
-  ) { }
+  ) {}
   cn = console;
   username = '';
   password = '';
