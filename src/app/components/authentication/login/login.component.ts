@@ -41,31 +41,31 @@ export class LoginComponent implements OnInit {
     }
   }
   login() {
-    const login = tempLogin({
-      username: this.username,
-      password: this.password,
-    });
-    if (login) {
-      this.ngOnInit();
-    }
-
-    // if (validateForm('form')) {
-    //   this.authentication
-    //     .login({
-    //       password: this.password,
-    //       email: this.username,
-    //     })
-    //     .subscribe((res) => {
-    //       if (res) {
-    //         this.store.store('role', res.is_owner ? 1 : 0);
-    //         this.store.store('token', res.access);
-    //         this.store.store('id', res.company_id);
-    //         accessToken.next(res.access);
-    //         if (res.is_super_admin) this.route.navigateByUrl('/admin');
-    //         if (res.is_owner) this.route.navigateByUrl('/owner');
-    //       }
-    //     });
+    // const login = tempLogin({
+    //   username: this.username,
+    //   password: this.password,
+    // });
+    // if (login) {
+    //   this.ngOnInit();
     // }
+
+    if (validateForm('form')) {
+      this.authentication
+        .login({
+          password: this.password,
+          email: this.username,
+        })
+        .subscribe((res) => {
+          if (res) {
+            this.store.store('role', res.is_owner ? 1 : 0);
+            this.store.store('token', res.access);
+            this.store.store('id', res.company_id);
+            accessToken.next(res.access);
+            if (res.is_super_admin) this.route.navigateByUrl('/admin');
+            if (res.is_owner) this.route.navigateByUrl('/owner');
+          }
+        });
+    }
   }
   navigate() {
     this.route.navigateByUrl('/forgot_password');

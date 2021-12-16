@@ -7,6 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
+import { VatFuelMasterComponent } from './vat-fuel-master/vat-fuel-master.component';
+import { SalesInvoiceComponent } from './sales-invoice/sales-invoice.component';
 
 const routes: Routes = [
 
@@ -23,6 +25,14 @@ const routes: Routes = [
         path: 'customerprofile',
         component: CustomerProfileComponent,
       },
+      {
+        path: 'vat&fuel',
+        component: VatFuelMasterComponent,
+      },
+      {
+        path: 'salesinvoice',
+        component: SalesInvoiceComponent,
+      },
     ]
   },
 ];
@@ -31,7 +41,9 @@ const routes: Routes = [
   declarations: [
     OwnerComponent,
     SupplierProfileComponent,
-    CustomerProfileComponent
+    CustomerProfileComponent,
+    VatFuelMasterComponent,
+    SalesInvoiceComponent
   ],
   imports: [
     CommonModule,

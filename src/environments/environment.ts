@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  domain: 'https://f499-2409-4073-2e8e-e711-3387-2b01-366a-ad04.ngrok.io/',
+  domain: 'https://erp.foretech.pw/',
   encryption_secret: '7e61413c0f1b48f9b3e671fed1cb455d0186891b',
 };
 

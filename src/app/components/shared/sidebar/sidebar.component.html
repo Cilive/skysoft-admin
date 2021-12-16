@@ -31,6 +31,20 @@
       </a>
       <span class="tooltip">Customer Profile</span>
     </li>
+    <li [routerLink]="['/owner/vat&fuel']" routerLinkActive="active-link">
+      <a>
+        <i class="bx bxs-exit"></i>
+        <span class="links_name">Vat & Fuel Master</span>
+      </a>
+      <span class="tooltip">Vat & Fuel Master</span>
+    </li>
+    <li [routerLink]="['/owner/salesinvoice']" routerLinkActive="active-link">
+      <a>
+        <i class="bx bxs-exit"></i>
+        <span class="links_name">Sales Invoice</span>
+      </a>
+      <span class="tooltip">Sales Invoice</span>
+    </li>
     <li (click)="logout()">
       <a>
         <i class="bx bxs-exit"></i>
