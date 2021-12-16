@@ -95,22 +95,22 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       case Role.owner === role:
         this.routes = [
           {
-            icon: '',
+            icon: 'bx bx-user-voice',
             path: '/owner/supplierprofile',
             title: 'Supplier Profile',
           },
           {
-            icon: '',
+            icon: 'bx bxs-user-detail',
             path: '/owner/customerprofile',
             title: 'Customer Profile',
           },
           {
-            icon: '',
+            icon: 'bx bx-math',
             path: '/owner/vat&fuel',
             title: 'Vat & Fuel Master',
           },
           {
-            icon: '',
+            icon: 'bx bxs-report',
             path: '/owner/salesinvoice',
             title: 'Sales Invoice',
           },

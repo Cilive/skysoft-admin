@@ -4,14 +4,12 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-owner',
   templateUrl: './owner.component.html',
-  styleUrls: ['./owner.component.scss']
+  styleUrls: ['./owner.component.scss'],
 })
 export class OwnerComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.router.navigateByUrl('owner/supplierprofile')
+    // this.router.navigateByUrl('owner/supplierprofile')
   }
-
 }
