@@ -13,8 +13,13 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       {
-        path: 'companyprofile',
+        path: 'company_Profile',
         component: CompanyProfileComponent,
+      },
+      {
+        path: '',
+        redirectTo: 'company_Profile',
+        pathMatch: 'full',
       },
     ],
   },

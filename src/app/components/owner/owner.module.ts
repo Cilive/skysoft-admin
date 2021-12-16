@@ -11,29 +11,33 @@ import { VatFuelMasterComponent } from './vat-fuel-master/vat-fuel-master.compon
 import { SalesInvoiceComponent } from './sales-invoice/sales-invoice.component';
 
 const routes: Routes = [
-
   {
     path: '',
     // redirectTo: 'supplierprofile', pathMatch: 'full',
     component: OwnerComponent,
     children: [
       {
-        path: 'supplierprofile',
+        path: 'supplier_Profile',
         component: SupplierProfileComponent,
       },
       {
-        path: 'customerprofile',
+        path: 'customer_Profile',
         component: CustomerProfileComponent,
       },
       {
-        path: 'vat&fuel',
+        path: 'vat_and_Fuel',
         component: VatFuelMasterComponent,
       },
       {
-        path: 'salesinvoice',
+        path: 'sales_Invoice',
         component: SalesInvoiceComponent,
       },
-    ]
+      {
+        path: '',
+        redirectTo: 'supplier_Profile',
+        pathMatch: 'full',
+      },
+    ],
   },
 ];
 
@@ -43,7 +47,7 @@ const routes: Routes = [
     SupplierProfileComponent,
     CustomerProfileComponent,
     VatFuelMasterComponent,
-    SalesInvoiceComponent
+    SalesInvoiceComponent,
   ],
   imports: [
     CommonModule,
@@ -52,6 +56,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     ModalModule.forRoot(),
-  ]
+  ],
 })
-export class OwnerModule { }
+export class OwnerModule {}

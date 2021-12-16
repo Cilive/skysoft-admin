@@ -39,8 +39,14 @@ export class SidebarComponent implements OnInit, AfterViewInit {
 
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
-        this.title = capitalize(e.url.split('/').pop());
-        document.title = capitalize(e.url.split('/').pop());
+        this.title = capitalize(e.url.split('/').pop()).replace(
+          /[^a-zA-Z ]/g,
+          ' '
+        );
+        document.title = capitalize(e.url.split('/').pop()).replace(
+          /[^a-zA-Z ]/g,
+          ' '
+        );
       }
     });
 
@@ -86,7 +92,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       case Role.admin === role:
         this.routes = [
           {
-            path: '/admin/companyprofile',
+            path: '/admin/company_Profile',
             icon: 'bx bxs-business',
             title: 'Company Profile',
           },
@@ -96,22 +102,22 @@ export class SidebarComponent implements OnInit, AfterViewInit {
         this.routes = [
           {
             icon: 'bx bx-user-voice',
-            path: '/owner/supplierprofile',
+            path: '/owner/supplier_Profile',
             title: 'Supplier Profile',
           },
           {
             icon: 'bx bxs-user-detail',
-            path: '/owner/customerprofile',
+            path: '/owner/customer_Profile',
             title: 'Customer Profile',
           },
           {
             icon: 'bx bx-math',
-            path: '/owner/vat&fuel',
+            path: '/owner/vat_and_Fuel',
             title: 'Vat & Fuel Master',
           },
           {
             icon: 'bx bxs-report',
-            path: '/owner/salesinvoice',
+            path: '/owner/sales_Invoice',
             title: 'Sales Invoice',
           },
         ];
