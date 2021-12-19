@@ -101,6 +101,11 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       case Role.owner === role:
         this.routes = [
           {
+            icon: 'bx bxs-user-account',
+            path: '/owner/employees',
+            title: 'Pump Employees',
+          },
+          {
             icon: 'bx bx-user-voice',
             path: '/owner/supplier_Profile',
             title: 'Supplier Profile',
@@ -111,15 +116,30 @@ export class SidebarComponent implements OnInit, AfterViewInit {
             title: 'Customer Profile',
           },
           {
-            icon: 'bx bx-math',
-            path: '/owner/vat_and_Fuel',
-            title: 'Vat & Fuel Master',
+            icon: 'bx bxs-droplet',
+            path: '/owner/fuel',
+            title: 'Fuel Management',
           },
           {
-            icon: 'bx bxs-report',
+            icon: 'bx bxs-spreadsheet',
             path: '/owner/sales_Invoice',
             title: 'Sales Invoice',
           },
+          {
+            icon: 'bx bxs-bank',
+            path: '/owner/bank_Accounts',
+            title: 'Bank Account Master',
+          },
+          {
+            icon: 'bx bxs-report',
+            path: '/owner/reports',
+            title: 'Reports',
+          },
+          // {
+          //   icon: 'bx bx-transfer',
+          //   path: '/owner/transactions',
+          //   title: 'Transactions',
+          // },
         ];
         break;
 

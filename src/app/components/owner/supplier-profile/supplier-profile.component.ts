@@ -1,61 +1,66 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { clearForm, validateForm } from 'src/app/services/general/general.service';
-import { SupplierProfileService } from 'src/app/services/supplier-profile/supplier-profile/supplier-profile/supplier-profile.service';
+import { AlertService } from 'src/app/services/alert/alert.service';
+import {
+  clearForm,
+  validateForm,
+} from 'src/app/services/general/general.service';
+import { SupplierProfileService } from 'src/app/services/supplier-profile/supplier-profile.service';
 import { SupplierProfile } from './supplier-profile.model';
 
 @Component({
   selector: 'app-supplier-profile',
   templateUrl: './supplier-profile.component.html',
-  styleUrls: ['./supplier-profile.component.scss']
+  styleUrls: ['./supplier-profile.component.scss'],
 })
 export class SupplierProfileComponent implements OnInit {
-  passError: boolean;
   logoData: FormData;
   modalRef?: BsModalRef;
   editMode: boolean;
   supplierForm: FormGroup;
-  suppliers: SupplierProfile[] = [{
-    en_name: 'First',
-    ar_name: 'second',
-    en_place: 'kerala',
-    ar_place: 'india',
-    en_district: 'malappuram',
-    ar_district: 'kochi',
-    vat_no: 2,
-    lan_no: 3,
-    mobile_no: 4
-  }, {
-    en_name: 'Second',
-    ar_name: 'first',
-    en_place: 'india',
-    ar_place: 'kerala',
-    en_district: 'malappuram',
-    ar_district: 'kochi',
-    vat_no: 2213,
-    lan_no: 12123,
-    mobile_no: 124
-  }]
+  suppliers: SupplierProfile[] = [];
 
-  constructor(private modalService: BsModalService,
-    private supplierService: SupplierProfileService) { }
+  constructor(
+    private modalService: BsModalService,
+    private supplierService: SupplierProfileService,
+    private toast: AlertService
+  ) {}
 
   ngOnInit(): void {
     this.prepareForm();
+    this.supplierService.get_supplier_profiles().subscribe((res) => {
+      this.suppliers = res.data;
+    });
   }
   public onSubmit(): void {
-    this.checkPassword(this.supplierForm.value['confirm_password']);
-    if (validateForm('form') && this.passError) {
-      // this.supplierService.postSupplier(this.supplierForm.value).subscribe(res => {
-      //   // this.onReset();
-      // });
+    if (validateForm('form')) {
+      this.supplierService
+        .post_supplier_profile(this.supplierForm.value)
+        .subscribe((res) => {
+          if (res.msg === 'Success') {
+            this.toast.success('Supplier Added Successfully');
+            this.ngOnInit();
+          }
+        });
+    }
+  }
+  public onUpdate() {
+    if (validateForm('form')) {
+      this.supplierService
+        .update_supplier_profile(this.supplierForm.value)
+        .subscribe((res) => {
+          if (res.msg === 'Success') {
+            this.toast.success('Supplier Updated Successfully');
+            this.ngOnInit();
+          }
+        });
     }
   }
 
   public onReset(): void {
     this.supplierForm.reset();
-    clearForm('form');
+    // clearForm('form');
     this.editMode = false;
   }
 
@@ -69,8 +74,20 @@ export class SupplierProfileComponent implements OnInit {
   }
 
   public onDelete(id) {
-    this.suppliers.splice(id, 1)
-    this.modalRef.hide();
+    this.supplierService.delete_supplier_profile(id).subscribe((res) => {
+      if (res.msg === 'Success') {
+        this.modalRef.hide();
+        this.ngOnInit();
+        this.toast.success('Supplier Deletion Successful');
+      }
+    });
+  }
+  public onSuspend(id) {
+    this.supplierService.suspend_supplier_profile(id).subscribe((res) => {
+      if (res.msg === 'Success') {
+        this.toast.success('Supplier Added to Suspended List');
+      }
+    });
   }
 
   openModal(template: TemplateRef<any>) {
@@ -81,26 +98,18 @@ export class SupplierProfileComponent implements OnInit {
     this.modalRef?.hide();
   }
 
-  private checkPassword(value: string) {
-    if (this.supplierForm.value['password'] === value) {
-      this.passError = false;
-    } else {
-      this.passError = true;
-    }
-  }
-
   private prepareForm() {
     this.supplierForm = new FormGroup({
-      'en_name': new FormControl(null, [Validators.required]),
-      'ar_name': new FormControl(null, [Validators.required]),
-      'en_place': new FormControl(null, [Validators.required]),
-      'ar_place': new FormControl(null, [Validators.required]),
-      'en_district': new FormControl(null, [Validators.required]),
-      'ar_district': new FormControl(null, [Validators.required]),
-      'vat_no': new FormControl(null, [Validators.required]),
-      'lan_no': new FormControl(null, [Validators.required]),
-      'mobile_no': new FormControl(null, [Validators.required]),
+      en_name: new FormControl(null, [Validators.required]),
+      ar_name: new FormControl(null, [Validators.required]),
+      en_place: new FormControl(null, [Validators.required]),
+      ar_place: new FormControl(null, [Validators.required]),
+      en_district: new FormControl(null, [Validators.required]),
+      ar_district: new FormControl(null, [Validators.required]),
+      vat_no: new FormControl(null, [Validators.required]),
+      lan_no: new FormControl(null, [Validators.required]),
+      mobile_no: new FormControl(null, [Validators.required]),
+      id: new FormControl(null),
     });
   }
-
 }

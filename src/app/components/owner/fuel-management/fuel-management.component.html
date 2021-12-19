@@ -1,0 +1,38 @@
+<div class="col-md-5 ml-auto mr-auto mb-5">
+  <div class="row mt-5 col-md-12 grid">
+    <div
+      (click)="isVatMaster = true"
+      class="menu card d-flex justify-content-center col-md-5 m-auto {{
+        isVatMaster ? 'active-tab' : ''
+      }}"
+      style="position: relative; height: 100px"
+    >
+      Fuel and Vat Master
+      <div class="overlay">
+        <div class="m-2" style="position: relative">
+          <i class="bx bx-spreadsheet"></i>
+        </div>
+      </div>
+    </div>
+    <div
+      (click)="isVatMaster = false"
+      class="menu card d-flex justify-content-center col-md-5 m-auto {{
+        !isVatMaster ? 'active-tab' : ''
+      }}"
+      style="position: relative; height: 100px"
+    >
+      Fuel Rate
+      <div class="overlay">
+        <div class="m-2">
+          <i class="bx bx-question-mark"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="isVatMaster === true">
+  <app-vat-fuel-master></app-vat-fuel-master>
+</div>
+<div *ngIf="isVatMaster !== true">
+  <app-fuel-rate-master></app-fuel-rate-master>
+</div>

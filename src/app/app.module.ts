@@ -24,8 +24,8 @@ import {
   ],
   providers: [
     [{ provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }],
-    [{ provide: DEFAULT_TIMEOUT, useValue: 4000 }],
+    [{ provide: DEFAULT_TIMEOUT, useValue: 400000 }],
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

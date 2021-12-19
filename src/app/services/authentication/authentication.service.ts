@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ApiResponse, LoginResponse } from 'src/app/model/shared';
@@ -11,15 +11,8 @@ import { StoreService } from '../store/store.service';
 export class AuthenticationService {
   private url = environment.domain;
 
-  constructor(private http: HttpClient) { }
-  login({
-    email,
-    password,
-  }: {
-    email: string;
-    password: string;
-    hospital?: number;
-  }) {
+  constructor(private http: HttpClient) {}
+  login({ email, password }: { email: string; password: string }) {
     let data = {
       email,
       password,
@@ -30,9 +23,9 @@ export class AuthenticationService {
   }
 
   newToken(token) {
-    return this.http.post<ApiResponse<{ accessToken: string }>>(
-      this.url + 'auth/token',
-      token
+    return this.http.post<{ access: string }>(
+      this.url + 'administrator/refresh/',
+      { refresh: token }
     );
   }
   sendOtp = (email) => {
@@ -56,5 +49,5 @@ export class AuthenticationService {
 }
 
 export const accessToken = new BehaviorSubject(
-  new StoreService().retrieve('token')
+  new StoreService().retrieve('access')
 );

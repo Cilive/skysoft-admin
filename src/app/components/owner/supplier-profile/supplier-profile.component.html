@@ -1,4 +1,9 @@
-<form [formGroup]="supplierForm" class="card" id="form" (ngSubmit)="onSubmit()">
+<form
+  [formGroup]="supplierForm"
+  class="card"
+  id="form"
+  (ngSubmit)="editMode ? onUpdate() : onSubmit()"
+>
   <div class="m-2 d-flex justify-content-between">
     <div class="first">
       <div class="p-2">
@@ -206,7 +211,11 @@
               class="bx bxs-trash"
               (click)="openModal(template)"
             ></i>
-            <i title="Suspend" class="bx bx-x-circle"></i>
+            <i
+              (click)="onSuspend(item.id)"
+              title="Suspend"
+              class="bx bx-x-circle"
+            ></i>
           </div>
 
           <ng-template #template>
@@ -215,7 +224,7 @@
               <button
                 type="button"
                 class="btn btn-default"
-                (click)="onDelete(i)"
+                (click)="onDelete(item.id)"
               >
                 Yes
               </button>

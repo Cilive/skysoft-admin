@@ -58,7 +58,8 @@ export class LoginComponent implements OnInit {
         .subscribe((res) => {
           if (res) {
             this.store.store('role', res.is_owner ? 1 : 0);
-            this.store.store('token', res.access);
+            this.store.store('token', res.refresh);
+            this.store.store('access', res.access);
             this.store.store('id', res.company_id);
             accessToken.next(res.access);
             if (res.is_super_admin) this.route.navigateByUrl('/admin');

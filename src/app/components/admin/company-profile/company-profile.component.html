@@ -1,4 +1,9 @@
-<form [formGroup]="companyForm" class="card" id="form" (ngSubmit)="onSubmit()">
+<form
+  class="card"
+  id="form"
+  (ngSubmit)="editMode === true ? update() : onSubmit()"
+  oninput="cp.value!==''?cp.setCustomValidity(cp.value != newPassword.value ?  'Password doesnt match' : ''):null"
+>
   <div class="modal-header">
     <h6>Manage Company Profile</h6>
   </div>
@@ -16,7 +21,8 @@
               class="form-control"
               required
               aria-describedby="helpId"
-              formControlName="en_name"
+              [(ngModel)]="data.en_name"
+              name="en_name"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -28,8 +34,10 @@
               type="email"
               class="form-control"
               required
+              [readonly]="editMode === true"
               aria-describedby="helpId"
-              formControlName="email"
+              [(ngModel)]="data.email"
+              name="email"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -43,7 +51,8 @@
               type="text"
               class="form-control"
               required
-              formControlName="en_place"
+              [(ngModel)]="data.en_place"
+              name="en_place"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -55,7 +64,8 @@
               type="text"
               class="form-control"
               required
-              formControlName="en_district"
+              [(ngModel)]="data.en_district"
+              name="en_district"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -69,8 +79,8 @@
               type="number"
               class="form-control"
               required
-              [value]="companyForm.value.cr_no"
-              formControlName="cr_no"
+              [(ngModel)]="data.cr_no"
+              name="cr_no"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -82,8 +92,8 @@
               type="number"
               class="form-control"
               required
-              [value]="companyForm.value.vat_no"
-              formControlName="vat_no"
+              [(ngModel)]="data.vat_no"
+              name="vat_no"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -97,8 +107,8 @@
               type="number"
               class="form-control"
               required
-              [value]="companyForm.value.lan_no"
-              formControlName="lan_no"
+              [(ngModel)]="data.lan_no"
+              name="lan_no"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -110,23 +120,23 @@
               type="number"
               class="form-control"
               required
-              [value]="companyForm.value.mobile_no"
-              formControlName="mobile_no"
+              [(ngModel)]="data.phone"
+              name="phone"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
             >
           </div>
         </div>
-        <div class="form-row">
+        <div *ngIf="editMode !== true" class="form-row">
           <div class="form-group col-md-6">
             <label for="company">Password</label>
             <input
               type="password"
               class="form-control"
               required
-              [value]="companyForm.value.password"
-              formControlName="password"
+              [(ngModel)]="data.password"
+              name="newPassword"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -134,17 +144,9 @@
           </div>
           <div class="form-group col-md-6">
             <label for="company">Confirm Password</label>
-            <input
-              type="password"
-              class="form-control"
-              required
-              [value]="companyForm.value.confirm_password"
-              formControlName="confirm_password"
-            />
+            <input type="password" class="form-control" required name="cp" />
             <!-- <small id="helpId" class="invalid-feedback">Field is required</small> -->
-            <small *ngIf="passError" style="color: #dc3545"
-              >Password didn`t match</small
-            >
+            <small class="invalid-feedback">Password didn`t match</small>
           </div>
         </div>
         <div class="form-row">
@@ -155,7 +157,8 @@
               (change)="selectFile($event)"
               class="form-control"
               required
-              formControlName="logo"
+              [(ngModel)]="data.logo"
+              name="logo"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -176,7 +179,8 @@
               dir="rtl"
               class="form-control"
               required
-              formControlName="ar_name"
+              [(ngModel)]="data.ar_name"
+              name="ar_name"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -189,8 +193,9 @@
               readonly
               class="form-control"
               required
+              name="email"
               aria-describedby="helpId"
-              formControlName="email"
+              [(ngModel)]="data.email"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -206,8 +211,10 @@
               type="text"
               dir="rtl"
               class="form-control"
+              name="ar_place"
               required
-              formControlName="ar_place"
+              [(ngModel)]="data.ar_place"
+              name="ar_place"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -221,8 +228,10 @@
               type="text"
               dir="rtl"
               class="form-control"
+              name="ar_district"
               required
-              formControlName="ar_district"
+              [(ngModel)]="data.ar_district"
+              name="ar_district"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -239,9 +248,9 @@
               readonly
               dir="rtl"
               class="form-control"
-              [value]="companyForm.value.cr_no"
               required
-              formControlName="cr_no"
+              [(ngModel)]="data.cr_no"
+              name="cr_no"
             />
           </div>
           <div class="form-group col-md-6">
@@ -254,8 +263,8 @@
               dir="rtl"
               class="form-control"
               required
-              [value]="companyForm.value.vat_no"
-              formControlName="vat_no"
+              [(ngModel)]="data.vat_no"
+              name="vat_no"
             />
           </div>
         </div>
@@ -270,8 +279,8 @@
               dir="rtl"
               class="form-control"
               required
-              [value]="companyForm.value.lan_no"
-              formControlName="lan_no"
+              [(ngModel)]="data.lan_no"
+              name="lan_no"
             />
           </div>
           <div class="form-group col-md-6">
@@ -284,21 +293,21 @@
               dir="rtl"
               class="form-control"
               required
-              [value]="companyForm.value.mobile_no"
-              formControlName="mobile_no"
+              [(ngModel)]="data.phone"
+              name="phone"
             />
           </div>
         </div>
-        <div class="form-row">
+        <div *ngIf="editMode !== true" class="form-row">
           <div class="form-group col-md-6">
             <label for="company">Password</label>
             <input
               type="password"
               readonly
+              name="password"
               class="form-control"
               required
-              [value]="companyForm.value.password"
-              formControlName="password"
+              [(ngModel)]="data.password"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -308,11 +317,10 @@
             <label for="company">Confirm Password</label>
             <input
               type="password"
+              name="confirm_password"
               readonly
               class="form-control"
               required
-              [value]="companyForm.value.confirm_password"
-              formControlName="confirm_password"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -328,9 +336,9 @@
               type="text"
               readonly
               dir="rtl"
+              name="logo"
               class="form-control"
-              [value]="companyForm.value.logo"
-              formControlName="logo"
+              [(ngModel)]="data.logo"
             />
           </div>
         </div>
@@ -361,7 +369,7 @@
       <tr *ngFor="let item of companies; let i = index">
         <th scope="row">{{ i + 1 }}</th>
         <td>{{ item.en_name }}</td>
-        <td>{{ item.mobile_no }}</td>
+        <td>{{ item.phone }}</td>
         <td>{{ item.vat_no }}</td>
         <td>
           <div class="d-flex justify-content-around">
@@ -371,7 +379,11 @@
               class="bx bxs-trash"
               (click)="openModal(template)"
             ></i>
-            <i title="Suspend" class="bx bx-x-circle"></i>
+            <i
+              title="Suspend"
+              (click)="suspend(item.id)"
+              class="bx bx-x-circle"
+            ></i>
           </div>
 
           <ng-template #template>
@@ -382,7 +394,7 @@
               <button
                 type="button"
                 class="btn btn-outline-danger"
-                (click)="onDelete(i)"
+                (click)="onDelete(item.id)"
               >
                 Yes
               </button>

@@ -1,105 +1,130 @@
 import { AfterViewInit, Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { AlertService } from 'src/app/services/alert/alert.service';
 import { CompanyProfileService } from 'src/app/services/company-profile/company-profile.service';
 import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
-import { CompanyProfile } from './company-profile.model';
+import { Company } from './company-profile.model';
 
 @Component({
   selector: 'app-company-profile',
   templateUrl: './company-profile.component.html',
   styleUrls: ['./company-profile.component.scss'],
 })
-export class CompanyProfileComponent implements OnInit, AfterViewInit {
+export class CompanyProfileComponent implements OnInit {
   passError: boolean = false;
   logoData: FormData;
   modalRef?: BsModalRef;
   editMode: boolean;
   companyForm: FormGroup;
-  companies: CompanyProfile[] = [
-    //   {
-    //   en_name: 'First',
-    //   ar_name: 'second',
-    //   en_place: 'kerala',
-    //   ar_place: 'india',
-    //   en_district: 'malappuram',
-    //   ar_district: 'kochi',
-    //   cr_no: 1,
-    //   vat_no: 2,
-    //   lan_no: 3,
-    //   mobile_no: 4,
-    //   logo: 'sdfs',
-    //   email: 'admin@gmail.com',
-    //   password: 'admin',
-    //   confirm_password: 'admin',
-    // }, {
-    //   en_name: 'Second',
-    //   ar_name: 'first',
-    //   en_place: 'india',
-    //   ar_place: 'kerala',
-    //   en_district: 'malappuram',
-    //   ar_district: 'kochi',
-    //   cr_no: 12,
-    //   vat_no: 2213,
-    //   lan_no: 12123,
-    //   mobile_no: 124,
-    //   logo: 'sdfs',
-    //   email: 'test@gmail.com',
-    //   password: 'test',
-    //   confirm_password: 'test',
-    //   }
-  ];
+  data: Company = {
+    ar_district: '',
+    ar_name: '',
+    ar_place: '',
+    // confirm_password: '',
+    cr_no: null,
+    email: '',
+    en_district: '',
+    en_name: '',
+    en_place: '',
+    lan_no: null,
+    logo: '',
+    phone: null,
+    password: '',
+    vat_no: null,
+  };
+  companies: Company[] = [];
 
   constructor(
     private modalService: BsModalService,
-    private companyService: CompanyProfileService
+    private companyService: CompanyProfileService,
+    private toast: AlertService
   ) {}
 
   ngOnInit(): void {
-    this.prepareForm();
+    // this.prepareForm();
     this.companyService.get_company_proiles().subscribe((res) => {
-      console.log(res);
-    });
-  }
-
-  ngAfterViewInit(): void {
-    this.companyForm.get('confirm_password').valueChanges.subscribe((value) => {
-      this.checkPassword(value);
+      if (res.msg === 'Success') {
+        this.companies = res.data;
+      }
     });
   }
 
   public onSubmit(): void {
-    this.checkPassword(this.companyForm.value['confirm_password']);
-    if (validateForm('form') && this.passError !== true) {
+    if (validateForm('form')) {
+      const formData = new FormData(
+        document.getElementById('form') as HTMLFormElement
+      );
+      this.companyService.post_company_proile(formData).subscribe((res) => {
+        if (res.msg === 'Success') {
+          this.toast.success('Company Added Successfully');
+          this.ngOnInit();
+          this.onReset();
+        }
+        // this.onReset();
+      });
+    }
+  }
+
+  public onReset(): void {
+    clearForm('form');
+    this.editMode = false;
+  }
+
+  public selectFile(event: Event): void {
+    // const targetInput = event.target as HTMLInputElement;
+    // // if (targetInput.files.length > 0) {
+    // //   const file = targetInput.files[0];
+    // // }
+  }
+
+  public onEdit(item: Company): void {
+    this.editMode = true;
+    this.data = {
+      id: item.id,
+      ar_district: item.ar_district,
+      ar_name: item.ar_name,
+      ar_place: item.ar_place,
+      cr_no: item.cr_no,
+      email: item.account.email,
+      en_district: item.en_district,
+      en_name: item.en_name,
+      en_place: item.en_place,
+      lan_no: item.lan_no,
+      logo: item.logo,
+      phone: item.phone,
+      vat_no: item.vat_no,
+      account: item.account,
+    };
+  }
+  public update() {
+    if (validateForm('form')) {
+      const formData = new FormData(
+        document.getElementById('form') as HTMLFormElement
+      );
       this.companyService
-        .post_company_proile(this.companyForm.value)
+        .update_company_profile(formData, this.data.id)
         .subscribe((res) => {
-          console.log(res);
+          if (res.msg === 'Success') {
+            this.toast.success('Company Updated Successfully');
+            this.ngOnInit();
+            this.onReset();
+          }
           // this.onReset();
         });
     }
   }
 
-  public onReset(): void {
-    this.companyForm.reset();
-    clearForm('form');
-    this.editMode = false;
-  }
-
-  public selectFile(event): void {
-    this.companyForm.value['logo'] = event.target.files[0].name;
-  }
-
-  public onEdit(item: CompanyProfile): void {
-    this.editMode = true;
-    this.companyForm.setValue(item);
-  }
-
   public onDelete(id) {
-    this.companies.splice(id, 1);
+    this.companyService.delete_company_profile(id).subscribe((res) => {
+      if (res.msg === 'Success') {
+        this.toast.success('Company Deletion Successfull');
+        this.ngOnInit();
+      }
+    });
     this.modalRef.hide();
   }
 
@@ -110,31 +135,12 @@ export class CompanyProfileComponent implements OnInit, AfterViewInit {
   decline(): void {
     this.modalRef?.hide();
   }
-
-  private checkPassword(value: string) {
-    if (this.companyForm.value['password'] === value) {
-      this.passError = false;
-    } else {
-      this.passError = true;
-    }
-  }
-
-  private prepareForm() {
-    this.companyForm = new FormGroup({
-      en_name: new FormControl(null, [Validators.required]),
-      ar_name: new FormControl(null, [Validators.required]),
-      en_place: new FormControl(null, [Validators.required]),
-      ar_place: new FormControl(null, [Validators.required]),
-      en_district: new FormControl(null, [Validators.required]),
-      ar_district: new FormControl(null, [Validators.required]),
-      cr_no: new FormControl(null, [Validators.required]),
-      vat_no: new FormControl(null, [Validators.required]),
-      lan_no: new FormControl(null, [Validators.required]),
-      mobile_no: new FormControl(null, [Validators.required]),
-      logo: new FormControl(null, [Validators.required]),
-      email: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required]),
-      confirm_password: new FormControl(null, [Validators.required]),
+  suspend(id): void {
+    this.companyService.suspend_company_profile(id).subscribe((res) => {
+      if (res.msg === 'Success') {
+        this.toast.success('Company Added To Suspended List');
+        this.ngOnInit();
+      }
     });
   }
 }

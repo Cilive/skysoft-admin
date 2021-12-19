@@ -1,76 +1,107 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { CustomerProfileService } from 'src/app/services/customer-profile/customer-profile/customer-profile/customer-profile.service';
-import { clearForm, validateForm } from 'src/app/services/general/general.service';
+import { AlertService } from 'src/app/services/alert/alert.service';
+import { CustomerProfileService } from 'src/app/services/customer-profile/customer-profile.service';
+import {
+  clearForm,
+  validateForm,
+} from 'src/app/services/general/general.service';
 import { CustomerProfile } from './customer-profile.modal';
 
 @Component({
   selector: 'app-customer-profile',
   templateUrl: './customer-profile.component.html',
-  styleUrls: ['./customer-profile.component.scss']
+  styleUrls: ['./customer-profile.component.scss'],
 })
 export class CustomerProfileComponent implements OnInit {
-  passError: boolean;
-  logoData: FormData;
   modalRef?: BsModalRef;
   editMode: boolean;
-  customerForm: FormGroup;
-  customers: CustomerProfile[] = [{
-    en_name: 'First',
-    ar_name: 'second',
-    en_place: 'kerala',
-    ar_place: 'india',
-    en_district: 'malappuram',
-    ar_district: 'kochi',
-    vat_no: 2,
-    lan_no: 3,
-    mobile_no: 4
-  }, {
-    en_name: 'Second',
-    ar_name: 'first',
-    en_place: 'india',
-    ar_place: 'kerala',
-    en_district: 'malappuram',
-    ar_district: 'kochi',
-    vat_no: 2213,
-    lan_no: 12123,
-    mobile_no: 124
-  }]
-  constructor(private modalService: BsModalService,
-    private customerService: CustomerProfileService) { }
+  customers: CustomerProfile[] = [];
+  data: CustomerProfile = {
+    en_name: '',
+    ar_name: '',
+    en_place: '',
+    ar_place: '',
+    en_district: '',
+    ar_district: '',
+    vat_no: null,
+    lan_no: null,
+    mobile_no: null,
+  };
+  id: number;
+  constructor(
+    private modalService: BsModalService,
+    private toast: AlertService,
+    private customerService: CustomerProfileService
+  ) {}
 
   ngOnInit(): void {
-    this.prepareForm();
+    this.customerService.get_customer_profiles().subscribe((res) => {
+      this.customers = res.data;
+    });
   }
-
   public onSubmit(): void {
-    this.checkPassword(this.customerForm.value['confirm_password']);
-    if (validateForm('form') && this.passError) {
-      // this.customerService.postSupplier(this.customerForm.value).subscribe(res => {
-      //   // this.onReset();
-      // });
+    if (validateForm('form')) {
+      this.customerService.post_customer_profile(this.data).subscribe((res) => {
+        if (res.msg === 'Success') {
+          this.toast.success('Customer Added Successful');
+          this.onReset();
+          this.ngOnInit();
+        }
+      });
+    }
+  }
+  public onUpdate() {
+    if (validateForm('form')) {
+      this.customerService
+        .update_customer_profile(this.data, this.data.id)
+        .subscribe((res) => {
+          if (res.msg === 'Success') {
+            this.toast.success('Customer Updated Successful');
+            this.ngOnInit();
+            this.onReset();
+          }
+        });
     }
   }
 
   public onReset(): void {
-    this.customerForm.reset();
-    clearForm('form');
     this.editMode = false;
-  }
-
-  public selectFile(event): void {
-    this.customerForm.value['logo'] = event.target.files[0].name;
+    clearForm('form');
   }
 
   public onEdit(item: CustomerProfile): void {
     this.editMode = true;
-    this.customerForm.setValue(item);
+    this.data = {
+      en_name: item.en_name,
+      ar_name: item.ar_name,
+      en_place: item.en_place,
+      ar_place: item.ar_place,
+      en_district: item.en_district,
+      ar_district: item.ar_district,
+      vat_no: item.vat_no,
+      lan_no: item.lan_no,
+      mobile_no: item.mobile_no,
+      id: item.id,
+    };
   }
 
   public onDelete(id) {
-    this.customers.splice(id, 1)
-    this.modalRef.hide();
+    this.customerService.delete_customer_profile(id).subscribe((res) => {
+      if (res.msg === 'Success') {
+        this.modalRef.hide();
+        this.toast.success('Selected Customer Deleted');
+        this.ngOnInit();
+      }
+    });
+  }
+  public onSuspend(id) {
+    this.customerService.suspend_customer_profile(id).subscribe((res) => {
+      if (res.msg === 'Success') {
+        this.toast.success('Customer Added to Suspend List');
+      }
+    });
   }
 
   openModal(template: TemplateRef<any>) {
@@ -79,27 +110,5 @@ export class CustomerProfileComponent implements OnInit {
 
   decline(): void {
     this.modalRef?.hide();
-  }
-
-  private checkPassword(value: string) {
-    if (this.customerForm.value['password'] === value) {
-      this.passError = false;
-    } else {
-      this.passError = true;
-    }
-  }
-
-  private prepareForm() {
-    this.customerForm = new FormGroup({
-      'en_name': new FormControl(null, [Validators.required]),
-      'ar_name': new FormControl(null, [Validators.required]),
-      'en_place': new FormControl(null, [Validators.required]),
-      'ar_place': new FormControl(null, [Validators.required]),
-      'en_district': new FormControl(null, [Validators.required]),
-      'ar_district': new FormControl(null, [Validators.required]),
-      'vat_no': new FormControl(null, [Validators.required]),
-      'lan_no': new FormControl(null, [Validators.required]),
-      'mobile_no': new FormControl(null, [Validators.required]),
-    });
   }
 }

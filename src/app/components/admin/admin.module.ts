@@ -4,7 +4,7 @@ import { AdminComponent } from './admin.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 const routes: Routes = [
@@ -30,7 +30,7 @@ const routes: Routes = [
     CommonModule,
     SharedModule,
     RouterModule.forChild(routes),
-    ReactiveFormsModule,
+    FormsModule,
     ModalModule.forRoot(),
   ],
 })
