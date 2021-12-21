@@ -39,10 +39,6 @@ export class SidebarComponent implements OnInit, AfterViewInit {
     translate.addLangs(['en', 'ar']);
     this.translate.setDefaultLang('en');
 
-    this.translate.onLangChange.subscribe((res) => {
-      console.log(res);
-    });
-
     const capitalize = function (str1) {
       return str1.charAt(0).toUpperCase() + str1.slice(1);
     };
