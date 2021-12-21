@@ -1,39 +1,35 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
-import { DepositsService } from 'src/app/services/deposits/deposits.service';
 import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
-import { Deposit } from './deposit.model';
+import { OwnersService } from 'src/app/services/owners/owners.service';
 
-/**
- * @TODO: Implement further connections
- */
 @Component({
-  selector: 'app-deposit',
-  templateUrl: './deposit.component.html',
-  styleUrls: ['./deposit.component.scss'],
+  selector: 'app-company-owner',
+  templateUrl: './company-owner.component.html',
+  styleUrls: ['./company-owner.component.scss'],
 })
-export class DepositComponent implements OnInit {
+export class CompanyOwnerComponent implements OnInit {
   modalRef?: BsModalRef;
-  deposits: Deposit[] = [];
-  data: Deposit = {
-    amount: '',
-    date: new Date(),
-    owner_name: '',
+  owners = [];
+  data: { name: String; id?: number; phone: number; email: string } = {
+    name: '',
+    phone: null,
+    email: '',
   };
   editMode = false;
   constructor(
     private modalService: BsModalService,
-    private toast: AlertService,
-    private deposit: DepositsService
+    private owner: OwnersService,
+    private toast: AlertService
   ) {}
 
   ngOnInit(): void {
-    this.deposit.get_deposits().subscribe((res) => {
-      this.deposits = res.data;
+    this.owner.get_owners().subscribe((res) => {
+      this.owners = res.data;
     });
   }
   onReset() {
@@ -41,9 +37,9 @@ export class DepositComponent implements OnInit {
   }
   onSubmit() {
     if (validateForm('bnkForm')) {
-      this.deposit.post_deposit(this.data).subscribe((res) => {
+      this.owner.post_owner(this.data).subscribe((res) => {
         if (res.msg === 'Success') {
-          this.toast.success('deposit Account added successfully');
+          this.toast.success('owner Added');
           clearForm('bnkForm');
           this.ngOnInit();
         }
@@ -51,20 +47,22 @@ export class DepositComponent implements OnInit {
     }
   }
   onUpdate() {
-    this.deposit.update_deposit(this.data, this.data.id).subscribe((res) => {
+    this.owner.update_owner(this.data, this.data.id).subscribe((res) => {
       if (res.msg === 'Success') {
-        this.toast.success('deposit Account updated successfully');
+        this.toast.success('owner Updated');
         clearForm('bnkForm');
+        this.editMode = false;
         this.ngOnInit();
       }
     });
   }
-  onEdit(item: Deposit) {
+  onEdit(item) {
     this.editMode = true;
     this.data = {
-      amount: item.amount,
-      date: item.date,
-      owner_name: item.owner_name,
+      name: item.name,
+      id: item.id,
+      email: item.email,
+      phone: item.phone,
     };
   }
   openModal(template: TemplateRef<any>) {
@@ -73,11 +71,11 @@ export class DepositComponent implements OnInit {
 
   decline(): void {}
   onDelete(id) {
-    this.deposit.delete_deposit(id).subscribe((res) => {
+    this.owner.delete_owner(id).subscribe((res) => {
       if (res.msg === 'Success') {
         this.modalRef?.hide();
         this.ngOnInit();
-        this.toast.success('deposit Account Deleted');
+        this.toast.success('owner Deleted');
       }
     });
   }

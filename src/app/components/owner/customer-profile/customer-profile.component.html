@@ -5,7 +5,7 @@
   (ngSubmit)="editMode == true ? onUpdate() : onSubmit()"
 >
   <div class="modal-header">
-    <h6>Manage Customer Profile</h6>
+    <h6 translate>Manage Customer Profile</h6>
   </div>
   <div class="m-2 d-flex justify-content-between">
     <div
@@ -15,8 +15,9 @@
       <div class="p-2">
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="name">Customer Name</label>
+            <label translate for="name">Customer Name</label>
             <input
+              translate
               type="text"
               class="form-control"
               required
@@ -29,8 +30,9 @@
             >
           </div>
           <div class="form-group col-md-6">
-            <label for="place">Place</label>
+            <label translate for="place">Place</label>
             <input
+              translate
               type="text"
               class="form-control"
               required
@@ -44,8 +46,9 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="district">District</label>
+            <label translate for="district">District</label>
             <input
+              translate
               type="text"
               class="form-control"
               required
@@ -57,8 +60,9 @@
             >
           </div>
           <div class="form-group col-md-6">
-            <label for="mobile">Mobile</label>
+            <label translate for="mobile">Mobile</label>
             <input
+              translate
               type="number"
               class="form-control"
               required
@@ -72,8 +76,9 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="vat">VAT</label>
+            <label translate for="vat">VAT</label>
             <input
+              translate
               type="number"
               class="form-control"
               required
@@ -85,8 +90,9 @@
             >
           </div>
           <div class="form-group col-md-6">
-            <label for="lan">LAN</label>
+            <label translate for="lan">LAN</label>
             <input
+              translate
               type="number"
               class="form-control"
               required
@@ -104,8 +110,9 @@
       <div class="p-2">
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="name">اسم الزبون</label>
+            <label translate for="name">اسم الزبون</label>
             <input
+              translate
               type="text"
               dir="rtl"
               class="form-control"
@@ -118,8 +125,9 @@
             >
           </div>
           <div class="form-group col-md-6">
-            <label for="place">مكان</label>
+            <label translate for="place">مكان</label>
             <input
+              translate
               type="text"
               dir="rtl"
               class="form-control"
@@ -134,8 +142,9 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="district">منطقة</label>
+            <label translate for="district">منطقة</label>
             <input
+              translate
               type="text"
               dir="rtl"
               class="form-control"
@@ -148,8 +157,9 @@
             >
           </div>
           <div class="form-group col-md-6">
-            <label for="mobile">هاتف أرضي</label>
+            <label translate for="mobile">هاتف أرضي</label>
             <input
+              translate
               type="number"
               readonly
               dir="rtl"
@@ -162,8 +172,9 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="vat">التليفون المحمول</label>
+            <label translate for="vat">التليفون المحمول</label>
             <input
+              translate
               type="number"
               readonly
               dir="rtl"
@@ -174,8 +185,9 @@
             />
           </div>
           <div class="form-group col-md-6">
-            <label for="lan">هاتف أرضي</label>
+            <label translate for="lan">هاتف أرضي</label>
             <input
+              translate
               type="number"
               readonly
               dir="rtl"
@@ -190,26 +202,28 @@
     </div>
   </div>
   <div class="d-flex justify-content-center modal-footer">
-    <button class="btn btn-outline-primary" type="submit">
+    <button translate class="btn btn-outline-primary" type="submit">
       {{ editMode ? "Update" : "Submit" }}
     </button>
-    <button class="btn btn-outline-warning" type="reset">Reset</button>
+    <button translate class="btn btn-outline-warning" type="reset">
+      Reset
+    </button>
   </div>
 </form>
 <div class="mt-3 card">
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Customer Name</th>
-        <th scope="col">Phone Number</th>
-        <th scope="col">VAT</th>
-        <th scope="col">Action</th>
+        <th translate scope="col">#</th>
+        <th translate scope="col">Customer Name</th>
+        <th translate scope="col">Phone Number</th>
+        <th translate scope="col">VAT</th>
+        <th translate scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of customers; let i = index">
-        <th scope="row">{{ i + 1 }}</th>
+        <th translate scope="row">{{ i + 1 }}</th>
         <td>{{ item.en_name }}</td>
         <td>{{ item.mobile_no }}</td>
         <td>{{ item.vat_no }}</td>
@@ -230,9 +244,10 @@
 
           <ng-template #template>
             <div class="modal-body text-center">
-              <p>Do you want to confirm?</p>
+              <p translate>Do you want to confirm?</p>
               <div class="modal-footer">
                 <button
+                  translate
                   type="button"
                   class="btn btn-outline-danger"
                   (click)="onDelete(item.id)"
@@ -240,6 +255,7 @@
                   Yes
                 </button>
                 <button
+                  translate
                   type="button"
                   class="btn btn-primary"
                   (click)="decline()"

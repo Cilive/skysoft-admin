@@ -1,6 +1,6 @@
 <div class="card m-auto col-md-12">
   <div class="modal-header">
-    <h6>Manage Bank Accounts</h6>
+    <h6 translate>Manage Dispenses</h6>
   </div>
   <div class="col-md-12">
     <form
@@ -10,54 +10,27 @@
     >
       <div class="row mt-3">
         <div class="form-group col-md-4">
-          <label for="bnk_name">Amount</label>
+          <label translate for="bnk_name"> Name</label>
           <input
+            translate
             type="text"
             class="form-control"
             name="bnk_name"
-            [(ngModel)]="data.amount"
+            [(ngModel)]="data.name"
             id="bnk_name"
-            placeholder="Name"
             required
-          />
-          <small class="invalid-feedback">Field required</small>
-        </div>
-        <div class="form-group col-md-4">
-          <label for="holder">Date</label>
-          <input
-            type="text"
-            class="form-control"
-            name="holder"
-            bsDatepicker
-            [bsConfig]=""
-            [(ngModel)]="data.date"
-            id="holder"
-            required
-            placeholder="Name"
           />
           <small class="invalid-feedback">Field required</small>
         </div>
       </div>
-      <div class="row">
-        <div class="form-group col-md-4">
-          <label for="ACC_NO">Owner Name</label>
-          <input
-            type="number"
-            class="form-control"
-            name="ACC_NO"
-            [(ngModel)]="data.owner_name"
-            id="ACC_NO"
-            required
-            placeholder="Number"
-          />
-          <small class="invalid-feedback">Field required</small>
-        </div>
-      </div>
+
       <div class="modal-footer">
-        <button type="submit" class="btn btn-outline-primary">
+        <button translate type="submit" class="btn btn-outline-primary">
           {{ editMode === true ? "Update" : "Submit" }}
         </button>
-        <button type="reset" class="btn btn-outline-warning">Reset</button>
+        <button translate type="reset" class="btn btn-outline-warning">
+          Reset
+        </button>
       </div>
     </form>
   </div>
@@ -66,19 +39,15 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Date</th>
-        <th scope="col">Amount</th>
-        <th scope="col">Owner</th>
-        <th scope="col">Action</th>
+        <th translate scope="col">#</th>
+        <th translate scope="col">Name</th>
+        <th translate scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of deposits; let i = index">
-        <th scope="row">{{ i + 1 }}</th>
-        <td>{{ item.date | date: "dd/MM/YYYY" }}</td>
-        <td>{{ item.amount }}</td>
-        <td>{{ item.owner_name }}</td>
+      <tr *ngFor="let item of dispenses; let i = index">
+        <th translate scope="row">{{ i + 1 }}</th>
+        <td>{{ item.name }}</td>
         <td>
           <div class="d-flex justify-content-around">
             <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>
@@ -87,18 +56,14 @@
               class="bx bxs-trash"
               (click)="openModal(template)"
             ></i>
-            <!-- <i
-              (click)="onSuspend(item.id)"
-              title="Suspend"
-              class="bx bx-x-circle"
-            ></i> -->
           </div>
 
           <ng-template #template>
             <div class="modal-body text-center">
-              <p>Do you want to confirm?</p>
+              <p translate>Do you want to confirm?</p>
               <div class="modal-footer">
                 <button
+                  translate
                   type="button"
                   class="btn btn-outline-danger"
                   (click)="onDelete(item.id)"
@@ -106,6 +71,7 @@
                   Yes
                 </button>
                 <button
+                  translate
                   type="button"
                   class="btn btn-primary"
                   (click)="decline()"

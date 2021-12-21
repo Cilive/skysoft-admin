@@ -7,6 +7,7 @@ import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
+import { StoreService } from 'src/app/services/store/store.service';
 import { FuelData } from './vat-fuel-master.model';
 
 @Component({
@@ -21,9 +22,9 @@ export class VatFuelMasterComponent implements OnInit {
   vatEditMode: boolean;
   FuelEditMode: boolean;
   customerForm: FormGroup;
-  commonVat = {
+  commonVat: { vat: number; id: number } = {
     vat: null,
-    id: null,
+    id: undefined,
   };
   counts = [];
   total: number = 0;
@@ -32,6 +33,7 @@ export class VatFuelMasterComponent implements OnInit {
       renderId: 0,
       fuel_vat: null,
       name: '',
+      company: parseInt(new StoreService().retrieve('id')),
     },
   ];
   tableData: FuelData[] = [];
@@ -39,7 +41,9 @@ export class VatFuelMasterComponent implements OnInit {
     private vatAndFuel: FueldataService,
     private toast: AlertService,
     private modalService: BsModalService
-  ) {}
+  ) {
+    console.log(new StoreService().retrieve('id'));
+  }
 
   ngOnInit(): void {
     this.vatAndFuel.get_fuelDetails().subscribe((res) => {
@@ -57,12 +61,14 @@ export class VatFuelMasterComponent implements OnInit {
     this.vatAndFuel.post_fuelDetail(this.fuelData).subscribe((res) => {
       if (res.msg === 'Success') {
         this.toast.success('Fuel Added');
+        this.ngOnInit();
       }
     });
   }
   public onSubmitVat(): void {
-    this.vatAndFuel.post_vat({ vat: this.commonVat }).subscribe((res) => {
+    this.vatAndFuel.post_vat({ ...this.commonVat }).subscribe((res) => {
       if (res.msg === 'Success') {
+        this.ngOnInit();
         this.toast.success('Vat Added');
       }
     });
@@ -98,6 +104,7 @@ export class VatFuelMasterComponent implements OnInit {
       renderId: this.fuelData.length + 1,
       fuel_vat: null,
       name: '',
+      company: parseInt(new StoreService().retrieve('id')),
     });
   }
   onEdit(item) {
@@ -115,6 +122,7 @@ export class VatFuelMasterComponent implements OnInit {
     this.vatAndFuel.delete_fuelDetail(id).subscribe((res) => {
       if (res.msg === 'Success') {
         this.toast.success('Fuel Deleted');
+        this.ngOnInit();
       }
     });
   }

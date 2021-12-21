@@ -1,6 +1,6 @@
 <div class="card m-auto col-md-12">
   <div class="modal-header">
-    <h6>Manage Employees</h6>
+    <h6 translate>Manage Employees</h6>
   </div>
   <div class="col-md-12">
     <form
@@ -11,14 +11,14 @@
     >
       <div class="row mt-3">
         <div class="form-group col-md-4">
-          <label for="emp_name">Name</label>
+          <label translate for="emp_name">Name</label>
           <input
+            translate
             type="text"
             class="form-control"
             name="emp_name"
             [(ngModel)]="data.name"
             id="emp_name"
-            placeholder="Name"
             required
           />
           <small class="invalid-feedback">Field required</small>
@@ -26,26 +26,26 @@
         <div class="form-group col-md-4">
           <label for="emp_mail">Email</label>
           <input
+            translate
             type="email"
             class="form-control"
             name="emp_mail"
             [(ngModel)]="data.email"
             id="emp_mail"
             required
-            placeholder="Name"
           />
           <small class="invalid-feedback">Field required</small>
         </div>
         <div class="form-group col-md-4">
           <label for="em_phone">Phone</label>
           <input
+            translate
             type="number"
             class="form-control"
             name="em_phone"
             [(ngModel)]="data.phone"
             id="em_phone"
             required
-            placeholder="Number"
           />
           <small class="invalid-feedback">Field required</small>
         </div>
@@ -54,6 +54,7 @@
         <div class="form-group col-md-6">
           <label for="company">Password</label>
           <input
+            translate
             type="password"
             class="form-control"
             required
@@ -64,16 +65,24 @@
         </div>
         <div class="form-group col-md-6">
           <label for="company">Confirm Password</label>
-          <input type="password" class="form-control" required name="cp" />
+          <input
+            translate
+            type="password"
+            class="form-control"
+            required
+            name="cp"
+          />
           <!-- <small id="helpId" class="invalid-feedback">Field is required</small> -->
           <small class="invalid-feedback">Password didn`t match</small>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-outline-primary">
+        <button translate type="submit" class="btn btn-outline-primary">
           {{ editMode === true ? "Update" : "Submit" }}
         </button>
-        <button type="reset" class="btn btn-outline-warning">Reset</button>
+        <button translate type="reset" class="btn btn-outline-warning">
+          Reset
+        </button>
       </div>
     </form>
   </div>
@@ -82,15 +91,15 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Action</th>
+        <th translate scope="col">#</th>
+        <th translate scope="col">Name</th>
+        <th translate scope="col">Email</th>
+        <th translate scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of employeesList; let i = index">
-        <th scope="row">{{ i + 1 }}</th>
+        <th translate scope="row">{{ i + 1 }}</th>
         <td>{{ item.name }}</td>
         <td>{{ item.account.email }}</td>
         <td>{{ item.phone }}</td>
@@ -111,9 +120,10 @@
 
           <ng-template #template>
             <div class="modal-body text-center">
-              <p>Do you want to confirm?</p>
+              <p translate>Do you want to confirm?</p>
               <div class="modal-footer">
                 <button
+                  translate
                   type="button"
                   class="btn btn-outline-danger"
                   (click)="onDelete(item.id)"
@@ -121,6 +131,7 @@
                   Yes
                 </button>
                 <button
+                  translate
                   type="button"
                   class="btn btn-primary"
                   (click)="decline()"

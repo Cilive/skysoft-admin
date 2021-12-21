@@ -8,6 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Role } from 'src/app/model/shared';
 import { AlertService } from 'src/app/services/alert/alert.service';
@@ -27,14 +28,25 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   isTopLevel: boolean = false;
   cmd = console;
   isNotificationsOn = false;
+  direction = 'ltr';
+  enset = true;
   constructor(
     private router: Router,
     private location: Location,
-    private alert: AlertService
+    private alert: AlertService,
+    private translate: TranslateService
   ) {
+    translate.addLangs(['en', 'ar']);
+    this.translate.setDefaultLang('en');
+
+    this.translate.onLangChange.subscribe((res) => {
+      console.log(res);
+    });
+
     const capitalize = function (str1) {
       return str1.charAt(0).toUpperCase() + str1.slice(1);
     };
+
     //  this.title= capitalize()
 
     this.router.events.subscribe((e) => {
@@ -102,28 +114,19 @@ export class SidebarComponent implements OnInit, AfterViewInit {
         this.routes = [
           {
             icon: 'bx bxs-user-account',
-            path: '/owner/employees',
-            title: 'Pump Employees',
+            path: '/owner/users',
+            title: 'Users',
           },
+
           {
-            icon: 'bx bx-user-voice',
-            path: '/owner/supplier_Profile',
-            title: 'Supplier Profile',
-          },
-          {
-            icon: 'bx bxs-user-detail',
-            path: '/owner/customer_Profile',
-            title: 'Customer Profile',
-          },
-          {
-            icon: 'bx bxs-droplet',
+            icon: 'bx bxs-gas-pump',
             path: '/owner/fuel',
             title: 'Fuel Management',
           },
           {
             icon: 'bx bxs-spreadsheet',
-            path: '/owner/sales_Invoice',
-            title: 'Sales Invoice',
+            path: '/owner/invoices',
+            title: 'Invoices',
           },
           {
             icon: 'bx bxs-bank',
@@ -131,20 +134,34 @@ export class SidebarComponent implements OnInit, AfterViewInit {
             title: 'Bank Account Master',
           },
           {
+            icon: 'bx bxs-package',
+            path: '/owner/dispensers',
+            title: 'Dispensers',
+          },
+          {
+            icon: 'bx bx-transfer',
+            path: '/owner/transactions',
+            title: 'Transactions',
+          },
+          {
             icon: 'bx bxs-report',
             path: '/owner/reports',
             title: 'Reports',
           },
-          // {
-          //   icon: 'bx bx-transfer',
-          //   path: '/owner/transactions',
-          //   title: 'Transactions',
-          // },
         ];
         break;
 
       default:
         this.router.navigate(['/login']);
+    }
+  }
+  onCLickLanguage() {
+    if (this.enset) {
+      this.direction = 'ltr';
+      this.translate.setDefaultLang('en');
+    } else {
+      this.direction = 'rtl';
+      this.translate.setDefaultLang('ar');
     }
   }
 }

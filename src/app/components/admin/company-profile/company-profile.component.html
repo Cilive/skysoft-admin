@@ -5,7 +5,7 @@
   oninput="cp.value!==''?cp.setCustomValidity(cp.value != newPassword.value ?  'Password doesnt match' : ''):null"
 >
   <div class="modal-header">
-    <h6>Manage Company Profile</h6>
+    <h6 translate>Manage Company Profile</h6>
   </div>
   <div class="m-2 d-flex justify-content-between">
     <div
@@ -15,8 +15,9 @@
       <div class="p-2">
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="company">Company Name</label>
+            <label translate for="company">Company Name</label>
             <input
+              translate
               type="text"
               class="form-control"
               required
@@ -29,8 +30,9 @@
             >
           </div>
           <div class="form-group col-md-6">
-            <label for="company">Email</label>
+            <label translate for="company">Email</label>
             <input
+              translate
               type="email"
               class="form-control"
               required
@@ -46,8 +48,9 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="company">Place</label>
+            <label translate for="company">Place</label>
             <input
+              translate
               type="text"
               class="form-control"
               required
@@ -59,8 +62,9 @@
             >
           </div>
           <div class="form-group col-md-6">
-            <label for="company">District</label>
+            <label translate for="company">District</label>
             <input
+              translate
               type="text"
               class="form-control"
               required
@@ -74,8 +78,9 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="company">CR</label>
+            <label translate for="company">CR</label>
             <input
+              translate
               type="number"
               class="form-control"
               required
@@ -87,8 +92,9 @@
             >
           </div>
           <div class="form-group col-md-6">
-            <label for="company">VAT</label>
+            <label translate for="company">VAT</label>
             <input
+              translate
               type="number"
               class="form-control"
               required
@@ -102,8 +108,9 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="company">LAN</label>
+            <label translate for="company">LAN</label>
             <input
+              translate
               type="number"
               class="form-control"
               required
@@ -115,8 +122,9 @@
             >
           </div>
           <div class="form-group col-md-6">
-            <label for="company">Mobile</label>
+            <label translate for="company">Mobile</label>
             <input
+              translate
               type="number"
               class="form-control"
               required
@@ -130,8 +138,9 @@
         </div>
         <div *ngIf="editMode !== true" class="form-row">
           <div class="form-group col-md-6">
-            <label for="company">Password</label>
+            <label translate for="company">Password</label>
             <input
+              translate
               type="password"
               class="form-control"
               required
@@ -143,16 +152,23 @@
             >
           </div>
           <div class="form-group col-md-6">
-            <label for="company">Confirm Password</label>
-            <input type="password" class="form-control" required name="cp" />
+            <label translate for="company">Confirm Password</label>
+            <input
+              translate
+              type="password"
+              class="form-control"
+              required
+              name="cp"
+            />
             <!-- <small id="helpId" class="invalid-feedback">Field is required</small> -->
             <small class="invalid-feedback">Password didn`t match</small>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="company">LOGO</label>
+            <label translate for="company">LOGO</label>
             <input
+              translate
               type="file"
               (change)="selectFile($event)"
               class="form-control"
@@ -171,10 +187,11 @@
       <div class="p-2">
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label class="col-md-12 text-right ml-auto" for="company"
+            <label translate class="col-md-12 text-right ml-auto" for="company"
               >اسم الشركة</label
             >
             <input
+              translate
               type="text"
               dir="rtl"
               class="form-control"
@@ -187,8 +204,9 @@
             >
           </div>
           <div class="form-group col-md-6">
-            <label for="company">Email</label>
+            <label translate for="company">Email</label>
             <input
+              translate
               type="email"
               readonly
               class="form-control"
@@ -204,10 +222,11 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label class="col-md-12 text-right ml-auto" for="company"
+            <label translate class="col-md-12 text-right ml-auto" for="company"
               >مكان</label
             >
             <input
+              translate
               type="text"
               dir="rtl"
               class="form-control"
@@ -221,10 +240,11 @@
             >
           </div>
           <div class="form-group col-md-6">
-            <label class="col-md-12 text-right ml-auto" for="company"
+            <label translate class="col-md-12 text-right ml-auto" for="company"
               >منطقة</label
             >
             <input
+              translate
               type="text"
               dir="rtl"
               class="form-control"
@@ -240,10 +260,11 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label class="col-md-12 text-right ml-auto" for="company"
+            <label translate class="col-md-12 text-right ml-auto" for="company"
               >سجل تجاري</label
             >
             <input
+              translate
               type="number"
               readonly
               dir="rtl"
@@ -254,10 +275,11 @@
             />
           </div>
           <div class="form-group col-md-6">
-            <label class="col-md-12 text-right ml-auto" for="company"
+            <label translate class="col-md-12 text-right ml-auto" for="company"
               >التليفون المحمول</label
             >
             <input
+              translate
               type="number"
               readonly
               dir="rtl"
@@ -270,10 +292,11 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label class="col-md-12 text-right ml-auto" for="company"
+            <label translate class="col-md-12 text-right ml-auto" for="company"
               >هاتف أرضي</label
             >
             <input
+              translate
               type="number"
               readonly
               dir="rtl"
@@ -284,10 +307,11 @@
             />
           </div>
           <div class="form-group col-md-6">
-            <label class="col-md-12 text-right ml-auto" for="company"
+            <label translate class="col-md-12 text-right ml-auto" for="company"
               >هاتف أرضي</label
             >
             <input
+              translate
               type="number"
               readonly
               dir="rtl"
@@ -300,8 +324,9 @@
         </div>
         <div *ngIf="editMode !== true" class="form-row">
           <div class="form-group col-md-6">
-            <label for="company">Password</label>
+            <label translate for="company">Password</label>
             <input
+              translate
               type="password"
               readonly
               name="password"
@@ -314,8 +339,9 @@
             >
           </div>
           <div class="form-group col-md-6">
-            <label for="company">Confirm Password</label>
+            <label translate for="company">Confirm Password</label>
             <input
+              translate
               type="password"
               name="confirm_password"
               readonly
@@ -329,10 +355,11 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label class="col-md-12 text-right ml-auto" for="company"
+            <label translate class="col-md-12 text-right ml-auto" for="company"
               >شعار</label
             >
             <input
+              translate
               type="text"
               readonly
               dir="rtl"
@@ -346,10 +373,15 @@
     </div>
   </div>
   <div class="d-flex justify-content-center modal-footer">
-    <button class="btn btn-outline-primary" type="submit">
+    <button translate class="btn btn-outline-primary" type="submit">
       {{ editMode ? "Update" : "Submit" }}
     </button>
-    <button class="btn btn-outline-warning" type="button" (click)="onReset()">
+    <button
+      translate
+      class="btn btn-outline-warning"
+      type="button"
+      (click)="onReset()"
+    >
       Reset
     </button>
   </div>
@@ -358,16 +390,16 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Company Name</th>
-        <th scope="col">Phone Number</th>
-        <th scope="col">VAT</th>
-        <th scope="col">Action</th>
+        <th translate scope="col">#</th>
+        <th translate scope="col">Company Name</th>
+        <th translate scope="col">Phone Number</th>
+        <th translate scope="col">VAT</th>
+        <th translate scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of companies; let i = index">
-        <th scope="row">{{ i + 1 }}</th>
+        <th translate scope="row">{{ i + 1 }}</th>
         <td>{{ item.en_name }}</td>
         <td>{{ item.phone }}</td>
         <td>{{ item.vat_no }}</td>
@@ -388,17 +420,23 @@
 
           <ng-template #template>
             <div class="modal-body text-center">
-              <p>Do you want to confirm?</p>
+              <p translate>Do you want to confirm?</p>
             </div>
             <div class="modal-footer">
               <button
+                translate
                 type="button"
                 class="btn btn-outline-danger"
                 (click)="onDelete(item.id)"
               >
                 Yes
               </button>
-              <button type="button" class="btn btn-primary" (click)="decline()">
+              <button
+                translate
+                type="button"
+                class="btn btn-primary"
+                (click)="decline()"
+              >
                 No
               </button>
             </div>

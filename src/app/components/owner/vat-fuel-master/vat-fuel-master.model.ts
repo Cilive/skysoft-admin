@@ -5,6 +5,7 @@ export interface FuelData {
   //   vat: number;
   rate?: number;
   payable_amt?: number;
+  company?: number;
 }
 
 export interface FuelRate {}

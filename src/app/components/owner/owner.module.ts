@@ -12,11 +12,20 @@ import { VatFuelMasterComponent } from './vat-fuel-master/vat-fuel-master.compon
 import { SalesInvoiceComponent } from './sales-invoice/sales-invoice.component';
 import { PumpEmployeeComponent } from './pump-employee/pump-employee.component';
 import { BankAccountMasterComponent } from './bank-account-master/bank-account-master.component';
-import { DepositComponent } from './deposit/deposit.component';
-import { TransacionsComponent } from './transacions/transacions.component';
+import { DepositComponent } from './transactions/deposit/deposit.component';
+import { TransacionsComponent } from './transactions/transacions.component';
 import { FuelRateMasterComponent } from './fuel-rate-master/fuel-rate-master.component';
 import { FuelManagementComponent } from './fuel-management/fuel-management.component';
 import { ReportsComponent } from './reports/reports.component';
+import { DispenseComponent } from './dispense/dispense.component';
+import { UsersComponent } from './users/users.component';
+import { CompanyOwnerComponent } from './company-owner/company-owner.component';
+import { PurchaseInvoiceComponent } from './purchase-invoice/purchase-invoice.component';
+import { InvoicesComponent } from './invoices/invoices.component';
+import { PaymentsInComponent } from './transactions/payments-in/payments-in.component';
+import { PaymentsOutComponent } from './transactions/payments-out/payments-out.component';
+import { ExpensesComponent } from './transactions/expenses/expenses.component';
+import { CloseAccountComponent } from './close-account/close-account.component';
 
 const routes: Routes = [
   {
@@ -34,8 +43,8 @@ const routes: Routes = [
       },
 
       {
-        path: 'sales_Invoice',
-        component: SalesInvoiceComponent,
+        path: 'invoices',
+        component: InvoicesComponent,
       },
       {
         path: 'employees',
@@ -54,6 +63,10 @@ const routes: Routes = [
         component: TransacionsComponent,
       },
       {
+        path: 'dispensers',
+        component: DispenseComponent,
+      },
+      {
         path: 'fuel',
         component: FuelManagementComponent,
       },
@@ -63,9 +76,33 @@ const routes: Routes = [
           (await import('./../reports/reports.module')).ReportsModule,
       },
       {
+        path: 'users',
+        component: UsersComponent,
+      },
+      {
+        path: 'company_Owners',
+        component: CompanyOwnerComponent,
+      },
+      {
         path: '',
-        redirectTo: 'supplier_Profile',
+        redirectTo: 'transactions',
         pathMatch: 'full',
+      },
+      {
+        path: 'payments_In',
+        component: PaymentsInComponent,
+      },
+      {
+        path: 'payments_Out',
+        component: PaymentsOutComponent,
+      },
+      {
+        path: 'expenses',
+        component: ExpensesComponent,
+      },
+      {
+        path: 'close_Account',
+        component: CloseAccountComponent,
       },
     ],
   },
@@ -85,6 +122,15 @@ const routes: Routes = [
     FuelRateMasterComponent,
     FuelManagementComponent,
     ReportsComponent,
+    DispenseComponent,
+    UsersComponent,
+    CompanyOwnerComponent,
+    PurchaseInvoiceComponent,
+    InvoicesComponent,
+    PaymentsInComponent,
+    PaymentsOutComponent,
+    ExpensesComponent,
+    CloseAccountComponent,
   ],
   imports: [
     CommonModule,
@@ -93,7 +139,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     ModalModule.forRoot(),
-    BsDatepickerModule,
+    BsDatepickerModule.forRoot(),
   ],
 })
 export class OwnerModule {}

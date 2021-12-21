@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import { FueldataService } from 'src/app/services/fueldata/fueldata.service';
+import { validateForm } from 'src/app/services/general/general.service';
 import { FuelData } from '../vat-fuel-master/vat-fuel-master.model';
 
 @Component({
@@ -39,10 +40,12 @@ export class FuelRateMasterComponent implements OnInit {
       spec_vat_rate + (spec_vat_rate * this.commonVat) / 100;
   }
   onSubmit() {
-    this.fuels.updateFualRate(this.fuelsList).subscribe((res) => {
-      if (res.msg === 'Success') {
+    if (validateForm('fuelRate')) {
+      this.fuels.updateFualRate(this.fuelsList).subscribe((res) => {
+        // if (res.msg === 'Success') {
         this.toast.success('Successfully Saved');
-      }
-    });
+        // }
+      });
+    }
   }
 }

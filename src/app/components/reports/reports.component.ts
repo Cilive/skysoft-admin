@@ -8,45 +8,72 @@ import { Component, OnInit } from '@angular/core';
 export class ReportsComponent implements OnInit {
   tileItems = [
     {
-      path: 'authosheet',
+      path: 'readings',
       icon: 'bx bx-spreadsheet',
       title: 'Meter Reading',
     },
-    // {
-    //   path: 'cxd',
-    //   icon: 'bx bxs-plane-alt',
-    //   title: 'CXD Report',
-    // },
-    // {
-    //   path: 'snag',
-    //   icon: 'bx bxs-plane-land',
-    //   title: 'Snag Report',
-    // },
-    // {
-    //   path: 'safety',
-    //   icon: 'bx bx-check-shield',
-    //   title: 'Safety Report',
-    // },
-    // {
-    //   path: 'dispatch',
-    //   icon: 'bx bxs-user-voice',
-    //   title: 'Dispatch Report',
-    // },
-    // {
-    //   path: 'debriefs',
-    //   icon: 'bx bxs-report',
-    //   title: 'Debrief Reports',
-    // },
-    // {
-    //   path: 'subjects',
-    //   icon: 'bx bx-message-square-add',
-    //   title: 'Add Report Subjects',
-    // },
-    // {
-    //   path: 'logs',
-    //   icon: 'bx bx-file-blank',
-    //   title: 'Logs',
-    // },
+    {
+      path: 'customer_Balance',
+      icon: 'bx bx-spreadsheet',
+      title: 'Customer Balance',
+    },
+    {
+      path: 'customer_Details',
+      icon: 'bx bx-spreadsheet',
+      title: 'Customer Details',
+    },
+    {
+      path: 'deposit_Amount',
+      icon: 'bx bx-spreadsheet',
+      title: 'Deposit Amount',
+    },
+    {
+      path: 'expenses_Details',
+      icon: 'bx bx-spreadsheet',
+      title: 'Expenses Details',
+    },
+    {
+      path: 'income_and_Expenditure',
+      icon: 'bx bx-spreadsheet',
+      title: 'Income and Expenditure',
+    },
+
+    {
+      path: 'monthly_Balancesheet',
+      icon: 'bx bx-spreadsheet',
+      title: 'Monthly Balancesheet',
+    },
+    {
+      path: 'payment_Details',
+      icon: 'bx bx-spreadsheet',
+      title: 'Payment Details',
+    },
+    {
+      path: 'payment_Due',
+      icon: 'bx bx-spreadsheet',
+      title: 'Payment Due',
+    },
+    {
+      path: 'payments_in_Report',
+      icon: 'bx bx-spreadsheet',
+      title: 'Payments-in Report',
+    },
+    {
+      path: 'payments_out_Report',
+      icon: 'bx bx-spreadsheet',
+      title: 'Payments-out Report',
+    },
+    {
+      path: 'purchase_Details',
+      icon: 'bx bx-spreadsheet',
+      title: 'Purchase Details',
+    },
+
+    {
+      path: 'sales_Details',
+      icon: 'bx bx-spreadsheet',
+      title: 'Sales Details',
+    },
   ];
   constructor() {}
 

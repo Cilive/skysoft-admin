@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Deposit } from 'src/app/components/owner/deposit/deposit.model';
+import { Deposit } from 'src/app/components/owner/transactions/deposit/deposit.model';
 import { DEPOSIT } from 'src/app/model/api';
 import { ApiResponse } from 'src/app/model/shared';
 import { environment } from 'src/environments/environment';

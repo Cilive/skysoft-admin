@@ -1,6 +1,6 @@
 export interface Deposit {
   amount: string;
   date: Date;
-  owner_name: string;
+  owner: string;
   id?: number;
 }

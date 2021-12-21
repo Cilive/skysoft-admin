@@ -1,12 +1,13 @@
 <form class="card" id="form">
   <div class="m-2 d-flex flex-column justify-content-between">
     <div class="modal-header flex-column">
-      <label for="colFormLabelLg">Vat Percentage</label>
+      <label translate for="colFormlabel translateLg">Vat Percentage</label>
       <div class="form-row ml-4">
         <div class="form-group col-md-12 d-flex">
-          <label for="name">VAT</label>
+          <label translate for="name">VAT</label>
           <div class="ml-2 col-md-3">
             <input
+              translate
               type="number"
               class="form-control col-md-12"
               required
@@ -18,9 +19,10 @@
             >
           </div>
           <button
+            translate
             [disabled]="commonVat.vat === null"
             class="btn btn-outline-primary"
-            (click)="vatEditMode ? onUpdateVat() : onSubmitVat()"
+            (click)="vatEditMode === true ? onUpdateVat() : onSubmitVat()"
           >
             {{ vatEditMode ? "Update" : "Submit" }}
           </button>
@@ -31,13 +33,25 @@
       <div class="p-2 m-2">
         <div class="m-2 d-flex justify-content-between w-50">
           <label
+            translate
             for="fuelname"
-            class="col-sm-12 col-form-label col-form-label-lg"
+            class="
+              col-sm-12 col-form-label
+              translate
+              col-form-label
+              translate-lg
+            "
             >Fuel Name</label
           >
           <label
+            translate
             for="fuelname"
-            class="col-sm-12 col-form-label col-form-label-lg"
+            class="
+              col-sm-12 col-form-label
+              translate
+              col-form-label
+              translate-lg
+            "
             >Vat %</label
           >
         </div>
@@ -48,6 +62,7 @@
         >
           <div class="col-sm-12">
             <input
+              translate
               type="text"
               class="form-control col-md-12"
               [(ngModel)]="item.name"
@@ -57,6 +72,7 @@
           </div>
           <div class="col-sm-3">
             <input
+              translate
               type="number"
               class="form-control col-md-12"
               [(ngModel)]="item.fuel_vat"
@@ -86,6 +102,7 @@
   </div>
   <div class="d-flex justify-content-center modal-footer">
     <button
+      translate
       (click)="
         $event.preventDefault(); FuelEditMode ? onUpdateFuel() : onSubmitFuel()
       "
@@ -94,7 +111,12 @@
     >
       {{ FuelEditMode ? "Update" : "Submit" }}
     </button>
-    <button class="btn btn-outline-warning" type="button" (click)="onReset()">
+    <button
+      translate
+      class="btn btn-outline-warning"
+      type="button"
+      (click)="onReset()"
+    >
       Reset
     </button>
   </div>
@@ -104,15 +126,15 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Vat</th>
-        <th scope="col">Action</th>
+        <th translate scope="col">#</th>
+        <th translate scope="col">Name</th>
+        <th translate scope="col">Vat</th>
+        <th translate scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of tableData; let i = index">
-        <th scope="row">{{ i + 1 }}</th>
+        <th translate scope="row">{{ i + 1 }}</th>
         <td>{{ item.name }}</td>
         <td>{{ item.fuel_vat }}</td>
         <td>
@@ -132,9 +154,10 @@
 
           <ng-template #template>
             <div class="modal-body text-center">
-              <p>Do you want to confirm?</p>
+              <p translate>Do you want to confirm?</p>
               <div class="modal-footer">
                 <button
+                  translate
                   type="button"
                   class="btn btn-outline-danger"
                   (click)="onDeleteFuel(item.id)"
@@ -142,6 +165,7 @@
                   Yes
                 </button>
                 <button
+                  translate
                   type="button"
                   class="btn btn-primary"
                   (click)="decline()"

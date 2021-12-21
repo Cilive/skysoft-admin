@@ -160,7 +160,7 @@ li:hover .tooltip {
   color: black !important;
 }
 
-.active-link>span {
+.active-link > span {
   color: var(--light) !important;
 }
 
@@ -260,7 +260,8 @@ li:hover .tooltip {
   /* position: relative; */
   background: line;
   /* background-color: #E4E9F7; */
-  background: linear-gradient(to left, #8263e2, var(--main)) no-repeat border-box,
+  background: linear-gradient(to left, #8263e2, var(--main)) no-repeat
+      border-box,
     #e4e9f7 no-repeat border-box;
   min-height: 100vh;
   /* min-width: ; */
@@ -276,7 +277,7 @@ li:hover .tooltip {
   z-index: 2;
 }
 
-.sidebar.open~.home-section {
+.sidebar.open ~ .home-section {
   margin-left: 250px;
   width: calc(100% - 250px);
 }
@@ -301,16 +302,16 @@ li:hover .tooltip {
   color: var(--dark) !important;
 }
 
-:host>>>.carry:hover>.arrow::after {
+:host >>> .carry:hover > .arrow::after {
   border-bottom-color: var(--danger);
   color: white;
 }
 
-* :host>>>.carry:hover .popover-content.popover-body:hover {
+* :host >>> .carry:hover .popover-content.popover-body:hover {
   color: white;
 }
 
-:host>>>.carry:hover {
+:host >>> .carry:hover {
   color: white !important;
   background-color: var(--danger) !important;
 }
@@ -325,11 +326,11 @@ li:hover .tooltip {
   border-radius: 50px;
 }
 
-:host>>>.noti {
+:host >>> .noti {
   width: 500px;
 }
 
-.report-label {
+.report-label translate {
   color: var(--main);
   font-weight: 500;
 }

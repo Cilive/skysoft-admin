@@ -9,22 +9,22 @@ export class TransacionsComponent implements OnInit {
   tileList: Tiles = [
     {
       icon: 'bx bxs-right-down-arrow-circle',
-      routerLink: '',
+      routerLink: '/owner/payments_In',
       title: 'Payments In',
     },
     {
       icon: 'bx bxs-left-top-arrow-circle',
-      routerLink: '',
+      routerLink: '/owner/payments_Out',
       title: 'Payments Out',
     },
     {
       icon: 'bx bx-wallet-alt',
-      routerLink: '',
+      routerLink: '/owner/expenses',
       title: 'Expenses',
     },
     {
       icon: 'bx bx-window-close',
-      routerLink: '',
+      routerLink: '/owner/close_Account',
       title: 'Close Account',
     },
     {

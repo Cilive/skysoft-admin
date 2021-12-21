@@ -30,6 +30,37 @@
     rgb(192, 192, 192)
   );
 }
+.grid .menu:nth-child(7) .overlay {
+  background: linear-gradient(to top left, rgb(9, 144, 168), rgb(68, 221, 221));
+}
+.grid .menu:nth-child(8) .overlay {
+  background: linear-gradient(to top left, rgb(136, 9, 168), rgb(203, 68, 221));
+}
+.grid .menu:nth-child(9) .overlay {
+  background: linear-gradient(to top left, rgb(38, 9, 168), rgb(109, 68, 221));
+}
+.grid .menu:nth-child(10) .overlay {
+  background: linear-gradient(to top left, rgb(104, 9, 168), rgb(221, 68, 196));
+}
+.grid .menu:nth-child(11) .overlay {
+  background: linear-gradient(to top left, rgb(41, 168, 9), rgb(68, 221, 88));
+}
+.grid .menu:nth-child(12) .overlay {
+  background: linear-gradient(to top left, rgb(126, 168, 9), rgb(73, 221, 68));
+}
+.grid .menu:nth-child(13) .overlay {
+  background: linear-gradient(to top left, rgb(9, 20, 168), rgb(203, 68, 221));
+}
+.grid .menu:nth-child(14) .overlay {
+  background: linear-gradient(to top left, rgb(168, 9, 160), rgb(221, 68, 119));
+}
+.grid .menu:nth-child(15) .overlay {
+  background: linear-gradient(to top left, rgb(168, 41, 9), rgb(221, 142, 68));
+}
+.grid .menu:nth-child(16) .overlay {
+  background: linear-gradient(to top left, rgb(41, 168, 9), rgb(81, 221, 68));
+}
+
 .overlay i {
   vertical-align: middle;
   font-size: xx-large;

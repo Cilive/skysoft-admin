@@ -1,0 +1,66 @@
+.menu .overlay {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  background: linear-gradient(to top left, rgb(9, 168, 94), rgb(68, 221, 162));
+  top: -15px;
+  right: 15px;
+  text-align: center;
+  border-radius: 6px;
+  color: white;
+}
+.grid:nth-child(1) .menu:nth-child(2) .overlay {
+  background: linear-gradient(to top left, var(--warning), rgb(255, 231, 93));
+}
+.overlay i {
+  vertical-align: middle;
+  font-size: xx-large;
+}
+
+.menu {
+  box-shadow: 0px 0px 5px 1px #5e72e363;
+  border: 1px solid #5e72e3b6;
+}
+.active-tab {
+  color: var(--light);
+  background-color: rgb(39, 39, 39);
+  transition: 0.7s;
+}
+.menu:hover {
+  color: var(--light);
+  background-color: rgb(39, 39, 39);
+  transition: 0.7s;
+}
+.menu .overlay {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  background: linear-gradient(to top left, rgb(9, 168, 94), rgb(68, 221, 162));
+  top: -15px;
+  right: 15px;
+  text-align: center;
+  border-radius: 6px;
+  color: white;
+}
+.grid:nth-child(1) .menu:nth-child(2) .overlay {
+  background: linear-gradient(to top left, var(--warning), rgb(255, 231, 93));
+}
+.overlay i {
+  vertical-align: middle;
+  font-size: xx-large;
+}
+
+.menu {
+  box-shadow: 0px 0px 5px 1px #5e72e363;
+  border: 1px solid #5e72e3b6;
+}
+.active-tab {
+  color: var(--light);
+  background-color: rgb(39, 39, 39);
+  transition: 0.7s;
+}
+.menu:hover {
+  color: var(--light);
+  background-color: rgb(39, 39, 39);
+  transition: 0.7s;
+}

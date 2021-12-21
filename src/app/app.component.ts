@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { TranslateService } from '@ngx-translate/core';
 import { timer } from 'rxjs';
 import {
   accessToken,
@@ -12,8 +13,9 @@ import { StoreService } from './services/store/store.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'skysoft-admin';
+  extractor = htmlTextExtractor;
   constructor(
     private store: StoreService,
     private authentication: AuthenticationService
@@ -37,4 +39,21 @@ export class AppComponent implements OnInit {
       }
     });
   }
+  ngAfterViewInit(): void {}
+}
+
+export function htmlTextExtractor() {
+  // setTimeout(() => {
+  //   let supp = {};
+  //   document.body.innerText.split('\n').map((t) => {
+  //     supp = { ...supp, [t]: t };
+  //   });
+  //   var dataStr =
+  //     'data:text/json;charset=utf-8,' +
+  //     encodeURIComponent(JSON.stringify(supp));
+  //   var dlAnchorElem = document.createElement('a');
+  //   dlAnchorElem.setAttribute('href', dataStr);
+  //   dlAnchorElem.setAttribute('download', `${document.title}.json`);
+  //   dlAnchorElem.click();
+  // }, 1000);
 }

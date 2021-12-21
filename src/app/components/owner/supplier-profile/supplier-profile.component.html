@@ -9,8 +9,9 @@
       <div class="p-2">
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="name">Supplier Name</label>
+            <label translate for="name">Supplier Name</label>
             <input
+              translate
               type="text"
               class="form-control"
               required
@@ -22,8 +23,9 @@
             >
           </div>
           <div class="form-group col-md-6">
-            <label for="company">Place</label>
+            <label translate for="company">Place</label>
             <input
+              translate
               type="text"
               class="form-control"
               required
@@ -36,8 +38,9 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="company">District</label>
+            <label translate for="company">District</label>
             <input
+              translate
               type="text"
               class="form-control"
               required
@@ -48,8 +51,9 @@
             >
           </div>
           <div class="form-group col-md-6">
-            <label for="company">Mobile</label>
+            <label translate for="company">Mobile</label>
             <input
+              translate
               type="number"
               class="form-control"
               required
@@ -63,8 +67,9 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="company">VAT</label>
+            <label translate for="company">VAT</label>
             <input
+              translate
               type="number"
               class="form-control"
               required
@@ -76,8 +81,9 @@
             >
           </div>
           <div class="form-group col-md-6">
-            <label for="company">LAN</label>
+            <label translate for="company">LAN</label>
             <input
+              translate
               type="number"
               class="form-control"
               required
@@ -95,8 +101,9 @@
       <div class="p-2">
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="company">اسم المورد</label>
+            <label translate for="company">اسم المورد</label>
             <input
+              translate
               type="text"
               dir="rtl"
               class="form-control"
@@ -108,8 +115,9 @@
             >
           </div>
           <div class="form-group col-md-6">
-            <label for="company">مكان</label>
+            <label translate for="company">مكان</label>
             <input
+              translate
               type="text"
               dir="rtl"
               class="form-control"
@@ -123,8 +131,9 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="company">منطقة</label>
+            <label translate for="company">منطقة</label>
             <input
+              translate
               type="text"
               dir="rtl"
               class="form-control"
@@ -136,8 +145,9 @@
             >
           </div>
           <div class="form-group col-md-6">
-            <label for="company">هاتف أرضي</label>
+            <label translate for="company">هاتف أرضي</label>
             <input
+              translate
               type="number"
               readonly
               dir="rtl"
@@ -150,8 +160,9 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="company">التليفون المحمول</label>
+            <label translate for="company">التليفون المحمول</label>
             <input
+              translate
               type="number"
               readonly
               dir="rtl"
@@ -162,8 +173,9 @@
             />
           </div>
           <div class="form-group col-md-6">
-            <label for="company">هاتف أرضي</label>
+            <label translate for="company">هاتف أرضي</label>
             <input
+              translate
               type="number"
               readonly
               dir="rtl"
@@ -178,10 +190,15 @@
     </div>
   </div>
   <div class="d-flex justify-content-center modal-footer">
-    <button class="btn btn-outline-primary" type="submit">
+    <button translate class="btn btn-outline-primary" type="submit">
       {{ editMode ? "Update" : "Submit" }}
     </button>
-    <button class="btn btn-outline-warning" type="button" (click)="onReset()">
+    <button
+      translate
+      class="btn btn-outline-warning"
+      type="button"
+      (click)="onReset()"
+    >
       Reset
     </button>
   </div>
@@ -190,16 +207,16 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Supplier Name</th>
-        <th scope="col">Phone Number</th>
-        <th scope="col">VAT</th>
-        <th scope="col">Action</th>
+        <th translate scope="col">#</th>
+        <th translate scope="col">Supplier Name</th>
+        <th translate scope="col">Phone Number</th>
+        <th translate scope="col">VAT</th>
+        <th translate scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of suppliers; let i = index">
-        <th scope="row">{{ i + 1 }}</th>
+        <th translate scope="row">{{ i + 1 }}</th>
         <td>{{ item.en_name }}</td>
         <td>{{ item.mobile_no }}</td>
         <td>{{ item.vat_no }}</td>
@@ -220,15 +237,21 @@
 
           <ng-template #template>
             <div class="modal-body text-center">
-              <p>Do you want to confirm?</p>
+              <p translate>Do you want to confirm?</p>
               <button
+                translate
                 type="button"
                 class="btn btn-default"
                 (click)="onDelete(item.id)"
               >
                 Yes
               </button>
-              <button type="button" class="btn btn-primary" (click)="decline()">
+              <button
+                translate
+                type="button"
+                class="btn btn-primary"
+                (click)="decline()"
+              >
                 No
               </button>
             </div>

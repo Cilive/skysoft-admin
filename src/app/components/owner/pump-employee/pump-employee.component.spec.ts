@@ -4,7 +4,7 @@ import { PumpEmployeeComponent } from './pump-employee.component';
 
 describe('PumpEmployeeComponent', () => {
   let component: PumpEmployeeComponent;
-  let fixture: ComponentFixture<PumpEmployeeComponent>;
+  let fixture: ComponentFixture<p translateumpEmployeeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

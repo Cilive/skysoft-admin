@@ -11,6 +11,8 @@ import {
   ApiInterceptor,
   DEFAULT_TIMEOUT,
 } from './services/api/api.interceptor';
+import { TranslateModule } from '@ngx-translate/core';
+import { CustomerBalanceComponent } from './components/reports/customer-balance/customer-balance.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +23,7 @@ import {
     FormsModule,
     ToastrModule.forRoot(),
     HttpClientModule,
+    TranslateModule.forRoot(),
   ],
   providers: [
     [{ provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }],
