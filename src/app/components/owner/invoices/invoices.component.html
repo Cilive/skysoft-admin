@@ -1,0 +1,39 @@
+<div class="col-md-5 ml-auto mr-auto mb-5">
+  <div class="row mt-5 col-md-12 grid">
+    <div
+      (click)="isSalesInvoice = true"
+      class="menu card d-flex justify-content-center col-md-5 m-auto {{
+        isSalesInvoice ? 'active-tab' : ''
+      }}"
+      style="position: relative; height: 100px"
+    >
+      <p translate class="mt-3">Sales Invoice</p>
+      <div class="overlay">
+        <div class="m-2" style="position: relative">
+          <i class="bx bx-spreadsheet"></i>
+        </div>
+      </div>
+    </div>
+    <div
+      (click)="isSalesInvoice = false"
+      class="menu card d-flex justify-content-center col-md-5 m-auto {{
+        !isSalesInvoice ? 'active-tab' : ''
+      }}"
+      style="position: relative; height: 100px"
+    >
+      Purchase Invoice
+      <div class="overlay">
+        <div class="m-2">
+          <i class="bx bx-spreadsheet"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isSalesInvoice === true">
+  <app-sales-invoice></app-sales-invoice>
+</div>
+<div *ngIf="isSalesInvoice !== true">
+  <app-purchase-invoice></app-purchase-invoice>
+</div>

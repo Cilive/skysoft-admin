@@ -1,78 +1,92 @@
-<div class="sidebar">
-  <div class="logo-details">
-    <!-- <i class='bi bi-list'></i> -->
-    <div class="logo_name">Sky Soft</div>
-    <i class="bx bx-menu" style="color: var(--main)" id="btn"></i>
-  </div>
-
-  <ul
-    class="nav-list"
-    style="
-      display: flex;
-      justify-content: space-between;
-      flex-direction: column;
-      height: 80vh;
-    "
-  >
-    <li class="m-0" *ngFor="let route of routes">
-      <a routerLink="{{ route.path }}" routerLinkActive="active-link">
-        <i [class]="route.icon"></i>
-        <span class="links_name">{{ route.title }}</span>
-      </a>
-      <span class="tooltip">{{ route.title }}</span>
-    </li>
-    <li (click)="logout()">
-      <a>
-        <i class="bx bxs-exit"></i>
-        <span class="links_name">Logout</span>
-      </a>
-      <span class="tooltip">Logout</span>
-    </li>
-  </ul>
-</div>
-<section class="home-section pb-5">
-  <div class="row col-md-12">
-    <div class="text row col-md-7 ml-2">
-      <i
-        *ngIf="isTopLevel === false"
-        class="bx bx-arrow-back back ml-4 p-2"
-        (click)="back()"
-      >
-      </i>
-      <span class="col-5"> {{ title }}</span>
+<div>
+  <div [dir]="direction" class="sidebar">
+    <div class="logo-details">
+      <!-- <i class='bi bi-list'></i> -->
+      <div translate class="logo_name">Sky Soft</div>
+      <i class="bx bx-menu" style="color: var(--main)" id="btn"></i>
     </div>
-    <div class="col-md-4 m-auto">
-      <i
-        style="font-size: larger"
-        [popover]="logg"
-        [placement]="'bottom'"
-        containerClass="carry"
-        [outsideClick]="true"
-        class="
-          bx bx-user
-          border
-          p-1
-          text-white
-          rounded-circle
-          float-right
-          m-auto
-          profile
-        "
-      ></i>
 
-      <p style="font-weight: 500" class="float-right mt-1 ml-3 mr-3 text-white">
-        {{ username }}
-      </p>
-      <i
-        style="font-size: larger; position: relative"
-        class="bx bx-bell float-right p-1 m-auto text-white"
-        [popover]="notification"
-        [placement]="'bottom'"
-        containerClass="noti"
-        [outsideClick]="true"
-      >
-        <!-- Notification badge -->
-        <!-- <p
+    <ul
+      class="nav-list"
+      style="
+        display: flex;
+        flex-direction: column;
+        height: 80vh;
+        justify-content: space-between;
+      "
+    >
+      <li class="m-0" *ngFor="let route of routes">
+        <a routerLink="{{ route.path }}" routerLinkActive="active-link">
+          <i [class]="route.icon"></i>
+          <span translate class="links_name">{{ route.title }}</span>
+        </a>
+        <span translate class="tooltip">{{ route.title }}</span>
+      </li>
+
+      <li (click)="logout()">
+        <a>
+          <i class="bx bxs-exit"></i>
+          <span translate class="links_name">Logout</span>
+        </a>
+        <span translate class="tooltip">Logout</span>
+      </li>
+    </ul>
+  </div>
+  <section class="home-section pb-5">
+    <div class="row col-md-12">
+      <div class="text row col-md-7 ml-2">
+        <i
+          *ngIf="isTopLevel === false"
+          class="bx bx-arrow-back back ml-4 p-2"
+          (click)="back()"
+        >
+        </i>
+        <span translate class="col-5"> {{ title }}</span>
+      </div>
+
+      <div class="col-md-4 m-auto">
+        <p
+          (click)="enset = !enset; onCLickLanguage()"
+          style="cursor: pointer"
+          class="p-1 text-white float-right m-auto"
+        >
+          {{ enset ? "en-us" : "ar-sa" }}
+        </p>
+        <i
+          style="font-size: larger"
+          [popover]="logg"
+          [placement]="'bottom'"
+          containerClass="carry"
+          [outsideClick]="true"
+          class="
+            bx bx-user
+            border
+            p-1
+            text-white
+            rounded-circle
+            float-right
+            m-auto
+            profile
+          "
+        ></i>
+
+        <p
+          translate
+          style="font-weight: 500"
+          class="float-right mt-1 ml-3 mr-3 text-white"
+        >
+          {{ username }}
+        </p>
+        <i
+          style="font-size: larger; position: relative"
+          class="bx bx-bell float-right p-1 m-auto text-white"
+          [popover]="notification"
+          [placement]="'bottom'"
+          containerClass="noti"
+          [outsideClick]="true"
+        >
+          <!-- Notification badge -->
+          <!-- <p translate
           style="
             position: absolute;
             top: 0;
@@ -83,18 +97,22 @@
             background-color: var(--danger);
           "
         ></p> -->
-      </i>
+        </i>
+      </div>
     </div>
-  </div>
-  <div class="col-md-12">
-    <ng-content></ng-content>
-  </div>
-  <footer class="position-fixed col-md-12 m-auto text-center" style="bottom: 0">
-    <div class="col-md-12 bg-light text-secondary" style="font-size: small">
-      &copy;Copyright 2021 Foretch
+    <div [dir]="direction" class="col-md-12">
+      <ng-content></ng-content>
     </div>
-  </footer>
-</section>
+    <footer
+      class="position-fixed col-md-12 m-auto text-center"
+      style="bottom: 0"
+    >
+      <div class="col-md-12 bg-light text-secondary" style="font-size: small">
+        &copy;Copyright 2021 Foretch
+      </div>
+    </footer>
+  </section>
+</div>
 
 <ng-template #logg>
   <div (click)="logout()" style="cursor: pointer" class="col-md-12 pop-content">
@@ -104,7 +122,7 @@
 
 <ng-template #notification>
   <div class="col-md-12">
-    <h6 class="border-bottom">Notificaions</h6>
+    <h6 translate class="border-bottom">Notifications</h6>
     <!-- TODO implement if logic for notifications -->
     <div class="text-secondary col-md-10 text-center m-auto">
       No New Notification

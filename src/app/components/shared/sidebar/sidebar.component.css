@@ -5,6 +5,7 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 .sidebar {
   position: fixed;
   left: 0;
@@ -16,19 +17,23 @@
   z-index: 99;
   transition: all 0.5s ease;
 }
+
 .sidebar.open {
   width: 250px;
 }
+
 .sidebar .logo-details {
   height: 60px;
   display: flex;
   align-items: center;
   position: relative;
 }
+
 .sidebar .logo-details .icon {
   opacity: 0;
   transition: all 0.5s ease;
 }
+
 .sidebar .logo-details .logo_name {
   color: var(--main);
   font-size: 20px;
@@ -36,10 +41,12 @@
   opacity: 0;
   transition: all 0.5s ease;
 }
+
 .sidebar.open .logo-details .icon,
 .sidebar.open .logo-details .logo_name {
   opacity: 1;
 }
+
 .sidebar .logo-details #btn {
   position: absolute;
   top: 50%;
@@ -52,9 +59,11 @@
   cursor: pointer;
   transition: all 0.5s ease;
 }
+
 .sidebar.open .logo-details #btn {
   text-align: right;
 }
+
 .sidebar i {
   height: 60px;
   min-width: 50px;
@@ -62,15 +71,18 @@
   text-align: center;
   line-height: 60px;
 }
+
 .sidebar .nav-list {
   margin-top: 20px;
   height: 100%;
 }
+
 .sidebar li {
   position: relative;
   margin: 8px 0;
   list-style: none;
 }
+
 .sidebar li .tooltip {
   position: absolute;
   top: -20px;
@@ -87,6 +99,7 @@
   pointer-events: none;
   transition: 0s;
 }
+
 .sidebar li:hover .tooltip {
   opacity: 1;
   pointer-events: auto;
@@ -94,9 +107,11 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
 .sidebar.open li .tooltip {
   display: none;
 }
+
 .sidebar input {
   font-size: 15px;
   color: #fff;
@@ -110,6 +125,7 @@
   transition: all 0.5s ease;
   background: #1d1b31;
 }
+
 .sidebar.open input {
   padding: 0 20px 0 50px;
   width: 100%;
@@ -125,17 +141,33 @@
   transition: all 0.4s ease;
   color: var(--main);
 }
+
 .active-link {
   background: var(--main);
   border-radius: 12px;
   color: white !important;
 }
+
+.active-link span {
+  color: white !important;
+}
+
+.active-link i {
+  color: white !important;
+}
+
+li:hover .tooltip {
+  color: black !important;
+}
+
 .active-link > span {
   color: var(--light) !important;
 }
+
 .sidebar li a:hover {
   background: var(--main);
 }
+
 .sidebar li a .links_name {
   color: var(--main);
   font-size: 15px;
@@ -145,21 +177,25 @@
   pointer-events: none;
   transition: 0.4s;
 }
+
 .sidebar.open li a .links_name {
   opacity: 1;
   pointer-events: auto;
 }
+
 .sidebar li a:hover .links_name,
 .sidebar li a:hover i {
   transition: all 0.5s ease;
   color: var(--light);
 }
+
 .sidebar li i {
   height: 50px;
   line-height: 50px;
   font-size: 18px;
   border-radius: 12px;
 }
+
 .sidebar li.profile {
   position: fixed;
   height: 60px;
@@ -171,14 +207,17 @@
   transition: all 0.5s ease;
   overflow: hidden;
 }
+
 .sidebar.open li.profile {
   width: 250px;
 }
+
 .sidebar li .profile-details {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
 }
+
 .sidebar li img {
   height: 45px;
   width: 45px;
@@ -186,6 +225,7 @@
   border-radius: 6px;
   margin-right: 10px;
 }
+
 .sidebar li.profile .name,
 .sidebar li.profile .job {
   font-size: 15px;
@@ -193,9 +233,11 @@
   color: #fff;
   white-space: nowrap;
 }
+
 .sidebar li.profile .job {
   font-size: 12px;
 }
+
 .sidebar .profile #log_out {
   position: absolute;
   top: 50%;
@@ -208,10 +250,12 @@
   border-radius: 0px;
   transition: all 0.5s ease;
 }
+
 .sidebar.open .profile #log_out {
   width: 50px;
   background: none;
 }
+
 .home-section {
   /* position: relative; */
   background: line;
@@ -232,10 +276,12 @@
   transition: all 0.5s ease;
   z-index: 2;
 }
+
 .sidebar.open ~ .home-section {
   margin-left: 250px;
   width: calc(100% - 250px);
 }
+
 .home-section .text {
   display: inline-block;
   color: var(--light);
@@ -244,6 +290,7 @@
   font-weight: 500;
   margin: 18px;
 }
+
 @media (max-width: 420px) {
   .sidebar li .tooltip {
     display: none;
@@ -259,6 +306,7 @@
   border-bottom-color: var(--danger);
   color: white;
 }
+
 * :host >>> .carry:hover .popover-content.popover-body:hover {
   color: white;
 }
@@ -267,6 +315,7 @@
   color: white !important;
   background-color: var(--danger) !important;
 }
+
 .bx-arrow-back::before {
   cursor: pointer;
   z-index: 200;
@@ -276,11 +325,12 @@
   background-color: rgba(255, 255, 255, 0.349);
   border-radius: 50px;
 }
+
 :host >>> .noti {
   width: 500px;
 }
 
-.report-label {
+.report-label translate {
   color: var(--main);
   font-weight: 500;
 }

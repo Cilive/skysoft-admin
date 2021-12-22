@@ -8,6 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Role } from 'src/app/model/shared';
 import { AlertService } from 'src/app/services/alert/alert.service';
@@ -27,22 +28,36 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   isTopLevel: boolean = false;
   cmd = console;
   isNotificationsOn = false;
+  direction = 'ltr';
+  enset = true;
   constructor(
     private router: Router,
     private location: Location,
-    private alert: AlertService
+    private alert: AlertService,
+    private translate: TranslateService
   ) {
+    translate.addLangs(['en', 'ar']);
+    this.translate.setDefaultLang('en');
+
     const capitalize = function (str1) {
       return str1.charAt(0).toUpperCase() + str1.slice(1);
     };
+
     //  this.title= capitalize()
 
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
-        this.title = capitalize(e.url.split('/').pop());
-        document.title = capitalize(e.url.split('/').pop());
+        this.title = capitalize(e.url.split('/').pop()).replace(
+          /[^a-zA-Z ]/g,
+          ' '
+        );
+        document.title = capitalize(e.url.split('/').pop()).replace(
+          /[^a-zA-Z ]/g,
+          ' '
+        );
       }
     });
+
     this.generateRoutes();
   }
   ngAfterViewInit(): void {}
@@ -74,21 +89,75 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   back() {
     this.location.back();
   }
-
-  private generateRoutes() {
+  /**
+   * Function to generate Routes
+   */
+  private generateRoutes(): void {
     const role = parseInt(new StoreService().retrieve('role'));
     console.log(typeof role);
 
     switch (true) {
       case Role.admin === role:
-        this.routes = [];
+        this.routes = [
+          {
+            path: '/admin/company_Profile',
+            icon: 'bx bxs-business',
+            title: 'Company Profile',
+          },
+        ];
         break;
       case Role.owner === role:
-        this.routes = [];
+        this.routes = [
+          {
+            icon: 'bx bxs-user-account',
+            path: '/owner/users',
+            title: 'Users',
+          },
+
+          {
+            icon: 'bx bxs-gas-pump',
+            path: '/owner/fuel',
+            title: 'Fuel Management',
+          },
+          {
+            icon: 'bx bxs-spreadsheet',
+            path: '/owner/invoices',
+            title: 'Invoices',
+          },
+          {
+            icon: 'bx bxs-bank',
+            path: '/owner/bank_Accounts',
+            title: 'Bank Account Master',
+          },
+          {
+            icon: 'bx bxs-package',
+            path: '/owner/dispensers',
+            title: 'Dispensers',
+          },
+          {
+            icon: 'bx bx-transfer',
+            path: '/owner/transactions',
+            title: 'Transactions',
+          },
+          {
+            icon: 'bx bxs-report',
+            path: '/owner/reports',
+            title: 'Reports',
+          },
+        ];
         break;
 
       default:
         this.router.navigate(['/login']);
+    }
+  }
+  onCLickLanguage() {
+    if (this.enset) {
+      this.direction = 'ltr';
+      this.translate.setDefaultLang('en');
+    } else {
+      this.direction = 'rtl';
+      this.translate.setDefaultLang('ar');
     }
   }
 }
