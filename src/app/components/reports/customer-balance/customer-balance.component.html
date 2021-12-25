@@ -14,13 +14,15 @@
           />
           <small class="invalid-feedback">Field required</small>
         </div> -->
-        <div class="row col-md-8 ml-">
-          <div class="form-group col-md-2 ml-">
+        <div class="row col-md-9">
+          <!-- serieal number starts here  -->
+          <!-- <div class="form-group col-md-2">
             <label translate for="">S/No</label>
-            <select class="form-control" name="selectss">
-              <option translate value="">S/No</option>
+            <select class="form-control" name="selects">
+              <option translate value="">#</option>
             </select>
-          </div>
+          </div> -->
+          <!-- serieal number ends here -->
           <div class="form-group col-md-2">
             <label translate for=""> Date</label>
             <input
@@ -35,81 +37,67 @@
               }"
             />
           </div>
-          <div class="form-group col-md-4">
+          <div class="form-group col-md-3">
             <label translate for=""> Customer Name</label>
-            <input
-              translate
-              type="text"
-              placeholder="Customer name"
-              class="form-control"
-              bsDatepicker
-              [bsConfig]="{
-                isAnimated: true,
-                containerClass: 'theme-dark-blue'
-              }"
-            />
+            <select class="form-control" name="selectss">
+              <option translate value="">Customer Name</option>
+            </select>
           </div>
-          <div class="form-group col-md-2">
+          <div class="form-group col-md-3">
             <label translate for=""> Mobile</label>
-            <input
-              translate
-              type="text"
-              placeholder="Mobile"
-              class="form-control"
-              bsDatepicker
-              [bsConfig]="{
-                isAnimated: true,
-                containerClass: 'theme-dark-blue'
-              }"
-            />
+            <select class="form-control" name="selectss">
+              <option translate value="">mobile</option>
+            </select>
           </div>
           <div class="form-group col-md-2">
             <label translate for=""> Lan Phone</label>
-            <input
-              translate
-              type="text"
-              placeholder="Lan"
-              class="form-control"
-              bsDatepicker
-              [bsConfig]="{
-                isAnimated: true,
-                containerClass: 'theme-dark-blue'
-              }"
-            />
+            <select class="form-control" name="selectss">
+              <option translate value="">lan</option>
+            </select>
           </div>
         </div>
 
-        <div class="form-group col-md-2">
+        <div class="form-group col-md-3">
           <label translate for=""> Balance Amound</label>
-          <input
-            translate
-            type="text"
-            placeholder="Balance Amound"
-            class="form-control"
-            bsDatepicker
-            [bsConfig]="{
-              isAnimated: true,
-              containerClass: 'theme-dark-blue'
-            }"
-          />
+
+          <select class="form-control" name="selectss">
+            <option translate value="">Balance Amount</option>
+          </select>
         </div>
       </div>
 
       <small class="invalid-feedback">Field required</small>
 
-      <div class="mt-3 card">
+      <div class="card">
         <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th translate scope="col">S/no</th>
-              <th translate scope="col">Date</th>
-              <th translate scope="col">Customer Name</th>
-              <th translate scope="col">Mobile</th>
-              <th translate scope="col">Lan</th>
-              <th translate scope="col">Balance Amound</th>
-              <th translate scope="col">Action</th>
-            </tr>
-          </thead>
+          <tr>
+            <th translate scope="col">#</th>
+            <th translate scope="col">Date</th>
+            <th translate scope="col">Customer Name</th>
+            <th translate scope="col">Mobile</th>
+            <th translate scope="col">Lan</th>
+            <th translate scope="col">Balance Amound</th>
+            <th translate scope="col">Action</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>7/7/2021</td>
+            <td>noor</td>
+            <td>8606860686</td>
+            <td>077835</td>
+            <td>S.R 700</td>
+            <td>Action</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>8/7/2021</td>
+            <td>shafi</td>
+            <td>8606860699</td>
+            <td>077834</td>
+            <td>S.R 701</td>
+            <td>Action</td>
+          </tr>
+
           <tbody>
             <!-- TODO: implement table data loops -->
             <!-- <tr *ngFor="let item of bankaccounts; let i = index">
