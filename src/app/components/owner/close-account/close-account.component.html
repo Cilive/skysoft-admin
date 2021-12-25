@@ -1,1 +1,101 @@
-<p>close-account works!</p>
+
+<div class="mt-2 card">
+  <div class="row col-md-12 ml-auto">
+
+    <div class="form-group col-md-3">
+      <label translate for=""></label>
+
+      <input
+      translate
+      type="text"
+      class="form-control"
+      bsDatepicker
+      >
+
+  </div>
+  <div class ="col-md-1" style="text-align: center;">To</div>
+
+
+  <div class="form-group col-md-3">
+    <label translate for=""></label>
+    <input
+    translate
+    type="text"
+    class="form-control"
+    bsDatepicker
+    >
+  </div>
+  <div class="form-group col-md-3">
+    <label translate for=""></label>
+    <select
+    class="form-control"
+    name="selectss"
+    >
+    <option translate value="">Branch</option>
+    <option translate value="">Branch 2</option>
+    </select>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th translate scope="col">Date</th>
+        <th translate scope="col">Branch</th>
+        <th translate scope="col">Opening Amount</th>
+        <th translate scope="col">Closing Amount</th>
+        <th translate scope="col">Action</th>
+      </tr>
+      <tr>
+        <td>25-12-2021</td>
+        <td>Riyad</td>
+        <td>SR.3000</td>
+        <td>SR.8560</td>
+        <td><button type="button" ><i>view</i></button></td>
+      </tr>
+
+    </thead>
+    <tbody>
+      <!-- TODO: implement table data loops -->
+      <!-- <tr *ngFor="let item of bankaccounts; let i = index">
+        <th translate scope="row">{{ i + 1 }}</th>
+        <td>{{ item.bank_name }}</td>
+        <td>{{ item.acc_holder_name }}</td>
+        <td>{{ item.acc_no }}</td>
+        <td>
+          <div class="d-flex justify-content-around">
+            <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>
+            <i
+              title="Delete"
+              class="bx bxs-trash"
+              (click)="openModal(template)"
+            ></i>
+
+          </div>
+
+          <ng-template #template>
+            <div class="modal-body text-center">
+              <p translate>Do you want to confirm?</p>
+              <div class="modal-footer">
+                <button
+                  translate
+                  type="button"
+                  class="btn btn-outline-danger"
+                  (click)="onDelete(item.id)"
+                >
+                  Yes
+                </button>
+                <button
+                  translate
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="decline()"
+                >
+                  No
+                </button>
+              </div>
+            </div>
+          </ng-template>
+        </td>
+      </tr> -->
+    </tbody>
+  </table>
+</div>
