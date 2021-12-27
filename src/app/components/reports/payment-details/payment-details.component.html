@@ -1,1 +1,75 @@
-<p>payment-details works!</p>
+<div class="card m-auto col-md-12">
+  <div class="col-md-12">
+    <form id="bankform">
+      <div class="row mt-3">
+        <div class="row col-md-12">
+          <div class="form-group col-md-2">
+            <label translate for="">Company</label>
+            <select class="form-control" name="selectes">
+              <option translate value="">Company</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2">
+            <label translate for="">Monthly</label>
+            <input
+              translate
+              type="text"
+              placeholder="Monthly"
+              class="form-control"
+              bsDatepicker
+              [bsConfig]="{
+                isAnimated: true,
+                containerClass: 'theme-dark-blue'
+              }"
+            />
+          </div>
+          <div class="form-group col-md-2">
+            <label translate for="">Yearly</label>
+            <input
+              translate
+              type="text"
+              placeholder="Yearly"
+              class="form-control"
+              bsDatepicker
+              [bsConfig]="{
+                isAnimated: true,
+                containerClass: 'theme-dark-blue'
+              }"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <table class="table table-bordered">
+          <tr>
+            <th translate scope="col">#</th>
+            <th translate scope="col">Date</th>
+            <th translate scope="col">Companay</th>
+            <th translate scope="col">Item</th>
+            <th traslate scope="col">Qty</th>
+            <th translate scope="col">Amount</th>
+          </tr>
+          <tr>
+            <td scope="col">1</td>
+            <td scope="col">1/1/2021</td>
+            <td scope="col">Fore-Tech</td>
+            <td scope="col">Diesel</td>
+            <td scope="col">2000.Ltr</td>
+            <td scope="col">SR.20000</td>
+          </tr>
+          <tr>
+            <td scope="col">2</td>
+            <td scope="col">2/2/2021</td>
+            <td scope="col">Fore-Tech</td>
+            <td scope="col">Petrol</td>
+            <td scope="col">1000.Ltr</td>
+            <td scope="col">SR.10000</td>
+          </tr>
+          <th colspan="4"></th>
+          <th trnslate scope="col">Total :</th>
+          <td scope="col">SR.30000</td>
+        </table>
+      </div>
+    </form>
+  </div>
+</div>
