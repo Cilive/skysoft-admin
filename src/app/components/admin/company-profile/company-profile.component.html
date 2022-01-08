@@ -180,6 +180,22 @@
               >Field is required</small
             >
           </div>
+          <div class="form-group col-md-6">
+            <label translate for="company">Username</label>
+            <input
+              translate
+              type="username"
+              class="form-control"
+              required
+              [readonly]="editMode === true"
+              aria-describedby="helpId"
+              [(ngModel)]="data.username"
+              name="username"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
         </div>
       </div>
     </div>
@@ -367,6 +383,22 @@
               class="form-control"
               [(ngModel)]="data.logo"
             />
+          </div>
+          <div class="form-group col-md-6">
+            <label translate for="company">Username</label>
+            <input
+              translate
+              type="username"
+              class="form-control"
+              required
+              [readonly]="editMode === true"
+              aria-describedby="helpId"
+              [(ngModel)]="data.username"
+              name="username"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
           </div>
         </div>
       </div>

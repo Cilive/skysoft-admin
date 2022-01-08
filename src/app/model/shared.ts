@@ -13,9 +13,15 @@ export interface ApiResponse<T> {
 }
 
 export interface LoginResponse {
-  access: string;
   refresh: string;
-  is_super_admin: boolean;
-  company_id?: number;
-  is_owner?: boolean;
+  access: string;
+  username: string;
+  is_admin: boolean;
+  is_company: boolean;
+  is_employee: boolean;
+  is_branch_user: boolean;
+  is_superuser: boolean;
+  company_id: number;
+  emp_company_user_id: null;
+  emp_tenant_name: null;
 }

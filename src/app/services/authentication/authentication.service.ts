@@ -17,16 +17,15 @@ export class AuthenticationService {
       email,
       password,
     };
-    let url = this.url + 'administrator/login/';
+    let url = this.url + 'public/login/';
 
     return this.http.post<LoginResponse>(url, data);
   }
 
   newToken(token) {
-    return this.http.post<{ access: string }>(
-      this.url + 'administrator/refresh/',
-      { refresh: token }
-    );
+    return this.http.post<{ access: string }>(this.url + 'refresh/', {
+      refresh: token,
+    });
   }
   sendOtp = (email) => {
     let url = this.url + 'auth/forgot';

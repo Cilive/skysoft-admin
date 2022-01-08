@@ -35,6 +35,8 @@ export class CompanyProfileComponent implements OnInit {
     phone: null,
     password: '',
     vat_no: null,
+    username: '',
+    branch_count: null,
   };
   companies: Company[] = [];
 
@@ -89,7 +91,7 @@ export class CompanyProfileComponent implements OnInit {
       ar_name: item.ar_name,
       ar_place: item.ar_place,
       cr_no: item.cr_no,
-      email: item.account.email,
+      email: item.user.email,
       en_district: item.en_district,
       en_name: item.en_name,
       en_place: item.en_place,
@@ -97,7 +99,8 @@ export class CompanyProfileComponent implements OnInit {
       logo: item.logo,
       phone: item.phone,
       vat_no: item.vat_no,
-      account: item.account,
+      user: item.user,
+      branch_count: item.branch_count,
     };
   }
   public update() {

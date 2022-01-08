@@ -1,4 +1,4 @@
-export const CREATE_COMPANY = 'administrator/company/';
+export const CREATE_COMPANY = 'public/company/';
 export const CUSTOMER = 'owner/customer/';
 export const SUPPLIER = 'owner/supplier/';
 export const PUMP_EMPLOYEE = 'owner/employee/';
