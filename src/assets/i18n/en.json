@@ -87,5 +87,11 @@
   "Payments Out": "Payments Out",
   "Expenses": "Expenses",
   "Close Account": "Close Account",
-  "Deposit": "Deposit"
+  "Deposit": "Deposit",
+  "Branch Managers": "Branch Managers",
+  "Iqama Number": "Iqama Number",
+  "VAT": "VAT",
+  "Bank Name": "Bank Name",
+  "Manage Fuel Rates": "Manage Fuel Rates",
+  "Fuel Rate ": "Fuel Rate  "
 }

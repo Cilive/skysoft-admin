@@ -23,7 +23,7 @@
           <small class="invalid-feedback">Field required</small>
         </div>
         <div class="form-group col-md-4" *ngIf="editMode != true">
-          <label for="emp_mail">Password</label>
+          <label translate for="emp_mail">Password</label>
           <input
             translate
             type="text"
@@ -36,7 +36,7 @@
           <small class="invalid-feedback">Field required</small>
         </div>
         <div class="form-group col-md-4" *ngIf="editMode != true">
-          <label for="em_phone">Email</label>
+          <label translate for="em_phone">Email</label>
           <input
             translate
             type="text"
@@ -62,21 +62,21 @@
           <small class="invalid-feedback">Field required</small>
         </div>
         <div class="form-group col-md-4">
-          <label for="em_phone">Iqama no</label>
+          <label translate for="em_number">Iqama Number</label>
           <input
             translate
             type="text"
             class="form-control"
             [(ngModel)]="data.iqama_no"
-            name="em_iqama"
-            id="em_iqama"
+            name="Iqama Number"
+            id="Iqama Number"
             required
           />
           <small class="invalid-feedback">Field required</small>
         </div>
 
         <div class="form-group col-md-4">
-          <label for="em_phone">Phone</label>
+          <label translate for="em_phone">Phone</label>
           <input
             translate
             type="text"
