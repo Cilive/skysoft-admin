@@ -24,56 +24,71 @@
           <small class="invalid-feedback">Field required</small>
         </div>
         <div class="form-group col-md-4">
-          <label for="emp_mail">Email</label>
+          <label translate for="emp_iqama_no">Iqama No</label>
           <input
             translate
-            type="email"
+            type="text"
             class="form-control"
-            name="emp_mail"
-            [(ngModel)]="data.email"
-            id="emp_mail"
+            name="emp_iqama_no"
+            [(ngModel)]="data.iqama_no"
+            id="emp_iqama_no"
             required
           />
           <small class="invalid-feedback">Field required</small>
         </div>
         <div class="form-group col-md-4">
-          <label for="em_phone">Phone</label>
+          <label translate for="emp_phone">Phone</label>
           <input
             translate
-            type="number"
+            type="text"
             class="form-control"
-            name="em_phone"
+            name="emp_phone"
             [(ngModel)]="data.phone"
-            id="em_phone"
+            id="emp_phone"
             required
           />
           <small class="invalid-feedback">Field required</small>
         </div>
       </div>
-      <div *ngIf="editMode !== true" class="form-row">
-        <div class="form-group col-md-6">
-          <label for="company">Password</label>
+      <div class="row mt-3" *ngIf="editMode != true">
+        <div class="form-group col-md-4">
+          <label translate for="emp_username">Username</label>
           <input
             translate
-            type="password"
+            type="text"
             class="form-control"
+            name="emp_username"
+            [(ngModel)]="data.username"
+            id="emp_username"
             required
-            [(ngModel)]="data.password"
-            name="newPassword"
           />
-          <small id="helpId" class="invalid-feedback">Field is required</small>
+          <small class="invalid-feedback">Field required</small>
         </div>
-        <div class="form-group col-md-6">
-          <label for="company">Confirm Password</label>
+        <div class="form-group col-md-4">
+          <label translate for="emp_email">Email</label>
           <input
             translate
-            type="password"
+            type="text"
             class="form-control"
+            name="emp_email"
+            [(ngModel)]="data.email"
+            id="emp_email"
             required
-            name="cp"
           />
-          <!-- <small id="helpId" class="invalid-feedback">Field is required</small> -->
-          <small class="invalid-feedback">Password didn`t match</small>
+          <small class="invalid-feedback">Field required</small>
+        </div>
+        <div class="form-group col-md-4">
+          <label translate for="emp_password">Password</label>
+          <input
+            translate
+            type="text"
+            class="form-control"
+            name="emp_password"
+            [(ngModel)]="data.password"
+            id="emp_password"
+            required
+          />
+          <small class="invalid-feedback">Field required</small>
         </div>
       </div>
       <div class="modal-footer">
@@ -96,13 +111,11 @@
         <th translate scope="col">Email</th>
         <th translate scope="col">Action</th>
       </tr>
-    </thead>
-    <tbody>
       <tr *ngFor="let item of employeesList; let i = index">
         <th translate scope="row">{{ i + 1 }}</th>
+
         <td>{{ item.name }}</td>
-        <td>{{ item.account.email }}</td>
-        <td>{{ item.phone }}</td>
+        <td>{{ item.user.email }}</td>
         <td>
           <div class="d-flex justify-content-around">
             <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>
@@ -112,8 +125,8 @@
               (click)="openModal(template)"
             ></i>
             <!-- <i
-              (click)="onSuspend(item.id)"
               title="Suspend"
+              (click)="suspend(item.id)"
               class="bx bx-x-circle"
             ></i> -->
           </div>
@@ -121,28 +134,29 @@
           <ng-template #template>
             <div class="modal-body text-center">
               <p translate>Do you want to confirm?</p>
-              <div class="modal-footer">
-                <button
-                  translate
-                  type="button"
-                  class="btn btn-outline-danger"
-                  (click)="onDelete(item.id)"
-                >
-                  Yes
-                </button>
-                <button
-                  translate
-                  type="button"
-                  class="btn btn-primary"
-                  (click)="decline()"
-                >
-                  No
-                </button>
-              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                translate
+                type="button"
+                class="btn btn-outline-danger"
+                (click)="onDelete(item.id)"
+              >
+                Yes
+              </button>
+              <button
+                translate
+                type="button"
+                class="btn btn-primary"
+                (click)="decline()"
+              >
+                No
+              </button>
             </div>
           </ng-template>
         </td>
       </tr>
-    </tbody>
+    </thead>
+    <tbody></tbody>
   </table>
 </div>
