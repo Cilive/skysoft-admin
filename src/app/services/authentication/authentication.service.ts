@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ApiResponse } from 'src/app/model/shared';
+import { ApiResponse, LoginResponse } from 'src/app/model/shared';
 import { environment } from 'src/environments/environment';
 import { StoreService } from '../store/store.service';
 
@@ -12,28 +12,20 @@ export class AuthenticationService {
   private url = environment.domain;
 
   constructor(private http: HttpClient) {}
-  login({
-    email,
-    password,
-  }: {
-    email: string;
-    password: string;
-    hospital?: number;
-  }) {
+  login({ email, password }: { email: string; password: string }) {
     let data = {
       email,
       password,
     };
-    let url = this.url + 'auth/login';
+    let url = this.url + 'public/login/';
 
-    return this.http.post<ApiResponse<any>>(url, data);
+    return this.http.post<LoginResponse>(url, data);
   }
 
   newToken(token) {
-    return this.http.post<ApiResponse<{ accessToken: string }>>(
-      this.url + 'auth/token',
-      token
-    );
+    return this.http.post<{ access: string }>(this.url + 'refresh/', {
+      refresh: token,
+    });
   }
   sendOtp = (email) => {
     let url = this.url + 'auth/forgot';
@@ -56,5 +48,5 @@ export class AuthenticationService {
 }
 
 export const accessToken = new BehaviorSubject(
-  new StoreService().retrieve('id')
+  new StoreService().retrieve('access')
 );

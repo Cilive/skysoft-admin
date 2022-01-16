@@ -1,0 +1,81 @@
+<div class="card m-auto col-md-12">
+  <div class="modal-header mb-3">
+    <h6 translate>Manage Fuel Rates</h6>
+  </div>
+  <form (submit)="onSubmit()" id="fuelRate" class="col-md-12">
+    <div class="row">
+      <!-- <div class="form-group col-md-5">
+        <label translate for="fuel_type">Select Fuel</label>
+        <select class="form-control" name="fuel_type" id="fuel_type">
+          <option value="" hidden>Select</option>
+          <option [ngValue]="item.id" *ngFor="let item of fuelsList">
+            {{ item.name }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label translate for="">Fuel Amount</label>
+        <input translate
+          type="number"
+          class="form-control"
+          name="fuel_nfa-ul"
+          aria-describedby="helpId"
+          placeholder=""
+        />
+      </div> -->
+      <div *ngFor="let item of fuelsList; let i = index">
+        <div class="row col-md-12">
+          <div class="form-group col-md-4">
+            <label translate for="">Fuel Name</label>
+            <input
+              translate
+              type="number"
+              class="form-control"
+              name="fuel_nfa-ul"
+              disabled
+              aria-describedby="helpId"
+              [placeholder]="item.name"
+            />
+          </div>
+          <div class="form-group col-md-3">
+            <label translate for="">Fuel Amount</label>
+            <input
+              translate
+              type="number"
+              class="form-control"
+              name="ddd-ul{{ item.id + i }}"
+              [(ngModel)]="item.rate"
+              min="0"
+              [step]="0.01"
+              required
+              (ngModelChange)="onChangeFuelAmount(item, i)"
+              aria-describedby="helpId"
+            />
+          </div>
+          <div class="form-group col-md-5">
+            <label translate for=""
+              >Payble Amount (Including VAT ({{ item.fuel_vat }}%))</label
+            >
+            <input
+              translate
+              type="number"
+              class="form-control"
+              name="fuea-ul{{ item.id / item.id + i }}"
+              disabled
+              [(ngModel)]="item.payable_amt"
+              aria-describedby="helpId"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button translate type="submit" class="btn btn-outline-primary">
+        Submit
+      </button>
+      <button translate type="reset" class="btn btn-outline-warning">
+        Reset
+      </button>
+    </div>
+  </form>
+</div>

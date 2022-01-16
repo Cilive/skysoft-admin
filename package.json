@@ -2,12 +2,12 @@
   "name": "skysoft-admin",
   "version": "0.0.0",
   "scripts": {
-    "eneable:sh": "chmod +x *.sh",
+    "enable:sh": "chmod +x *.sh",
     "ng": "ng",
     "gen:module": "./module.sh",
     "gen:component": "./component.sh",
     "gen:services": "./service.sh",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -23,6 +23,8 @@
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
     "@auth0/angular-jwt": "^5.0.2",
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
     "bootstrap": "^4.5.3",
     "boxicons": "^2.1.1",
     "crypto-js": "^4.1.1",

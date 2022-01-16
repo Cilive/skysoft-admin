@@ -9,7 +9,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 // @import "~@ng-select/ng-select/themes/default.theme.css";
-
+@import "~ngx-toastr/toastr-bs4-alert";
 :root {
   --main: #5e72e3;
   --primary-color: #433b70;
@@ -28,9 +28,10 @@
   outline: none !important;
   background-color: var(--input) !important;
   border-radius: 8px !important;
-  color: gray !important ;
+  color: gray !important;
   font-weight: 500 !important;
 }
+
 .form-control:active,
 .form-invalid:active,
 .form-control:focus,
@@ -40,10 +41,12 @@
   outline: none !important;
   background-color: var(--input) !important;
 }
+
 .form-control::placeholder,
 .form-invalid::placeholder {
   font-weight: 500 !important;
 }
+
 .form-control:-webkit-autofill,
 .form-invalid:-webkit-autofill {
   background-color: var(--input) !important;
@@ -52,10 +55,12 @@
 .btn-primary {
   background-color: var(--main);
 }
+
 .btn-primary:active,
 .btn-primary:hover {
   background-color: var(--main) !important;
 }
+
 .text-main {
   color: var(--main);
 }
@@ -66,7 +71,7 @@
   outline: none !important;
   background-color: var(--input) !important;
   border-radius: 8px !important;
-  color: gray !important ;
+  color: gray !important;
   font-weight: 500 !important;
 }
 
@@ -75,3 +80,67 @@
   padding: 2px;
   border-radius: 8px;
 }
+
+// FOR MENU CARD
+
+.h-card {
+  // display: flex;
+  // flex-direction: row;
+  margin-left: 5%;
+  margin-bottom: 15%;
+  border-radius: 10px;
+  width: 20%;
+
+  img {
+    height: 70px;
+    float: right;
+    margin-right: 10%;
+    margin-top: -10%;
+  }
+
+  .text {
+    text-align: center;
+    width: 60%;
+    height: 30%;
+    margin: 10% 0 5% 10%;
+
+    span {
+      display: flex;
+      margin-top: -5% !important;
+      font-size: 0.7em !important;
+    }
+
+    // h6{
+    //     margin-bottom: -5%;
+    // }
+  }
+}
+
+// // FOR DIFFRENT MODULE FORM
+// .first {
+//   box-shadow: 1px 1px 1px 1px #888888;
+//   margin-right: 10px;
+// }
+
+// .second {
+//   box-shadow: 1px 1px 1px 1px #888888;
+// }
+
+// .actions {
+//   display: flex;
+//   justify-content: space-between;
+
+//   i {
+//     font-size: 20px;
+//   }
+// }
+
+// // ROUT ACTIVE
+// .rout_active {
+//   background-color: black !important;
+//   color: white !important;
+
+//   span {
+//     color: white !important;
+//   }
+// }
