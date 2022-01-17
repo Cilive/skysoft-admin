@@ -5,6 +5,7 @@ export interface TableDetails<T> {
 export enum Role {
   admin = 0,
   owner = 1,
+  maneger = 2,
 }
 export interface ApiResponse<T> {
   status: 'success' | 'failure';

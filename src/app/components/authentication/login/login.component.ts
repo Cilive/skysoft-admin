@@ -7,6 +7,8 @@ import {
 } from 'src/app/services/authentication/authentication.service';
 import { validateForm } from 'src/app/services/general/general.service';
 import { StoreService } from 'src/app/services/store/store.service';
+import { BranchComponent } from '../../owner/branch/branch.component';
+import { BranchModule } from '../../owner/branch/branch.module';
 
 @Component({
   selector: 'app-login',
@@ -37,36 +39,39 @@ export class LoginComponent implements OnInit {
         case Role.owner === role:
           this.route.navigateByUrl('/owner');
           break;
+        case Role.maneger === role:
+          this.route.navigateByUrl('/branch');
+          break;
       }
     }
   }
   login() {
-    // const login = tempLogin({
-    //   username: this.username,
-    //   password: this.password,
-    // });
-    // if (login) {
-    //   this.ngOnInit();
-    // }
-
-    if (validateForm('form')) {
-      this.authentication
-        .login({
-          password: this.password,
-          email: this.username,
-        })
-        .subscribe((res) => {
-          if (res) {
-            this.store.store('role', res.is_company ? 1 : 0);
-            this.store.store('token', res.refresh);
-            this.store.store('access', res.access);
-            this.store.store('id', res.company_id);
-            accessToken.next(res.access);
-            if (res.is_superuser) this.route.navigateByUrl('/admin');
-            if (res.is_company) this.route.navigateByUrl('/owner');
-          }
-        });
+    const login = tempLogin({
+      username: this.username,
+      password: this.password,
+    });
+    if (login) {
+      this.ngOnInit();
     }
+
+    // if (validateForm('form')) {
+    //   this.authentication
+    //     .login({
+    //       password: this.password,
+    //       email: this.username,
+    //     })
+    //     .subscribe((res) => {
+    //       if (res) {
+    //         this.store.store('role', res.is_company ? 1 : 0);
+    //         this.store.store('token', res.refresh);
+    //         this.store.store('access', res.access);
+    //         this.store.store('id', res.company_id);
+    //         accessToken.next(res.access);
+    //         if (res.is_superuser) this.route.navigateByUrl('/admin');
+    //         if (res.is_company) this.route.navigateByUrl('/owner');
+    //       }
+    //     });
+    // }
   }
   navigate() {
     this.route.navigateByUrl('/forgot_password');
@@ -83,6 +88,11 @@ const TemprorayAccounts = [
     username: 'owner@gmail.com',
     password: '1234',
     role: 1,
+  },
+  {
+    username: 'maneger@gmail.com',
+    password: '1234',
+    role: 2,
   },
 ];
 

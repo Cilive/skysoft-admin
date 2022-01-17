@@ -13,9 +13,10 @@ import {
 } from './services/api/api.interceptor';
 import { TranslateModule } from '@ngx-translate/core';
 import { CustomerBalanceComponent } from './components/reports/customer-balance/customer-balance.component';
+import { ExampleComponent } from './components/example/example.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ExampleComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

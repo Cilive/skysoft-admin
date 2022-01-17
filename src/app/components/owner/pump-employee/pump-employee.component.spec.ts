@@ -4,13 +4,12 @@ import { PumpEmployeeComponent } from './pump-employee.component';
 
 describe('PumpEmployeeComponent', () => {
   let component: PumpEmployeeComponent;
-  let fixture: ComponentFixture<p translateumpEmployeeComponent>;
+  let fixture: ComponentFixture<PumpEmployeeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PumpEmployeeComponent ]
-    })
-    .compileComponents();
+      declarations: [PumpEmployeeComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
