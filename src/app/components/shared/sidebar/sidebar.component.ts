@@ -109,6 +109,11 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       case Role.owner === role:
         this.routes = [
           {
+            icon: 'bx bxs-business',
+            path: '/owner/dashboard',
+            title: 'dashboard',
+          },
+          {
             icon: 'bx bxs-user-account',
             path: '/owner/users',
             title: 'Users',

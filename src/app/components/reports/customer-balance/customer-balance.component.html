@@ -24,12 +24,12 @@
           </div> -->
           <!-- serieal number ends here -->
           <div class="form-group col-md-2">
-            <label translate for="emp_date"> Date</label>
+            <label translate for="">Date</label>
             <input
               translate
               type="text"
-              placeholder="Date"
               class="form-control"
+              placeholder="{{ 'Date' | translate }}"
               bsDatepicker
               [bsConfig]="{
                 isAnimated: true,
@@ -46,19 +46,19 @@
           <div class="form-group col-md-3">
             <label translate for=""> Mobile</label>
             <select class="form-control" name="selectss">
-              <option translate value="">mobile</option>
+              <option translate value="">Mobile</option>
             </select>
           </div>
           <div class="form-group col-md-2">
             <label translate for=""> Lan Phone</label>
             <select class="form-control" name="selectss">
-              <option translate value="">lan</option>
+              <option translate value="">Lan</option>
             </select>
           </div>
         </div>
 
         <div class="form-group col-md-3">
-          <label translate for=""> Balance Amound</label>
+          <label translate for=""> Balance Amount</label>
 
           <select class="form-control" name="selectss">
             <option translate value="">Balance Amount</option>
@@ -76,7 +76,7 @@
             <th translate scope="col">Customer Name</th>
             <th translate scope="col">Mobile</th>
             <th translate scope="col">Lan</th>
-            <th translate scope="col">Balance Amound</th>
+            <th translate scope="col">Balance Amount</th>
             <th translate scope="col">Action</th>
           </tr>
           <tr>
