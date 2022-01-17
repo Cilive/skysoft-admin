@@ -8,3 +8,4 @@ export const FUEL = 'owner/fuel/';
 export const VAT = 'owner/vat/';
 export const DISPENSES = 'owner/dispense/';
 export const OWNER = 'owner/owner/';
+export const BRANCH_MANAGER = 'public/branchmanager/';

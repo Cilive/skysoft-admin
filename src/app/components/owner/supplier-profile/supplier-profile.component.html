@@ -95,20 +95,6 @@
       <div class="p-2">
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label translate for="company">اسم المورد</label>
-            <input
-              translate
-              type="text"
-              dir="rtl"
-              class="form-control"
-              required
-              formControlName="ar_name"
-            />
-            <small id="helpId" class="invalid-feedback"
-              >Field is required</small
-            >
-          </div>
-          <div class="form-group col-md-6">
             <label translate for="company">مكان</label>
             <input
               translate
@@ -122,8 +108,36 @@
               >Field is required</small
             >
           </div>
+
+          <div class="form-group col-md-6">
+            <label translate for="company">اسم المورد</label>
+            <input
+              translate
+              type="text"
+              dir="rtl"
+              class="form-control"
+              required
+              formControlName="ar_name"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
         </div>
         <div class="form-row">
+          <div class="form-group col-md-6">
+            <label translate for="company">هاتف أرضي</label>
+            <input
+              translate
+              type="number"
+              readonly
+              dir="rtl"
+              class="form-control"
+              required
+              [value]="supplierForm.value.mobile_no"
+              formControlName="mobile_no"
+            />
+          </div>
           <div class="form-group col-md-6">
             <label translate for="company">منطقة</label>
             <input
@@ -138,34 +152,8 @@
               >Field is required</small
             >
           </div>
-          <div class="form-group col-md-6">
-            <label translate for="company">هاتف أرضي</label>
-            <input
-              translate
-              type="number"
-              readonly
-              dir="rtl"
-              class="form-control"
-              required
-              [value]="supplierForm.value.mobile_no"
-              formControlName="mobile_no"
-            />
-          </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-md-6">
-            <label translate for="company">التليفون المحمول</label>
-            <input
-              translate
-              type="number"
-              readonly
-              dir="rtl"
-              class="form-control"
-              required
-              [value]="supplierForm.value.vat_no"
-              formControlName="vat_no"
-            />
-          </div>
           <div class="form-group col-md-6">
             <label translate for="company">هاتف أرضي</label>
             <input
@@ -177,6 +165,19 @@
               required
               [value]="supplierForm.value.lan_no"
               formControlName="lan_no"
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label translate for="company">التليفون المحمول</label>
+            <input
+              translate
+              type="number"
+              readonly
+              dir="rtl"
+              class="form-control"
+              required
+              [value]="supplierForm.value.vat_no"
+              formControlName="vat_no"
             />
           </div>
         </div>

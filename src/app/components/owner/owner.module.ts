@@ -26,6 +26,7 @@ import { PaymentsInComponent } from './transactions/payments-in/payments-in.comp
 import { PaymentsOutComponent } from './transactions/payments-out/payments-out.component';
 import { ExpensesComponent } from './transactions/expenses/expenses.component';
 import { CloseAccountComponent } from './close-account/close-account.component';
+import { BranchManagerComponent } from './branch-manager/branch-manager.component';
 
 const routes: Routes = [
   {
@@ -104,6 +105,10 @@ const routes: Routes = [
         path: 'close_Account',
         component: CloseAccountComponent,
       },
+      {
+        path: 'branch_manager',
+        component: BranchManagerComponent,
+      },
     ],
   },
 ];
@@ -131,6 +136,7 @@ const routes: Routes = [
     PaymentsOutComponent,
     ExpensesComponent,
     CloseAccountComponent,
+    BranchManagerComponent,
   ],
   imports: [
     CommonModule,
