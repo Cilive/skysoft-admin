@@ -1,0 +1,51 @@
+.menu .overlay {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  background: linear-gradient(to top left, rgb(9, 168, 94), rgb(68, 221, 162));
+  top: -15px;
+  right: 130px;
+  text-align: center;
+  border-radius: 6px;
+  color: white;
+}
+.grid .menu:nth-child(2) .overlay {
+  background: linear-gradient(to top left, var(--warning), rgb(255, 231, 93));
+}
+.grid .menu:nth-child(3) .overlay {
+  background: linear-gradient(to top left, blue, var(--main));
+}
+
+.grid .menu:nth-child(4) .overlay {
+  background: linear-gradient(to top left, rgb(9, 78, 168), rgb(76, 171, 248));
+}
+.grid .menu:nth-child(5) .overlay {
+  background: linear-gradient(
+    to top left,
+    rgb(31, 187, 101),
+    rgb(86, 250, 105)
+  );
+}
+
+.grid .menu:nth-child(6) .overlay {
+  background: linear-gradient(
+    to top left,
+    rgb(100, 100, 100),
+    rgb(192, 192, 192)
+  );
+}
+.overlay i {
+  vertical-align: middle;
+  font-size: xx-large;
+}
+
+.menu {
+  box-shadow: 0px 0px 5px 1px #5e72e363;
+  border: 1px solid #5e72e3b6;
+}
+
+.menu:hover {
+  color: var(--light);
+  background-color: rgb(39, 39, 39);
+  transition: 0.7s;
+}
