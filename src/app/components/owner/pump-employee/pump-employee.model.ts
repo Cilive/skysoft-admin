@@ -1,10 +1,13 @@
 export interface Employee {
+  [x: string]: any;
   phone: string;
   password?: string;
   email: string;
   name: string;
   id?: number;
-  iqama: string;
+  username: string;
+  branches: number;
+  iqama_no: string;
   account?: {
     email: string;
   };

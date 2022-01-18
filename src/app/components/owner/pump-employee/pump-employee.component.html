@@ -9,7 +9,7 @@
       (reset)="onReset()"
       oninput="cp.value!==''?cp.setCustomValidity(cp.value != newPassword.value ?  'Password doesnt match' : ''):null"
     >
-      <div class="row mt-4">
+      <div class="row mt-3">
         <div class="form-group col-md-3">
           <label translate for="emp_name">Name</label>
           <input
@@ -23,20 +23,20 @@
           />
           <small class="invalid-feedback">Field required</small>
         </div>
-        <!-- <div class="form-group col-md-3">
-          <label for="emp_mail">UserName</label>
+        <div class="form-group col-md-3">
+          <label for="">UserName</label>
           <input
             translate
             type="username"
             class="form-control"
-            name="emp_username"
-            [(ngModel)]="data.email"
-            id="emp_username"
+            name="username"
+            [(ngModel)]="data.username"
+            id="username"
             required
           />
           <small class="invalid-feedback">Field required</small>
-        </div> -->
-        <div class="form-group col-md-4">
+        </div>
+        <div class="form-group col-md-3">
           <label for="emp_mail">Email</label>
           <input
             translate
@@ -50,7 +50,7 @@
           <small class="invalid-feedback">Field required</small>
         </div>
 
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
           <label for="em_phone">Phone</label>
           <input
             translate
@@ -58,7 +58,7 @@
             class="form-control"
             name="em_phone"
             [(ngModel)]="data.phone"
-            id="em_iqama"
+            id="em_phone"
             required
           />
           <small class="invalid-feedback">Field required</small>
@@ -69,20 +69,24 @@
           <label translate for=""> Branch</label>
           <select class="form-control" name="selectss">
             <!-- <option translate value="">Branch</option> -->
+            <!-- <option translate scop="col"> {{ item.1 }}</option> -->
           </select>
+          <!-- [(ngModel)]="data.branches" -->
         </div>
-        <!-- <div class="form-group col-md-3">
+        <div class="form-group col-md-3">
           <label translate for="em_number">Iqama Number</label>
           <input
             translate
             type="number"
             class="form-control"
+            name="iqama_no"
+            [(ngModel)]="data.iqama_no"
+            id="iqama_no"
             required
-            name="iqama"
           />
           <small class="invalid-feedback">Field required</small>
-        </div> -->
-        <div class="form-group col-md-4">
+        </div>
+        <div class="form-group col-md-3">
           <label for="company">Password</label>
           <input
             translate
@@ -95,7 +99,7 @@
           <small id="helpId" class="invalid-feedback">Field is required</small>
         </div>
 
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
           <label for="company">Confirm Password</label>
           <input
             translate

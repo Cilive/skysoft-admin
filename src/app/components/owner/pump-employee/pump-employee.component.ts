@@ -25,7 +25,9 @@ export class PumpEmployeeComponent implements OnInit {
     name: '',
     password: '',
     phone: '',
-    iqama: '',
+    iqama_no: '',
+    username: '',
+    branches: 1,
   };
   employeesList: Employee[] = [];
 
@@ -76,7 +78,9 @@ export class PumpEmployeeComponent implements OnInit {
       name: item.name,
       phone: item.phone,
       id: item.id,
-      iqama: item.iqama,
+      username: item.username,
+      branches: item.branches,
+      iqama_no: item.iqama_no,
     };
   }
   public onUpdate() {

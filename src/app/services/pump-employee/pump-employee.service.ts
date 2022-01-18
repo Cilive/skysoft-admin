@@ -14,7 +14,7 @@ export class PumpEmployeeService {
   post_pump_employee(data) {
     // const formData = convertJsontoFormData(data);
 
-    return this.http.post<ApiResponse<{}>>(
+    return this.http.post<ApiResponse<{ any }>>(
       environment.domain + PUMP_EMPLOYEE,
       data
     );
