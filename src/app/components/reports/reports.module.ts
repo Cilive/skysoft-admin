@@ -21,6 +21,9 @@ import { CustomerBalanceComponent } from './customer-balance/customer-balance.co
 import { DepositAmountComponent } from './deposit-amount/deposit-amount.component';
 import { IncomeAndExpenditureReportsComponent } from './income-and-expenditure-reports/income-and-expenditure-reports.component';
 import { MonthlyBlancesheetComponent } from './monthly-blancesheet/monthly-blancesheet.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -114,7 +117,18 @@ const routes: Routes = [
     ModalModule.forRoot(),
     BsDatepickerModule.forRoot(),
     FormsModule,
-    SharedModule,
+    // SharedModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
 })
 export class ReportsModule {}
+
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}

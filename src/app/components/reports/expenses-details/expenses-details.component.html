@@ -5,17 +5,9 @@
         <div class="row col-md-12">
           <div class="form-group col-md-2">
             <label translate for="">From</label>
-            <input
-              translate
-              type="text"
-              placeholder="Date"
-              class="form-control"
-              bsDatepicker
-              [bsConfig]="{
-                isAnimated: true,
-                containerClass: 'theme-dark-blue'
-              }"
-            />
+            <select class="form-control" name="selectes">
+              <option translate value="">From</option>
+            </select>
           </div>
           <div class="col-md-0" style="padding-top: 35px">To</div>
           <div class="form-group col-md-2">
@@ -23,7 +15,7 @@
             <input
               translate
               type="text"
-              placeholder="Date"
+              placeholder="{{ 'Date' | translate }}"
               class="form-control"
               bsDatepicker
               [bsConfig]="{
@@ -33,9 +25,9 @@
             />
           </div>
           <div class="form-group col-md-2">
-            <label translate for="">Expence</label>
+            <label translate for="">Expense</label>
             <select class="form-control" name="selectes">
-              <option translate value="">Expence</option>
+              <option translate value="">Expense</option>
             </select>
           </div>
         </div>
@@ -46,7 +38,7 @@
           <tr>
             <th translate scope="col">#</th>
             <th translate scope="col">Date</th>
-            <th translate scope="col">Expence</th>
+            <th translate scope="col">Expense</th>
             <th translate scope="col">Type</th>
             <th translate scope="col">Amount</th>
             <th translate scope="col">Action</th>

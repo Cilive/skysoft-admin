@@ -25,9 +25,7 @@ export class PumpEmployeeComponent implements OnInit {
     name: '',
     password: '',
     phone: '',
-    username: '',
-    iqama_no: '',
-    branches: 1,
+    iqama: '',
   };
   employeesList: Employee[] = [];
 
@@ -74,15 +72,11 @@ export class PumpEmployeeComponent implements OnInit {
   public onEdit(item: Employee): void {
     this.editMode = true;
     this.data = {
-      // email: item.account.email,
+      email: item.email,
       name: item.name,
       phone: item.phone,
       id: item.id,
-      email: item.email,
-      username: item.username,
-      password: item.password,
-      iqama_no: item.iqama_no,
-      branches: item.branches,
+      iqama: item.iqama,
     };
   }
   public onUpdate() {

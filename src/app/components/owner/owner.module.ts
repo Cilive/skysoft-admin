@@ -27,6 +27,13 @@ import { PaymentsOutComponent } from './transactions/payments-out/payments-out.c
 import { ExpensesComponent } from './transactions/expenses/expenses.component';
 import { CloseAccountComponent } from './close-account/close-account.component';
 import { BranchManagerComponent } from './branch-manager/branch-manager.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CashSalesSummeryComponent } from './dashboard/cash-sales-summery/cash-sales-summery.component';
+import { OnlineSalesComponent } from './dashboard/online-sales/online-sales.component';
+import { ExpenceComponent } from './dashboard/expence/expence.component';
+import { TotalPurchaseComponent } from './dashboard/total-purchase/total-purchase.component';
+import { BankAccountSummeryComponent } from './dashboard/bank-account-summery/bank-account-summery.component';
+import { StockManagementComponent } from './dashboard/stock-management/stock-management.component';
 
 const routes: Routes = [
   {
@@ -34,6 +41,40 @@ const routes: Routes = [
     // redirectTo: 'supplierprofile', pathMatch: 'full',
     component: OwnerComponent,
     children: [
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+      },
+      {
+        path: 'bank-account-summery',
+        component: BankAccountSummeryComponent,
+      },
+      {
+        path: 'cash-sales-summery',
+        component: CashSalesSummeryComponent,
+      },
+      {
+        path: 'expence',
+        component: ExpenceComponent,
+      },
+      {
+        path: 'online-sales',
+        component: OnlineSalesComponent,
+      },
+      {
+        path: 'stock-management',
+        component: StockManagementComponent,
+      },
+      {
+        path: 'total-purchase',
+        component: TotalPurchaseComponent,
+      },
+
       {
         path: 'supplier_Profile',
         component: SupplierProfileComponent,
@@ -137,6 +178,13 @@ const routes: Routes = [
     ExpensesComponent,
     CloseAccountComponent,
     BranchManagerComponent,
+    DashboardComponent,
+    CashSalesSummeryComponent,
+    OnlineSalesComponent,
+    ExpenceComponent,
+    TotalPurchaseComponent,
+    BankAccountSummeryComponent,
+    StockManagementComponent,
   ],
   imports: [
     CommonModule,
