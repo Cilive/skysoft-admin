@@ -17,7 +17,7 @@ export class AuthenticationService {
       email,
       password,
     };
-    let url = this.url + 'public/login/';
+    let url = this.url + 'login/';
 
     return this.http.post<LoginResponse>(url, data);
   }

@@ -1,18 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { htmlTextExtractor } from 'src/app/app.component';
-
+import { DashboardService } from 'src/app/services/service/dashboard/dashboard.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  constructor(
+    private DashboardService: DashboardService,
+    private router: Router
+  ) {}
+
+  extractor = htmlTextExtractor;
+  ngOnInit(): void {
+    this.DashboardService.branch_dashboard().subscribe((res) => {});
+  }
   tileList: Tiles = [
     {
       icon: 'bx bxs-right-down-arrow-circle',
       routerLink: '/owner/branch/dashboard/bank-account-summery',
-      title: 'Bank A/C summery',
+      title: 'Bank A/C Summery',
       subtitle: null,
     },
     {
@@ -46,9 +55,7 @@ export class DashboardComponent implements OnInit {
       subtitle: null,
     },
   ];
-  constructor(private router: Router) {}
-  extractor = htmlTextExtractor;
-  ngOnInit(): void {}
+
   domier(string: string, index) {
     return (document.querySelectorAll('div.overlay')[index].innerHTML = string);
   }
