@@ -7,6 +7,8 @@ import {
 } from 'src/app/services/authentication/authentication.service';
 import { validateForm } from 'src/app/services/general/general.service';
 import { StoreService } from 'src/app/services/store/store.service';
+import { BranchComponent } from '../../owner/branch/branch.component';
+import { BranchModule } from '../../owner/branch/branch.module';
 
 @Component({
   selector: 'app-login',
@@ -36,6 +38,9 @@ export class LoginComponent implements OnInit {
           break;
         case Role.owner === role:
           this.route.navigateByUrl('/owner');
+          break;
+        case Role.maneger === role:
+          this.route.navigateByUrl('/branch');
           break;
       }
     }
@@ -83,6 +88,11 @@ const TemprorayAccounts = [
     username: 'owner@gmail.com',
     password: '1234',
     role: 1,
+  },
+  {
+    username: 'maneger@gmail.com',
+    password: '1234',
+    role: 2,
   },
 ];
 

@@ -110,21 +110,6 @@
       <div class="p-2">
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label translate for="name">اسم الزبون</label>
-            <input
-              translate
-              type="text"
-              dir="rtl"
-              class="form-control"
-              required
-              [(ngModel)]="data.ar_name"
-              name="ar_name"
-            />
-            <small id="helpId" class="invalid-feedback"
-              >Field is required</small
-            >
-          </div>
-          <div class="form-group col-md-6">
             <label translate for="place">مكان</label>
             <input
               translate
@@ -139,8 +124,36 @@
               >Field is required</small
             >
           </div>
+          <div class="form-group col-md-6">
+            <label translate for="name">اسم الزبون</label>
+            <input
+              translate
+              type="text"
+              dir="rtl"
+              class="form-control"
+              required
+              [(ngModel)]="data.ar_name"
+              name="ar_name"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
         </div>
         <div class="form-row">
+          <div class="form-group col-md-6">
+            <label translate for="mobile">هاتف أرضي</label>
+            <input
+              translate
+              type="number"
+              readonly
+              dir="rtl"
+              class="form-control"
+              required
+              [(ngModel)]="data.mobile_no"
+              name="mobile_no"
+            />
+          </div>
           <div class="form-group col-md-6">
             <label translate for="district">منطقة</label>
             <input
@@ -156,34 +169,8 @@
               >Field is required</small
             >
           </div>
-          <div class="form-group col-md-6">
-            <label translate for="mobile">هاتف أرضي</label>
-            <input
-              translate
-              type="number"
-              readonly
-              dir="rtl"
-              class="form-control"
-              required
-              [(ngModel)]="data.mobile_no"
-              name="mobile_no"
-            />
-          </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-md-6">
-            <label translate for="vat">التليفون المحمول</label>
-            <input
-              translate
-              type="number"
-              readonly
-              dir="rtl"
-              class="form-control"
-              required
-              [(ngModel)]="data.vat_no"
-              name="vat_no"
-            />
-          </div>
           <div class="form-group col-md-6">
             <label translate for="lan">هاتف أرضي</label>
             <input
@@ -195,6 +182,19 @@
               required
               [(ngModel)]="data.lan_no"
               name="lan_no"
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label translate for="vat">التليفون المحمول</label>
+            <input
+              translate
+              type="number"
+              readonly
+              dir="rtl"
+              class="form-control"
+              required
+              [(ngModel)]="data.vat_no"
+              name="vat_no"
             />
           </div>
         </div>

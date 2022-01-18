@@ -4,6 +4,7 @@ export interface Employee {
   email: string;
   name: string;
   id?: number;
+  iqama: string;
   account?: {
     email: string;
   };

@@ -19,6 +19,11 @@ const routes: Routes = [
       (await import('../owner/owner.module')).OwnerModule,
   },
   {
+    path: 'branch',
+    loadChildren: async () =>
+      (await import('../owner/branch/branch.module')).BranchModule,
+  },
+  {
     path: 'login',
     component: LoginComponent,
   },
@@ -33,4 +38,4 @@ const routes: Routes = [
   declarations: [AuthenticationComponent, LoginComponent],
   imports: [CommonModule, RouterModule.forChild(routes), FormsModule],
 })
-export class AuthenticationModule { }
+export class AuthenticationModule {}

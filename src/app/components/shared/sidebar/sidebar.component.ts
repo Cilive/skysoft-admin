@@ -134,6 +134,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
             path: '/owner/bank_Accounts',
             title: 'Bank Account Master',
           },
+
           {
             icon: 'bx bxs-package',
             path: '/owner/dispensers',
@@ -148,6 +149,15 @@ export class SidebarComponent implements OnInit, AfterViewInit {
             icon: 'bx bxs-report',
             path: '/owner/reports',
             title: 'Reports',
+          },
+        ];
+        break;
+      case Role.maneger === role:
+        this.routes = [
+          {
+            path: '/branch/dashboard',
+            icon: 'bx bxs-business',
+            title: 'Dash Board',
           },
         ];
         break;
