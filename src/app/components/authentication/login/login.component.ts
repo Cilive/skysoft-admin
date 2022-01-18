@@ -69,6 +69,7 @@ export class LoginComponent implements OnInit {
             accessToken.next(res.access);
             if (res.is_superuser) this.route.navigateByUrl('/admin');
             if (res.is_company) this.route.navigateByUrl('/owner');
+            if (res.is_branch_user) this.route.navigateByUrl('/branch');
           }
         });
     }
