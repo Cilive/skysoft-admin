@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { BranchDashboardInterface } from 'src/app/model/branch-dashboard';
 import { ApiResponse } from 'src/app/model/shared';
-import { BranchComponent } from 'src/app/components/owner/branch/branch.component';
-import { BranchModule } from 'src/app/components/owner/branch/branch.module';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +12,8 @@ export class DashboardService {
   constructor(private http: HttpClient) {}
 
   branch_dashboard() {
-    return this.http.get(`${this.url}/clients/c1.localhost/manager/dashboard/`);
+    return this.http.get<ApiResponse<BranchDashboardInterface>>(
+      `${this.url}clients/c1.localhost/manager/dashboard/`
+    );
   }
 }
