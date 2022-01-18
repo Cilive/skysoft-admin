@@ -7,7 +7,7 @@
       *ngFor="let item of tileList; let i = index"
       style="position: relative; height: 100px"
     >
-      {{ item.title }}
+      {{ item.title | translate }}
       <div class="overlay">
         <i class=" {{ item.icon }} m-2"></i>
       </div>

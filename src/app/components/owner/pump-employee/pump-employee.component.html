@@ -10,7 +10,7 @@
       oninput="cp.value!==''?cp.setCustomValidity(cp.value != newPassword.value ?  'Password doesnt match' : ''):null"
     >
       <div class="row mt-3">
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
           <label translate for="emp_name">Name</label>
           <input
             translate
@@ -23,72 +23,89 @@
           />
           <small class="invalid-feedback">Field required</small>
         </div>
-        <div class="form-group col-md-4">
-          <label translate for="emp_iqama_no">Iqama No</label>
+        <div class="form-group col-md-3">
+          <label for="emp_mail">UserName</label>
           <input
             translate
-            type="text"
-            class="form-control"
-            name="emp_iqama_no"
-            [(ngModel)]="data.iqama_no"
-            id="emp_iqama_no"
-            required
-          />
-          <small class="invalid-feedback">Field required</small>
-        </div>
-        <div class="form-group col-md-4">
-          <label translate for="emp_phone">Phone</label>
-          <input
-            translate
-            type="text"
-            class="form-control"
-            name="emp_phone"
-            [(ngModel)]="data.phone"
-            id="emp_phone"
-            required
-          />
-          <small class="invalid-feedback">Field required</small>
-        </div>
-      </div>
-      <div class="row mt-3" *ngIf="editMode != true">
-        <div class="form-group col-md-4">
-          <label translate for="emp_username">Username</label>
-          <input
-            translate
-            type="text"
+            type="username"
             class="form-control"
             name="emp_username"
-            [(ngModel)]="data.username"
+            [(ngModel)]="data.email"
             id="emp_username"
             required
           />
           <small class="invalid-feedback">Field required</small>
         </div>
-        <div class="form-group col-md-4">
-          <label translate for="emp_email">Email</label>
+        <div class="form-group col-md-3">
+          <label for="emp_mail">Email</label>
           <input
             translate
-            type="text"
+            type="email"
             class="form-control"
-            name="emp_email"
+            name="emp_mail"
             [(ngModel)]="data.email"
-            id="emp_email"
+            id="emp_mail"
             required
           />
           <small class="invalid-feedback">Field required</small>
         </div>
-        <div class="form-group col-md-4">
-          <label translate for="emp_password">Password</label>
+
+        <div class="form-group col-md-3">
+          <label for="em_phone">Phone</label>
           <input
             translate
-            type="text"
+            type="number"
             class="form-control"
-            name="emp_password"
-            [(ngModel)]="data.password"
-            id="emp_password"
+            name="em_phone"
+            [(ngModel)]="data.phone"
+            id="em_iqama"
             required
           />
           <small class="invalid-feedback">Field required</small>
+        </div>
+      </div>
+      <div *ngIf="editMode !== true" class="form-row">
+        <div class="form-group col-md-3">
+          <label translate for=""> Branch</label>
+          <select class="form-control" name="selectss">
+            <!-- <option translate value="">Branch</option> -->
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+          <label translate for="em_number">Iqama Number</label>
+          <input
+            translate
+            type="number"
+            class="form-control"
+            required
+            name="iqama"
+          />
+          <small class="invalid-feedback">Field required</small>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="company">Password</label>
+          <input
+            translate
+            type="password"
+            class="form-control"
+            required
+            [(ngModel)]="data.password"
+            name="newPassword"
+          />
+          <small id="helpId" class="invalid-feedback">Field is required</small>
+        </div>
+
+        <div class="form-group col-md-3">
+          <label for="company">Confirm Password</label>
+          <input
+            translate
+            type="password"
+            class="form-control"
+            required
+            name="cp"
+          />
+          <!-- <small id="helpId" class="invalid-feedback">Field is required</small> -->
+          <small class="invalid-feedback">Password didn`t match</small>
         </div>
       </div>
       <div class="modal-footer">
@@ -111,11 +128,13 @@
         <th translate scope="col">Email</th>
         <th translate scope="col">Action</th>
       </tr>
+    </thead>
+    <tbody>
       <tr *ngFor="let item of employeesList; let i = index">
         <th translate scope="row">{{ i + 1 }}</th>
-
         <td>{{ item.name }}</td>
-        <td>{{ item.user.email }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.phone }}</td>
         <td>
           <div class="d-flex justify-content-around">
             <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>
@@ -125,8 +144,8 @@
               (click)="openModal(template)"
             ></i>
             <!-- <i
+              (click)="onSuspend(item.id)"
               title="Suspend"
-              (click)="suspend(item.id)"
               class="bx bx-x-circle"
             ></i> -->
           </div>
@@ -134,29 +153,28 @@
           <ng-template #template>
             <div class="modal-body text-center">
               <p translate>Do you want to confirm?</p>
-            </div>
-            <div class="modal-footer">
-              <button
-                translate
-                type="button"
-                class="btn btn-outline-danger"
-                (click)="onDelete(item.id)"
-              >
-                Yes
-              </button>
-              <button
-                translate
-                type="button"
-                class="btn btn-primary"
-                (click)="decline()"
-              >
-                No
-              </button>
+              <div class="modal-footer">
+                <button
+                  translate
+                  type="button"
+                  class="btn btn-outline-danger"
+                  (click)="onDelete(item.id)"
+                >
+                  Yes
+                </button>
+                <button
+                  translate
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="decline()"
+                >
+                  No
+                </button>
+              </div>
             </div>
           </ng-template>
         </td>
       </tr>
-    </thead>
-    <tbody></tbody>
+    </tbody>
   </table>
 </div>
