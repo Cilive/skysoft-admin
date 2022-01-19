@@ -2,12 +2,13 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
+import { BranchManagerService } from 'src/app/services/branch-manager/branch-manager.service';
 import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
 import { PumpEmployeeService } from 'src/app/services/pump-employee/pump-employee.service';
-import { Employee } from './pump-employee.model';
+import { Branch, Employee } from './pump-employee.model';
 
 @Component({
   selector: 'app-pump-employee',
@@ -20,6 +21,7 @@ export class PumpEmployeeComponent implements OnInit {
   modalRef?: BsModalRef;
   editMode: boolean;
   PumpEmployeeForm: FormGroup;
+  title: Branch;
   data: Employee = {
     email: '',
     name: '',
@@ -28,13 +30,16 @@ export class PumpEmployeeComponent implements OnInit {
     iqama_no: '',
     username: '',
     branches: 1,
+    branch1: '',
   };
+  branchesList: Branch[] = [];
   employeesList: Employee[] = [];
 
   constructor(
     private modalService: BsModalService,
     private toast: AlertService,
-    private employees: PumpEmployeeService
+    private employees: PumpEmployeeService,
+    private branches: BranchManagerService
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +47,13 @@ export class PumpEmployeeComponent implements OnInit {
     this.employees.get_pump_employees().subscribe((res) => {
       if (res.msg === 'Success') {
         this.employeesList = res.data;
+      }
+    });
+    this.branches.get_branches().subscribe((res) => {
+      if (res.msg === 'Success') {
+        console.log(res.data);
+
+        this.branchesList = res.data;
       }
     });
   }
@@ -74,7 +86,7 @@ export class PumpEmployeeComponent implements OnInit {
   public onEdit(item: Employee): void {
     this.editMode = true;
     this.data = {
-      email: item.email,
+      email: item.user.email,
       name: item.name,
       phone: item.phone,
       id: item.id,

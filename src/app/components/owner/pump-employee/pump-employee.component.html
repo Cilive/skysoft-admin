@@ -24,27 +24,27 @@
           <small class="invalid-feedback">Field required</small>
         </div>
         <div class="form-group col-md-3">
-          <label for="">UserName</label>
+          <label for="emp_username">UserName</label>
           <input
             translate
-            type="username"
+            type="text"
             class="form-control"
-            name="username"
+            name="emp_username"
             [(ngModel)]="data.username"
-            id="username"
+            id="emp_username"
             required
           />
           <small class="invalid-feedback">Field required</small>
         </div>
         <div class="form-group col-md-3">
-          <label for="emp_mail">Email</label>
+          <label translate for="emp_email">Email</label>
           <input
             translate
-            type="email"
+            type="text"
             class="form-control"
-            name="emp_mail"
+            name="emp_email"
             [(ngModel)]="data.email"
-            id="emp_mail"
+            id="emp_email"
             required
           />
           <small class="invalid-feedback">Field required</small>
@@ -58,7 +58,7 @@
             class="form-control"
             name="em_phone"
             [(ngModel)]="data.phone"
-            id="em_phone"
+            id="emp_phone"
             required
           />
           <small class="invalid-feedback">Field required</small>
@@ -67,11 +67,12 @@
       <div *ngIf="editMode !== true" class="form-row">
         <div class="form-group col-md-3">
           <label translate for=""> Branch</label>
-          <select class="form-control" name="selectss">
-            <!-- <option translate value="">Branch</option> -->
-            <!-- <option translate scop="col"> {{ item.1 }}</option> -->
+
+          <select class="form-control" id="type" data-live-search="true">
+            <option *ngFor="let item of branchesList" [value]="item.id">
+              {{ item.en_name }}
+            </option>
           </select>
-          <!-- [(ngModel)]="data.branches" -->
         </div>
         <div class="form-group col-md-3">
           <label translate for="em_number">Iqama Number</label>
@@ -137,8 +138,9 @@
       <tr *ngFor="let item of employeesList; let i = index">
         <th translate scope="row">{{ i + 1 }}</th>
         <td>{{ item.name }}</td>
-        <td>{{ item.email }}</td>
+        <td>{{ item.user.email }}</td>
         <td>{{ item.phone }}</td>
+
         <td>
           <div class="d-flex justify-content-around">
             <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>

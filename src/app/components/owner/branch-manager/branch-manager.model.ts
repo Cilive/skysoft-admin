@@ -2,7 +2,7 @@ export interface Branchmanager {
   id?: any;
   username: string;
   password: string;
-  branches: number;
+  branches: string;
   email: string;
   name: string;
   iqama_no: string;

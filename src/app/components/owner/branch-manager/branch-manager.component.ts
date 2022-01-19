@@ -27,7 +27,7 @@ export class BranchManagerComponent implements OnInit {
     phone: '',
     username: '',
     iqama_no: '',
-    branches: 1,
+    branches: '',
   };
   employeesList: Branchmanager[] = [];
   Branch_ManagerList: Branchmanager[];
