@@ -159,6 +159,11 @@ export class SidebarComponent implements OnInit, AfterViewInit {
             icon: 'bx bxs-business',
             title: 'Dash Board',
           },
+          {
+            path: '/branc/branch-employee',
+            icon: 'bx bxs-user-account',
+            title: 'Employees',
+          },
         ];
         break;
 

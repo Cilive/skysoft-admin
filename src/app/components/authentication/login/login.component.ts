@@ -62,7 +62,15 @@ export class LoginComponent implements OnInit {
         })
         .subscribe((res) => {
           if (res) {
-            this.store.store('role', res.is_company ? 1 : 0);
+            let role = 0;
+            if (res.is_branch_user) {
+              role = 2;
+            } else if (res.is_company) {
+              role = 1;
+            } else {
+              role = 0;
+            }
+            this.store.store('role', role);
             this.store.store('token', res.refresh);
             this.store.store('access', res.access);
             this.store.store('id', res.company_id);
