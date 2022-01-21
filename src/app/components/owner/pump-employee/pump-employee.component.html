@@ -67,8 +67,20 @@
       <div *ngIf="editMode !== true" class="form-row">
         <div class="form-group col-md-3">
           <label translate for=""> Branch</label>
+          <!-- branch listing  api posting -->
+          <select
+            class="form-control"
+            name="branches"
+            [(ngModel)]="data.branches"
+            class="form-control"
+            id="type"
+            data-live-search="true"
+            required
+          >
+            <option translate value="col" selected hidden value="">
+              select
+            </option>
 
-          <select class="form-control" id="type" data-live-search="true">
             <option *ngFor="let item of branchesList" [value]="item.id">
               {{ item.en_name }}
             </option>

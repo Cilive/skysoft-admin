@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Company } from 'src/app/components/admin/company-profile/company-profile.model';
+import { Branch } from 'src/app/components/owner/branch/branch.modal';
 import { CREATE_COMPANY } from 'src/app/model/api';
 import { ApiResponse } from 'src/app/model/shared';
 import { environment } from 'src/environments/environment';
@@ -41,6 +42,11 @@ export class CompanyProfileService {
     return this.http.put<ApiResponse<any>>(
       environment.domain + 'administrator/company_suspend' + '/' + id + '/',
       {}
+    );
+  }
+  get_branches() {
+    return this.http.get<ApiResponse<Branch[]>>(
+      environment.domain + 'clients/c1.localhost/private/customer/'
     );
   }
 }

@@ -9,6 +9,7 @@ export const environment = {
   // domain: 'http://192.168.0.105:8000/',
 
   domain: 'http://192.168.1.4:8000/',
+  // domain: 'http://172.20.10.3:8000/',
   encryption_secret: '7e61413c0f1b48f9b3e671fed1cb455d0186891b',
 };
 

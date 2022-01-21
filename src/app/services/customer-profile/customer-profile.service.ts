@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 export class CustomerProfileService {
   constructor(private http: HttpClient) {}
 
-  post_customer_profile(data) {
+  post_customer_profile(data: CustomerProfile) {
     // const formData = convertJsontoFormData(data);
 
     return this.http.post<ApiResponse<{}>>(environment.domain + CUSTOMER, data);
@@ -23,7 +23,7 @@ export class CustomerProfileService {
       environment.domain + CUSTOMER
     );
   }
-  update_customer_profile(data, id) {
+  update_customer_profile(data: CustomerProfile, id) {
     console.log(data);
 
     return this.http.put<ApiResponse<{}>>(

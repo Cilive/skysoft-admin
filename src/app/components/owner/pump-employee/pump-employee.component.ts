@@ -8,7 +8,8 @@ import {
   validateForm,
 } from 'src/app/services/general/general.service';
 import { PumpEmployeeService } from 'src/app/services/pump-employee/pump-employee.service';
-import { Branch, Employee } from './pump-employee.model';
+import { Branch } from '../branch/branch.modal';
+import { Employee } from './pump-employee.model';
 
 @Component({
   selector: 'app-pump-employee',
@@ -29,8 +30,7 @@ export class PumpEmployeeComponent implements OnInit {
     phone: '',
     iqama_no: '',
     username: '',
-    branches: 1,
-    branch1: '',
+    branches: '',
   };
   branchesList: Branch[] = [];
   employeesList: Employee[] = [];
@@ -49,6 +49,7 @@ export class PumpEmployeeComponent implements OnInit {
         this.employeesList = res.data;
       }
     });
+    //this.branch listing api
     this.branches.get_branches().subscribe((res) => {
       if (res.msg === 'Success') {
         console.log(res.data);
@@ -60,6 +61,7 @@ export class PumpEmployeeComponent implements OnInit {
 
   public onSubmit(): void {
     if (validateForm('emp_form')) {
+      console.log(this.data);
       this.employees.post_pump_employee(this.data).subscribe((res) => {
         if (res.msg === 'Success') {
           this.toast.success('Employee Added Successfully');

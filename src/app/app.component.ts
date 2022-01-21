@@ -22,21 +22,27 @@ export class AppComponent implements OnInit, AfterViewInit {
   ) {}
   ngOnInit(): void {
     const helper = new JwtHelperService();
-    accessToken.subscribe((token) => {
-      if (token) {
-        const expiryTime = helper.getTokenExpirationDate(token);
-        console.log(`@SchedulerTime (${expiryTime})`);
-        timer(expiryTime).subscribe((_) => {
+    accessToken.subscribe({
+      next: (token) => {
+        if (token) {
+          const expiryTime = helper.getTokenExpirationDate(token);
           console.log(`@SchedulerTime (${expiryTime})`);
+          timer(expiryTime).subscribe((_) => {
+            console.log(`@SchedulerTime (${expiryTime})`);
 
-          this.authentication
-            .newToken(this.store.retrieve('token'))
-            .subscribe((res) => {
-              this.store.store('id', res.access);
-              accessToken.next(res.access);
-            });
-        });
-      }
+            // this.authentication
+            //   .newToken(this.store.retrieve('token'))
+            //   .subscribe({
+            //     next: (res) => {
+            //       this.store.store('id', res.access);
+            //       accessToken.next(res.access);
+            //     },
+            //     error: console.log,
+            //   });
+          });
+        }
+      },
+      error: console.log,
     });
   }
   ngAfterViewInit(): void {}

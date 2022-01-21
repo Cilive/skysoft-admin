@@ -1,5 +1,5 @@
 export const CREATE_COMPANY = 'public/company/';
-export const CUSTOMER = 'owner/customer/';
+export const CUSTOMER = 'clients/c1.localhost/private/customer/';
 export const SUPPLIER = 'owner/supplier/';
 export const PUMP_EMPLOYEE = 'administrator/employee/';
 export const BANK_ACCOUNTS = 'owner/bank/';
