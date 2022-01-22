@@ -35,6 +35,7 @@ import { TotalPurchaseComponent } from './dashboard/total-purchase/total-purchas
 import { BankAccountSummeryComponent } from './dashboard/bank-account-summery/bank-account-summery.component';
 import { StockManagementComponent } from './dashboard/stock-management/stock-management.component';
 import { BranchEmployeeComponent } from './branch/branch-employee/branch-employee.component';
+import { AddbranchComponent } from './addbranch/addbranch.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
     // redirectTo: 'supplierprofile', pathMatch: 'full',
     component: OwnerComponent,
     children: [
+      {
+        path: 'addbranch',
+        component: AddbranchComponent,
+      },
       {
         path: '',
         redirectTo: 'dashboard',
@@ -195,6 +200,7 @@ const routes: Routes = [
     TotalPurchaseComponent,
     BankAccountSummeryComponent,
     StockManagementComponent,
+    AddbranchComponent,
   ],
   imports: [
     CommonModule,

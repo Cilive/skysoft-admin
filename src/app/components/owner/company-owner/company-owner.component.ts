@@ -1,11 +1,16 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
+import { BranchManagerService } from 'src/app/services/branch-manager/branch-manager.service';
 import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
 import { OwnersService } from 'src/app/services/owners/owners.service';
+import { Branchmanager } from '../branch-manager/branch-manager.model';
+import { BranchComponent } from '../branch/branch.component';
+import { Branch } from '../branch/branch.modal';
+import { Owner } from './Company-Owner.model';
 
 @Component({
   selector: 'app-company-owner',
@@ -15,21 +20,37 @@ import { OwnersService } from 'src/app/services/owners/owners.service';
 export class CompanyOwnerComponent implements OnInit {
   modalRef?: BsModalRef;
   owners = [];
-  data: { name: String; id?: number; phone: number; email: string } = {
+  // baranchlist: Branch[] = [];
+
+  data: Owner = {
     name: '',
     phone: null,
     email: '',
+    branches: '',
   };
   editMode = false;
+  body = {};
+  id: number;
+  branchesList: Branch[] = [];
+  Ownerlist: CompanyOwnerComponent[] = [];
+
   constructor(
     private modalService: BsModalService,
     private owner: OwnersService,
-    private toast: AlertService
+    private toast: AlertService,
+    private branches: BranchManagerService
   ) {}
 
   ngOnInit(): void {
     this.owner.get_owners().subscribe((res) => {
       this.owners = res.data;
+    });
+    this.branches.get_branches().subscribe((res) => {
+      if (res.msg === 'Success') {
+        console.log(res.data);
+
+        this.branchesList = res.data;
+      }
     });
   }
   onReset() {
@@ -63,6 +84,7 @@ export class CompanyOwnerComponent implements OnInit {
       id: item.id,
       email: item.email,
       phone: item.phone,
+      branches: item.branches,
     };
   }
   openModal(template: TemplateRef<any>) {

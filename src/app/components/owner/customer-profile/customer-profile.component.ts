@@ -36,7 +36,7 @@ export class CustomerProfileComponent implements OnInit {
     mobile_no: null,
     branches: '',
 
-    type: 2,
+    type: 1,
   };
   body = {};
   id: number;

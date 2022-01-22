@@ -1,5 +1,4 @@
-export interface Branch {
-  id: number;
+export interface Addbranch {
   en_name: string;
   ar_name: string;
   en_place: string;
@@ -9,10 +8,6 @@ export interface Branch {
   cr_no: string;
   vat_no: string;
   lan_no: string;
-  logo: null;
-  status: boolean;
-  phone: string;
-  company: number;
-  value: any;
-  supplierProfile: string;
+  phone: number;
+  id?: number;
 }

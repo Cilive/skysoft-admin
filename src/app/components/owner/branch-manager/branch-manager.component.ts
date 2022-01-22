@@ -31,6 +31,8 @@ export class BranchManagerComponent implements OnInit {
   };
   employeesList: Branchmanager[] = [];
   Branch_ManagerList: Branchmanager[];
+  branches: any;
+  branchesList: any;
 
   constructor(
     private modalService: BsModalService,
@@ -43,6 +45,13 @@ export class BranchManagerComponent implements OnInit {
     this.Branchmanager.get_branch_manager().subscribe((res) => {
       if (res.msg === 'Success') {
         this.Branch_ManagerList = res.data;
+      }
+    });
+    this.branches.get_branches().subscribe((res) => {
+      if (res.msg === 'Succes') {
+        console.log(res.data);
+
+        this.branchesList = res.data;
       }
     });
   }

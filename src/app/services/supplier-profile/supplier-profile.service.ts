@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Company } from 'src/app/components/admin/company-profile/company-profile.model';
+import { Branch } from 'src/app/components/owner/branch/branch.modal';
 import { SupplierProfile } from 'src/app/components/owner/supplier-profile/supplier-profile.model';
 import { SUPPLIER } from 'src/app/model/api';
 import { ApiResponse } from 'src/app/model/shared';
@@ -38,6 +39,11 @@ export class SupplierProfileService {
     return this.http.put<ApiResponse<any>>(
       environment.domain + 'owner/supplier_suspend' + '/' + id + '/',
       {}
+    );
+  }
+  get_branches(id) {
+    return this.http.get<ApiResponse<SupplierProfile[]>>(
+      environment.domain + 'clients/c1.localhost/private/supplier/' + id + '/'
     );
   }
 }

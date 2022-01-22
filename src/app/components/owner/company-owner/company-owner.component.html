@@ -50,6 +50,27 @@
           />
           <small class="invalid-feedback">Field required</small>
         </div>
+        <div class="form-group col-md-4">
+          <label translate for=""> Branch</label>
+          <!-- branch listing  api posting -->
+          <select
+            class="form-control"
+            name="branches"
+            [(ngModel)]="data.branches"
+            class="form-control"
+            id="type"
+            data-live-search="true"
+            required
+          >
+            <option translate value="col" selected hidden value="">
+              select
+            </option>
+
+            <option *ngFor="let item of branchesList" [value]="item.id">
+              {{ item.en_name }}
+            </option>
+          </select>
+        </div>
       </div>
 
       <div class="modal-footer">

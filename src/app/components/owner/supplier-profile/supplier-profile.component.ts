@@ -2,11 +2,13 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
+import { BranchManagerService } from 'src/app/services/branch-manager/branch-manager.service';
 import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
 import { SupplierProfileService } from 'src/app/services/supplier-profile/supplier-profile.service';
+import { Branch } from '../branch/branch.modal';
 import { SupplierProfile } from './supplier-profile.model';
 
 @Component({
@@ -21,10 +23,32 @@ export class SupplierProfileComponent implements OnInit {
   supplierForm: FormGroup;
   suppliers: SupplierProfile[] = [];
 
+  data: SupplierProfile = {
+    en_name: '',
+    ar_name: '',
+    en_place: '',
+    ar_place: '',
+    en_district: '',
+    ar_district: '',
+    vat_no: null,
+    lan_no: null,
+    mobile_no: null,
+    branches: '',
+    type: 2,
+    value: null,
+    supplierProfile: undefined,
+  };
+  body = {};
+  id: number;
+  branchesList: Branch[] = [];
+  customerlist: SupplierProfile[] = [];
+  supplierProfile: any;
+
   constructor(
     private modalService: BsModalService,
+    private toast: AlertService,
     private supplierService: SupplierProfileService,
-    private toast: AlertService
+    private branches: BranchManagerService
   ) {}
 
   ngOnInit(): void {
@@ -32,23 +56,29 @@ export class SupplierProfileComponent implements OnInit {
     this.supplierService.get_supplier_profiles().subscribe((res) => {
       this.suppliers = res.data;
     });
+    this.branches.get_branches().subscribe((res) => {
+      if (res.msg === 'Success') {
+        console.log(res.data);
+
+        this.branchesList = res.data;
+      }
+    });
   }
   public onSubmit(): void {
     if (validateForm('form')) {
-      this.supplierService
-        .post_supplier_profile(this.supplierForm.value)
-        .subscribe((res) => {
-          if (res.msg === 'Success') {
-            this.toast.success('Supplier Added Successfully');
-            this.ngOnInit();
-          }
-        });
+      console.log(this.data);
+      this.supplierService.post_supplier_profile(this.data).subscribe((res) => {
+        if (res.msg === 'Success') {
+          this.toast.success('Supplier Added Successfully');
+          this.ngOnInit();
+        }
+      });
     }
   }
   public onUpdate() {
     if (validateForm('form')) {
       this.supplierService
-        .update_supplier_profile(this.supplierForm.value)
+        .update_supplier_profile(this.data)
         .subscribe((res) => {
           if (res.msg === 'Success') {
             this.toast.success('Supplier Updated Successfully');
@@ -69,8 +99,24 @@ export class SupplierProfileComponent implements OnInit {
   }
 
   public onEdit(item: SupplierProfile): void {
+    console.log(item);
     this.editMode = true;
-    this.supplierForm.setValue(item);
+    this.data = {
+      en_name: item.en_name,
+      ar_name: item.ar_name,
+      en_place: item.en_place,
+      ar_place: item.ar_place,
+      en_district: item.en_district,
+      ar_district: item.ar_district,
+      vat_no: item.vat_no,
+      lan_no: item.lan_no,
+      mobile_no: item.mobile_no,
+      id: item.id,
+      branches: item.branches,
+      type: item.type,
+      value: item.value,
+      supplierProfile: item.supplierProfile,
+    };
   }
 
   public onDelete(id) {
