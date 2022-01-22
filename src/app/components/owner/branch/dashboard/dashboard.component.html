@@ -1,21 +1,21 @@
-<div class="col-md-12 mt-3 mx-auto row m-auto" style="height: 350px">
-  <div class="row mt-5 col-md-12 grid">
+<div class="col-md-10 mt-3 mx-auto row m-auto">
+  <div class="row mt-5 col-md-12 ml-auto mr-auto grid">
     <div
       [routerLink]="[item.routerLink]"
       routerLinkActive="active-child"
-      class="menu card col-md-3 m-3"
+      class="menu card col-md-3 m-4"
       *ngFor="let item of titleList; let i = index"
-      style="position: relative; text-align: right; height: 120px"
+      style="position: relative !important; text-align: right; height: 120px"
     >
-      <div class="m-2 overlay">
+      <div class="overlay">
         <i class=" {{ item.icon }} m-2"></i>
       </div>
-      <div class="m-1">
-        {{ item.title }}
+      <div class="mt-5">
+        {{ item.title | translate }}
       </div>
 
-      <div class="d-flex m-5 justify-content-center">
-        <th translate scope="col">{{ item.subtitle }}.SR</th>
+      <div class="d-flex justify-content-center">
+        <b class="ml-auto" translate scope="col">{{ item.subtitle }}.SR</b>
       </div>
     </div>
   </div>
