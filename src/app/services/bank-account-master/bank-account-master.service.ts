@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class BankAccountMasterService {
+  get_branches: any;
   constructor(private http: HttpClient) {}
 
   post_bank_account(data) {
@@ -45,3 +46,12 @@ export class BankAccountMasterService {
     );
   }
 }
+ get_bank_account(id) {
+    return this.http.get<ApiResponse<Branch[]>>(
+      environment.domain + '/clients/c1.localhost/private/bank/' + id + '/'
+    );
+
+    
+  }
+
+
