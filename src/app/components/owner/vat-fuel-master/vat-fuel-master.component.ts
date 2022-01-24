@@ -8,7 +8,7 @@ import {
   validateForm,
 } from 'src/app/services/general/general.service';
 import { StoreService } from 'src/app/services/store/store.service';
-import { FuelRate } from './vat-fuel-master.model';
+import { Fuelmaster } from './vat-fuel-master.model';
 
 @Component({
   selector: 'app-vat-fuel-master',
@@ -21,13 +21,13 @@ export class VatFuelMasterComponent implements OnInit {
   modalRef?: BsModalRef;
   vatEditMode: boolean;
   FuelEditMode: boolean = false;
-  fuelmaster: FuelRate[] = [];
+  fuelmaster: Fuelmaster[] = [];
   customerForm: FormGroup;
   // commonVat: { vat: number; id: number } = {
   //   vat: null,
   //   id: undefined,
   // };
-  data: FuelRate = {
+  data: Fuelmaster = {
     name: '',
     fuel_vat: null,
     rate: null,
@@ -37,7 +37,7 @@ export class VatFuelMasterComponent implements OnInit {
   // counts = [];
   // total: number = 0;
 
-  tableData: FuelRate[] = [];
+  tableData: Fuelmaster[] = [];
   // editMode = false;
   constructor(
     private vatAndFuel: FueldataService,
@@ -122,7 +122,7 @@ export class VatFuelMasterComponent implements OnInit {
   //   this.FuelEditMode = false;
   // }
 
-  onEdit(item: FuelRate): void {
+  onEdit(item: Fuelmaster): void {
     this.FuelEditMode = true;
     console.log(item);
     // this.fuelmaster = [{ renderId: this.fuelmaster.length + 1, ...item }];
