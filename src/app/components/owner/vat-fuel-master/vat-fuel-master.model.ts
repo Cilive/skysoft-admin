@@ -8,4 +8,11 @@ export interface FuelData {
   company?: number;
 }
 
-export interface FuelRate {}
+export interface FuelRate {
+  name: string;
+  fuel_vat: number;
+  rate: number;
+  branches: string | number;
+  current_stock: number;
+  id?: number;
+}
