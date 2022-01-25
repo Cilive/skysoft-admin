@@ -13,3 +13,4 @@ export const BRANCH_EMPLOYEE = 'manager/employee/';
 export const ADDBRANCH = 'administrator/branches/';
 export const vat_master = 'administrator/branches/';
 export const cashmaster = 'clients/c1.localhost/private/cashmaster/';
+export const SESSION = 'clients/c1.localhost/private/session/';

@@ -37,6 +37,7 @@ import { StockManagementComponent } from './dashboard/stock-management/stock-man
 import { BranchEmployeeComponent } from './branch/branch-employee/branch-employee.component';
 import { AddbranchComponent } from './addbranch/addbranch.component';
 import { CashmasterComponent } from './cashmaster/cashmaster.component';
+import { SessionComponent } from './session/session.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
     // redirectTo: 'supplierprofile', pathMatch: 'full',
     component: OwnerComponent,
     children: [
+      {
+        path: 'session',
+        component: SessionComponent,
+      },
       {
         path: 'cashmaster',
         component: CashmasterComponent,
@@ -207,6 +212,7 @@ const routes: Routes = [
     StockManagementComponent,
     AddbranchComponent,
     CashmasterComponent,
+    SessionComponent,
   ],
   imports: [
     CommonModule,

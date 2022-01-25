@@ -1,0 +1,207 @@
+<div class="card m-auto col-md-12">
+  <div class="modal-header">
+    <h6 translate>Session</h6>
+  </div>
+  <div class="col-md-12">
+    <form
+      id="sessionForm"
+      (submit)="editMode ? onUpdate() : onSubmit()"
+      (reset)="onReset()"
+    >
+      <!-- <div class="row mt-3">
+        <div class="form-group col-md-4">
+          <label translate for="owner_name"> Name</label>
+          <input
+            translate
+            type="text"
+            class="form-control"
+            name="owner_name"
+            [(ngModel)]="data.name"
+            id="owner_name"
+            required
+          />
+          <small class="invalid-feedback">Field required</small>
+        </div>
+        <div class="form-group col-md-4">
+          <label translate for="owner_mail"> Email</label>
+          <input
+            translate
+            type="text"
+            class="form-control"
+            name="owner_mail"
+            [(ngModel)]="data.email"
+            id="owner_mail"
+            placeholder="Mail"
+            required
+          />
+          <small class="invalid-feedback">Field required</small>
+        </div>
+        <div class="form-group col-md-4">
+          <label translate for="bnk_name"> Phone</label>
+          <input
+            translate
+            type="text"
+            class="form-control"
+            name="bnk_name"
+            [(ngModel)]="data.phone"
+            id="bnk_name"
+            placeholder="Mobile"
+            required
+          />
+          <small class="invalid-feedback">Field required</small>
+        </div> -->
+      <div class="row">
+        <div class="form-group col-md-3">
+          <label translate for=""> Branch</label>
+          <!-- branch listing  api posting -->
+          <select
+            class="form-control"
+            name="branches"
+            [(ngModel)]="data.branches"
+            class="form-control"
+            id="type"
+            data-live-search="true"
+            required
+          >
+            <option translate value="col" selected hidden value="">
+              select
+            </option>
+
+            <option *ngFor="let item of branchesList" [value]="item.id">
+              {{ item.en_name }}
+            </option>
+          </select>
+        </div>
+
+        <!-- </div> -->
+        <!-- <input  class="btn btn-default" value="Foo"> -->
+        <div class="mt-4">
+          <button type="submit" class="mt-2 btn btn-outline-primary">
+            {{
+              editMode === true
+                ? ("Update" | translate)
+                : ("Submit" | translate)
+            }}
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <!-- <div class="row">
+          <th translate scope="col">Bank Opening Balance</th>
+          <label translate for=""></label>
+          <div class="col-md-3">
+            <input
+           
+            type="number"
+            class="form-control"
+          />
+            <div class="form-control" id="null"></div>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <th translate scope="col">Cash Opening Balance</th>
+          <div class="form-group col-md-3">
+            <input
+            type=""
+            class="form-control"
+          />
+            branch listing  api posting
+            <div class="form-control" id="null"></div>
+          </div>
+        </div> -->
+      </div>
+
+      <!-- </form> -->
+
+      <!-- </div> -->
+      <div class="text-centre mt-3 card">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="text-center" rowspan="2">#</th>
+              <th class="text-center" rowspan="2">Branches</th>
+              <th class="text-center" colspan="2">Opening Balance</th>
+              <th class="text-center" colspan="2">closing Balance</th>
+              <th class="text-center" rowspan="2">Action</th>
+            </tr>
+            <tr>
+              <th class="text-center">cash</th>
+              <th class="text-center">Bank</th>
+              <th class="text-center">cash</th>
+              <th class="text-center">Bank</th>
+              <!-- <button type="button" class="btn btn-danger">Danger</button> -->
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td class="text-center" translate scope="col">1</td>
+              <td class="text-center" translate scope="col">branches 1</td>
+              <td class="text-center" translate scope="col">200</td>
+              <td class="text-center" translate scope="col">300</td>
+              <td class="text-center" translate scope="col">300</td>
+              <td class="text-center" translate scope="col">300</td>
+              <td class="text-center">
+                <button type="button" class="btn btn-danger">
+                  Closing Session
+                </button>
+              </td>
+            </tr>
+
+            <tr *ngFor="let item of Session; let i = index">
+              <th translate scope="row">{{ i + 1 }}</th>
+              <td>{{ item.branches }}</td>
+              <td>{{ item.cash_opening_balance }}</td>
+              <td>{{ item.opening_balance_bank }}</td>
+              <td>
+                <div class="d-flex justify-content-around">
+                  <i
+                    title="Edit"
+                    class="bx bxs-edit"
+                    (click)="onEdit(item)"
+                  ></i>
+                  <i
+                    title="Delete"
+                    class="bx bxs-trash"
+                    (click)="openModal(template)"
+                  ></i>
+                </div>
+
+                <ng-template #template>
+                  <div class="modal-body text-center">
+                    <p translate>Do you want to confirm?</p>
+                    <div class="modal-footer">
+                      <button
+                        translate
+                        type="button"
+                        class="btn btn-outline-danger"
+                        (click)="onDelete(item.id)"
+                      >
+                        Yes
+                      </button>
+                      <button
+                        translate
+                        type="button"
+                        class="btn btn-primary"
+                        (click)="decline()"
+                      >
+                        No
+                      </button>
+                    </div>
+                  </div>
+                </ng-template>
+                <!-- </td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
+  </div>
+</div>
