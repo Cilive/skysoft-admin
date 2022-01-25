@@ -1,8 +1,8 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
-import { BankAccountMasterService } from 'src/app/services/bank-account-master/bank-account-master.service';
 import { BranchManagerService } from 'src/app/services/branch-manager/branch-manager.service';
+import { CashmasterService } from 'src/app/services/cashmaster/cashmaster.service';
 import {
   clearForm,
   validateForm,
@@ -10,25 +10,23 @@ import {
 import { OwnersService } from 'src/app/services/owners/owners.service';
 import { Branch } from '../branch/branch.modal';
 import { Owner } from '../company-owner/company-owner.model';
-import { BankAccounts } from './bank-account-master.model';
+import { Cashmaster } from './cashmaster.modal';
+// import { BankAccounts } from './bank-account-master.model';
 
 @Component({
-  selector: 'app-bank-account-master',
-  templateUrl: './bank-account-master.component.html',
-  styleUrls: ['./bank-account-master.component.scss'],
+  selector: 'app-cashmaster',
+  templateUrl: './cashmaster.component.html',
+  styleUrls: ['./cashmaster.component.scss'],
 })
-export class BankAccountMasterComponent implements OnInit {
+export class CashmasterComponent implements OnInit {
   modalRef?: BsModalRef;
-  bankaccounts: BankAccounts[] = [];
-  data: BankAccounts = {
-    acc_holder_name: '',
-    acc_no: '',
-    bank_name: '',
-    branches: '',
-    initial_balance: 0,
+  cashmaster: Cashmaster[] = [];
+  data: Cashmaster = {
+    opening_balance: 0,
     balance: 0,
     owner: '',
-    is_default: true,
+    cash_ac_name: '',
+    branches: '',
   };
   editMode = false;
   branchesList: Branch[] = [];
@@ -36,19 +34,19 @@ export class BankAccountMasterComponent implements OnInit {
 
   constructor(
     private modalService: BsModalService,
-    private bank: BankAccountMasterService,
+    private Cash: CashmasterService,
     private toast: AlertService,
     private branches: BranchManagerService,
     private owner: OwnersService
   ) {}
 
   ngOnInit(): void {
-    // this.prepareForm();
-    this.bank.get_bank_accounts().subscribe((res) => {
-      if (res.msg === 'Success') {
-        this.bankaccounts = res.data;
-      }
-    });
+    // // this.prepareForm();
+    // this.Cash.get_Cashmaster().subscribe((res) => {
+    //   if (res.msg === 'Success') {
+    //     this.cashmaster = res.data;
+    //   }
+    // });
     //this.branch listing api
     this.branches.get_branches().subscribe((res) => {
       if (res.msg === 'Success') {
@@ -68,43 +66,36 @@ export class BankAccountMasterComponent implements OnInit {
   }
   onReset() {
     this.editMode = false;
-    clearForm('bnkForm');
+    clearForm('cashForm');
   }
   onSubmit() {
-    if (validateForm('bnkForm')) {
-      this.bank.post_bank_account(this.data).subscribe((res) => {
+    if (validateForm('cashForm')) {
+      this.Cash.post_Cashmaster(this.data).subscribe((res) => {
         if (res.msg === 'Success') {
-          this.toast.success('Bank Account added successfully');
-          clearForm('bnkForm');
+          this.toast.success('Cash added successfully');
+          clearForm('cashForm');
           this.ngOnInit();
         }
       });
     }
   }
   onUpdate() {
-    this.bank.update_bank_account(this.data, this.data.id).subscribe((res) => {
+    this.Cash.update_Cashmaster(this.data, this.data.id).subscribe((res) => {
       if (res.msg === 'Success') {
-        this.toast.success('Bank Account updated successfully');
-        clearForm('bnkForm');
+        this.toast.success('Cash updated successfully');
+        clearForm('cashForm');
         this.ngOnInit();
       }
     });
   }
-  onEdit(item: BankAccounts) {
+  onEdit(item: Cashmaster) {
     this.editMode = true;
     this.data = {
-      acc_holder_name: item.acc_holder_name,
-      acc_no: item.acc_no,
-      bank_name: item.bank_name,
-      branches: item.branches,
-      id: item.id,
-      owner: item.owner,
-      initial_balance: item.initial_balance,
+      opening_balance: item.opening_balance,
       balance: item.balance,
-      is_default: item.is_default,
-      is_active: item.is_active,
-      credit_balance: item.credit_balance,
-      debit_balance: item.debit_balance,
+      owner: item.owner,
+      cash_ac_name: item.cash_ac_name,
+      branches: item.branches,
     };
   }
   openModal(template: TemplateRef<any>) {
@@ -113,7 +104,7 @@ export class BankAccountMasterComponent implements OnInit {
 
   decline(): void {}
   onDelete(id) {
-    this.bank.delete_bank_account(id).subscribe((res) => {
+    this.Cash.delete_Cashmaster(id).subscribe((res) => {
       if (res.msg === 'Success') {
         this.modalRef?.hide();
         this.ngOnInit();

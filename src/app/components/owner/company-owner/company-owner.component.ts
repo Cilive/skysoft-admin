@@ -10,7 +10,7 @@ import { OwnersService } from 'src/app/services/owners/owners.service';
 import { Branchmanager } from '../branch-manager/branch-manager.model';
 import { BranchComponent } from '../branch/branch.component';
 import { Branch } from '../branch/branch.modal';
-import { Owner } from './Company-Owner.model';
+import { Owner } from './company-owner.model';
 
 @Component({
   selector: 'app-company-owner',
@@ -58,7 +58,7 @@ export class CompanyOwnerComponent implements OnInit {
   }
   onSubmit() {
     if (validateForm('bnkForm')) {
-      this.owner.post_owner(this.data).subscribe((res) => {
+      this.owner.post_Owner(this.data).subscribe((res) => {
         if (res.msg === 'Success') {
           this.toast.success('owner Added');
           clearForm('bnkForm');
