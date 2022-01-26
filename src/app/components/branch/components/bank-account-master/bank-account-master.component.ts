@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
-import { BankAccountMasterService } from 'src/app/services/bank-account-master/bank-account-master.service';
+import { BankAccountMasterService } from '../../services/bank-account-master/bank-account-master.service';
 import {
   clearForm,
   validateForm,

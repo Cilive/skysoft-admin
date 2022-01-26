@@ -5,7 +5,8 @@ import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
-import { OwnersService } from 'src/app/services/owners/owners.service';
+import { OwnersService } from '../../services/owners/owners.service';
+import { Owner } from './company-owner.modal';
 
 @Component({
   selector: 'app-company-owner',
@@ -15,7 +16,7 @@ import { OwnersService } from 'src/app/services/owners/owners.service';
 export class CompanyOwnerComponent implements OnInit {
   modalRef?: BsModalRef;
   owners = [];
-  data: { name: String; id?: number; phone: number; email: string } = {
+  data: Owner = {
     name: '',
     phone: null,
     email: '',

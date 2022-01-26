@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Employee } from 'src/app/components/owner/pump-employee/pump-employee.model';
+import { Employee } from '../../components/pump-employee/pump-employee.model';
 import { PUMP_EMPLOYEE } from 'src/app/model/api';
 import { ApiResponse } from 'src/app/model/shared';
 import { environment } from 'src/environments/environment';

@@ -2,11 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
-import { FueldataService } from 'src/app/services/fueldata/fueldata.service';
-import {
-  clearForm,
-  validateForm,
-} from 'src/app/services/general/general.service';
+import { FueldataService } from '../../services/fueldata/fueldata.service';
 import { StoreService } from 'src/app/services/store/store.service';
 import { FuelData } from './vat-fuel-master.model';
 
@@ -58,30 +54,30 @@ export class VatFuelMasterComponent implements OnInit {
   }
 
   public onSubmitFuel(): void {
-    this.vatAndFuel.post_fuelDetail(this.fuelData).subscribe((res) => {
-      if (res.msg === 'Success') {
-        this.toast.success('Fuel Added');
-        this.ngOnInit();
-      }
-    });
+    // this.vatAndFuel.post_fuelDetail(this.fuelData).subscribe((res) => {
+    //   if (res.msg === 'Success') {
+    //     this.toast.success('Fuel Added');
+    //     this.ngOnInit();
+    //   }
+    // });
   }
   public onSubmitVat(): void {
-    this.vatAndFuel.post_vat({ ...this.commonVat }).subscribe((res) => {
-      if (res.msg === 'Success') {
-        this.ngOnInit();
-        this.toast.success('Vat Added');
-      }
-    });
+    // this.vatAndFuel.post_vat({ ...this.commonVat }).subscribe((res) => {
+    //   if (res.msg === 'Success') {
+    //     this.ngOnInit();
+    //     this.toast.success('Vat Added');
+    //   }
+    // });
   }
   public onUpdateVat(): void {
-    this.vatAndFuel
-      .update_vat(this.commonVat, this.commonVat.id)
-      .subscribe((res) => {
-        if (res.msg === 'Success') {
-          this.ngOnInit();
-          this.toast.success('Vat Updated');
-        }
-      });
+    // this.vatAndFuel
+    //   .update_vat(this.commonVat, this.commonVat.id)
+    //   .subscribe((res) => {
+    //     if (res.msg === 'Success') {
+    //       this.ngOnInit();
+    //       this.toast.success('Vat Updated');
+    //     }
+    //   });
   }
   public onUpdateFuel(): void {
     this.vatAndFuel

@@ -25,5 +25,5 @@ export const BRANCH_FUEL = 'owner/fuel/';
 export const BRANCH_VAT = 'owner/vat/';
 export const BRANCH_DISPENSES = 'clients/c1.localhost/manager/dispense/';
 export const BRANCH_OWNER = 'clients/c1.localhost/manager/owner/';
-export const BRANCH_MANAGER = 'public/branchmanager/';
+export const BRANCH_MANAGER = '/administrator/branchmanager/';
 export const BRANCH_EMPLOYEE = 'manager/employee/';

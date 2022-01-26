@@ -6,7 +6,7 @@ import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
-import { SupplierProfileService } from 'src/app/services/supplier-profile/supplier-profile.service';
+import { SupplierProfileService } from '../../services/supplier-profile/supplier-profile.service';
 import { SupplierProfile } from './supplier-profile.model';
 
 @Component({

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BankAccounts } from 'src/app/components/owner/bank-account-master/bank-account-master.model';
+import { BankAccounts } from '../../components/bank-account-master/bank-account-master.model';
 import { BANK_ACCOUNTS } from 'src/app/model/api';
 import { ApiResponse } from 'src/app/model/shared';
 import { environment } from 'src/environments/environment';

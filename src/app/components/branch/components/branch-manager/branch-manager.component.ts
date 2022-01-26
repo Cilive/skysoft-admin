@@ -2,7 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
-import { BranchManagerService } from 'src/app/services/branch-manager/branch-manager.service';
+import { BranchManagerService } from '../../services/branch-manager/branch-manager.service';
 import {
   clearForm,
   validateForm,

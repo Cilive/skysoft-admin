@@ -2,7 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
-import { CustomerProfileService } from 'src/app/services/customer-profile/customer-profile.service';
+import { CustomerProfileService } from '../../services/customer-profile/customer-profile.service';
 import {
   clearForm,
   validateForm,

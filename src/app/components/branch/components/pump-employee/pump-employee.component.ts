@@ -6,7 +6,7 @@ import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
-import { PumpEmployeeService } from 'src/app/services/pump-employee/pump-employee.service';
+import { PumpEmployeeService } from '../../services/pump-employee/pump-employee.service';
 import { Employee } from './pump-employee.model';
 
 @Component({
