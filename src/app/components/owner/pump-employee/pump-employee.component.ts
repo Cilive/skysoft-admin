@@ -8,7 +8,7 @@ import {
   validateForm,
 } from 'src/app/services/general/general.service';
 import { PumpEmployeeService } from 'src/app/services/pump-employee/pump-employee.service';
-import { Branch } from '../branch/branch.modal';
+import { Branch } from '../../branch/branch.modal';
 import { Employee } from './pump-employee.model';
 
 @Component({

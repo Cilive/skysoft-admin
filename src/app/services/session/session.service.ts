@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Branch } from 'src/app/components/owner/branch/branch.modal';
+import { Branch } from 'src/app/components/branch/branch.modal';
 import { Session } from 'src/app/components/owner/session/session.modal';
 import { OWNER, SESSION } from 'src/app/model/api';
 import { ApiResponse } from 'src/app/model/shared';

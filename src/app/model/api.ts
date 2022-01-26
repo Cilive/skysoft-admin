@@ -8,6 +8,14 @@ export const FUEL = 'clients/c1.localhost/private/fuelmaster/';
 export const VAT = 'owner/vat/';
 export const DISPENSES = 'clients/c1.localhost/private/dispense/';
 export const OWNER = 'clients/c1.localhost/private/owner/';
+export const ADDBRANCH = 'administrator/branches/';
+export const vat_master = 'administrator/branches/';
+export const cashmaster = 'clients/c1.localhost/private/cashmaster/';
+export const SESSION = 'clients/c1.localhost/private/session/';
+
+/**
+ * Branch Apis
+ */
 export const BRANCH_CUSTOMER = 'clients/c1.localhost/manager/customer/';
 export const BRANCH_SUPPLIER = 'clients/c1.localhost/manager/supplier/';
 export const BRANCH_PUMP_EMPLOYEE = 'public/employee/';
@@ -19,7 +27,3 @@ export const BRANCH_DISPENSES = 'clients/c1.localhost/manager/dispense/';
 export const BRANCH_OWNER = 'clients/c1.localhost/manager/owner/';
 export const BRANCH_MANAGER = 'public/branchmanager/';
 export const BRANCH_EMPLOYEE = 'manager/employee/';
-export const ADDBRANCH = 'administrator/branches/';
-export const vat_master = 'administrator/branches/';
-export const cashmaster = 'clients/c1.localhost/private/cashmaster/';
-export const SESSION = 'clients/c1.localhost/private/session/';

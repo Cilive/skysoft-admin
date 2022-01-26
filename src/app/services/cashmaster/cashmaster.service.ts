@@ -4,7 +4,7 @@ import { ApiResponse } from 'src/app/model/shared';
 import { environment } from 'src/environments/environment';
 import { Cashmaster } from 'src/app/components/owner/cashmaster/cashmaster.modal';
 import { cashmaster } from 'src/app/model/api';
-import { Branch } from 'src/app/components/owner/branch/branch.modal';
+import { Branch } from 'src/app/components/branch/branch.modal';
 import { Owner } from 'src/app/components/owner/company-owner/company-owner.model';
 
 @Injectable({

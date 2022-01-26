@@ -9,7 +9,7 @@ import {
   validateForm,
 } from 'src/app/services/general/general.service';
 import { BankAccounts } from '../bank-account-master/bank-account-master.model';
-import { Branch } from '../branch/branch.modal';
+import { Branch } from '../../branch/branch.modal';
 import { Dispense } from './dispense .modal';
 
 @Component({

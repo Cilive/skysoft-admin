@@ -8,7 +8,7 @@ import {
   validateForm,
 } from 'src/app/services/general/general.service';
 import { OwnersService } from 'src/app/services/owners/owners.service';
-import { Branch } from '../branch/branch.modal';
+import { Branch } from '../../branch/branch.modal';
 import { Owner } from '../company-owner/company-owner.model';
 import { Cashmaster } from './cashmaster.modal';
 // import { BankAccounts } from './bank-account-master.model';

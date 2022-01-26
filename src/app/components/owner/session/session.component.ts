@@ -8,9 +8,7 @@ import {
 } from 'src/app/services/general/general.service';
 import { SessionService } from 'src/app/services/session/session.service';
 // import { OwnersService } from 'src/app/services/owners/owners.service';
-import { Branchmanager } from '../branch-manager/branch-manager.model';
-import { BranchComponent } from '../branch/branch.component';
-import { Branch } from '../branch/branch.modal';
+import { Branch } from '../../branch/branch.modal';
 import { Session } from './session.modal';
 
 @Component({

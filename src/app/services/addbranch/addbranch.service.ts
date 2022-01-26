@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Addbranch } from 'src/app/components/owner/addbranch/addbranch.modal';
 
-import { Branch } from 'src/app/components/owner/branch/branch.modal';
+import { Branch } from 'src/app/components/branch/branch.modal';
 import { ADDBRANCH } from 'src/app/model/api';
 import { ApiResponse } from 'src/app/model/shared';
 import { environment } from 'src/environments/environment';
