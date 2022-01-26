@@ -155,14 +155,56 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       case Role.maneger === role:
         this.routes = [
           {
-            path: '/branch/dashboard',
             icon: 'bx bxs-business',
+            path: '/branch/dashboard',
             title: 'Dash Board',
           },
           {
-            path: '/branc/branch-employee',
             icon: 'bx bxs-user-account',
+            path: '/branch/branch-employee',
             title: 'Employees',
+          },
+          {
+            icon: 'bx bxs-business',
+            path: '/branch/dashboard',
+            title: 'dashboard',
+          },
+          {
+            icon: 'bx bxs-user-account',
+            path: '/branch/users',
+            title: 'Users',
+          },
+
+          {
+            icon: 'bx bxs-gas-pump',
+            path: '/branch/fuel',
+            title: 'Fuel Management',
+          },
+          {
+            icon: 'bx bxs-spreadsheet',
+            path: '/branch/invoices',
+            title: 'Invoices',
+          },
+          {
+            icon: 'bx bxs-bank',
+            path: '/branch/bank_Accounts',
+            title: 'Bank Account Master',
+          },
+
+          {
+            icon: 'bx bxs-package',
+            path: '/branch/dispensers',
+            title: 'Dispensers',
+          },
+          {
+            icon: 'bx bx-transfer',
+            path: '/branch/transactions',
+            title: 'Transactions',
+          },
+          {
+            icon: 'bx bxs-report',
+            path: '/branch/reports',
+            title: 'Reports',
           },
         ];
         break;

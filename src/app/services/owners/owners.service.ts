@@ -36,4 +36,9 @@ export class OwnersService {
       {}
     );
   }
+  // }
+  //   get_owner(id) {
+  //     return this.http.put<ApiResponse<any>>(
+  //       environment.domain + 'clients/c1.localhost/manager/owner/' + '/' + id + '/',
+  //     );
 }

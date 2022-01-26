@@ -42,4 +42,9 @@ export class CustomerProfileService {
       {}
     );
   }
+  // get_custemer_profile() {
+  //   return this.http.get<ApiResponse<any[]>>(
+  //     environment.domain + 'clients/c1.localhost/manager/customer/'
+  //   );
+  // }
 }

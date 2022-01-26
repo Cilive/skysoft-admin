@@ -1,12 +1,12 @@
 export const CREATE_COMPANY = 'public/company/';
-export const CUSTOMER = 'owner/customer/';
-export const SUPPLIER = 'owner/supplier/';
+export const CUSTOMER = 'clients/c1.localhost/manager/customer/';
+export const SUPPLIER = 'clients/c1.localhost/manager/supplier/';
 export const PUMP_EMPLOYEE = 'public/employee/';
-export const BANK_ACCOUNTS = 'owner/bank/';
+export const BANK_ACCOUNTS = 'clients/c1.localhost/manager/bank/';
 export const DEPOSIT = 'owner/deposit/';
 export const FUEL = 'owner/fuel/';
 export const VAT = 'owner/vat/';
-export const DISPENSES = 'owner/dispense/';
-export const OWNER = 'owner/owner/';
+export const DISPENSES = 'clients/c1.localhost/manager/dispense/';
+export const OWNER = 'clients/c1.localhost/manager/owner/';
 export const BRANCH_MANAGER = 'public/branchmanager/';
 export const BRANCH_EMPLOYEE = 'manager/employee/';
