@@ -7,9 +7,8 @@ import {
   validateForm,
 } from 'src/app/services/general/general.service';
 import { OwnersService } from 'src/app/services/owners/owners.service';
-import { Branchmanager } from '../branch-manager/branch-manager.model';
-import { BranchComponent } from '../branch/branch.component';
-import { Branch } from '../branch/branch.modal';
+
+import { Branch } from '../../branch/branch.modal';
 import { Owner } from './company-owner.model';
 
 @Component({
@@ -54,14 +53,14 @@ export class CompanyOwnerComponent implements OnInit {
     });
   }
   onReset() {
-    clearForm('bnkForm');
+    clearForm('ownerform');
   }
   onSubmit() {
     if (validateForm('bnkForm')) {
       this.owner.post_Owner(this.data).subscribe((res) => {
         if (res.msg === 'Success') {
           this.toast.success('owner Added');
-          clearForm('bnkForm');
+          clearForm('ownerform');
           this.ngOnInit();
         }
       });
@@ -71,7 +70,7 @@ export class CompanyOwnerComponent implements OnInit {
     this.owner.update_owner(this.data, this.data.id).subscribe((res) => {
       if (res.msg === 'Success') {
         this.toast.success('owner Updated');
-        clearForm('bnkForm');
+        clearForm('ownerform');
         this.editMode = false;
         this.ngOnInit();
       }

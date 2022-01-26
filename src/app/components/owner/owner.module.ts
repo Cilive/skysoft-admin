@@ -34,7 +34,7 @@ import { ExpenceComponent } from './dashboard/expence/expence.component';
 import { TotalPurchaseComponent } from './dashboard/total-purchase/total-purchase.component';
 import { BankAccountSummeryComponent } from './dashboard/bank-account-summery/bank-account-summery.component';
 import { StockManagementComponent } from './dashboard/stock-management/stock-management.component';
-import { BranchEmployeeComponent } from './branch/branch-employee/branch-employee.component';
+import { BranchEmployeeComponent } from '../branch/branch-employee/branch-employee.component';
 import { AddbranchComponent } from './addbranch/addbranch.component';
 import { CashmasterComponent } from './cashmaster/cashmaster.component';
 import { SessionComponent } from './session/session.component';

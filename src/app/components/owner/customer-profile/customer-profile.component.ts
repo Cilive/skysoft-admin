@@ -8,7 +8,7 @@ import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
-import { Branch } from '../branch/branch.modal';
+import { Branch } from '../../branch/branch.modal';
 // import { CompanyProfileService } from '../customer-profile/customer-profile.service';
 // import { Branch } from 'src/app/services/customer-profile/customer-profile.service';
 import { CustomerProfile } from './customer-profile.modal';
@@ -64,6 +64,7 @@ export class CustomerProfileComponent implements OnInit {
 
   public onSubmit(): void {
     if (validateForm('form')) {
+      // console.log(this.data);
       this.customerService.post_customer_profile(this.data).subscribe((res) => {
         if (res.msg === 'Success') {
           this.toast.success('Customer Added Successful');
