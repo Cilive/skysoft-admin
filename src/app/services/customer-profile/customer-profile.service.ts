@@ -44,14 +44,8 @@ export class CustomerProfileService {
   }
 
   get_branchwaisecustomer(id) {
-    return this.http.post<ApiResponse<CustomerProfile[]>>(
-      `${environment.domain}clients/c1.localhost/private/branch_customers`,
-      {},
-      {
-        params: {
-          branches: id,
-        },
-      }
+    return this.http.get<ApiResponse<CustomerProfile[]>>(
+      `${environment.domain}clients/c1.localhost/private/branch_customers/${id}/`
     );
   }
 }
