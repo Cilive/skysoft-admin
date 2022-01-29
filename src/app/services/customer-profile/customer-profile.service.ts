@@ -42,9 +42,16 @@ export class CustomerProfileService {
       {}
     );
   }
-  // get_custemer_profile() {
-  //   return this.http.get<ApiResponse<any[]>>(
-  //     environment.domain + 'clients/c1.localhost/manager/customer/'
-  //   );
-  // }
+
+  get_branchwaisecustomer(id) {
+    return this.http.post<ApiResponse<CustomerProfile[]>>(
+      `${environment.domain}clients/c1.localhost/private/branch_customers`,
+      {},
+      {
+        params: {
+          branches: id,
+        },
+      }
+    );
+  }
 }

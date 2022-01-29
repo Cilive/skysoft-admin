@@ -12,18 +12,21 @@ export const ADDBRANCH = 'administrator/branches/';
 export const vat_master = 'administrator/branches/';
 export const cashmaster = 'clients/c1.localhost/private/cashmaster/';
 export const SESSION = 'clients/c1.localhost/private/session/';
+export const invoices = '/clients/c1.localhost/private/invoice/';
 
 /**
  * Branch Apis
  */
 export const BRANCH_CUSTOMER = 'clients/c1.localhost/manager/customer/';
 export const BRANCH_SUPPLIER = 'clients/c1.localhost/manager/supplier/';
-export const BRANCH_PUMP_EMPLOYEE = 'public/employee/';
+export const BRANCH_PUMP_EMPLOYEE = 'clients/c1.localhost/manager/employee/';
 export const BRANCH_BANK_ACCOUNTS = 'clients/c1.localhost/manager/bank/';
 export const BRANCH_DEPOSIT = 'owner/deposit/';
 export const BRANCH_FUEL = 'owner/fuel/';
 export const BRANCH_VAT = 'owner/vat/';
 export const BRANCH_DISPENSES = 'clients/c1.localhost/manager/dispense/';
 export const BRANCH_OWNER = 'clients/c1.localhost/manager/owner/';
-export const BRANCH_MANAGER = '/administrator/branchmanager/';
-export const BRANCH_EMPLOYEE = 'manager/employee/';
+export const BRANCH_MANAGER = 'administrator/branchmanager/';
+export const BRANCH_EMPLOYEE = '';
+export const BRANCH_CASHMASTER = 'clients/c1.localhost/manager/cashmaster/';
+export const BRANCH_INVOICES = '';
