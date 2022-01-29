@@ -1,56 +1,86 @@
 <form class="card" id="form" (submit)="editMode ? onUpdate() : onSubmit()">
   <div class="modal-header">
     <h6 translate>Generate Purchase Invoice</h6>
+    <div class="form-row col-md-10">
+      <div class="form-group col-md-4">
+        <!-- <label translate for="company">Date</label> -->
+        <input
+          translate
+          type="text"
+          placeholder="Date"
+          bsDatepicker
+          [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+          [(ngModel)]="data.date"
+          class="form-control"
+          required
+          name="date"
+        />
+        <small id="helpId" class="invalid-feedback">Field is required</small>
+      </div>
+
+      <div class="form-group col-md-5">
+        <!-- <label translate for=""> Payment Type </label> -->
+        <select
+          type="text"
+          class="form-control"
+          name="selectss"
+          [(ngModel)]="data.payment_type"
+          id="type"
+          required
+        >
+          <option translate value="col" selected hidden value="">
+            Payment Type
+          </option>
+
+          <option translate scope="col">Cash</option>
+          <option translate scope="col">Bank</option>
+        </select>
+
+        <small id="helpId" class="invalid-feedback">Field is required</small>
+      </div>
+    </div>
   </div>
   <div class="m-2">
     <div class="">
       <div class="p-2">
         <div class="form-row">
-          <div class="form-group col-md-4">
-            <label translate for="name">Supplier Name</label>
-            <input
-              translate
-              type="text"
+          <div class="form-group col-md-3">
+            <label translate for=""> Customer Name </label>
+            <select
               class="form-control"
-              required
+              name="selectss"
               [(ngModel)]="data.customer_name"
-              name="customer_name"
-            />
-            <small id="helpId" class="invalid-feedback"
-              >Field is required</small
-            >
-          </div>
-          <div class="form-group col-md-4">
-            <label translate for="company">Type</label>
-            <input
-              translate
-              type="text"
-              [(ngModel)]="data.type"
-              class="form-control"
+              id="type"
               required
-              name="type"
-            />
+            ></select>
+
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
             >
           </div>
-          <div class="form-group col-md-2">
-            <label translate for="company">Date</label>
-            <input
-              translate
-              type="text"
-              bsDatepicker
-              [bsConfig]="{ containerClass: 'theme-dark-blue' }"
-              [(ngModel)]="data.date"
+          <div class="form-group col-md-3">
+            <label translate for=""> Fuel</label>
+            <!-- fuel listing  api posting -->
+            <select
               class="form-control"
+              name="branches"
+              [(ngModel)]="data.fuel"
+              class="form-control"
+              id="type"
+              data-live-search="true"
               required
-              name="date"
-            />
-            <small id="helpId" class="invalid-feedback"
-              >Field is required</small
             >
+              <option translate value="col" selected hidden value="">
+                select
+              </option>
+
+              <option *ngFor="let item of fuelList" [value]="item.id">
+                {{ item.name }}
+              </option>
+            </select>
           </div>
-          <div class="form-group col-md-2">
+
+          <div class="form-group col-md-3">
             <label translate for="company">Litre</label>
             <input
               translate
@@ -64,15 +94,14 @@
               >Field is required</small
             >
           </div>
-        </div>
-        <div class="form-row">
+
           <div class="form-group col-md-3">
-            <label translate for="company">Amount</label>
+            <label translate for="company">Vat %</label>
             <input
               translate
               type="number"
               class="form-control"
-              [(ngModel)]="data.amount"
+              [(ngModel)]="data.vat"
               required
               name="amount"
             />
@@ -80,12 +109,14 @@
               >Field is required</small
             >
           </div>
+        </div>
+        <div class="form-row">
           <div class="form-group col-md-3">
-            <label translate for="company">Vat</label>
+            <label translate for="company">Net Amount</label>
             <input
               translate
               type="number"
-              [(ngModel)]="data.vat"
+              [(ngModel)]="data.total_amt"
               class="form-control"
               required
               name="vat"
@@ -94,13 +125,29 @@
               >Field is required</small
             >
           </div>
+
           <div class="form-group col-md-3">
-            <label translate for="company">Total</label>
+            <label translate for="company">Gross Amount</label>
             <input
               translate
               type="number"
               class="form-control"
-              [(ngModel)]="data.total"
+              [(ngModel)]="data.gross_amt"
+              required
+              name="amount"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+
+          <div class="form-group col-md-3">
+            <label translate for="company">Payable Amount</label>
+            <input
+              translate
+              type="number"
+              class="form-control"
+              [(ngModel)]="data.paid_amt"
               required
               name="total"
             />
@@ -140,3 +187,18 @@
     </button>
   </div>
 </form>
+<div class="mt-3 card">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th translate scope="col">Date</th>
+        <th translate scope="col">Invoice No</th>
+        <th translate scope="col">customer Name</th>
+        <th translate scope="col">Payable Amount</th>
+        <th translate scope="col">Balance Amount</th>
+        <th translate scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>

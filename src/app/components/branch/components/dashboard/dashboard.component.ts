@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { htmlTextExtractor } from 'src/app/app.component';
-import { DashboardService } from 'src/app/services/service/dashboard/dashboard.service';
+import { DashboardService } from '../../services/dashboard/dashboard.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',

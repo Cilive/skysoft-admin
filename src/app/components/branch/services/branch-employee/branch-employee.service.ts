@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class BranchEmployeeService {
+export class branchEmployeeService {
   get_branch_employees() {
     return this.http.get<ApiResponse<BranchDashboardInterface[]>>(
       environment.domain + this.tenant + BRANCH_EMPLOYEE

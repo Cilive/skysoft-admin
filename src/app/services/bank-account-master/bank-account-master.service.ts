@@ -45,8 +45,10 @@ export class BankAccountMasterService {
       {}
     );
   }
+
+  get_branchwaisebank(id) {
+    return this.http.get<ApiResponse<BankAccounts[]>>(
+      environment.domain + '/clients/c1.localhost/private/bank/' + id + '/'
+    );
+  }
 }
-//  get_bank_account(id) {
-//     return this.http.get<ApiResponse<Branch[]>>(
-//       environment.domain + '/clients/c1.localhost/private/bank/' + id + '/'
-//     );

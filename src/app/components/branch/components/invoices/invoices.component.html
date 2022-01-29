@@ -1,39 +1,204 @@
-<div class="col-md-5 ml-auto mr-auto mb-5">
-  <div class="row mt-5 col-md-12 grid">
-    <div
-      (click)="isSalesInvoice = true"
-      class="menu card d-flex justify-content-center col-md-5 m-auto {{
-        isSalesInvoice ? 'active-tab' : ''
-      }}"
-      style="position: relative; height: 100px"
-    >
-      <p translate class="mt-3">Sales Invoice</p>
-      <div class="overlay">
-        <div class="m-2" style="position: relative">
-          <i class="bx bx-spreadsheet"></i>
-        </div>
+<form class="card" id="form" (submit)="editMode ? onUpdate() : onSubmit()">
+  <div class="modal-header">
+    <h6 translate>Generate Sales Invoice</h6>
+    <div class="form-row col-md-10">
+      <div class="form-group col-md-4">
+        <!-- <label translate for="company">Date</label> -->
+        <input
+          translate
+          type="text"
+          placeholder="Date"
+          bsDatepicker
+          [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+          [(ngModel)]="data.date"
+          class="form-control"
+          required
+          name="date"
+        />
+        <small id="helpId" class="invalid-feedback">Field is required</small>
+      </div>
+
+      <div class="form-group col-md-5">
+        <!-- <label translate for=""> Payment Type </label> -->
+        <select
+          type="text"
+          class="form-control"
+          name="selectss"
+          [(ngModel)]="data.payment_type"
+          id="type"
+          required
+        >
+          <option translate value="col" selected hidden value="">
+            Payment Type
+          </option>
+
+          <option translate scope="col">Cash</option>
+          <option translate scope="col">Bank</option>
+        </select>
+
+        <small id="helpId" class="invalid-feedback">Field is required</small>
       </div>
     </div>
-    <div
-      (click)="isSalesInvoice = false"
-      class="menu card d-flex justify-content-center col-md-5 m-auto {{
-        !isSalesInvoice ? 'active-tab' : ''
-      }}"
-      style="position: relative; height: 100px"
-    >
-      <p translate class="mt-3">Purchase Invoice</p>
-      <div class="overlay">
-        <div class="m-2">
-          <i class="bx bx-spreadsheet"></i>
+  </div>
+  <div class="m-2">
+    <div class="">
+      <div class="p-2">
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label translate for=""> Customer Name </label>
+            <select
+              class="form-control"
+              name="selectss"
+              [(ngModel)]="data.customer_name"
+              id="type"
+              required
+            ></select>
+
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+          <div class="form-group col-md-3">
+            <label translate for=""> Fuel</label>
+            <!-- fuel listing  api posting -->
+            <select
+              class="form-control"
+              name="branches"
+              [(ngModel)]="data.fuel"
+              class="form-control"
+              id="type"
+              data-live-search="true"
+              required
+            >
+              <option translate value="col" selected hidden value="">
+                select
+              </option>
+
+              <option *ngFor="let item of fuelList" [value]="item.id">
+                {{ item.name }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group col-md-3">
+            <label translate for="company">Litre</label>
+            <input
+              translate
+              type="number"
+              class="form-control"
+              [(ngModel)]="data.litre"
+              required
+              name="litre"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+
+          <div class="form-group col-md-3">
+            <label translate for="company">Vat %</label>
+            <input
+              translate
+              type="number"
+              class="form-control"
+              [(ngModel)]="data.vat"
+              required
+              name="amount"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label translate for="company">Net Amount</label>
+            <input
+              translate
+              type="number"
+              [(ngModel)]="data.total_amt"
+              class="form-control"
+              required
+              name="vat"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+
+          <div class="form-group col-md-3">
+            <label translate for="company">Gross Amount</label>
+            <input
+              translate
+              type="number"
+              class="form-control"
+              [(ngModel)]="data.gross_amt"
+              required
+              name="amount"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+
+          <div class="form-group col-md-3">
+            <label translate for="company">Payable Amount</label>
+            <input
+              translate
+              type="number"
+              class="form-control"
+              [(ngModel)]="data.paid_amt"
+              required
+              name="total"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+          <div class="form-group col-md-3">
+            <label translate for="company">Old Balance</label>
+            <input
+              translate
+              type="number"
+              class="form-control"
+              required
+              [(ngModel)]="data.old_balance"
+              name="old_balance"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<div *ngIf="isSalesInvoice === true">
-  <app-sales-invoice></app-sales-invoice>
-</div>
-<div *ngIf="isSalesInvoice !== true">
-  <app-purchase-invoice></app-purchase-invoice>
+  <div class="d-flex justify-content-center modal-footer">
+    <button translate class="btn btn-outline-primary" type="submit">
+      {{ editMode ? "Update" : "Submit" }}
+    </button>
+    <button
+      translate
+      class="btn btn-outline-warning"
+      type="button"
+      (click)="onReset()"
+    >
+      Reset
+    </button>
+  </div>
+</form>
+<div class="mt-3 card">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th translate scope="col">Date</th>
+        <th translate scope="col">Invoice No</th>
+        <th translate scope="col">customer Name</th>
+        <th translate scope="col">Payable Amount</th>
+        <th translate scope="col">Balance Amount</th>
+        <th translate scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 </div>

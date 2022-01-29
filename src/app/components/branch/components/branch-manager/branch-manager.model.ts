@@ -28,3 +28,5 @@ export interface User {
   groups: any[];
   user_permissions: any[];
 }
+
+export interface Branchmanager {}

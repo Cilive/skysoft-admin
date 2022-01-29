@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class DashboardService {
   private url = environment.domain;
   constructor(private http: HttpClient) {}
-  owner_dashboard() {
+  branch_dashboard() {
     return this.http.get<ApiResponse<OwnerDashboardInterface>>(
       `${this.url}clients/c1.localhost/private/dashboard/`
     );

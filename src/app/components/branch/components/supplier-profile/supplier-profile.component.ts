@@ -76,7 +76,7 @@ export class SupplierProfileComponent implements OnInit {
 
   public onReset(): void {
     this.supplierForm.reset();
-    // clearForm('form');
+    clearForm('form');
     this.editMode = false;
   }
 

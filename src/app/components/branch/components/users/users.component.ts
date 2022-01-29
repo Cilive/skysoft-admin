@@ -9,27 +9,27 @@ export class UsersComponent implements OnInit {
   tileList: Tiles = [
     {
       icon: 'bx bxs-branch',
-      routerLink: '/owner/branch_manager',
+      routerLink: '/branch/branch_manager',
       title: 'Branch Managers',
     },
     {
       icon: 'bx bxs-group',
-      routerLink: '/owner/employees',
+      routerLink: '/branch/employees',
       title: 'Employees',
     },
     {
       icon: 'bx bxs-user-voice',
-      routerLink: '/owner/supplier_Profile',
+      routerLink: '/branch/supplier_Profile',
       title: 'Suppliers',
     },
     {
       icon: 'bx bxs-factory',
-      routerLink: '/owner/customer_Profile',
+      routerLink: '/branch/customer_Profile',
       title: 'Customers',
     },
     {
       icon: 'bx bx-shield-quarter',
-      routerLink: '/owner/company_Owners',
+      routerLink: '/branch/company_Owners',
       title: 'Owners',
     },
   ];

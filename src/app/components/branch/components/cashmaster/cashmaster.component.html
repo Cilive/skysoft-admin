@@ -4,7 +4,7 @@
   </div>
   <div class="col-md-12">
     <form
-      id="bnkForm"
+      id="cashForm"
       (submit)="editMode ? onUpdate() : onSubmit()"
       (reset)="onReset()"
     >
@@ -22,71 +22,53 @@
           <small class="invalid-feedback">Field required</small>
         </div> -->
         <div class="form-group col-md-4">
-          <label translate for="bnk_name">Bank name</label>
+          <label translate for="cash account name">Cash Account Name</label>
           <input
             translate
             type="text"
             class="form-control"
-            name="bnk_name"
-            [(ngModel)]="data.bank_name"
-            id="bnk_name"
+            name="cash_ac_name"
+            [(ngModel)]="data.cash_ac_name"
+            id="cash_ac_name"
             required
           />
           <small class="invalid-feedback">Field required</small>
         </div>
+
         <div class="form-group col-md-4">
-          <label translate for="holder">Account Holder Name</label>
-          <input
-            translate
-            type="text"
+          <label translate for=""> Owner</label>
+          <!-- branch listing  api posting -->
+          <select
             class="form-control"
-            name="holder"
-            [(ngModel)]="data.acc_holder_name"
-            id="holder"
-            required
-          />
-          <small class="invalid-feedback">Field required</small>
+            name="branches"
+            [(ngModel)]="data.owner"
+            class="form-control"
+            id="type"
+            data-live-search="true"
+          >
+            <option translate value="col" selected hidden value="">
+              select
+            </option>
+
+            <option *ngFor="let item of ownersList" [value]="item.id">
+              {{ item.name }}
+            </option>
+          </select>
         </div>
       </div>
       <div class="row">
-        <div class="form-group col-md-4">
-          <label translate for="ACC_NO">Account No</label>
-          <input
-            translate
-            type="number"
-            class="form-control"
-            name="ACC_NO"
-            [(ngModel)]="data.acc_no"
-            id="ACC_NO"
-            required
-          />
-          <small class="invalid-feedback">Field required</small>
-        </div>
         <div *ngIf="editMode !== true" class="form-group col-md-4">
-          <label translate for="ACC_NO">Initial Balance</label>
+          <label translate for="opening balance">Opening Balance</label>
           <input
             translate
             type="number"
             class="form-control"
-            name="initial_balance"
-            [(ngModel)]="data.initial_balance"
-            id="initial_balance"
+            name="opening balance"
+            [(ngModel)]="data.opening_balance"
+            id="opening balance"
             required
           />
           <small class="invalid-feedback">Field required</small>
-        </div>
-        <div class="form-check ml-auto col-md-6 text-right">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value=""
-            id="flexCheckDefault"
-            [(ngModel)]="data.is_default"
-            name="default"
-          />
-          <label class="form-check-label" for="flexCheckDefault">
-            Default
-          </label>
         </div>
       </div>
       <div class="modal-footer">
@@ -114,14 +96,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr
-        [class]="item.is_default === true ? 'text-primary' : ''"
-        *ngFor="let item of bankaccounts; let i = index"
-      >
+      <tr *ngFor="let item of cashmaster; let i = index">
         <th translate scope="row">{{ i + 1 }}</th>
-        <td>{{ item.bank_name }}</td>
-        <td>{{ item.acc_holder_name }}</td>
-        <td>{{ item.acc_no }}</td>
+        <td>{{ item.cash_ac_name }}</td>
+        <td>{{ item.opening_balance }}</td>
+        <!-- <td>{{ item.acc_no }}</td> -->
         <td>
           <div class="d-flex justify-content-around">
             <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>

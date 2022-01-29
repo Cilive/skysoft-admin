@@ -38,6 +38,7 @@ import { BranchEmployeeComponent } from '../branch/components/branch-employee/br
 import { AddbranchComponent } from './addbranch/addbranch.component';
 import { CashmasterComponent } from './cashmaster/cashmaster.component';
 import { SessionComponent } from './session/session.component';
+import { InvoicelistingComponent } from './invoicelisting/invoicelisting.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,15 @@ const routes: Routes = [
     // redirectTo: 'supplierprofile', pathMatch: 'full',
     component: OwnerComponent,
     children: [
+      {
+        path: '',
+        redirectTo: 'invoicelisting',
+        pathMatch: 'full',
+      },
+      {
+        path: 'invoicelisting',
+        component: InvoicelistingComponent,
+      },
       {
         path: 'session',
         component: SessionComponent,
@@ -213,6 +223,7 @@ const routes: Routes = [
     AddbranchComponent,
     CashmasterComponent,
     SessionComponent,
+    InvoicelistingComponent,
   ],
   imports: [
     CommonModule,

@@ -36,6 +36,9 @@ import { PaymentsOutComponent } from './components/transactions/payments-out/pay
 import { TransacionsComponent } from './components/transactions/transacions.component';
 import { UsersComponent } from './components/users/users.component';
 import { VatFuelMasterComponent } from './components/vat-fuel-master/vat-fuel-master.component';
+import { CashmasterComponent } from './components/cashmaster/cashmaster.component';
+import { cashmaster } from 'src/app/model/api';
+import { InvoicelistingComponent } from './components/invoicelisting/invoicelisting.component';
 
 const routes: Routes = [
   {
@@ -43,18 +46,32 @@ const routes: Routes = [
     component: BranchComponent,
     children: [
       {
-        path: 'dashboard',
-        component: DashboardComponent,
-      },
-      {
-        path: 'branch-employee',
-        component: BranchEmployeeComponent,
+        path: 'Invoicelisting',
+        component: InvoicelistingComponent,
       },
       {
         path: '',
-        redirectTo: 'branch-employee',
+        redirectTo: 'Invoicelisting',
         pathMatch: 'full',
       },
+      {
+        path: '',
+        redirectTo: 'cashmaster',
+        pathMatch: 'full',
+      },
+      {
+        path: 'cashmaster',
+        component: CashmasterComponent,
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+      },
+      // {
+      //   path: 'branch-employee',
+      //   component: BranchEmployeeComponent,
+      // },
+
       {
         path: '',
         redirectTo: 'dashboard',
@@ -101,6 +118,11 @@ const routes: Routes = [
       {
         path: 'employees',
         component: PumpEmployeeComponent,
+      },
+      {
+        path: '',
+        redirectTo: 'branch-employee',
+        pathMatch: 'full',
       },
       {
         path: 'bank_Accounts',
@@ -197,6 +219,8 @@ const routes: Routes = [
     TotalPurchaseComponent,
     BankAccountSummeryComponent,
     StockManegmentComponent,
+    CashmasterComponent,
+    InvoicelistingComponent,
   ],
   imports: [
     CommonModule,

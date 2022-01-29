@@ -1,24 +1,28 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { BranchEmployeeInterface } from 'src/app/model/branch-employee';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { AlertService } from 'src/app/services/alert/alert.service';
 import { BranchEmployeeService } from 'src/app/services/branch-employee/branch-employee.service';
-
 import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
+import { Employee } from './branch-employee.modal';
 
 @Component({
-  selector: 'app-branch-employee',
+  selector: 'app-bank-account-master',
   templateUrl: './branch-employee.component.html',
   styleUrls: ['./branch-employee.component.scss'],
 })
 export class BranchEmployeeComponent implements OnInit {
   employee = [];
-  toast: any;
-  editMode: boolean;
-  modalRef: any;
-  modalService: any;
-  constructor(private branchEmployee: BranchEmployeeService) {}
+  modalRef?: BsModalRef;
+  Branchemployee: BranchEmployeeComponent[] = [];
+
+  constructor(
+    private branchEmployee: BranchEmployeeService,
+    private modalService: BsModalService,
+    private toast: AlertService
+  ) {}
 
   ngOnInit(): void {
     this.branchEmployee.get_branch_employees().subscribe((res) => {
@@ -41,7 +45,7 @@ export class BranchEmployeeComponent implements OnInit {
         });
     }
   }
-  data: BranchEmployeeInterface = {
+  data: Employee = {
     email: '',
     iqama_no: '',
     name: '',
@@ -49,6 +53,7 @@ export class BranchEmployeeComponent implements OnInit {
     phone: '',
     username: '',
   };
+  editMode = false;
   public onReset(): void {
     clearForm('emp_form');
     this.editMode = false;
@@ -56,16 +61,16 @@ export class BranchEmployeeComponent implements OnInit {
 
   public selectFile(event: Event): void {}
 
-  public onEdit(item): void {
-    // this.editMode = true;
-    // this.data = {
-    //   email: item.email,
-    //   name: item.name,
-    //   phone: item.phone,
-    //   id: item.id,
-    //   iqama: item.iqama,
-    // };
-  }
+  // public onEdit(item): void {
+  //   this.editMode = true;
+  //   this.data = {
+  //     email: item.email,
+  //     name: item.name,
+  //     phone: item.phone,
+  //     id: item.id,
+  //     iqama: item.iqama,
+  //   };
+  // }
   public onUpdate() {
     if (validateForm('emp_form')) {
       this.branchEmployee.update_branch_employee(this.data).subscribe((res) => {
@@ -76,6 +81,17 @@ export class BranchEmployeeComponent implements OnInit {
         }
       });
     }
+  }
+  onEdit(item: Employee) {
+    this.editMode = true;
+    this.data = {
+      email: item.email,
+      iqama_no: item.iqama_no,
+      name: item.name,
+      password: item.password,
+      phone: item.phone,
+      username: item.username,
+    };
   }
 
   public onDelete(id) {
