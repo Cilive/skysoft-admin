@@ -33,6 +33,7 @@ export class DepositComponent implements OnInit {
   editMode = false;
   owners: { name: string; id?: number }[] = [];
   bankacList: BankAccounts[] = [];
+  // bankacs: BankAccounts[] = [];
 
   constructor(
     private modalService: BsModalService,
@@ -40,7 +41,7 @@ export class DepositComponent implements OnInit {
     private deposit: DepositsService,
     private owner: OwnersService,
     private branches: BranchManagerService,
-    private bankac: BankAccountMasterService
+    private bank: BankAccountMasterService
   ) {}
 
   ngOnInit(): void {
@@ -53,6 +54,8 @@ export class DepositComponent implements OnInit {
     this.owner.get_owners().subscribe((res) => {
       this.owners = res.data;
     });
+  }
+  branchlisting(): void {
     this.branches.get_branches().subscribe((res) => {
       if (res.msg === 'Success') {
         console.log(res.data);
@@ -60,7 +63,7 @@ export class DepositComponent implements OnInit {
         this.branchesList = res.data;
       }
     });
-    this.bankac.get_bankac(this.data.branches).subscribe((res) => {
+    this.bank.get_Bank(this.data.branches).subscribe((res) => {
       if (res.msg === 'Success') {
         console.log(res.data);
 
@@ -73,6 +76,7 @@ export class DepositComponent implements OnInit {
   }
   onSubmit() {
     if (validateForm('bnkForm')) {
+      console.log(this.data);
       this.deposit.post_deposit(this.data).subscribe((res) => {
         if (res.msg === 'Success') {
           this.toast.success('Deposit Added');

@@ -3,7 +3,7 @@ export const CUSTOMER = 'clients/c1.localhost/private/customer/';
 export const SUPPLIER = 'clients/c1.localhost/private/supplier/';
 export const PUMP_EMPLOYEE = 'administrator/employee/';
 export const BANK_ACCOUNTS = 'clients/c1.localhost/private/bank/';
-export const DEPOSIT = 'clients/c1.localhost/private/dispense/';
+export const DEPOSIT = 'clients/c1.localhost/private/deposit/';
 export const FUEL = 'clients/c1.localhost/private/fuelmaster/';
 export const VAT = 'owner/vat/';
 export const DISPENSES = 'clients/c1.localhost/private/dispense/';
@@ -12,7 +12,8 @@ export const ADDBRANCH = 'administrator/branches/';
 export const vat_master = 'administrator/branches/';
 export const cashmaster = 'clients/c1.localhost/private/cashmaster/';
 export const SESSION = 'clients/c1.localhost/private/session/';
-export const invoices = '/clients/c1.localhost/private/invoice/';
+export const invoices = 'clients/c1.localhost/private/invoice/';
+export const purchseinvoices = 'clients/c1.localhost/private/recipt/';
 
 /**
  * Branch Apis

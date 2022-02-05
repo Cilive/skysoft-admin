@@ -39,9 +39,14 @@ export class DepositsService {
       {}
     );
   }
-  // get_bankac(id) {
+  // get_Bank(data, id) {
   //   return this.http.get<ApiResponse<BankAccounts[]>>(
-  //     environment.domain + 'clients/c1.localhost/private/branch_bankac' + '/' + id + '/',
+  //     environment.domain +
+  //       'clients/c1.localhost/private/branch_bankac' +
+  //       '/' +
+  //       id +
+  //       '/',
+  //     data
   //   );
   // }
 }

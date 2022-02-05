@@ -22,6 +22,11 @@ export class FueldataService {
   get_fuelDetails() {
     return this.http.get<ApiResponse<Fuelmaster[]>>(environment.domain + FUEL);
   }
+  get_single_fuel(id) {
+    return this.http.get<ApiResponse<Fuelmaster>>(
+      environment.domain + FUEL + id + '/'
+    );
+  }
   update_fuelDetail(data, id) {
     return this.http.put<ApiResponse<{}>>(
       environment.domain + FUEL + id + '/',

@@ -53,7 +53,7 @@ export class SupplierProfileService {
   // }
   get_supplier_profile() {
     return this.http.get<ApiResponse<any[]>>(
-      environment.domain + 'clients/c1.localhost/manager/supplier/'
+      environment.domain + 'clients/c1.localhost/private/supplier/'
     );
   }
 }

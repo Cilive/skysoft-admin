@@ -9,20 +9,7 @@
       (reset)="onReset()"
     >
       <div class="row mt-3">
-        <div class="form-group col-md-4">
-          <label translate for="bnk_name">Amount</label>
-          <input
-            translate
-            type="text"
-            class="form-control"
-            name="bnk_name"
-            [(ngModel)]="data.amount"
-            id="bnk_name"
-            required
-          />
-          <small class="invalid-feedback">Field required</small>
-        </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-2">
           <label translate for="holder">Date</label>
           <input
             translate
@@ -42,7 +29,8 @@
           />
           <small class="invalid-feedback">Field required</small>
         </div>
-        <div class="form-group">
+
+        <div class="form-group col-md-3">
           <label translate for="owner">Select Owner</label>
           <select
             [(ngModel)]="data.owner"
@@ -56,6 +44,98 @@
               {{ item.name | translate }}
             </option>
           </select>
+        </div>
+        <div class="form-group col-md-3">
+          <label translate for=""> Branch</label>
+          <!-- branch listing  api posting -->
+          <select
+            class="form-control"
+            name="branches"
+            [(ngModel)]="data.branches"
+            class="form-control"
+            id="type"
+            data-live-search="true"
+            required
+          >
+            <option translate value="col" selected hidden value="">
+              select
+            </option>
+
+            <option *ngFor="let item of branchesList" [value]="item.id">
+              {{ item.en_name }}
+            </option>
+          </select>
+        </div>
+        <!-- <div class="form-group col-md-2">
+          <label translate for="bnk_name">Bank Ac Id</label>
+          <input
+            translate
+            placeholder="Bank Ac Id"
+            type="text"
+            class="form-control"
+            name="bnk_name"
+            [(ngModel)]="data.amount"
+            id="bnk_name"
+            required
+          />
+            <option translate selected hidden [ngValue]="null">
+              select Bank Ac
+            </option>
+
+            <option
+              [style]="item.is_default === true ? 'color:var(--primary)' : ''"
+              *ngFor="let item of bankacList"
+              [ngValue]="item.id"
+            >
+              {{ item.acc_holder_name }}
+
+              *ngFor="let item of bankaccounts; let i = index"
+            </option> -->
+        <div class="form-group col-md-2">
+          <label translate for=""> Bank Ac Id</label>
+          <!-- branch listing  api posting -->
+          <select
+            class="form-control"
+            name="banck"
+            placeholder="bank"
+            [(ngModel)]="data.bank_ac_id"
+            class="form-control"
+            id="type"
+            data-live-search="true"
+            required
+          >
+            (change)=" branchlisting()"
+
+            <option translate selected hidden [ngValue]="null">
+              Bank Ac Id
+            </option>
+
+            <option
+              [style]="item.is_default === true ? 'color:var(--primary)' : ''"
+              *ngFor="let item of bankacList"
+              [ngValue]="item.id"
+            >
+              {{ item.acc_holder_name }}
+
+              <!-- *ngFor="let item of bankaccounts; let i = index" -->
+            </option>
+          </select>
+
+          <small class="invalid-feedback">Field required</small>
+        </div>
+        <div class="form-group col-md-2">
+          <label translate for="bnk_name">Amount</label>
+          <input
+            translate
+            placeholder="Amound"
+            type="text"
+            class="form-control"
+            name="bnk_name"
+            [(ngModel)]="data.amount"
+            id="bnk_name"
+            required
+          />
+          <small class="invalid-feedback">Field required</small>
         </div>
       </div>
 
