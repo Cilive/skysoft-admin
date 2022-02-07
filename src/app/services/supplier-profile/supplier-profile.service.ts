@@ -56,4 +56,9 @@ export class SupplierProfileService {
       environment.domain + 'clients/c1.localhost/private/supplier/'
     );
   }
+  // get_supplier_profile(id) {
+  //   return this.http.get<ApiResponse<any[]>>(
+  //     `${environment.domain}clients/c1.localhost/private/supplier/${id}/`
+  //   );
+  // }
 }

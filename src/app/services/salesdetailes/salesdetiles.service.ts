@@ -1,15 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Branch } from 'src/app/components/branch/branch.modal';
-import { Dispense } from 'src/app/components/owner/dispense/dispense .modal';
-import { meterreading } from 'src/app/model/api';
+import { salesdetailes } from 'src/app/model/api';
 import { ApiResponse } from 'src/app/model/shared';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
-export class MeterReadigService {
+export class SalesdetilesService {
   constructor(private http: HttpClient) {}
   // post_paymen_out(data: Debtors) {
   //   // const formData = convertJsontoFormData(data);
@@ -19,7 +18,7 @@ export class MeterReadigService {
   //     data
   //   );
   // }
-  get_meter_reading(id) {
+  get_salesdetailes(id) {
     // let from = undefined;
     // let to = undefined;
     // if (id.updated_at && id.date) {
@@ -31,7 +30,7 @@ export class MeterReadigService {
     // }
     let params: any = {
       branches: id.branches,
-      dispence: id.dispence,
+      customer: id.customer,
       // amount: id.amount,
       // from: from,
       // to: to,
@@ -52,7 +51,7 @@ export class MeterReadigService {
         : {}
     );
     return this.http.get<ApiResponse<any>>(
-      environment.domain + meterreading,
+      environment.domain + salesdetailes,
 
       {
         params: params,

@@ -3,11 +3,7 @@
     <h6 translate>Manage Deposits</h6>
   </div>
   <div class="col-md-12">
-    <form
-      id="bnkForm"
-      (submit)="editMode ? onUpdate() : onSubmit()"
-      (reset)="onReset()"
-    >
+    <form id="bnkForm" (submit)="onSubmit()" (reset)="onReset()">
       <div class="row mt-3">
         <div class="form-group col-md-2">
           <label translate for="holder">Date</label>
@@ -56,6 +52,7 @@
             id="type"
             data-live-search="true"
             required
+            (change)="bank_ac_listing()"
           >
             <option translate value="col" selected hidden value="">
               select
@@ -102,9 +99,10 @@
             class="form-control"
             id="type"
             data-live-search="true"
+            (change)="bank_ac_listing()"
             required
           >
-            (change)=" branchlisting()"
+            <!-- (change)="branchlisting()" -->
 
             <option translate selected hidden [ngValue]="null">
               Bank Ac Id
@@ -141,7 +139,7 @@
 
       <div class="modal-footer">
         <button translate type="submit" class="btn btn-outline-primary">
-          {{ editMode === true ? "Update" : "Submit" }}
+          {{ "Submit" }}
         </button>
         <button translate type="reset" class="btn btn-outline-warning">
           Reset

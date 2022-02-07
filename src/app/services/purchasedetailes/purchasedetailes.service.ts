@@ -1,25 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Branch } from 'src/app/components/branch/branch.modal';
-import { Dispense } from 'src/app/components/owner/dispense/dispense .modal';
-import { meterreading } from 'src/app/model/api';
+import { Purchasedetiles } from 'src/app/components/reports/purchase-details/purchase-detailes.modal';
+import { purchasedetails } from 'src/app/model/api';
 import { ApiResponse } from 'src/app/model/shared';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
-export class MeterReadigService {
+export class PurchasedetailesService {
   constructor(private http: HttpClient) {}
-  // post_paymen_out(data: Debtors) {
-  //   // const formData = convertJsontoFormData(data);
-
-  //   return this.http.post<ApiResponse<{}>>(
-  //     environment.domain + paymentout,
-  //     data
-  //   );
-  // }
-  get_meter_reading(id) {
+  post_purchase_detailes(data: Purchasedetiles) {
+    // const formData = convertJsontoFormData(data);
+    // return this.http.post<ApiResponse<{}>>(
+    //   environment.domain + paymentin,
+    //   data
+    // );
+  }
+  get_purchase_detailes(id) {
     // let from = undefined;
     // let to = undefined;
     // if (id.updated_at && id.date) {
@@ -31,7 +30,7 @@ export class MeterReadigService {
     // }
     let params: any = {
       branches: id.branches,
-      dispence: id.dispence,
+      supplier_name: id.supplier_name,
       // amount: id.amount,
       // from: from,
       // to: to,
@@ -52,24 +51,33 @@ export class MeterReadigService {
         : {}
     );
     return this.http.get<ApiResponse<any>>(
-      environment.domain + meterreading,
+      environment.domain + purchasedetails,
 
       {
         params: params,
+        // from: `${id.updated_at.getFullYear()}-${id.updated_at.getMonth()+1}-${id.updated_at.getDate()}`,
+        // to:  `${id.date.getFullYear()}-${id.date.getMonth()+1}-${id.date.getDate()}`,
+        // branches: id.branches,
+        // amount: id.amount,
+        // from: from,
+        // to: to,
+        // invoice_no: id.invoice_no,
       }
     );
   }
 
+  // queryparams = [][
+  //   ((supplier = '1'), (from = '2022-01-01'), (to = '2022-01-24'))
+  // ];
+
   get_branches(id) {
     return this.http.get<ApiResponse<Branch[]>>(
-      environment.domain + 'administrator/branches/' + id + '/'
+      `${environment.domain}administrator/branches/${id}/`
     );
   }
-
-  // suspend_payment_out(id) {
-  //   return this.http.put<ApiResponse<Debtors>>(
-  //     environment.domain + 'owner/payment_in_suspend' + '/' + id + '/',
-  //     {}
-  //   );
-  // }
+  get_Supplier_Profile(id) {
+    return this.http.get<ApiResponse<[]>>(
+      `${environment.domain}clients/c1.localhost/private/supplier/${id}/`
+    );
+  }
 }

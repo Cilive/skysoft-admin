@@ -59,13 +59,18 @@ export class BankAccountMasterService {
   //       '/'
   //   );
   // }
-  get_Bank(id) {
+  // get_Bank(id) {
+  //   return this.http.get<ApiResponse<BankAccounts[]>>(
+  //     environment.domain +
+  //       'clients/c1.localhost/private/branch_bankac' +
+  //       '/' +
+  //       id +
+  //       '/'
+  //   );
+  // }
+  get_bank_ac(id) {
     return this.http.get<ApiResponse<BankAccounts[]>>(
-      environment.domain +
-        'clients/c1.localhost/private/branch_bankac' +
-        '/' +
-        id +
-        '/'
+      `${environment.domain}clients/c1.localhost/private/branch_bankac/${id}/`
     );
   }
 }

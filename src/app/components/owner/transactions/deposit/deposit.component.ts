@@ -19,19 +19,22 @@ import { Deposit } from './deposit.model';
   styleUrls: ['./deposit.component.scss'],
 })
 export class DepositComponent implements OnInit {
+  passError: boolean;
   modalRef?: BsModalRef;
-  deposits: Deposit[] = [];
+  logoData: FormData;
+  branch: Branch;
   data: Deposit = {
     amount: '',
     date: new Date(),
     branches: '',
     owner: '',
     bank_ac_id: null,
-    id: null,
+    // id: null,
   };
   branchesList: Branch[] = [];
   editMode = false;
   owners: { name: string; id?: number }[] = [];
+  deposits: Deposit[] = [];
   bankacList: BankAccounts[] = [];
   // bankacs: BankAccounts[] = [];
 
@@ -54,8 +57,7 @@ export class DepositComponent implements OnInit {
     this.owner.get_owners().subscribe((res) => {
       this.owners = res.data;
     });
-  }
-  branchlisting(): void {
+
     this.branches.get_branches().subscribe((res) => {
       if (res.msg === 'Success') {
         console.log(res.data);
@@ -63,20 +65,14 @@ export class DepositComponent implements OnInit {
         this.branchesList = res.data;
       }
     });
-    this.bank.get_Bank(this.data.branches).subscribe((res) => {
-      if (res.msg === 'Success') {
-        console.log(res.data);
-
-        this.bankacList = res.data;
-      }
-    });
   }
+
   onReset() {
     clearForm('bnkForm');
   }
   onSubmit() {
     if (validateForm('bnkForm')) {
-      console.log(this.data);
+      // console.log(this.data);
       this.deposit.post_deposit(this.data).subscribe((res) => {
         if (res.msg === 'Success') {
           this.toast.success('Deposit Added');
@@ -109,6 +105,15 @@ export class DepositComponent implements OnInit {
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+  }
+  bank_ac_listing(): void {
+    this.bank.get_bank_ac(this.data.branches).subscribe((res) => {
+      if (res.msg === 'Success') {
+        console.log(res.data);
+
+        this.bankacList = res.data;
+      }
+    });
   }
 
   decline(): void {}

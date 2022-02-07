@@ -21,6 +21,11 @@ export class DepositsService {
   get_deposits() {
     return this.http.get<ApiResponse<Deposit[]>>(environment.domain + DEPOSIT);
   }
+  // get_bank_ac(id) {
+  //   return this.http.get<ApiResponse<BankAccounts[]>>(
+  //     environment.domain + `clients/c1.localhost/private/branch_bankac/${id}/`
+  //   );
+  // }
   update_deposit(data, id) {
     console.log(data);
     return this.http.put<ApiResponse<{}>>(
