@@ -14,6 +14,15 @@ export const cashmaster = 'clients/c1.localhost/private/cashmaster/';
 export const SESSION = 'clients/c1.localhost/private/session/';
 export const invoices = 'clients/c1.localhost/private/invoice/';
 export const purchseinvoices = 'clients/c1.localhost/private/recipt/';
+export const paymentout = 'clients/c1.localhost/private/report/debtors/';
+export const paymentin = 'clients/c1.localhost/private/report/creditors/';
+export const expense = 'clients/c1.localhost/private/expense/';
+export const BRANCH_MANAGER = 'administrator/branchmanager/';
+export const salesdetailes = 'clients/c1.localhost/private/report/sale/';
+export const purchasedetails = 'clients/c1.localhost/private/report/purchase/';
+export const expensedetails = 'clients/c1.localhost/private/report/expense/';
+export const meterreading =
+  'clients/c1.localhost/private/report/meter_reading/';
 
 /**
  * Branch Apis
@@ -27,7 +36,6 @@ export const BRANCH_FUEL = 'owner/fuel/';
 export const BRANCH_VAT = 'owner/vat/';
 export const BRANCH_DISPENSES = 'clients/c1.localhost/manager/dispense/';
 export const BRANCH_OWNER = 'clients/c1.localhost/manager/owner/';
-export const BRANCH_MANAGER = 'administrator/branchmanager/';
 export const BRANCH_EMPLOYEE = '';
 export const BRANCH_CASHMASTER = 'clients/c1.localhost/manager/cashmaster/';
 export const BRANCH_INVOICES = '';
