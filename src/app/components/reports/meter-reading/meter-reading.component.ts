@@ -86,7 +86,7 @@ export class MeterReadingComponent implements OnInit {
       console.log(this.data);
       this.meter.get_meter_reading(this.data).subscribe((res) => {
         if (res.msg === 'Success') {
-          this.toast.success('sales-detailes Added Successfully');
+          this.toast.success('Metre Reading Added Successfully');
           this.meterreading = res.data.data;
           console.log(this.data);
           // this.net_amount_sum = res.data.total.net_amount_sum;

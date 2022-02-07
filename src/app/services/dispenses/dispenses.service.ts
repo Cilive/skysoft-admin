@@ -38,13 +38,14 @@ export class DispensesService {
       environment.domain + DISPENSES + id + '/'
     );
   }
-  // branch listing api
-
+  //dispense listing api
   get_dispense(id) {
     return this.http.get<ApiResponse<Branch[]>>(
       environment.domain + 'clients/c1.localhost/private/dispense/' + id + '/'
     );
   }
+  // branch listing api
+
   get_brnch_dispence() {
     return this.http.get<ApiResponse<Dispense[]>>(
       environment.domain + 'clients/c1.localhost/private/dispense/'
