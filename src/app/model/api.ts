@@ -20,9 +20,9 @@ export const expense = 'clients/c1.localhost/private/expense/';
 export const BRANCH_MANAGER = 'administrator/branchmanager/';
 export const salesdetailes = 'clients/c1.localhost/private/report/sale/';
 export const purchasedetails = 'clients/c1.localhost/private/report/purchase/';
-export const expensedetails = 'clients/c1.localhost/private/report/expense/';
-export const meterreading =
-  'clients/c1.localhost/private/report/meter_reading/';
+export const expensedetails = 'clients/c1.localhost/private/report/expense/';noor feb
+export const meterreading ='clients/c1.localhost/private/report/meter_reading/';
+export const customerbalance = 'clients/c1.localhost/private/report/customer_balance/';
 
 /**
  * Branch Apis
