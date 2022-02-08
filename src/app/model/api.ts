@@ -25,6 +25,9 @@ export const meterreading =
   'clients/c1.localhost/private/report/meter_reading/';
 export const customerbalance =
   'clients/c1.localhost/private/report/customer_balance/';
+export const deposite_amount = 'clients/c1.localhost/private/report/deposit/';
+export const payment_detailes =
+  'clients/c1.localhost/private/report/payment_details/';
 
 /**
  * Branch Apis

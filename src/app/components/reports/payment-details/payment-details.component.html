@@ -1,14 +1,32 @@
 <div class="card m-auto col-md-12">
+  <div class="modal-header">
+    <h6 translate>Payment Detailes</h6>
+  </div>
   <div class="col-md-12">
-    <form id="bankform">
+    <form id="Form" (submit)="onSubmit()" (reset)="onReset()">
       <div class="row mt-3">
         <div class="row col-md-12">
           <div class="form-group col-md-2">
-            <label translate for="">Company</label>
-            <select class="form-control" name="selectes">
-              <option translate value="">Company</option>
+            <label translate for=""> Branch</label>
+            <!-- branch listing  api posting -->
+            <select
+              class="form-control"
+              name="branches"
+              placeholder="Branch"
+              [(ngModel)]="data.branch_name"
+              class="form-control"
+              id="type"
+              data-live-search="true"
+              required
+            >
+              <option translate selected hidden Value="">select Branch</option>
+
+              <option *ngFor="let item of branchesList" [ngValue]="item.id">
+                {{ item.en_name }}
+              </option>
             </select>
           </div>
+
           <div class="form-group col-md-2">
             <label translate for="">Monthly</label>
             <input
@@ -39,37 +57,80 @@
           </div>
         </div>
       </div>
-      <div class="card">
-        <table class="table table-bordered">
-          <tr>
-            <th translate scope="col">#</th>
-            <th translate scope="col">Date</th>
-            <th translate scope="col">Company</th>
-            <th translate scope="col">Item</th>
-            <th traslate scope="col">Qty</th>
-            <th translate scope="col">Amount</th>
-          </tr>
-          <tr>
-            <td scope="col">1</td>
-            <td scope="col">1/1/2021</td>
-            <td scope="col">Fore-Tech</td>
-            <td scope="col">Diesel</td>
-            <td scope="col">2000.Ltr</td>
-            <td scope="col">SR.20000</td>
-          </tr>
-          <tr>
-            <td scope="col">2</td>
-            <td scope="col">2/2/2021</td>
-            <td scope="col">Fore-Tech</td>
-            <td scope="col">Petrol</td>
-            <td scope="col">1000.Ltr</td>
-            <td scope="col">SR.10000</td>
-          </tr>
-          <th colspan="4"></th>
-          <th trnslate scope="col">Total :</th>
-          <td scope="col">SR.30000</td>
-        </table>
+      <div class="modal-footer">
+        <button translate type="submit" class="btn btn-outline-primary">
+          {{ "Submit" }}
+        </button>
+        <button translate type="reset" class="btn btn-outline-warning">
+          Reset
+        </button>
       </div>
     </form>
+    <div class="modal-footer">
+      <div class="form-group col-md-3">
+        <!-- <label translate for=""> Amount</label> -->
+        <input
+          translate
+          type="text"
+          placeholder="Net Amount"
+          [(ngModel)]="net_amount_sum"
+          class="form-control"
+          name="Amount"
+          id="type"
+        />
+      </div>
+      <div class="form-group col-md-3">
+        <!-- <label translate for=""> Amount</label> -->
+        <input
+          translate
+          type="text"
+          placeholder="Gross Amount"
+          [(ngModel)]="gross_amt_sum"
+          class="form-control"
+          name="Amount"
+          id="type"
+        />
+      </div>
+      <div class="form-group col-md-3">
+        <!-- <label translate for=""> Amount</label> -->
+        <input
+          translate
+          type="text"
+          placeholder="Net Vat"
+          [(ngModel)]="net_vat_sum"
+          class="form-control"
+          name="Amount"
+          id="type"
+        />
+      </div>
+    </div>
   </div>
+</div>
+
+<div class="mt-3 card">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th translate scope="col">#</th>
+        <th translate scope="col">Date</th>
+        <th translate scope="col">Company</th>
+        <th translate scope="col">Item</th>
+        <th translate scope="col">Qty</th>
+        <th translate scope="col">Amount</th>
+        <th translate scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of paymentdetails; let i = index">
+        <th translate scope="row">{{ i + 1 }}</th>
+        <!-- <td>{{ item. }}</td> -->
+        <td>{{ item.date | date: "dd/MM/YYYY" }}</td>
+        <td>{{ item.company }}</td>
+        <td>{{ item.Description }}</td>
+        <td>{{ item.qty }}</td>
+        <td>{{ item.total_amt }}</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
