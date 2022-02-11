@@ -28,6 +28,11 @@ export const customerbalance =
 export const deposite_amount = 'clients/c1.localhost/private/report/deposit/';
 export const payment_detailes =
   'clients/c1.localhost/private/report/payment_details/';
+export const payment_due = 'clients/c1.localhost/private/report/payment_due/';
+export const paymentoutreport =
+  'clients/c1.localhost/private/report/payment_out/';
+export const paymentinreport =
+  'clients/c1.localhost/private/report/payment_in/';
 
 /**
  * Branch Apis

@@ -51,11 +51,25 @@ export class SupplierProfileService {
   //     environment.domain + 'clients/c1.localhost/manager/supplier/'
   //   );
   // }
-  get_supplier_profile() {
+  // get_supplier_profile() {
+  //   return this.http.get<ApiResponse<any[]>>(
+  //     environment.domain + 'clients/c1.localhost/private/supplier/'
+  //   );
+  // }
+  get_branchwais_supplier_profile(id) {
     return this.http.get<ApiResponse<any[]>>(
-      environment.domain + 'clients/c1.localhost/private/supplier/'
+      environment.domain +
+        'clients/c1.localhost/private/branch_suppliers/' +
+        id +
+        '/'
     );
   }
+
+  // get_branchwais_supplier_profilese(id) {
+  //   return this.http.get<ApiResponse<any[]>>(
+  //     `${environment.domain} clients/c1.localhost/private/branch_supplier/${id}/`
+  //   );
+  // }
   // get_supplier_profile(id) {
   //   return this.http.get<ApiResponse<any[]>>(
   //     `${environment.domain}clients/c1.localhost/private/supplier/${id}/`

@@ -111,13 +111,15 @@ export class PurchaseDetailsComponent implements OnInit {
   // }
 
   Supplierlistin(): void {
-    this.supplierService.get_supplier_profile().subscribe((res) => {
-      if (res.msg === 'Success') {
-        console.log(res.data);
+    this.supplierService
+      .get_branchwais_supplier_profile(this.data.branches)
+      .subscribe((res) => {
+        if (res.msg === 'Success') {
+          console.log(res.data);
 
-        this.supplierList = res.data;
-      }
-    });
+          this.supplierList = res.data;
+        }
+      });
   }
 
   openModal(template: TemplateRef<any>) {
