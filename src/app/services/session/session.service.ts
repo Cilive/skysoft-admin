@@ -10,25 +10,74 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class SessionService {
-  update_session: any;
+  // constructor(private http: HttpClient) {}
+
+  //   post_session(data) {
+  //     // const formData = convertJsontoFormData(data);
+
+  //     return this.http.post<ApiResponse<any>>(environment.domain + SESSION, data);
+  //   }
+
+  //   get_session() {
+  //     return this.http.get<ApiResponse<any>>(environment.domain + SESSION);
+  //   }
+  //   update_session(data, id) {
+  //     console.log(data);
+
+  //     return this.http.put<ApiResponse<{}>>(
+  //       environment.domain + SESSION + id + '/',
+  //       data
+  //     );
+  //   }
+  //   delete_session(id) {
+  //     return this.http.delete<ApiResponse<any>>(
+  //       environment.domain + SESSION + id + '/'
+  //     );
+  //   }
+  //   //dispense listing api
+  //   get_branches(id) {
+  //     return this.http.get<ApiResponse<Branch[]>>(
+  //       environment.domain + 'clients/c1.localhost/private/session/' + id + '/'
+  //       // `${environment.domain}clients/c1.localhost/private/session/${id}/`
+  //     );
+  //   }
+  // }
+
+  // update_session: any;
 
   constructor(private http: HttpClient) {}
 
   post_session(data) {
     // const formData = convertJsontoFormData(data);
 
-    return this.http.post<ApiResponse<{}>>(environment.domain + SESSION, data);
+    return this.http.post<ApiResponse<any>>(environment.domain + SESSION, data);
   }
 
   get_session() {
-    return this.http.get<ApiResponse<[]>>(environment.domain + SESSION);
+    return this.http.get<ApiResponse<any>>(environment.domain + SESSION);
   }
-  update_owner(data: Session, id: number) {
+  // update_session(data, id) {
+  //   // console.log(data);
+
+  //   return this.http.put<ApiResponse<{}>>(
+  //     environment.domain + SESSION + id + '/',
+  //     data
+  //   );
+  // }
+  update_session(data: Session, id: number) {
+    console.log(data);
+
     return this.http.put<ApiResponse<{}>>(
       environment.domain + SESSION + id + '/',
       data
     );
   }
+  // single_get_purchase_invoice(id) {
+  //   return this.http.get<ApiResponse<purchaseInvoice>>(
+  //     environment.domain + purchseinvoices + id + '/'
+  //   );
+  // }
+
   delete_session(id) {
     return this.http.delete<ApiResponse<any>>(
       environment.domain + SESSION + id + '/'
@@ -42,7 +91,11 @@ export class SessionService {
   }
   get_branches(id) {
     return this.http.get<ApiResponse<Branch[]>>(
-      environment.domain + 'clients/c1.localhost/private/session/' + id + '/'
+      environment.domain +
+        'clients/c1.localhost/private/session/' +
+        '/' +
+        id +
+        '/'
     );
   }
 }

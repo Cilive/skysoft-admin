@@ -9,7 +9,7 @@ import {
 import { PaymentdueService } from 'src/app/services/paymentdue/paymentdue.service';
 import { SupplierProfileService } from 'src/app/services/supplier-profile/supplier-profile.service';
 import { Branch } from '../../branch/branch.modal';
-import { invoice } from '../../branch/components/invoices/invoice.model';
+// import { invoice } from '../../branch/components/invoices/invoice.model';
 import { CustomerProfile } from '../../owner/customer-profile/customer-profile.modal';
 import { SupplierProfile } from '../../owner/supplier-profile/supplier-profile.model';
 import { PaymentDue } from './payment-due.modal';

@@ -9,7 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { BranchComponent } from './branch.component';
 import { BankAccountMasterComponent } from './components/bank-account-master/bank-account-master.component';
 import { BranchEmployeeComponent } from './components/branch-employee/branch-employee.component';
-import { BranchManagerComponent } from './components/branch-manager/branch-manager.component';
+// import { BranchManagerComponent } from './components/branch-manager/branch-manager.component';
 import { CloseAccountComponent } from './components/close-account/close-account.component';
 import { CompanyOwnerComponent } from './components/company-owner/company-owner.component';
 import { CustomerProfileComponent } from './components/customer-profile/customer-profile.component';
@@ -46,12 +46,12 @@ const routes: Routes = [
     component: BranchComponent,
     children: [
       {
-        path: 'Invoicelisting',
+        path: 'invoicelisting',
         component: InvoicelistingComponent,
       },
       {
         path: '',
-        redirectTo: 'Invoicelisting',
+        redirectTo: 'invoicelisting',
         pathMatch: 'full',
       },
       {
@@ -178,10 +178,10 @@ const routes: Routes = [
         path: 'close_Account',
         component: CloseAccountComponent,
       },
-      {
-        path: 'branch_manager',
-        component: BranchManagerComponent,
-      },
+      // {
+      //   path: 'branch_manager',
+      //   component: BranchManagerComponent,
+      // },
     ],
   },
 ];
@@ -211,7 +211,7 @@ const routes: Routes = [
     PaymentsOutComponent,
     ExpensesComponent,
     CloseAccountComponent,
-    BranchManagerComponent,
+    // BranchManagerComponent,
     DashboardComponent,
     SalesSummeryComponent,
     OnlineSalesComponent,

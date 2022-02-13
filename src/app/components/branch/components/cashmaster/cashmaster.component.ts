@@ -1,14 +1,14 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
-import { CashmasterService } from 'src/app/services/cashmaster/cashmaster.service';
 import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
+import { CashmasterService } from '../../services/cashmaster/cashmaster.service';
 import { OwnersService } from '../../services/owners/owners.service';
 import { Owner } from '../company-owner/company-owner.modal';
-import { Cashmaster } from './cashmaster.modal';
+import { BranchCashmaster } from './cashmaster.modal';
 
 @Component({
   selector: 'app-cashmaster',
@@ -17,8 +17,8 @@ import { Cashmaster } from './cashmaster.modal';
 })
 export class CashmasterComponent implements OnInit {
   modalRef?: BsModalRef;
-  cashmaster: Cashmaster[] = [];
-  data: Cashmaster = {
+  cashmaster: BranchCashmaster[] = [];
+  data: BranchCashmaster = {
     opening_balance: 0,
     balance: 0,
     owner: '',
@@ -65,7 +65,7 @@ export class CashmasterComponent implements OnInit {
   onSubmit() {
     if (validateForm('cashForm')) {
       // console.log(this.data);
-      this.cash.post_Cashmaster(this.data).subscribe((res) => {
+      this.cash.post_branch_cashmaster(this.data).subscribe((res) => {
         if (res.msg === 'Success') {
           this.toast.success('Cash added successfully');
           clearForm('cashForm');
@@ -75,15 +75,17 @@ export class CashmasterComponent implements OnInit {
     }
   }
   onUpdate() {
-    this.cash.update_Cashmaster(this.data, this.data.id).subscribe((res) => {
-      if (res.msg === 'Success') {
-        this.toast.success('Cash updated successfully');
-        clearForm('cashForm');
-        this.ngOnInit();
-      }
-    });
+    this.cash
+      .update_branch_cashmaster(this.data, this.data.id)
+      .subscribe((res) => {
+        if (res.msg === 'Success') {
+          this.toast.success('Cash updated successfully');
+          clearForm('cashForm');
+          this.ngOnInit();
+        }
+      });
   }
-  onEdit(item: Cashmaster) {
+  onEdit(item: BranchCashmaster) {
     this.editMode = true;
     this.data = {
       opening_balance: item.opening_balance,
@@ -98,7 +100,7 @@ export class CashmasterComponent implements OnInit {
 
   decline(): void {}
   onDelete(id) {
-    this.cash.delete_Cashmaster(id).subscribe((res) => {
+    this.cash.delete_branch_cashmaster(id).subscribe((res) => {
       if (res.msg === 'Success') {
         this.modalRef?.hide();
         this.ngOnInit();

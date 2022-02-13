@@ -96,11 +96,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of cashmaster; let i = index">
+      <!-- <tr *ngFor="let item of cashmaster; let i = index">
         <th translate scope="row">{{ i + 1 }}</th>
         <td>{{ item.cash_ac_name }}</td>
         <td>{{ item.opening_balance }}</td>
-        <!-- <td>{{ item.acc_no }}</td> -->
         <td>
           <div class="d-flex justify-content-around">
             <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>
@@ -109,11 +108,11 @@
               class="bx bxs-trash"
               (click)="openModal(template)"
             ></i>
-            <!-- <i
+             <i
               (click)="onSuspend(item.id)"
               title="Suspend"
               class="bx bx-x-circle"
-            ></i> -->
+            ></i>
           </div>
 
           <ng-template #template>
@@ -140,7 +139,7 @@
             </div>
           </ng-template>
         </td>
-      </tr>
+      </tr> -->
     </tbody>
   </table>
 </div>

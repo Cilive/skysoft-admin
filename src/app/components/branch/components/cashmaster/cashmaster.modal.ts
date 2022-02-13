@@ -1,4 +1,4 @@
-export interface Cashmaster {
+export interface BranchCashmaster {
   id?: number;
   opening_balance: number;
   balance: number;

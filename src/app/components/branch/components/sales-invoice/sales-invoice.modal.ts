@@ -1,12 +1,12 @@
-export interface Purchaseinvoices {
-  // vat: number;
-  customer_name?: string;
+export interface Invoices {
   invoice_no?: number;
+  customer_name?: string;
+  balance_amt: number;
+  // vat: number;
   old_balance?: number;
-  balance_amt?: number;
   date: number;
   qty: number;
-  contact: number;
+  contact: string;
   fuel: number;
   payment_type: number;
   type: number;
@@ -18,7 +18,17 @@ export interface Purchaseinvoices {
   vat_amount: number;
   fuelvat_percentage: number;
   fuels?: number;
+  is_default?: boolean;
+  bank?: string;
+  cash?: string;
 }
 export interface Oldbalances {
   balance_amt_sum: number;
+}
+export interface BranchSaleInvoicess {
+  id?: number;
+  invoice_no: number;
+  total_amt: number;
+  balance_amt: number;
+  customer_name: string;
 }

@@ -4,6 +4,7 @@ import { SupplierProfile } from '../../components/supplier-profile/supplier-prof
 import { BRANCH_SUPPLIER } from 'src/app/model/api';
 import { ApiResponse } from 'src/app/model/shared';
 import { environment } from 'src/environments/environment';
+import { Purchaseinvoices } from '../../components/purchase-invoice/purchase invoice.model';
 
 @Injectable({
   providedIn: 'root',
@@ -52,7 +53,7 @@ export class SupplierProfileService {
   //     environment.domain + 'clients/c1.localhost/manager/supplier/'
   //   );
   // }
-  get_supplier_profile() {
+  get_supplier_profile(data: Purchaseinvoices) {
     return this.http.get<ApiResponse<any[]>>(
       environment.domain + 'clients/c1.localhost/manager/supplier/'
     );

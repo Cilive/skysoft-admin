@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Branch } from 'src/app/components/branch/branch.modal';
+import { BankAccounts } from 'src/app/components/branch/components/bank-account-master/bank-account-master.model';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import { BankAccountMasterService } from 'src/app/services/bank-account-master/bank-account-master.service';
 import { BranchManagerService } from 'src/app/services/branch-manager/branch-manager.service';
@@ -10,7 +11,7 @@ import {
   validateForm,
 } from 'src/app/services/general/general.service';
 import { OwnersService } from 'src/app/services/owners/owners.service';
-import { BankAccounts } from '../../bank-account-master/bank-account-master.model';
+// import { BankAccounts } from '../../bank-account-master/bank-account-master.model';
 import { Deposit } from './deposit.model';
 
 @Component({
