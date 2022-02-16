@@ -1,4 +1,4 @@
-export const CREATE_COMPANY = 'public/company/';
+export const CREATE_COMPANY = 'administrator/company/';
 export const CUSTOMER = 'clients/c1.localhost/private/customer/';
 export const SUPPLIER = 'clients/c1.localhost/private/supplier/';
 export const PUMP_EMPLOYEE = 'administrator/employee/';
@@ -50,3 +50,6 @@ export const BRANCH_EMPLOYEE = '';
 export const BRANCH_CASHMASTER = 'clients/c1.localhost/manager/cashmaster/';
 export const BRANCH_INVOICES = 'clients/c1.localhost/manager/invoice/';
 export const BRANCH_RECIEPT = 'clients/c1.localhost/manager/recipt/';
+export const BRANCH_EXPENSE = 'clients/c1.localhost/manager/expense/';
+export const BRANCH_PAYMENTIN =
+  'clients/c1.localhost/manager/report/creditors/';

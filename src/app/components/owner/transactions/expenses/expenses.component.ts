@@ -55,7 +55,7 @@ export class ExpensesComponent implements OnInit {
     bank_ac_id: 0,
     gross_amt: null,
     total_amt: 0,
-    date: 0,
+    date: new Date(),
     expense_name: null,
     contact: null,
     amount: null,

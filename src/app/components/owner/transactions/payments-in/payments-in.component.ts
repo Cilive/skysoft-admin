@@ -13,6 +13,7 @@ import { SupplierProfileService } from 'src/app/services/supplier-profile/suppli
 import { CustomerProfile } from '../../customer-profile/customer-profile.modal';
 import { SupplierProfile } from '../../supplier-profile/supplier-profile.model';
 import { Credit } from './payment-in.modal';
+// import { Credit } from './payment-in.modal';
 
 @Component({
   selector: 'app-payments-in',

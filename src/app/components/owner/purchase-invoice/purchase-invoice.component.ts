@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import { BankAccountMasterService } from 'src/app/services/bank-account-master/bank-account-master.service';
+import { BranchManagerService } from 'src/app/services/branch-manager/branch-manager.service';
 import { CustomerProfileService } from 'src/app/services/customer-profile/customer-profile.service';
 import { FueldataService } from 'src/app/services/fueldata/fueldata.service';
 import {
@@ -10,7 +11,7 @@ import {
 import { PurchaseinvoiceService } from 'src/app/services/purchaseinvoice/purchaseinvoice.service';
 import { SupplierProfileService } from 'src/app/services/supplier-profile/supplier-profile.service';
 import { Branch } from '../../branch/branch.modal';
-import { BranchManagerService } from '../../branch/services/branch-manager/branch-manager.service';
+// import { BranchManagerService } from '../../branch/services/branch-manager/branch-manager.service';
 import { BankAccounts } from '../bank-account-master/bank-account-master.model';
 import { CustomerProfile } from '../customer-profile/customer-profile.modal';
 import { BranchSaleInvoices } from '../sales-invoice/invoice.model';

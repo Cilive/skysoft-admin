@@ -37,6 +37,7 @@ export class CompanyProfileComponent implements OnInit {
     vat_no: null,
     username: '',
     branch_count: null,
+    branchcount: '',
   };
   companies: Company[] = [];
 
@@ -60,14 +61,14 @@ export class CompanyProfileComponent implements OnInit {
       const formData = new FormData(
         document.getElementById('form') as HTMLFormElement
       );
-      this.companyService.post_company_proile(formData).subscribe((res) => {
-        if (res.msg === 'Success') {
-          this.toast.success('Company Added Successfully');
-          this.ngOnInit();
-          this.onReset();
-        }
-        // this.onReset();
-      });
+      // this.companyService.post_company_proile(formData).subscribe((res) => {
+      //   if (res.msg === 'Success') {
+      //     this.toast.success('Company Added Successfully');
+      //     this.ngOnInit();
+      //     this.onReset();
+      //   }
+      //   // this.onReset();
+      // });
     }
   }
 
@@ -101,6 +102,7 @@ export class CompanyProfileComponent implements OnInit {
       vat_no: item.vat_no,
       user: item.user,
       branch_count: item.branch_count,
+      branchcount: item.branchcount,
     };
   }
   public update() {

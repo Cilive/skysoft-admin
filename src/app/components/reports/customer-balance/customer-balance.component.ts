@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
+import { BranchManagerService } from 'src/app/services/branch-manager/branch-manager.service';
 import { CustomerbalanceService } from 'src/app/services/customerbalance/customerbalance.service';
 import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
 import { Branch } from '../../branch/branch.modal';
-import { BranchManagerService } from '../../branch/services/branch-manager/branch-manager.service';
+// import { BranchManagerService } from '../../branch/services/branch-manager/branch-manager.service';
 import { Customerbalance } from './customer-balance.modal';
 
 @Component({

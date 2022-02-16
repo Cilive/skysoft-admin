@@ -6,7 +6,10 @@ import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
-import { OwnersService } from 'src/app/services/owners/owners.service';
+import { BankAccountMasterService } from '../../../services/bank-account-master/bank-account-master.service';
+import { DepositService } from '../../../services/deposit/deposit.service';
+import { OwnersService } from '../../../services/owners/owners.service';
+import { BankAccounts } from '../../bank-account-master/bank-account-master.model';
 import { Deposit } from './deposit.model';
 
 @Component({
@@ -15,24 +18,36 @@ import { Deposit } from './deposit.model';
   styleUrls: ['./deposit.component.scss'],
 })
 export class DepositComponent implements OnInit {
+  passError: boolean;
   modalRef?: BsModalRef;
-  deposits: Deposit[] = [];
+  logoData: FormData;
+  // branch: Branch;
   data: Deposit = {
     amount: '',
     date: new Date(),
+    // branches: '',
     owner: '',
+    bank_ac_id: null,
+    // id: null,
   };
+  // branchesList: Branch[] = [];
   editMode = false;
   owners: { name: string; id?: number }[] = [];
+  deposits: Deposit[] = [];
+  bankacList: BankAccounts[] = [];
+  // bankacs: BankAccounts[] = [];
+
   constructor(
     private modalService: BsModalService,
     private toast: AlertService,
-    private deposit: DepositsService,
-    private owner: OwnersService
+    private deposit: DepositService,
+    private owner: OwnersService,
+    // private branches: BranchManagerService,
+    private bank: BankAccountMasterService
   ) {}
 
   ngOnInit(): void {
-    this.deposit.get_deposits().subscribe((res) => {
+    this.deposit.get_deposit().subscribe((res) => {
       this.deposits = res.data.map((t) => {
         t.date = new Date(t.date);
         return t;
@@ -41,12 +56,28 @@ export class DepositComponent implements OnInit {
     this.owner.get_owners().subscribe((res) => {
       this.owners = res.data;
     });
+    this.bank.get_bank_ac().subscribe((res) => {
+      if (res.msg === 'Success') {
+        console.log(res.data);
+
+        this.bankacList = res.data;
+      }
+    });
+
+    // this.branches.get_branches().subscribe((res) => {
+    //   if (res.msg === 'Success') {
+    //     console.log(res.data);
+    //     this.branchesList = res.data;
+    //   }
+    // });
   }
+
   onReset() {
     clearForm('bnkForm');
   }
   onSubmit() {
     if (validateForm('bnkForm')) {
+      // console.log(this.data);
       this.deposit.post_deposit(this.data).subscribe((res) => {
         if (res.msg === 'Success') {
           this.toast.success('Deposit Added');
@@ -73,6 +104,8 @@ export class DepositComponent implements OnInit {
       date: item.date,
       owner: item.owner,
       id: item.id,
+      // branches: item.branches,
+      bank_ac_id: item.bank_ac_id,
     };
   }
   openModal(template: TemplateRef<any>) {

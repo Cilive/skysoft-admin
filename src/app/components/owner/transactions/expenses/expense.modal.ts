@@ -2,7 +2,7 @@ export interface Expense {
   contact: string;
   payment_type: number;
   qty: number;
-  date: number;
+  date: Date;
   type: number;
   branches: number;
   exp_type: string;

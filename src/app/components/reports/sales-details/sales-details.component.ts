@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
+import { BranchManagerService } from 'src/app/services/branch-manager/branch-manager.service';
 import { CustomerProfileService } from 'src/app/services/customer-profile/customer-profile.service';
 import {
   clearForm,
@@ -8,7 +9,7 @@ import {
 } from 'src/app/services/general/general.service';
 import { SalesdetilesService } from 'src/app/services/salesdetailes/salesdetiles.service';
 import { Branch } from '../../branch/branch.modal';
-import { BranchManagerService } from '../../branch/services/branch-manager/branch-manager.service';
+// import { BranchManagerService } from '../../branch/services/branch-manager/branch-manager.service';
 import { CustomerProfile } from '../../owner/customer-profile/customer-profile.modal';
 import { Salesdetailes } from './sales-setailes.modal';
 
