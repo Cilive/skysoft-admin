@@ -26,7 +26,6 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   title;
   username: string;
   isTopLevel: boolean = false;
-  cmd = console;
   isNotificationsOn = false;
   direction = 'ltr';
   enset = true;
@@ -94,8 +93,6 @@ export class SidebarComponent implements OnInit, AfterViewInit {
    */
   private generateRoutes(): void {
     const role = parseInt(new StoreService().retrieve('role'));
-    console.log(typeof role);
-
     switch (true) {
       case Role.admin === role:
         this.routes = [

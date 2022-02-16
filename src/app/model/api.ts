@@ -1,52 +1,47 @@
 export const CREATE_COMPANY = 'administrator/company/';
-export const CUSTOMER = 'clients/c1.localhost/private/customer/';
-export const SUPPLIER = 'clients/c1.localhost/private/supplier/';
+export const CUSTOMER = 'clients/private/customer/';
+export const SUPPLIER = 'clients/private/supplier/';
 export const PUMP_EMPLOYEE = 'administrator/employee/';
-export const BANK_ACCOUNTS = 'clients/c1.localhost/private/bank/';
-export const DEPOSIT = 'clients/c1.localhost/private/deposit/';
-export const FUEL = 'clients/c1.localhost/private/fuelmaster/';
+export const BANK_ACCOUNTS = 'clients/private/bank/';
+export const DEPOSIT = 'clients/private/deposit/';
+export const FUEL = 'clients/private/fuelmaster/';
 export const VAT = 'owner/vat/';
-export const DISPENSES = 'clients/c1.localhost/private/dispense/';
-export const OWNER = 'clients/c1.localhost/private/owner/';
+export const DISPENSES = 'clients/private/dispense/';
+export const OWNER = 'clients/private/owner/';
 export const ADDBRANCH = 'administrator/branches/';
 export const vat_master = 'administrator/branches/';
-export const cashmaster = 'clients/c1.localhost/private/cashmaster/';
-export const SESSION = 'clients/c1.localhost/private/session/';
-export const invoices = 'clients/c1.localhost/private/invoice/';
-export const purchseinvoices = 'clients/c1.localhost/private/recipt/';
-export const paymentout = 'clients/c1.localhost/private/report/debtors/';
-export const paymentin = 'clients/c1.localhost/private/report/creditors/';
-export const expense = 'clients/c1.localhost/private/expense/';
+export const cashmaster = 'clients/private/cashmaster/';
+export const SESSION = 'clients/private/session/';
+export const invoices = 'clients/private/invoice/';
+export const purchseinvoices = 'clients/private/recipt/';
+export const paymentout = 'clients/private/report/debtors/';
+export const paymentin = 'clients/private/report/creditors/';
+export const expense = 'clients/private/expense/';
 export const BRANCH_MANAGER = 'administrator/branchmanager/';
-export const salesdetailes = 'clients/c1.localhost/private/report/sale/';
-export const purchasedetails = 'clients/c1.localhost/private/report/purchase/';
-export const expensedetails = 'clients/c1.localhost/private/report/expense/';
-export const meterreading =
-  'clients/c1.localhost/private/report/meter_reading/';
-export const customerbalance =
-  'clients/c1.localhost/private/report/customer_balance/';
-export const deposite_amount = 'clients/c1.localhost/private/report/deposit/';
-export const payment_detailes =
-  'clients/c1.localhost/private/report/payment_details/';
-export const payment_due = 'clients/c1.localhost/private/report/payment_due/';
-export const paymentoutreport =
-  'clients/c1.localhost/private/report/payment_out/';
-export const paymentinreport =
-  'clients/c1.localhost/private/report/payment_in/';
+export const salesdetailes = 'clients/private/report/sale/';
+export const purchasedetails = 'clients/private/report/purchase/';
+export const expensedetails = 'clients/private/report/expense/';
+export const meterreading = 'clients/private/report/meter_reading/';
+export const customerbalance = 'clients/private/report/customer_balance/';
+export const deposite_amount = 'clients/private/report/deposit/';
+export const payment_detailes = 'clients/private/report/payment_details/';
+export const payment_due = 'clients/private/report/payment_due/';
+export const paymentoutreport = 'clients/private/report/payment_out/';
+export const paymentinreport = 'clients/private/report/payment_in/';
 
 /**
  * Branch Apis
  */
-export const BRANCH_CUSTOMER = 'clients/c1.localhost/manager/customer/';
-export const BRANCH_SUPPLIER = 'clients/c1.localhost/manager/supplier/';
-export const BRANCH_PUMP_EMPLOYEE = 'clients/c1.localhost/manager/employee/';
-export const BRANCH_BANK_ACCOUNTS = 'clients/c1.localhost/manager/bank/';
-export const BRANCH_DEPOSIT = 'clients/c1.localhost/manager/deposit/';
-export const BRANCH_FUEL = 'clients/c1.localhost/manager/fuelmaster/';
+export const BRANCH_CUSTOMER = 'clients/manager/customer/';
+export const BRANCH_SUPPLIER = 'clients/manager/supplier/';
+export const BRANCH_PUMP_EMPLOYEE = 'clients/manager/employee/';
+export const BRANCH_BANK_ACCOUNTS = 'clients/manager/bank/';
+export const BRANCH_DEPOSIT = 'clients/manager/deposit/';
+export const BRANCH_FUEL = 'clients/manager/fuelmaster/';
 export const BRANCH_VAT = 'owner/vat/';
-export const BRANCH_DISPENSES = 'clients/c1.localhost/manager/dispense/';
-export const BRANCH_OWNER = 'clients/c1.localhost/manager/owner/';
+export const BRANCH_DISPENSES = 'clients/manager/dispense/';
+export const BRANCH_OWNER = 'clients/manager/owner/';
 export const BRANCH_EMPLOYEE = '';
-export const BRANCH_CASHMASTER = 'clients/c1.localhost/manager/cashmaster/';
-export const BRANCH_INVOICES = 'clients/c1.localhost/manager/invoice/';
-export const BRANCH_RECIEPT = 'clients/c1.localhost/manager/recipt/';
+export const BRANCH_CASHMASTER = 'clients/manager/cashmaster/';
+export const BRANCH_INVOICES = 'clients/manager/invoice/';
+export const BRANCH_RECIEPT = 'clients/manager/recipt/';
