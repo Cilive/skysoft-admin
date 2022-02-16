@@ -73,12 +73,11 @@ export class PurchaseinvoiceService {
     );
   }
 
-  get_branch_purchase_invoices(id) {
-    return this.http.get<ApiResponse<Purchaseinvoices[]>>(
-      environment.domain +
-        `clients/c1.localhost/manager/branch_purchase_invoices/`
-    );
-  }
+  // get_branch_purchase_invoices(id) {
+  //   return this.http.get<ApiResponse<Purchaseinvoices[]>>(
+  //     environment.domain + `clients/c1.localhost/manager/purchase_invoices/`
+  //   );
+  // }
   single_get_purchase_invoice(id) {
     return this.http.get<ApiResponse<Purchaseinvoices>>(
       environment.domain + BRANCH_RECIEPT + id + '/'

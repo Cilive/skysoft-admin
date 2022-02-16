@@ -129,7 +129,7 @@ const routes: Routes = [
         component: BankAccountMasterComponent,
       },
       {
-        path: 'deposits',
+        path: 'deposit',
         component: DepositComponent,
       },
       {

@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
+import { BranchManagerService } from 'src/app/services/branch-manager/branch-manager.service';
 import {
   clearForm,
   validateForm,
@@ -8,8 +9,11 @@ import {
 import { PurchasedetailesService } from 'src/app/services/purchasedetailes/purchasedetailes.service';
 import { SupplierProfileService } from 'src/app/services/supplier-profile/supplier-profile.service';
 import { Branch } from '../../branch/branch.modal';
-import { BranchManagerService } from '../../branch/services/branch-manager/branch-manager.service';
+import { Branchmanager } from '../../owner/branch-manager/branch-manager.model';
 import { SupplierProfile } from '../../owner/supplier-profile/supplier-profile.model';
+// import { Branch } from '../../branch/branch.modal';
+// import { BranchManagerService } from '../../branch/services/branch-manager/branch-manager.service';
+// import { SupplierProfile } from '../../owner/supplier-profile/supplier-profile.model';
 import { Purchasedetiles } from './purchase-detailes.modal';
 
 @Component({
@@ -21,7 +25,7 @@ export class PurchaseDetailsComponent implements OnInit {
   passError: boolean;
   modalRef?: BsModalRef;
   logoData: FormData;
-  branch: Branch;
+  branch: Branchmanager;
   data: Purchasedetiles = {
     invoice_no: null,
     date: undefined,

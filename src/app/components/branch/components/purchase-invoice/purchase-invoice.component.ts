@@ -86,7 +86,7 @@ export class PurchaseInvoiceComponent implements OnInit {
         this.fuelList = res.data;
       }
     });
-    this.supplierService.get_supplier_profile(this.data).subscribe((res) => {
+    this.supplierService.get_supplier_profile().subscribe((res) => {
       if (res.msg === 'Success') {
         console.log(res.data);
 
@@ -101,11 +101,11 @@ export class PurchaseInvoiceComponent implements OnInit {
       }
     });
 
-    this.invoice.get_branch_purchase_invoices(this.data).subscribe((res) => {
-      if (res.msg === 'Success') {
-        this.purchaseInvoiceList = res.data;
-      }
-    });
+    // this.invoice.get_branch_purchase_invoices(this.data).subscribe((res) => {
+    //   if (res.msg === 'Success') {
+    //     this.purchaseInvoiceList = res.data;
+    //   }
+    // });
   }
   public onSubmit(): void {
     if (validateForm('form')) {

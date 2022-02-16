@@ -58,11 +58,9 @@ export class DepositComponent implements OnInit {
     this.owner.get_owners().subscribe((res) => {
       this.owners = res.data;
     });
-
     this.branches.get_branches().subscribe((res) => {
       if (res.msg === 'Success') {
         console.log(res.data);
-
         this.branchesList = res.data;
       }
     });

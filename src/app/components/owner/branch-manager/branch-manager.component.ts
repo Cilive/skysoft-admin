@@ -28,6 +28,21 @@ export class BranchManagerComponent implements OnInit {
     username: '',
     iqama_no: '',
     branches: '',
+    user: '',
+    is_superuser: false,
+    is_company: false,
+    is_active: false,
+    is_employee: false,
+    is_branch_user: false,
+    is_staff: false,
+    is_admin: false,
+    is_super_admin: false,
+    created_at: undefined,
+    updated_at: undefined,
+    date_joined: undefined,
+    last_login: undefined,
+    groups: [],
+    user_permissions: [],
   };
   employeesList: Branchmanager[] = [];
   Branch_ManagerList: Branchmanager[];
@@ -92,6 +107,21 @@ export class BranchManagerComponent implements OnInit {
       phone: item.phone,
       id: item.id,
       branches: item.branches,
+
+      is_superuser: item.is_superuser,
+      is_company: item.is_company,
+      is_active: item.is_active,
+      is_employee: item.is_employee,
+      is_branch_user: item.is_branch_user,
+      is_staff: item.is_staff,
+      is_admin: item.is_admin,
+      is_super_admin: item.is_super_admin,
+      created_at: item.created_at,
+      updated_at: item.updated_at,
+      date_joined: item.date_joined,
+      last_login: item.last_login,
+      groups: item.groups,
+      user_permissions: item.user_permissions,
     };
   }
   public onUpdate() {

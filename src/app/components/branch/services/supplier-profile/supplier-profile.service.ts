@@ -53,9 +53,15 @@ export class SupplierProfileService {
   //     environment.domain + 'clients/c1.localhost/manager/supplier/'
   //   );
   // }
-  get_supplier_profile(data: Purchaseinvoices) {
+  // get_supplier_profile(data: Purchaseinvoices) {
+  //   return this.http.get<ApiResponse<any[]>>(
+  //     environment.domain + 'clients/c1.localhost/manager/supplier/'
+  //   );
+  // }
+
+  get_supplier_profile() {
     return this.http.get<ApiResponse<any[]>>(
-      environment.domain + 'clients/c1.localhost/manager/supplier/'
+      environment.domain + 'clients/c1.localhost/manager/branch_suppliers/'
     );
   }
 }

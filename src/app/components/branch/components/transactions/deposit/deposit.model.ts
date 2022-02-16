@@ -3,4 +3,5 @@ export interface Deposit {
   date: Date;
   owner: string;
   id?: number;
+  bank_ac_id: number;
 }

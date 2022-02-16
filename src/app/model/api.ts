@@ -45,3 +45,5 @@ export const BRANCH_EMPLOYEE = '';
 export const BRANCH_CASHMASTER = 'clients/manager/cashmaster/';
 export const BRANCH_INVOICES = 'clients/manager/invoice/';
 export const BRANCH_RECIEPT = 'clients/manager/recipt/';
+export const BRANCH_EXPENSE = 'clients/manager/expense/';
+export const BRANCH_PAYMENTIN = 'clients/manager/report/creditors/';

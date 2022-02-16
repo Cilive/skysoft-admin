@@ -7,7 +7,7 @@ import {
 } from 'src/app/services/general/general.service';
 import { Branch } from '../../branch.modal';
 import { BankAccountMasterService } from '../../services/bank-account-master/bank-account-master.service';
-import { BranchManagerService } from '../../services/branch-manager/branch-manager.service';
+// import { BranchManagerService } from '../../services/branch-manager/branch-manager.service';
 import { CustomerProfileService } from '../../services/customer-profile/customer-profile.service';
 import { FueldataService } from '../../services/fueldata/fueldata.service';
 import { SalesinvoiceService } from '../../services/salesinvoice/salesinvoice.service';

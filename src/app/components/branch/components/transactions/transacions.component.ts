@@ -9,27 +9,27 @@ export class TransacionsComponent implements OnInit {
   tileList: Tiles = [
     {
       icon: 'bx bxs-right-down-arrow-circle',
-      routerLink: '/owner/payments_In',
+      routerLink: '/branch/payments_In',
       title: 'Payments In',
     },
     {
       icon: 'bx bxs-left-top-arrow-circle',
-      routerLink: '/owner/payments_Out',
+      routerLink: '/branch/payments_Out',
       title: 'Payments Out',
     },
     {
       icon: 'bx bx-wallet-alt',
-      routerLink: '/owner/expenses',
+      routerLink: '/branch/expenses',
       title: 'Expenses',
     },
     {
       icon: 'bx bx-window-close',
-      routerLink: '/owner/close_Account',
+      routerLink: '/branch/close_Account',
       title: 'Close Account',
     },
     {
       icon: 'bx bx-coin',
-      routerLink: '/owner/deposits',
+      routerLink: '/branch/deposit',
       title: 'Deposit ',
     },
   ];
