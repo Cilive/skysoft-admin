@@ -7,6 +7,7 @@ import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
+import { Branch } from '../../branch/branch.modal';
 import { Branchmanager } from './branch-manager.model';
 
 @Component({
@@ -28,7 +29,7 @@ export class BranchManagerComponent implements OnInit {
     username: '',
     iqama_no: '',
     branches: '',
-    user: '',
+    // user: '',
     is_superuser: false,
     is_company: false,
     is_active: false,
@@ -46,13 +47,14 @@ export class BranchManagerComponent implements OnInit {
   };
   employeesList: Branchmanager[] = [];
   Branch_ManagerList: Branchmanager[];
-  branches: any;
-  branchesList: any;
+  // branch: any;
+  branchesList: Branch[] = [];
 
   constructor(
     private modalService: BsModalService,
     private toast: AlertService,
-    private Branchmanager: BranchManagerService
+    private Branchmanager: BranchManagerService,
+    private branches: BranchManagerService
   ) {}
 
   ngOnInit(): void {
@@ -63,7 +65,7 @@ export class BranchManagerComponent implements OnInit {
       }
     });
     this.branches.get_branches().subscribe((res) => {
-      if (res.msg === 'Succes') {
+      if (res.msg === 'Success') {
         console.log(res.data);
 
         this.branchesList = res.data;
@@ -72,6 +74,7 @@ export class BranchManagerComponent implements OnInit {
   }
 
   public onSubmit(): void {
+    // console.log(this.data);
     if (validateForm('emp_form')) {
       this.Branchmanager.post_branch_manager(this.data).subscribe((res) => {
         if (res.msg === 'Success') {
@@ -102,7 +105,7 @@ export class BranchManagerComponent implements OnInit {
       username: item.username,
       password: item.password,
       iqama_no: item.iqama_no,
-      email: item.email,
+      email: item.user.email,
       name: item.name,
       phone: item.phone,
       id: item.id,
