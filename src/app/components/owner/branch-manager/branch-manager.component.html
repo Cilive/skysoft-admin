@@ -1,4 +1,4 @@
-<!-- < <div class="card m-auto col-md-12">
+<div class="card m-auto col-md-12">
   <div class="modal-header">
     <h6 translate>Manage Employees</h6>
   </div>
@@ -7,20 +7,6 @@
       id="emp_form"
       (submit)="editMode ? onUpdate() : onSubmit()"
       (reset)="onReset()"
-    > 
-<form
-  class="card"
-  (reset)="onReset()"
-  id="form"
-  (Submit)="editMode == true ? onUpdate() : onSubmit()"
->
-  <div class="modal-header">
-    <h6 translate>Manage Customer Profile</h6>
-  </div>
-  <div class="m-2 d-flex justify-content-between">
-    <div
-      class="border-right"
-      style="border-color: rgb(145, 145, 145) !important"
     >
       <div class="row mt-3">
         <div class="form-group col-md-4" *ngIf="editMode != true">
@@ -124,113 +110,6 @@
         </div>
       </div>
 
-    </div>
-  </div>
-  <div class="second">
-    <div class="p-2">
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label translate for="place">مكان</label>
-          <input
-            translate
-            type="text"
-            dir="rtl"
-            class="form-control"
-            required
-            [(ngModel)]="data.username"
-            name="ar_place"
-          />
-          <small id="helpId" class="invalid-feedback">Field is required</small>
-        </div>
-        <div class="form-group col-md-6">
-          <label translate for="name">اسم الزبون</label>
-          <input
-            translate
-            type="text"
-            dir="rtl"
-            class="form-control"
-            required
-            [(ngModel)]="data.password"
-            name="ar_name"
-          />
-          <small id="helpId" class="invalid-feedback">Field is required</small>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label translate for="mobile">هاتف أرضي</label>
-          <input
-            translate
-            type="number"
-            readonly
-            dir="rtl"
-            class="form-control"
-            required
-            [(ngModel)]="data.email"
-            name="mobile_no"
-          />
-        </div>
-        <div class="form-group col-md-6">
-          <label translate for="district">منطقة</label>
-          <input
-            translate
-            type="text"
-            dir="rtl"
-            class="form-control"
-            required
-            [(ngModel)]="data.name"
-            name="ar_district"
-          />
-          <small id="helpId" class="invalid-feedback">Field is required</small>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label translate for="lan">هاتف أرضي</label>
-          <input
-            translate
-            type="number"
-            readonly
-            dir="rtl"
-            class="form-control"
-            required
-            [(ngModel)]="data.iqama_no"
-            name="lan_no"
-          />
-        </div>
-        <div class="form-group col-md-6">
-          <label translate for="vat">التليفون المحمول</label>
-          <input
-            translate
-            type="number"
-            readonly
-            dir="rtl"
-            class="form-control"
-            required
-            [(ngModel)]="data.phone"
-            name="vat_no"
-          />
-        </div>
-        <div class="form-group col-md-6">
-          <label translate for=""> Branch</label>
-          <select
-            class="form-control"
-            name="branches"
-            [(ngModel)]="data.branches"
-            class="form-control"
-            id="type"
-            data-live-search="true"
-            required
-          >
-            <option translate value="" selected hidden value="">select</option>
-
-            <option *ngFor="let item of branchesList" [value]="item.id">
-              {{ item.en_name }}
-            </option>
-          </select>
-        </div>
-      </div>
-
       <div class="modal-footer">
         <button translate type="submit" class="btn btn-outline-primary">
           {{ editMode === true ? "Update" : "Submit" }}
@@ -240,66 +119,68 @@
           Reset
         </button>
       </div>
-    </div>
-  </div>
-  
-</form>
+    </form>
 
-<div class="mt-3 card">
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th translate scope="col">#</th>
-        <th translate scope="col">Name</th>
-        <th translate scope="col">Email</th>
-        <th translate scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of Branch_ManagerList; let i = index">
-        <th translate scope="row">{{ i + 1 }}</th>
-        <td>{{ item.name }}</td>
-        <td>{{ item.user.email }}</td>
-        <td>{{ item.phone }}</td>
-        <td>
-          <div class="d-flex justify-content-around">
-            <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>
-            <i
-              title="Delete"
-              class="bx bxs-trash"
-              (click)="openModal(template)"
-            ></i>
-           
-          </div>
-
-          <ng-template #template>
-            <div class="modal-body text-center">
-              <p translate>Do you want to confirm?</p>
-              <div class="modal-footer">
-                <button
-                  translate
-                  type="button"
-                  class="btn btn-outline-danger"
-                  (click)="onDelete(item.id)"
-                >
-                  Yes
-                </button>
-                <button
-                  translate
-                  type="button"
-                  class="btn btn-primary"
-                  (click)="decline()"
-                >
-                  No
-                </button>
+    <div class="mt-3 card">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th translate scope="col">#</th>
+            <th translate scope="col">Name</th>
+            <th translate scope="col">Email</th>
+            <th translate scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of Branch_ManagerList; let i = index">
+            <th translate scope="row">{{ i + 1 }}</th>
+            <td>{{ item.name }}</td>
+            <td>{{ item.user.email }}</td>
+            <td>{{ item.phone }}</td>
+            <td>
+              <div class="d-flex justify-content-around">
+                <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>
+                <i
+                  title="Delete"
+                  class="bx bxs-trash"
+                  (click)="openModal(template)"
+                ></i>
               </div>
-            </div></ng-template
-          >
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div> -->
+
+              <ng-template #template>
+                <div class="modal-body text-center">
+                  <p translate>Do you want to confirm?</p>
+                  <div class="modal-footer">
+                    <button
+                      translate
+                      type="button"
+                      class="btn btn-outline-danger"
+                      (click)="onDelete(item.id)"
+                    >
+                      Yes
+                    </button>
+                    <button
+                      translate
+                      type="button"
+                      class="btn btn-primary"
+                      (click)="decline()"
+                    >
+                      No
+                    </button>
+                  </div>
+                </div></ng-template
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    -->
+    <!-- 
+
+
+
+
 
 <form
   class="card"
@@ -318,7 +199,6 @@
     >
       <div class="p-2">
         <div class="form-row">
-          <!-- <div class="form-group col-md-6"> -->
           <div class="form-group col-md-6" *ngIf="editMode != true">
             <label translate for="emp_name">Username</label>
             <input
@@ -403,7 +283,6 @@
           </div>
           <div class="form-group col-md-6">
             <label translate for=""> Branch</label>
-            <!-- branch listing  api posting -->
             <select
               class="form-control"
               name="branches"
@@ -518,7 +397,6 @@
           </div>
           <div class="form-group col-md-6">
             <label translate for=""> فرع شجرة</label>
-            <!-- branch listing  api posting -->
             <select
               class="form-control"
               name="branches"
@@ -575,11 +453,7 @@
               class="bx bxs-trash"
               (click)="openModal(template)"
             ></i>
-            <!-- <i
-              (click)="onSuspend(item.id)"
-              title="Suspend"
-              class="bx bx-x-circle"
-            ></i> -->
+          
           </div>
 
           <ng-template #template>
@@ -609,4 +483,6 @@
       </tr>
     </tbody>
   </table>
+</div> -->
+  </div>
 </div>

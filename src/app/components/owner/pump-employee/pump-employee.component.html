@@ -1,4 +1,4 @@
-<!-- <div class="card m-auto col-md-12">
+<div class="card m-auto col-md-12">
   <div class="modal-header">
     <h6 translate>Manage Employees</h6>
   </div>
@@ -159,7 +159,6 @@
               class="bx bxs-trash"
               (click)="openModal(template)"
             ></i>
-           
           </div>
 
           <ng-template #template>
@@ -189,7 +188,9 @@
       </tr>
     </tbody>
   </table>
-</div> -->
+</div>
+
+<!-- 
 
 <form
   class="card"
@@ -208,7 +209,6 @@
     >
       <div class="p-2">
         <div class="form-row">
-          <!-- <div class="form-group col-md-6"> -->
           <div class="form-group col-md-6" *ngIf="editMode != true">
             <label translate for="emp_name">Name</label>
             <input
@@ -254,7 +254,6 @@
           </div>
           <div class="form-group col-md-6">
             <label translate for=""> Branch</label>
-            <!-- branch listing  api posting -->
             <select
               class="form-control"
               name="branches"
@@ -372,7 +371,6 @@
           </div>
           <div class="form-group col-md-6">
             <label translate for=""> فرع شجرة</label>
-            <!-- branch listing  api posting -->
             <select
               class="form-control"
               name="branches"
@@ -474,11 +472,7 @@
               class="bx bxs-trash"
               (click)="openModal(template)"
             ></i>
-            <!-- <i
-              (click)="onSuspend(item.id)"
-              title="Suspend"
-              class="bx bx-x-circle"
-            ></i> -->
+          
           </div>
 
           <ng-template #template>
@@ -508,4 +502,4 @@
       </tr>
     </tbody>
   </table>
-</div>
+</div> -->
