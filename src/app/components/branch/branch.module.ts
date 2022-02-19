@@ -50,11 +50,11 @@ const routes: Routes = [
         path: 'fuelstocks',
         component: FuelstocksComponent,
       },
-      // {
-      //   path: '',
-      //   redirectTo: 'fuelstock',
-      //   pathMatch: 'full',
-      // },
+      {
+        path: '',
+        redirectTo: 'fuelstocks',
+        pathMatch: 'full',
+      },
       {
         path: 'invoicelisting',
         component: InvoicelistingComponent,
