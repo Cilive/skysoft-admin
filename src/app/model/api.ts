@@ -49,3 +49,5 @@ export const BRANCH_RECIEPT = 'clients/manager/recipt/';
 export const BRANCH_EXPENSE = 'clients/manager/expense/';
 export const BRANCH_PAYMENTIN = 'clients/manager/report/creditors/';
 export const BRANCH_PAYMENTOUT = '/clients/manager/report/debtors';
+export const BRANCH_FUELSTOCKS = 'clients/manager/fuel_stock/';
+export const BRANCH_FUELSTOCK = '';

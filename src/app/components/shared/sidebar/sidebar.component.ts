@@ -174,6 +174,12 @@ export class SidebarComponent implements OnInit, AfterViewInit {
         this.routes = [
           {
             icon: 'bx bxs-business',
+            path: '/branch/fuelstocks',
+            title: 'Fuel Stock',
+          },
+
+          {
+            icon: 'bx bxs-business',
             path: '/branch/invoicelisting',
             title: 'Invoice Listing',
           },

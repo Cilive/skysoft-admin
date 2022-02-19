@@ -39,12 +39,22 @@ import { VatFuelMasterComponent } from './components/vat-fuel-master/vat-fuel-ma
 import { CashmasterComponent } from './components/cashmaster/cashmaster.component';
 import { cashmaster } from 'src/app/model/api';
 import { InvoicelistingComponent } from './components/invoicelisting/invoicelisting.component';
+import { FuelstocksComponent } from './fuelstocks/fuelstocks.component';
 
 const routes: Routes = [
   {
     path: '',
     component: BranchComponent,
     children: [
+      {
+        path: 'fuelstocks',
+        component: FuelstocksComponent,
+      },
+      // {
+      //   path: '',
+      //   redirectTo: 'fuelstock',
+      //   pathMatch: 'full',
+      // },
       {
         path: 'invoicelisting',
         component: InvoicelistingComponent,
@@ -221,6 +231,7 @@ const routes: Routes = [
     StockManegmentComponent,
     CashmasterComponent,
     InvoicelistingComponent,
+    FuelstocksComponent,
   ],
   imports: [
     CommonModule,
