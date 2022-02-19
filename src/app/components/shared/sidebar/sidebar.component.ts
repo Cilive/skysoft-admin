@@ -107,6 +107,11 @@ export class SidebarComponent implements OnInit, AfterViewInit {
         this.routes = [
           {
             icon: 'bx bxs-business',
+            path: '/owner/dashboard',
+            title: 'Dashboard',
+          },
+          {
+            icon: 'bx bxs-business',
             path: '/owner/invoicelisting',
             title: 'Invoice Listing',
           },
@@ -125,11 +130,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
             path: '/owner/addbranch',
             title: 'Add Branch',
           },
-          {
-            icon: 'bx bxs-business',
-            path: '/owner/dashboard',
-            title: 'Dashboard',
-          },
+
           {
             icon: 'bx bxs-user-account',
             path: '/owner/users',
