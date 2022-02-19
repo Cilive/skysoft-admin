@@ -2,11 +2,15 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
+import { BranchManagerService } from 'src/app/services/branch-manager/branch-manager.service';
 import { CustomerProfileService } from 'src/app/services/customer-profile/customer-profile.service';
 import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
+import { Branch } from '../../branch/branch.modal';
+// import { CompanyProfileService } from '../customer-profile/customer-profile.service';
+// import { Branch } from 'src/app/services/customer-profile/customer-profile.service';
 import { CustomerProfile } from './customer-profile.modal';
 
 @Component({
@@ -18,6 +22,8 @@ export class CustomerProfileComponent implements OnInit {
   modalRef?: BsModalRef;
   editMode: boolean;
   customers: CustomerProfile[] = [];
+  title: Branch;
+  CustomerProfileForm: FormGroup;
   data: CustomerProfile = {
     en_name: '',
     ar_name: '',
@@ -28,21 +34,37 @@ export class CustomerProfileComponent implements OnInit {
     vat_no: null,
     lan_no: null,
     mobile_no: null,
+    branches: '',
+
+    type: 1,
   };
+  body = {};
   id: number;
+  branchesList: Branch[] = [];
+  customerlist: CustomerProfile[] = [];
   constructor(
     private modalService: BsModalService,
     private toast: AlertService,
-    private customerService: CustomerProfileService
+    private customerService: CustomerProfileService,
+    private branches: BranchManagerService
   ) {}
 
   ngOnInit(): void {
     this.customerService.get_customer_profiles().subscribe((res) => {
       this.customers = res.data;
     });
+    this.branches.get_branches().subscribe((res) => {
+      if (res.msg === 'Success') {
+        console.log(res.data);
+
+        this.branchesList = res.data;
+      }
+    });
   }
+
   public onSubmit(): void {
     if (validateForm('form')) {
+      // console.log(this.data);
       this.customerService.post_customer_profile(this.data).subscribe((res) => {
         if (res.msg === 'Success') {
           this.toast.success('Customer Added Successful');
@@ -84,6 +106,9 @@ export class CustomerProfileComponent implements OnInit {
       lan_no: item.lan_no,
       mobile_no: item.mobile_no,
       id: item.id,
+      branches: item.branches,
+
+      type: item.type,
     };
   }
 

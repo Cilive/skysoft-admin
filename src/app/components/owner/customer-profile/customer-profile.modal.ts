@@ -9,4 +9,6 @@ export interface CustomerProfile {
   vat_no: number;
   lan_no: number;
   mobile_no: number;
+  branches: string | number;
+  type: number;
 }

@@ -17,6 +17,9 @@ import {
   accessToken,
   AuthenticationService,
 } from '../authentication/authentication.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Role } from 'src/app/model/shared';
+import { environment } from 'src/environments/environment';
 
 export const DEFAULT_TIMEOUT = new InjectionToken<number>('defaultTimeout');
 @Injectable({
@@ -39,9 +42,7 @@ export class ApiInterceptor implements HttpInterceptor {
     accessToken.subscribe((res) => (this.token = res));
 
     if (this.token) {
-      request = request.clone({
-        headers: new HttpHeaders({ authorization: `Bearer ${this.token}` }),
-      });
+      request = modifyUrl(request, this.token);
     }
     const timeoutValue = request.headers.get('timeout') || this.defaultTimeout;
     const timeoutValueNumeric = Number(timeoutValue);
@@ -60,6 +61,7 @@ export class ApiInterceptor implements HttpInterceptor {
                 .subscribe((res) => {
                   new StoreService().store('access', res.access);
                   accessToken.next(res.access);
+                  console.log(request);
                   next.handle(request);
                 });
             }
@@ -82,4 +84,72 @@ export class ApiInterceptor implements HttpInterceptor {
       })
     );
   }
+}
+/**
+ * Function to modify request according to logined user
+ *  This is needed due to mulit-tenant platform of requesting in different schematic stores
+ * modif
+ *
+ * @param request @typedef {HttpRequest}
+ * @param token @typedef {string}
+ * @returns {HttpRequest}
+ */
+
+function modifyUrl(
+  request: HttpRequest<unknown>,
+  token: string
+): HttpRequest<unknown> {
+  const user = new JwtHelperService().decodeToken(token);
+  console.log(user);
+
+  const role = Number(new StoreService().retrieve('role'));
+  switch (role) {
+    case Role.owner:
+      {
+        const url = request.url.split('/clients');
+        request = request.clone({
+          // withCredentials: true,
+          headers: new HttpHeaders({
+            authorization: `Bearer ${token}`,
+          }),
+        });
+        if (url.length > 1) {
+          const username = user.username;
+          const templateUrl = `${url[0]}/clients/${username}${url[1]}`;
+          console.log(templateUrl);
+
+          request = request.clone({
+            url: templateUrl,
+            // withCredentials: true,
+            headers: new HttpHeaders({
+              authorization: `Bearer ${token}`,
+            }),
+          });
+        }
+      }
+      break;
+    case Role.maneger: {
+      const url = request.url.split('/clients');
+      request = request.clone({
+        // withCredentials: true,
+        headers: new HttpHeaders({
+          authorization: `Bearer ${token}`,
+        }),
+      });
+      if (url.length > 1) {
+        const username = user.branch_tenant_name.username;
+        const templateUrl = `${url[0]}/clients/${username}${url[1]}`;
+        console.log(templateUrl);
+
+        request = request.clone({
+          url: templateUrl,
+          // withCredentials: true,
+          headers: new HttpHeaders({
+            authorization: `Bearer ${token}`,
+          }),
+        });
+      }
+    }
+  }
+  return request;
 }

@@ -1,11 +1,15 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
+import { BranchManagerService } from 'src/app/services/branch-manager/branch-manager.service';
 import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
 import { OwnersService } from 'src/app/services/owners/owners.service';
+
+import { Branch } from '../../branch/branch.modal';
+import { Owner } from './company-owner.model';
 
 @Component({
   selector: 'app-company-owner',
@@ -15,32 +19,48 @@ import { OwnersService } from 'src/app/services/owners/owners.service';
 export class CompanyOwnerComponent implements OnInit {
   modalRef?: BsModalRef;
   owners = [];
-  data: { name: String; id?: number; phone: number; email: string } = {
+  // baranchlist: Branch[] = [];
+
+  data: Owner = {
     name: '',
     phone: null,
     email: '',
+    branches: '',
   };
   editMode = false;
+  body = {};
+  id: number;
+  branchesList: Branch[] = [];
+  Ownerlist: CompanyOwnerComponent[] = [];
+
   constructor(
     private modalService: BsModalService,
     private owner: OwnersService,
-    private toast: AlertService
+    private toast: AlertService,
+    private branches: BranchManagerService
   ) {}
 
   ngOnInit(): void {
     this.owner.get_owners().subscribe((res) => {
       this.owners = res.data;
     });
+    this.branches.get_branches().subscribe((res) => {
+      if (res.msg === 'Success') {
+        console.log(res.data);
+
+        this.branchesList = res.data;
+      }
+    });
   }
   onReset() {
-    clearForm('bnkForm');
+    clearForm('ownerform');
   }
   onSubmit() {
     if (validateForm('bnkForm')) {
-      this.owner.post_owner(this.data).subscribe((res) => {
+      this.owner.post_Owner(this.data).subscribe((res) => {
         if (res.msg === 'Success') {
           this.toast.success('owner Added');
-          clearForm('bnkForm');
+          clearForm('ownerform');
           this.ngOnInit();
         }
       });
@@ -50,7 +70,7 @@ export class CompanyOwnerComponent implements OnInit {
     this.owner.update_owner(this.data, this.data.id).subscribe((res) => {
       if (res.msg === 'Success') {
         this.toast.success('owner Updated');
-        clearForm('bnkForm');
+        clearForm('ownerform');
         this.editMode = false;
         this.ngOnInit();
       }
@@ -63,6 +83,7 @@ export class CompanyOwnerComponent implements OnInit {
       id: item.id,
       email: item.email,
       phone: item.phone,
+      branches: item.branches,
     };
   }
   openModal(template: TemplateRef<any>) {
