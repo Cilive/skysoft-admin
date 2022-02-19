@@ -1,9 +1,4 @@
-<form
-  [formGroup]="supplierForm"
-  class="card"
-  id="form"
-  (ngSubmit)="editMode ? onUpdate() : onSubmit()"
->
+<form class="card" id="form" (ngSubmit)="editMode ? onUpdate() : onSubmit()">
   <div class="m-2 d-flex justify-content-between">
     <div class="first">
       <div class="p-2">
@@ -15,7 +10,8 @@
               class="form-control"
               required
               aria-describedby="helpId"
-              formControlName="en_name"
+              name="en_name"
+              [(ngModel)]="data.en_name"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -27,7 +23,8 @@
               type="text"
               class="form-control"
               required
-              formControlName="en_place"
+              name="en_place"
+              [(ngModel)]="data.en_place"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -41,20 +38,22 @@
               type="text"
               class="form-control"
               required
-              formControlName="en_district"
+              name="en_district"
+              [(ngModel)]="data.en_district"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
             >
           </div>
           <div class="form-group col-md-6">
-            <label for="company">Mobile</label>
+            <label translate for="company">Mobile</label>
             <input
+              translate
               type="number"
               class="form-control"
               required
-              [value]="supplierForm.value.mobile_no"
-              formControlName="mobile_no"
+              [(ngModel)]="data.mobile_no"
+              name="mobile_no"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -68,8 +67,8 @@
               type="number"
               class="form-control"
               required
-              [value]="supplierForm.value.vat_no"
-              formControlName="vat_no"
+              name="vat_no"
+              [(ngModel)]="data.vat_no"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -81,12 +80,33 @@
               type="number"
               class="form-control"
               required
-              [value]="supplierForm.value.lan_no"
-              formControlName="lan_no"
+              name="lan_no"
+              [(ngModel)]="data.lan_no"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
             >
+          </div>
+          <div class="form-group col-md-6">
+            <label translate for=""> Branch</label>
+            <!-- branch listing  api posting -->
+            <select
+              class="form-control"
+              name="branches"
+              [(ngModel)]="data.branches"
+              class="form-control"
+              id="type"
+              data-live-search="true"
+              required
+            >
+              <option translate value="col" selected hidden value="">
+                select
+              </option>
+
+              <option *ngFor="let item of branchesList" [value]="item.id">
+                {{ item.en_name }}
+              </option>
+            </select>
           </div>
         </div>
       </div>
@@ -102,7 +122,9 @@
               dir="rtl"
               class="form-control"
               required
-              formControlName="ar_place"
+              name="ar_place"
+              [(ngModel)]="data.ar_place"
+              class="form-control"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -117,7 +139,8 @@
               dir="rtl"
               class="form-control"
               required
-              formControlName="ar_name"
+              name="ar_name"
+              [(ngModel)]="data.ar_name"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -134,8 +157,8 @@
               dir="rtl"
               class="form-control"
               required
-              [value]="supplierForm.value.mobile_no"
-              formControlName="mobile_no"
+              [(ngModel)]="data.mobile_no"
+              name="mobile_no"
             />
           </div>
           <div class="form-group col-md-6">
@@ -146,7 +169,8 @@
               dir="rtl"
               class="form-control"
               required
-              formControlName="ar_district"
+              name="ar_district"
+              [(ngModel)]="data.ar_district"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small
@@ -164,11 +188,12 @@
               class="form-control"
               required
               [value]="supplierForm.value.lan_no"
-              formControlName="lan_no"
+              name="lan_no"
+              [(ngModel)]="data.lan_no"
             />
           </div>
           <div class="form-group col-md-6">
-            <label translate for="company">التليفون المحمول</label>
+            <label translate for="company">ضريبة القيمة المضافة</label>
             <input
               translate
               type="number"
@@ -177,8 +202,30 @@
               class="form-control"
               required
               [value]="supplierForm.value.vat_no"
-              formControlName="vat_no"
+              name="vat_no"
+              [(ngModel)]="data.vat_no"
             />
+          </div>
+          <div class="form-group col-md-6">
+            <label translate for=""> Branch</label>
+            <!-- branch listing  api posting -->
+            <select
+              class="form-control"
+              name="branches"
+              [(ngModel)]="data.branches"
+              class="form-control"
+              id="type"
+              data-live-search="true"
+              required
+            >
+              <option translate value="col" selected hidden value="">
+                select
+              </option>
+
+              <option *ngFor="let item of branchesList" [value]="item.id">
+                {{ item.en_name }}
+              </option>
+            </select>
           </div>
         </div>
       </div>

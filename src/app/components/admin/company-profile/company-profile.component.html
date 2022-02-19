@@ -197,6 +197,20 @@
             >
           </div>
         </div>
+        <div class="form-group col-md-6">
+          <label translate for="company">Branch Count</label>
+          <input
+            translate
+            type="Brnch Count"
+            class="form-control"
+            required
+            [readonly]="editMode === true"
+            aria-describedby="helpId"
+            [(ngModel)]="data.branchcount"
+            name="branchcount"
+          />
+          <small id="helpId" class="invalid-feedback">Field is required</small>
+        </div>
       </div>
     </div>
     <div>
@@ -370,7 +384,7 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-md-6">
+          <!-- <div class="form-group col-md-6">
             <label translate class="col-md-12 text-right ml-auto" for="company"
               >شعار</label
             >
@@ -383,7 +397,7 @@
               class="form-control"
               [(ngModel)]="data.logo"
             />
-          </div>
+          </div> -->
           <div class="form-group col-md-6">
             <label translate for="company">Username</label>
             <input
@@ -395,6 +409,22 @@
               aria-describedby="helpId"
               [(ngModel)]="data.username"
               name="username"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+          <div class="form-group col-md-6">
+            <label translate for="company">Branch Count</label>
+            <input
+              translate
+              type="Brnch Count"
+              class="form-control"
+              required
+              [readonly]="editMode === true"
+              aria-describedby="helpId"
+              [(ngModel)]="data.branchcount"
+              name="branchcount"
             />
             <small id="helpId" class="invalid-feedback"
               >Field is required</small

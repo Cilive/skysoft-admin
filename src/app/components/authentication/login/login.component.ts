@@ -7,8 +7,6 @@ import {
 } from 'src/app/services/authentication/authentication.service';
 import { validateForm } from 'src/app/services/general/general.service';
 import { StoreService } from 'src/app/services/store/store.service';
-import { BranchComponent } from '../../owner/branch/branch.component';
-import { BranchModule } from '../../owner/branch/branch.module';
 
 @Component({
   selector: 'app-login',

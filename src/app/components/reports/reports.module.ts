@@ -38,10 +38,10 @@ const routes: Routes = [
     path: 'customer_Balance',
     component: CustomerBalanceComponent,
   },
-  {
-    path: 'customer_Details',
-    component: CustomerDetailsComponent,
-  },
+  // {
+  //   path: 'customer_Details',
+  //   component: CustomerDetailsComponent,
+  // },
   {
     path: 'deposit_Amount',
     component: DepositAmountComponent,

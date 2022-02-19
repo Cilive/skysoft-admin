@@ -2,18 +2,14 @@ export interface Branchmanager {
   id?: any;
   username: string;
   password: string;
-  branches: number;
+  branches: string | number;
   email: string;
   name: string;
   iqama_no: string;
   phone: string;
-  user?: User;
-}
-export interface User {
-  id: number;
+  // user?: string;
+
   is_superuser: boolean;
-  username: string;
-  email: string;
   is_company: boolean;
   is_active: boolean;
   is_employee: boolean;
@@ -27,4 +23,7 @@ export interface User {
   last_login: Date;
   groups: any[];
   user_permissions: any[];
+  user?: {
+    email: string;
+  };
 }
