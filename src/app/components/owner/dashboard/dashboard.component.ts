@@ -11,7 +11,7 @@ export class DashboardComponent implements OnInit {
   constructor(private dashboardService: DashboardService) {}
 
   ngOnInit(): void {
-    this.dashboardService['owner_dashboard']().subscribe((res) => {
+    this.dashboardService.owner_dashboard().subscribe((res) => {
       if (res.msg === 'Success') {
         // this.tileList[0].subtitle = res.data.total_transactions.total_amt__sum;
         this.tileList = [

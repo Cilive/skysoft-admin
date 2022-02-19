@@ -28,6 +28,7 @@ export const payment_detailes = 'clients/private/report/payment_details/';
 export const payment_due = 'clients/private/report/payment_due/';
 export const paymentoutreport = 'clients/private/report/payment_out/';
 export const paymentinreport = 'clients/private/report/payment_in/';
+export const DASHBOARD = 'clients/private/dashboard';
 
 /**
  * Branch Apis

@@ -43,7 +43,7 @@ export class SupplierProfileService {
   }
   get_branches(id) {
     return this.http.get<ApiResponse<SupplierProfile[]>>(
-      environment.domain + 'clients/c1.localhost/private/supplier/' + id + '/'
+      environment.domain + 'clients/private/supplier/' + id + '/'
     );
   }
   // get_supplier_Profile() {
@@ -58,10 +58,7 @@ export class SupplierProfileService {
   // }
   get_branchwais_supplier_profile(id) {
     return this.http.get<ApiResponse<any[]>>(
-      environment.domain +
-        'clients/c1.localhost/private/branch_suppliers/' +
-        id +
-        '/'
+      environment.domain + 'clients/private/branch_suppliers/' + id + '/'
     );
   }
 

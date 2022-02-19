@@ -2,12 +2,12 @@ export interface Branchmanager {
   id?: any;
   username: string;
   password: string;
-  branches: string;
+  branches: string | number;
   email: string;
   name: string;
   iqama_no: string;
   phone: string;
-  user?: string;
+  // user?: string;
 
   is_superuser: boolean;
   is_company: boolean;
@@ -23,4 +23,7 @@ export interface Branchmanager {
   last_login: Date;
   groups: any[];
   user_permissions: any[];
+  user?: {
+    email: string;
+  };
 }
