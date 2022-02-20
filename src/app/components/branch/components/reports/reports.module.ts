@@ -10,6 +10,10 @@ import { CustomerBalanceComponent } from './customer-balance/customer-balance.co
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
+import { CustomerDetailsBranchComponent } from './customer-details-branch/customer-details-branch.component';
+import { DepositAmountBranchComponent } from './deposit-amount-branch/deposit-amount-branch.component';
+import { ExpenceDetailsBranchComponent } from './expence-details-branch/expence-details-branch.component';
+import { IncomeAndExpenceBranchComponent } from './income-and-expence-branch/income-and-expence-branch.component';
 
 const routes: Routes = [
   {
@@ -84,6 +88,10 @@ const routes: Routes = [
     ReportsComponent,
 
     CustomerBalanceComponent,
+      CustomerDetailsBranchComponent,
+      DepositAmountBranchComponent,
+      ExpenceDetailsBranchComponent,
+      IncomeAndExpenceBranchComponent,
     // DepositAmountComponent,
     // IncomeAndExpenditureReportsComponent,
     // MonthlyBlancesheetComponent
