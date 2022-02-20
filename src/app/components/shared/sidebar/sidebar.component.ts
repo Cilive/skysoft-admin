@@ -112,6 +112,12 @@ export class SidebarComponent implements OnInit, AfterViewInit {
           },
           {
             icon: 'bx bxs-business',
+            path: '/owner/fuelstocks',
+            title: 'Fuel Stock',
+          },
+
+          {
+            icon: 'bx bxs-business',
             path: '/owner/invoicelisting',
             title: 'Invoice Listing',
           },
@@ -172,6 +178,17 @@ export class SidebarComponent implements OnInit, AfterViewInit {
         break;
       case Role.maneger === role:
         this.routes = [
+          {
+            icon: 'bx bxs-business',
+            path: '/branch/session',
+            title: 'Session',
+          },
+          {
+            icon: 'bx bxs-business',
+            path: '/branch/fuelstocks',
+            title: 'Fuel Stock',
+          },
+
           {
             icon: 'bx bxs-business',
             path: '/branch/invoicelisting',

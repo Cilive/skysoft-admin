@@ -67,7 +67,6 @@
       <div *ngIf="editMode !== true" class="form-row">
         <div class="form-group col-md-3">
           <label translate for=""> Branch</label>
-          <!-- branch listing  api posting -->
           <select
             class="form-control"
             name="branches"
@@ -121,7 +120,6 @@
             required
             name="cp"
           />
-          <!-- <small id="helpId" class="invalid-feedback">Field is required</small> -->
           <small class="invalid-feedback">Password didn`t match</small>
         </div>
       </div>
@@ -161,11 +159,6 @@
               class="bx bxs-trash"
               (click)="openModal(template)"
             ></i>
-            <!-- <i
-              (click)="onSuspend(item.id)"
-              title="Suspend"
-              class="bx bx-x-circle"
-            ></i> -->
           </div>
 
           <ng-template #template>
@@ -196,3 +189,317 @@
     </tbody>
   </table>
 </div>
+
+<!-- 
+
+<form
+  class="card"
+  (reset)="onReset()"
+  id="emp_form"
+  (Submit)="editMode == true ? onUpdate() : onSubmit()"
+  (reset)="onReset()"
+>
+  <div class="modal-header">
+    <h6 translate>Manage Customer Profile</h6>
+  </div>
+  <div class="m-2 d-flex justify-content-between">
+    <div
+      class="border-right"
+      style="border-color: rgb(145, 145, 145) !important"
+    >
+      <div class="p-2">
+        <div class="form-row">
+          <div class="form-group col-md-6" *ngIf="editMode != true">
+            <label translate for="emp_name">Name</label>
+            <input
+              translate
+              type="text"
+              class="form-control"
+              [(ngModel)]="data.name"
+              name="emp_name"
+              id="emp_name"
+              required
+            />
+
+            <small class="invalid-feedback">Field required</small>
+          </div>
+          <div class="form-group col-md-6" *ngIf="editMode != true">
+            <label translate for="emp_name">Username</label>
+            <input
+              translate
+              type="text"
+              class="form-control"
+              [(ngModel)]="data.username"
+              name="emp_username"
+              id="emp_username"
+              required
+            />
+
+            <small class="invalid-feedback">Field required</small>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6" *ngIf="editMode != true">
+            <label translate for="em_phone">Email</label>
+            <input
+              translate
+              type="text"
+              class="form-control"
+              [(ngModel)]="data.email"
+              name="em_email"
+              id="em_email"
+              required
+            />
+            <small class="invalid-feedback">Field required</small>
+          </div>
+          <div class="form-group col-md-6">
+            <label translate for=""> Branch</label>
+            <select
+              class="form-control"
+              name="branches"
+              [(ngModel)]="data.branches"
+              class="form-control"
+              id="type"
+              data-live-search="true"
+              required
+            >
+              <option translate value="col" selected hidden value="">
+                select
+              </option>
+
+              <option *ngFor="let item of branchesList" [value]="item.id">
+                {{ item.en_name }}
+              </option>
+            </select>
+
+            <small class="invalid-feedback">Field required</small>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label translate for="em_phone">Phone</label>
+            <input
+              translate
+              type="text"
+              class="form-control"
+              [(ngModel)]="data.phone"
+              name="em_phone"
+              id="em_phone"
+              required
+            />
+
+            <small class="invalid-feedback">Field required</small>
+          </div>
+          <div class="form-group col-md-6">
+            <label translate for="em_number">Iqama Number</label>
+            <input
+              translate
+              type="text"
+              class="form-control"
+              [(ngModel)]="data.iqama_no"
+              name="Iqama Number"
+              id="Iqama Number"
+              required
+            />
+
+            <small class="invalid-feedback">Field required</small>
+          </div>
+          <div class="form-group col-md-6">
+            <label translate for="emp_mail">Password</label>
+            <input
+              translate
+              type="text"
+              class="form-control"
+              [(ngModel)]="data.password"
+              name="emp_password"
+              id="emp_password"
+              required
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="second">
+      <div class="p-2">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label translate for="district">اسم</label>
+            <input
+              translate
+              type="text"
+              dir="rtl"
+              class="form-control"
+              required
+              [(ngModel)]="data.name"
+              name="ar_district"
+            />
+
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+          <div class="form-group col-md-6">
+            <label translate for="place">اسم االمستخدم</label>
+            <input
+              translate
+              type="text"
+              dir="rtl"
+              class="form-control"
+              required
+              [(ngModel)]="data.username"
+              name="ar_place"
+            />
+
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label translate for="mobile">البريد الإلكتروني</label>
+            <input
+              translate
+              type="number"
+              readonly
+              dir="rtl"
+              class="form-control"
+              required
+              [(ngModel)]="data.email"
+              name="mobile_no"
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label translate for=""> فرع شجرة</label>
+            <select
+              class="form-control"
+              name="branches"
+              [(ngModel)]="data.branches"
+              class="form-control"
+              id="type"
+              data-live-search="true"
+              required
+            >
+              <option translate value="" selected hidden value="">
+                select
+              </option>
+
+              <option *ngFor="let item of branchesList" [value]="item.id">
+                {{ item.en_name }}
+              </option>
+            </select>
+
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label translate for="vat">هاتف</label>
+            <input
+              translate
+              type="number"
+              readonly
+              dir="rtl"
+              class="form-control"
+              required
+              [(ngModel)]="data.phone"
+              name="vat_no"
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label translate for="lan">رقم الإقامة</label>
+            <input
+              translate
+              type="number"
+              readonly
+              dir="rtl"
+              class="form-control"
+              required
+              [(ngModel)]="data.iqama_no"
+              name="lan_no"
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label translate for="name">كلمه السر</label>
+            <input
+              translate
+              type="text"
+              dir="rtl"
+              class="form-control"
+              required
+              [(ngModel)]="data.password"
+              name="ar_name"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center modal-footer">
+    <button translate class="btn btn-outline-primary" type="submit">
+      {{ editMode ? "Update" : "Submit" }}
+    </button>
+    <button translate class="btn btn-outline-warning" type="reset">
+      Reset
+    </button>
+  </div>
+</form>
+<div class="mt-3 card">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th translate scope="col">#</th>
+        <th translate scope="col">Customer Name</th>
+        <th translate scope="col">Phone Number</th>
+        <th translate scope="col">VAT</th>
+        <th translate scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of employeesList; let i = index">
+        <th translate scope="row">{{ i + 1 }}</th>
+        <td>{{ item.name }}</td>
+        <td>{{ item.user.email }}</td>
+        <td>{{ item.phone }}</td>
+
+        <td>
+          <div class="d-flex justify-content-around">
+            <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>
+            <i
+              title="Delete"
+              class="bx bxs-trash"
+              (click)="openModal(template)"
+            ></i>
+          
+          </div>
+
+          <ng-template #template>
+            <div class="modal-body text-center">
+              <p translate>Do you want to confirm?</p>
+              <div class="modal-footer">
+                <button
+                  translate
+                  type="button"
+                  class="btn btn-outline-danger"
+                  (click)="onDelete(item.id)"
+                >
+                  Yes
+                </button>
+                <button
+                  translate
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="decline()"
+                >
+                  No
+                </button>
+              </div>
+            </div>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
