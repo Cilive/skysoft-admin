@@ -29,6 +29,7 @@ export const payment_due = 'clients/private/report/payment_due/';
 export const paymentoutreport = 'clients/private/report/payment_out/';
 export const paymentinreport = 'clients/private/report/payment_in/';
 export const DASHBOARD = 'clients/private/dashboard';
+export const fuelstock = 'clients/private/fuel_stock/';
 
 /**
  * Branch Apis
@@ -50,4 +51,4 @@ export const BRANCH_EXPENSE = 'clients/manager/expense/';
 export const BRANCH_PAYMENTIN = 'clients/manager/report/creditors/';
 export const BRANCH_PAYMENTOUT = '/clients/manager/report/debtors';
 export const BRANCH_FUELSTOCKS = 'clients/manager/fuel_stock/';
-export const BRANCH_FUELSTOCK = '';
+export const BRANCH_SESSION = 'clients/manager/session/';

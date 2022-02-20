@@ -40,12 +40,17 @@ import { CashmasterComponent } from './components/cashmaster/cashmaster.componen
 import { cashmaster } from 'src/app/model/api';
 import { InvoicelistingComponent } from './components/invoicelisting/invoicelisting.component';
 import { FuelstocksComponent } from './fuelstocks/fuelstocks.component';
+import { SessionComponent } from './components/session/session.component';
 
 const routes: Routes = [
   {
     path: '',
     component: BranchComponent,
     children: [
+      {
+        path: 'session',
+        component: SessionComponent,
+      },
       {
         path: 'fuelstocks',
         component: FuelstocksComponent,
@@ -232,6 +237,7 @@ const routes: Routes = [
     CashmasterComponent,
     InvoicelistingComponent,
     FuelstocksComponent,
+    SessionComponent,
   ],
   imports: [
     CommonModule,

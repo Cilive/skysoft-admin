@@ -91,11 +91,7 @@ export class SessionService {
   }
   get_branches(id) {
     return this.http.get<ApiResponse<Branch[]>>(
-      environment.domain +
-        'clients/c1.localhost/private/session/' +
-        '/' +
-        id +
-        '/'
+      environment.domain + 'clients/private/session/' + '/' + id + '/'
     );
   }
 }
