@@ -52,3 +52,5 @@ export const BRANCH_PAYMENTIN = 'clients/manager/report/creditors/';
 export const BRANCH_PAYMENTOUT = '/clients/manager/report/debtors';
 export const BRANCH_FUELSTOCKS = 'clients/manager/fuel_stock/';
 export const BRANCH_SESSION = 'clients/manager/session/';
+
+export const BRANCH_CUSTOMERBALANCE = 'clients/manager/report/customer_balance';

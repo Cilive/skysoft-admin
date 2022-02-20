@@ -49,7 +49,7 @@ export class PurchaseDetailsComponent implements OnInit {
     net_vat_sum: 0,
     updated_at: new Date(),
   };
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   // Customer: CustomerProfile[] = [];
   supplierList: SupplierProfile[] = [];
   purchase: Purchasedetiles[] = [];

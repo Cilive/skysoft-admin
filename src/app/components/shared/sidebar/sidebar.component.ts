@@ -112,7 +112,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
           },
           {
             icon: 'bx bxs-business',
-            path: '/owner/fuelstocks',
+            path: '/owner/fuelstock',
             title: 'Fuel Stock',
           },
 

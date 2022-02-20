@@ -9,6 +9,7 @@ import {
   validateForm,
 } from 'src/app/services/general/general.service';
 import { Branch } from '../../branch/branch.modal';
+import { Branchmanager } from '../branch-manager/branch-manager.model';
 // import { CompanyProfileService } from '../customer-profile/customer-profile.service';
 // import { Branch } from 'src/app/services/customer-profile/customer-profile.service';
 import { CustomerProfile } from './customer-profile.modal';
@@ -40,7 +41,7 @@ export class CustomerProfileComponent implements OnInit {
   };
   body = {};
   id: number;
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   customerlist: CustomerProfile[] = [];
   constructor(
     private modalService: BsModalService,

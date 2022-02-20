@@ -9,6 +9,7 @@ import {
 } from 'src/app/services/general/general.service';
 import { PumpEmployeeService } from 'src/app/services/pump-employee/pump-employee.service';
 import { Branch } from '../../branch/branch.modal';
+import { Branchmanager } from '../branch-manager/branch-manager.model';
 import { Employee } from './pump-employee.model';
 
 @Component({
@@ -32,7 +33,7 @@ export class PumpEmployeeComponent implements OnInit {
     username: '',
     branches: '',
   };
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   employeesList: Employee[] = [];
 
   constructor(

@@ -26,7 +26,7 @@ import { FuelRateMasterComponent } from './components/fuel-rate-master/fuel-rate
 import { InvoicesComponent } from './components/invoices/invoices.component';
 import { PumpEmployeeComponent } from './components/pump-employee/pump-employee.component';
 import { PurchaseInvoiceComponent } from './components/purchase-invoice/purchase-invoice.component';
-import { ReportsComponent } from './components/reports/reports.component';
+// import { ReportsComponent } from './components/reports/reports.component';
 import { SalesInvoiceComponent } from './components/sales-invoice/sales-invoice.component';
 import { SupplierProfileComponent } from './components/supplier-profile/supplier-profile.component';
 import { DepositComponent } from './components/transactions/deposit/deposit.component';
@@ -216,7 +216,7 @@ const routes: Routes = [
     TransacionsComponent,
     FuelRateMasterComponent,
     FuelManagementComponent,
-    ReportsComponent,
+    // ReportsComponent,
     DispenseComponent,
     UsersComponent,
     CompanyOwnerComponent,

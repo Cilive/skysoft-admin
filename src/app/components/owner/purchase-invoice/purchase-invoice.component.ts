@@ -13,6 +13,7 @@ import { SupplierProfileService } from 'src/app/services/supplier-profile/suppli
 import { Branch } from '../../branch/branch.modal';
 // import { BranchManagerService } from '../../branch/services/branch-manager/branch-manager.service';
 import { BankAccounts } from '../bank-account-master/bank-account-master.model';
+import { Branchmanager } from '../branch-manager/branch-manager.model';
 import { CustomerProfile } from '../customer-profile/customer-profile.modal';
 import { BranchSaleInvoices } from '../sales-invoice/invoice.model';
 import { SupplierProfile } from '../supplier-profile/supplier-profile.model';
@@ -52,7 +53,7 @@ export class PurchaseInvoiceComponent implements OnInit {
     // balance_amt: null,
     // is_default: false,
   };
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   fuelList: Fuelmaster[] = [];
   supplierList: SupplierProfile[] = [];
   Customer: CustomerProfile[] = [];

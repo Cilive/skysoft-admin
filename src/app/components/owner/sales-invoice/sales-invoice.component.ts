@@ -14,6 +14,7 @@ import { SalesinvoiceService } from 'src/app/services/salesinvoice/salesinvoice.
 import { Branch } from '../../branch/branch.modal';
 import { BankAccountMasterComponent } from '../bank-account-master/bank-account-master.component';
 import { BankAccounts } from '../bank-account-master/bank-account-master.model';
+import { Branchmanager } from '../branch-manager/branch-manager.model';
 import { CustomerProfile } from '../customer-profile/customer-profile.modal';
 import { Fuelmaster } from '../vat-fuel-master/vat-fuel-master.model';
 import { BranchSaleInvoices, Invoice, Oldbalance } from './invoice.model';
@@ -51,7 +52,7 @@ export class SalesInvoiceComponent implements OnInit {
     balance_amt: null,
     // is_default: false,
   };
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   fuelList: Fuelmaster[] = [];
   customerList: CustomerProfile[] = [];
   Customer: CustomerProfile[] = [];

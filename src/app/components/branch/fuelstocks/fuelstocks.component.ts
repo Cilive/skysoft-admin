@@ -37,11 +37,9 @@ export class FuelstocksComponent implements OnInit {
     this.fuelstock.get_fuelstock().subscribe((res) => {
       this.fuelstockes = res.data;
     });
-
     this.fuel.get_fuelDetails().subscribe((res) => {
       if (res.msg === 'Success') {
         console.log(res.data);
-
         this.fuelList = res.data;
       }
     });

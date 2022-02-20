@@ -8,6 +8,7 @@ import {
   validateForm,
 } from 'src/app/services/general/general.service';
 import { Branch } from '../../branch/branch.modal';
+import { Branchmanager } from '../../owner/branch-manager/branch-manager.model';
 import { Expensedetailes } from './expense-detailes.modal';
 
 @Component({
@@ -37,7 +38,7 @@ export class ExpensesDetailsComponent implements OnInit {
     net_amount_sum: 0,
     gross_amt_sum: 0,
   };
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   editMode = false;
   expense: Expensedetailes[] = [];
 

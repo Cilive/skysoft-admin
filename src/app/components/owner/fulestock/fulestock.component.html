@@ -14,13 +14,12 @@
           <select
             class="form-control"
             name="suppliers"
+            [(ngModel)]="data.Fuel"
             placeholder="Branch"
             class="form-control"
             id="type"
             data-live-search="true"
           >
-            <!-- (change)="Supplierlisting()" -->
-
             <option translate selected hidden Value="">select Fuel</option>
 
             <option *ngFor="let item of fuelList" [ngValue]="item.id">
@@ -41,6 +40,28 @@
             required
           />
           <small class="invalid-feedback">Field required</small>
+        </div>
+        <div class="form-group col-md-3">
+          <label translate for=""> Branch</label>
+          <!-- branch listing  api posting -->
+          <select
+            class="form-control"
+            name="branches"
+            placeholder="Branch"
+            [(ngModel)]="data.branches"
+            class="form-control"
+            id="type"
+            data-live-search="true"
+            required
+          >
+            <option translate selected hidden [ngValue]="null">
+              select Branch
+            </option>
+
+            <option *ngFor="let item of branchesList" [ngValue]="item.id">
+              {{ item.en_name }}
+            </option>
+          </select>
         </div>
       </div>
 
@@ -65,7 +86,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of fuelstockes; let i = index">
+      <tr *ngFor="let item of fuelstocks; let i = index">
         <!-- <th translate scope="row">{{ i + 1 }}</th> -->
         <td>{{ item.Fuel }}</td>
         <td>{{ item.qty }}</td>

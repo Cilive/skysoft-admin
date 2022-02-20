@@ -35,4 +35,20 @@ export class FuelstockService {
       environment.domain + fuelstock + id + '/'
     );
   }
+  //dispense listing api
+  // get_fuelstock(id) {
+  //   return this.http.get<ApiResponse<Branch[]>>(
+  //     environment.domain + 'clients/manager/fuelstock/' + id + '/'
+  //   );
+  // }
 }
+// branch listing api
+
+// get_brnch_dispence() {
+//   return this.http.get<ApiResponse<Dispense[]>>(
+//     environment.domain + 'clients/c1.localhost/private/dispense/'
+
+// `${environment.domain}clients/c1.localhost/private/branch_dispence/'
+
+//   }
+// }

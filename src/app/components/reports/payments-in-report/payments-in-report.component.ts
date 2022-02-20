@@ -9,6 +9,7 @@ import {
 import { PaymentinreportService } from 'src/app/services/paymentinreport/paymentinreport.service';
 import { SupplierProfileService } from 'src/app/services/supplier-profile/supplier-profile.service';
 import { Branch } from '../../branch/branch.modal';
+import { Branchmanager } from '../../owner/branch-manager/branch-manager.model';
 import { SupplierProfile } from '../../owner/supplier-profile/supplier-profile.model';
 import { PaymentIn } from './payment-in-report.modal';
 
@@ -44,7 +45,7 @@ export class PaymentsInReportComponent implements OnInit {
     net_vat_sum: 0,
     phone_no: null,
   };
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   supplierList: SupplierProfile[] = [];
   paymentout: PaymentIn[] = [];
   net_amount_sum: PaymentIn[] = [];
