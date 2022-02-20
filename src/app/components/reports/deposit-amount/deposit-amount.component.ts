@@ -11,6 +11,7 @@ import {
 import { OwnersService } from 'src/app/services/owners/owners.service';
 import { Branch } from '../../branch/branch.modal';
 import { BankAccounts } from '../../owner/bank-account-master/bank-account-master.model';
+import { Branchmanager } from '../../owner/branch-manager/branch-manager.model';
 import { DepositAmount } from './Deposit-Amount.modal';
 
 @Component({
@@ -35,7 +36,7 @@ export class DepositAmountComponent implements OnInit {
     updated_at: new Date(),
     ac_number: null,
   };
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   editMode = false;
   owners: { name: string; id?: number }[] = [];
   deposit: DepositAmount[] = [];

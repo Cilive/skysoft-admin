@@ -8,6 +8,7 @@ import {
 } from 'src/app/services/general/general.service';
 import { PaymentdetailsService } from 'src/app/services/paymentdetails/paymentdetails.service';
 import { Branch } from '../../branch/branch.modal';
+import { Branchmanager } from '../../owner/branch-manager/branch-manager.model';
 import { PaymentDetails } from './payment-detailes.modal';
 
 @Component({
@@ -39,7 +40,7 @@ export class PaymentDetailsComponent implements OnInit {
     gross_amt_sum: 0,
     net_vat_sum: 0,
   };
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   // Customer: CustomerProfile[] = [];
   // customerList: CustomerProfile[] = [];
   // salesdetailes: Salesdetailes[] = [];

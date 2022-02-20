@@ -9,6 +9,7 @@ import {
 } from 'src/app/services/general/general.service';
 import { PaymentoutreportService } from 'src/app/services/paymentoutreport/paymentoutreport.service';
 import { Branch } from '../../branch/branch.modal';
+import { Branchmanager } from '../../owner/branch-manager/branch-manager.model';
 import { CustomerProfile } from '../../owner/customer-profile/customer-profile.modal';
 import { PaymentOut } from './payment-out-report.modal';
 
@@ -21,7 +22,7 @@ export class PaymentsOutReportComponent implements OnInit {
   passError: boolean;
   modalRef?: BsModalRef;
   logoData: FormData;
-  branch: Branch;
+  branch: Branchmanager;
   data: PaymentOut = {
     invoice_no: undefined,
     date: new Date(),
@@ -43,7 +44,7 @@ export class PaymentsOutReportComponent implements OnInit {
     phone_no: null,
     updated_at: new Date(),
   };
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   Customer: CustomerProfile[] = [];
   customerList: CustomerProfile[] = [];
   paymentout: PaymentOut[] = [];

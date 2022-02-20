@@ -1,5 +1,5 @@
 export interface FuelStocks {
   qty: number;
-  Fuel: number;
-  // branches: string|number;
+  Fuel: number | string;
+  branches: string | number;
 }

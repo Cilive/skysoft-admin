@@ -48,7 +48,7 @@ export class BranchManagerService {
     // branch listing api
   }
   get_branches() {
-    return this.http.get<ApiResponse<Branch[]>>(
+    return this.http.get<ApiResponse<Branchmanager[]>>(
       environment.domain + 'administrator/branches/'
     );
   }

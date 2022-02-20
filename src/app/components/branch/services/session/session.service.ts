@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BRANCH_SESSION } from 'src/app/model/api';
 import { ApiResponse } from 'src/app/model/shared';
 import { environment } from 'src/environments/environment';
-import { Session } from '../../../../components/session/session.modal';
+import { Session } from '../../components/session/session.modal';
 
 @Injectable({
   providedIn: 'root',

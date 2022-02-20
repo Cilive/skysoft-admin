@@ -11,6 +11,7 @@ import {
 import { BankAccounts } from '../bank-account-master/bank-account-master.model';
 import { Branch } from '../../branch/branch.modal';
 import { Dispense } from './dispense .modal';
+import { Branchmanager } from '../branch-manager/branch-manager.model';
 
 @Component({
   selector: 'app-dispense',
@@ -25,7 +26,7 @@ export class DispenseComponent implements OnInit {
     branches: '',
   };
   editMode = false;
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   DispenseList: Dispense[] = [];
   id: number;
   dispenseService: any;

@@ -40,8 +40,7 @@ import { CashmasterComponent } from './cashmaster/cashmaster.component';
 import { SessionComponent } from './session/session.component';
 import { InvoicelistingComponent } from './invoicelisting/invoicelisting.component';
 import { FulestockComponent } from './fulestock/fulestock.component';
-import { FuelstocksComponent } from '../branch/fuelstocks/fuelstocks.component';
-import { SessionreportComponent } from '../reports/sessionreport/sessionreport.component';
+// import { FuelstocksComponent } from '../branch/fuelstocks/fuelstocks.component';
 
 const routes: Routes = [
   {
@@ -50,12 +49,12 @@ const routes: Routes = [
     component: OwnerComponent,
     children: [
       {
-        path: 'fuelstocks',
-        component: FuelstocksComponent,
+        path: 'fuelstock',
+        component: FulestockComponent,
       },
       {
         path: '',
-        redirectTo: 'fuelstocks',
+        redirectTo: 'fuelstock',
         pathMatch: 'full',
       },
       {
@@ -237,7 +236,6 @@ const routes: Routes = [
     SessionComponent,
     InvoicelistingComponent,
     FulestockComponent,
-    SessionreportComponent,
   ],
   imports: [
     CommonModule,

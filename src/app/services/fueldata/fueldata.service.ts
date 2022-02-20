@@ -61,23 +61,20 @@ export class FueldataService {
   // }
   suspend_fuelmaster(id) {
     return this.http.put<ApiResponse<any>>(
-      environment.domain +
-        'clients/c1.localhost/private/fuelmaster/' +
-        id +
-        '/',
+      environment.domain + 'clients/private/fuelmaster/' + id + '/',
       {}
     );
   }
 
   updateFualRate(data) {
     return this.http.put<ApiResponse<any>>(
-      environment.domain + 'clients/c1.localhost/private/fuelmaster/',
+      environment.domain + 'clients/private/fuelmaster/',
       data
     );
   }
   get_fuelmaster(id) {
     return this.http.get<ApiResponse<Fuelmaster[]>>(
-      environment.domain + 'clients/c1.localhost/private/fuelmaster/' + id + '/'
+      environment.domain + 'clients/private/fuelmaster/' + id + '/'
     );
   }
 }

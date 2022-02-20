@@ -9,6 +9,7 @@ import {
 } from 'src/app/services/general/general.service';
 import { SupplierProfileService } from 'src/app/services/supplier-profile/supplier-profile.service';
 import { Branch } from '../../branch/branch.modal';
+import { Branchmanager } from '../branch-manager/branch-manager.model';
 import { SupplierProfile } from './supplier-profile.model';
 
 @Component({
@@ -40,7 +41,7 @@ export class SupplierProfileComponent implements OnInit {
   };
   body = {};
   id: number;
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   customerlist: SupplierProfile[] = [];
   supplierProfile: any;
 

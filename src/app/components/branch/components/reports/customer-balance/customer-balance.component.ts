@@ -7,8 +7,6 @@ import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
-import { Branch } from '../../branch/branch.modal';
-import { Branchmanager } from '../../owner/branch-manager/branch-manager.model';
 // import { BranchManagerService } from '../../branch/services/branch-manager/branch-manager.service';
 import { Customerbalance } from './customer-balance.modal';
 
@@ -44,7 +42,6 @@ export class CustomerBalanceComponent implements OnInit {
     updated_at: new Date(),
     lan: '',
   };
-  branchesList: Branchmanager[] = [];
   // editMode = false;
   customer: Customerbalance[] = [];
   Ar_name;
@@ -52,20 +49,11 @@ export class CustomerBalanceComponent implements OnInit {
   // gross_amt_sum: Expensedetailes[] = [];
 
   constructor(
-    private branches: BranchManagerService,
     private toast: AlertService,
     private customeres: CustomerbalanceService
   ) {}
 
-  ngOnInit(): void {
-    this.branches.get_branches().subscribe((res) => {
-      if (res.msg === 'Success') {
-        console.log(res.data);
-
-        this.branchesList = res.data;
-      }
-    });
-  }
+  ngOnInit(): void {}
   public onReset(): void {
     clearForm('Form');
   }

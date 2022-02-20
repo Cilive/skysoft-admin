@@ -9,6 +9,7 @@ import {
 import { PaymentdueService } from 'src/app/services/paymentdue/paymentdue.service';
 import { SupplierProfileService } from 'src/app/services/supplier-profile/supplier-profile.service';
 import { Branch } from '../../branch/branch.modal';
+import { Branchmanager } from '../../owner/branch-manager/branch-manager.model';
 // import { invoice } from '../../branch/components/invoices/invoice.model';
 import { CustomerProfile } from '../../owner/customer-profile/customer-profile.modal';
 import { SupplierProfile } from '../../owner/supplier-profile/supplier-profile.model';
@@ -47,7 +48,7 @@ export class PaymentDueComponent implements OnInit {
     invoice_type: '',
     contact_en_name: '',
   };
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   supplierList: SupplierProfile[] = [];
 
   // fuelList: Fuelmaster[] = [];

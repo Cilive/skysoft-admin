@@ -6,7 +6,7 @@ import {
   validateForm,
 } from 'src/app/services/general/general.service';
 import { StoreService } from 'src/app/services/store/store.service';
-import { SessionService } from '../../services/services/services/session/session.service';
+import { SessionService } from '../../services/session/session.service';
 import { Session } from './session.modal';
 
 @Component({
