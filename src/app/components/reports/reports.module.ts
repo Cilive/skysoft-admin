@@ -25,6 +25,15 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 import { CustomerBalanceBranchComponent } from './customer-balance-branch/customer-balance-branch.component';
+import { MeterReadingBranchComponent } from './meter-reading-branch/meter-reading-branch.component';
+import { DepositBranchComponent } from './deposit-branch/deposit-branch.component';
+import { ExpenceDetailsBranchComponent } from './expence-details-branch/expence-details-branch.component';
+import { PaymentDetailesBranchComponent } from './payment-detailes-branch/payment-detailes-branch.component';
+import { PaymentDueBranchComponent } from './payment-due-branch/payment-due-branch.component';
+import { PaymentInReportBranchComponent } from './payment-in-report-branch/payment-in-report-branch.component';
+import { PaymentOutReportBranchComponent } from './payment-out-report-branch/payment-out-report-branch.component';
+import { ParchaseDetailesBranchComponent } from './parchase-detailes-branch/parchase-detailes-branch.component';
+import { SalesDetailesBranchComponent } from './sales-detailes-branch/sales-detailes-branch.component';
 
 const routes: Routes = [
   {
@@ -95,6 +104,42 @@ const routes: Routes = [
     path: 'coustomerBalanceBranch',
     component: CustomerBalanceBranchComponent,
   },
+  {
+    path: 'meterreadingBranch',
+    component: MeterReadingBranchComponent,
+  },
+  {
+    path: 'DepositBranch',
+    component: DepositBranchComponent,
+  },
+  {
+    path: 'ExpensedetailesBranch',
+    component: ExpenceDetailsBranchComponent,
+  },
+  {
+    path: 'SalesdetailesBranch',
+    component: SalesDetailesBranchComponent,
+  },
+  {
+    path: 'Paymentdue',
+    component: PaymentDueBranchComponent,
+  },
+  {
+    path: 'expensedetailesBranch',
+    component: PaymentInReportBranchComponent,
+  },
+  {
+    path: 'expensedetailesBranch',
+    component: PaymentOutReportBranchComponent,
+  },
+  {
+    path: 'expensedetailesBranch',
+    component: PaymentDetailesBranchComponent,
+  },
+  {
+    path: 'expensedetailesBranch',
+    component: ParchaseDetailesBranchComponent,
+  },
 ];
 
 @NgModule({
@@ -116,6 +161,15 @@ const routes: Routes = [
     IncomeAndExpenditureReportsComponent,
     MonthlyBlancesheetComponent,
     CustomerBalanceBranchComponent,
+    MeterReadingBranchComponent,
+    DepositBranchComponent,
+    ExpenceDetailsBranchComponent,
+    PaymentDetailesBranchComponent,
+    PaymentDueBranchComponent,
+    PaymentInReportBranchComponent,
+    PaymentOutReportBranchComponent,
+    ParchaseDetailesBranchComponent,
+    SalesDetailesBranchComponent,
   ],
   imports: [
     CommonModule,

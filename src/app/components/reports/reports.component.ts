@@ -139,20 +139,50 @@ export class ReportsComponent implements OnInit, AfterViewInit {
       case Role.maneger === role:
         this.routes = [
           {
-            path: 'coustomerBalanceBranch',
+            path: 'DepositBranch',
             icon: 'bx bx-spreadsheet',
-            title: 'test',
+            title: 'Deposit',
           },
           {
-            icon: 'bx bx-transfer',
-            path: 'branch_customer-Balance',
+            path: 'meterreadingBranch',
+            icon: 'bx bx-spreadsheet',
+            title: 'Metre Reading',
+          },
+          {
+            path: 'coustomerBalanceBranch',
+            icon: 'bx bx-spreadsheet',
             title: 'Customer Balance',
           },
-          // {
-          //   icon: 'bx bxs-report',
-          //   path: '/branch/reports',
-          //   title: 'Reports',
-          // },
+          {
+            path: 'ExpenceDetailsBranch',
+            icon: 'bx bx-spreadsheet',
+            title: 'Expense Details',
+          },
+          {
+            path: 'meterreadingBranch',
+            icon: 'bx bx-spreadsheet',
+            title: 'Purchase Detailes',
+          },
+          {
+            path: 'SalesdetailesBranch',
+            icon: 'bx bx-spreadsheet',
+            title: 'Sales Detailes',
+          },
+          {
+            path: 'PaymentdueBranch',
+            icon: 'bx bx-spreadsheet',
+            title: 'Payment Due',
+          },
+          {
+            path: 'meterreadingBranch',
+            icon: 'bx bx-spreadsheet',
+            title: 'Payment In Reprt',
+          },
+          {
+            path: 'meterreadingBranch',
+            icon: 'bx bx-spreadsheet',
+            title: 'Payment Out Report',
+          },
         ];
         break;
 

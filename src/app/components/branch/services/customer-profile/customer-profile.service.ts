@@ -47,7 +47,7 @@ export class CustomerProfileService {
   }
   get_branchwaisecustomer(id) {
     return this.http.get<ApiResponse<CustomerProfile[]>>(
-      environment.domain + 'clients/c1.localhost/manager/branch_customers/'
+      environment.domain + 'clients/manager/branch_customers/'
     );
   }
 

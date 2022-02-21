@@ -52,7 +52,7 @@ export class BankAccountMasterService {
   //     );
   get_bank_ac() {
     return this.http.get<ApiResponse<BankAccounts[]>>(
-      environment.domain + 'clients/c1.localhost/manager/branch_bankac/'
+      environment.domain + 'clients/manager/branch_bankac/'
     );
   }
 }
