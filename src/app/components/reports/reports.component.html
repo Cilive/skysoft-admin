@@ -1,11 +1,13 @@
 <div class="col-md-12 mt-5 mx-auto row m-auto" style="height: 400px">
   <div class="row col-md-12 grid">
     <div
+      id="Card"
+      name="Card"
       [routerLink]="[item.path]"
       routerLinkActive="active-child"
       class="menu card d-flex justify-content-center col-md-2 m-3"
       style="position: relative; height: 100px"
-      *ngFor="let item of tileItems"
+      *ngFor="let item of routes"
     >
       {{ item.title | translate }}
       <div class="overlay">

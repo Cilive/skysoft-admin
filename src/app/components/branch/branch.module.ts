@@ -37,7 +37,7 @@ import { TransacionsComponent } from './components/transactions/transacions.comp
 import { UsersComponent } from './components/users/users.component';
 import { VatFuelMasterComponent } from './components/vat-fuel-master/vat-fuel-master.component';
 import { CashmasterComponent } from './components/cashmaster/cashmaster.component';
-import { cashmaster } from 'src/app/model/api';
+
 import { InvoicelistingComponent } from './components/invoicelisting/invoicelisting.component';
 import { FuelstocksComponent } from './fuelstocks/fuelstocks.component';
 import { SessionComponent } from './components/session/session.component';
@@ -51,6 +51,7 @@ const routes: Routes = [
         path: 'session',
         component: SessionComponent,
       },
+
       {
         path: 'fuelstocks',
         component: FuelstocksComponent,

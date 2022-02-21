@@ -199,17 +199,8 @@ export class SidebarComponent implements OnInit, AfterViewInit {
             path: '/branch/cashmaster',
             title: 'Cashmaster',
           },
-          // {
-          //   icon: 'bx bxs-business',
-          //   path: '/branch/dashboard',
-          //   title: 'Dash Board',
-          // },
 
-          // {
-          //   icon: 'bx bxs-user-account',
-          //   path: '/branch/branch-employee',
-          //   title: 'Employees',
-          // },
+
           {
             icon: 'bx bxs-business',
             path: '/branch/dashboard',
@@ -226,11 +217,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
             path: '/branch/fuel',
             title: 'Fuel Management',
           },
-          // {
-          //   icon: 'bx bxs-spreadsheet',
-          //   path: '/branch/invoices',
-          //   title: 'Invoices',
-          // },
+
           {
             icon: 'bx bxs-bank',
             path: '/branch/bank_Accounts',
