@@ -74,6 +74,11 @@ export class ReportsComponent implements OnInit {
       icon: 'bx bx-spreadsheet',
       title: 'Sales Details',
     },
+    {
+      path: 'session_Reports',
+      icon: 'bx bx-spreadsheet',
+      title: 'Session Report',
+    },
   ];
   constructor() {}
 
