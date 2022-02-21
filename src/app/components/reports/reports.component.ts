@@ -139,6 +139,11 @@ export class ReportsComponent implements OnInit, AfterViewInit {
       case Role.maneger === role:
         this.routes = [
           {
+            path: 'coustomerBalanceBranch',
+            icon: 'bx bx-spreadsheet',
+            title: 'test',
+          },
+          {
             icon: 'bx bx-transfer',
             path: 'branch_customer-Balance',
             title: 'Customer Balance',
