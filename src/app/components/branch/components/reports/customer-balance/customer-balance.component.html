@@ -1,4 +1,4 @@
-<div class="card m-auto col-md-12">
+<!-- <div class="card m-auto col-md-12">
   <div class="modal-header">
     <h6 translate>Generate Customer Balance</h6>
   </div>
@@ -19,36 +19,34 @@
           />
           <small id="helpId" class="invalid-feedback">Field is required</small>
         </div>
-        <!-- <div class="col-md-0" style="padding-top: 35px">To</div> -->
 
-        <div class="form-group col-md-3">
-          <label translate for="company">To</label>
-          <input
-            translate
-            type="text"
-            placeholder="Date"
-            bsDatepicker
-            [bsConfig]="{ containerClass: 'theme-dark-blue' }"
-            [(ngModel)]="data.date"
-            class="form-control"
-            name="date"
-          />
-          <small id="helpId" class="invalid-feedback">Field is required</small>
-        </div>
+<div class="form-group col-md-3">
+  <label translate for="company">To</label>
+  <input
+    translate
+    type="text"
+    placeholder="Date"
+    bsDatepicker
+    [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+    [(ngModel)]="data.date"
+    class="form-control"
+    name="date"
+  />
+  <small id="helpId" class="invalid-feedback">Field is required</small>
+</div>
 
-        <div *ngIf="submitMode != true" class="form-group col-md-3">
-          <label translate for="name">Name</label>
-          <input
-            translate
-            type="text"
-            placeholder="Name"
-            [(ngModel)]="data.customer_name"
-            class="form-control"
-            name="Name"
-          />
-          <!-- <small id="helpId" class="invalid-feedback">Field is required</small> -->
-        </div>
-        <!-- <div *ngIf="submitMode != true" class="form-group col-md-3">
+<div *ngIf="submitMode != true" class="form-group col-md-3">
+  <label translate for="name">Name</label>
+  <input
+    translate
+    type="text"
+    placeholder="Name"
+    [(ngModel)]="data.customer_name"
+    class="form-control"
+    name="Name"
+  />
+</div>
+< <div *ngIf="submitMode != true" class="form-group col-md-3">
           <label translate for="ar name">Ar Name</label>
           <input
             translate
@@ -69,20 +67,19 @@
             class="form-control"
             name="phone"
           />
-        </div> -->
-        <div class="form-group col-md-3">
-          <label translate for="invoice no">Invoice No</label>
-          <input
-            translate
-            type="text"
-            placeholder="invoice_no"
-            [(ngModel)]="data.invoice_no"
-            class="form-control"
-            name="invoice_no"
-          />
-          <!-- <small id="helpId" class="invalid-feedback">Field is required</small> -->
-        </div>
-        <!-- <div  *ngIf="submitMode != true" class="form-group col-md-3">
+        </div> 
+<div class="form-group col-md-3">
+  <label translate for="invoice no">Invoice No</label>
+  <input
+    translate
+    type="text"
+    placeholder="invoice_no"
+    [(ngModel)]="data.invoice_no"
+    class="form-control"
+    name="invoice_no"
+  />
+</div>
+<<div  *ngIf="submitMode != true" class="form-group col-md-3">
           <label translate for="lan">Lan No</label>
           <input
             translate
@@ -93,7 +90,7 @@
             name="lan"
           />
         </div> -->
-        <!-- </div>
+<!-- </div>
       <div class="modal-footer">
         <button translate type="submit" class="btn btn-outline-primary">
           {{ "Submit" }}
@@ -116,7 +113,7 @@
           id="type"
         />
         < <option translate selected hidden Value="">Customer Name</option> -->
-        <!-- <small id="helpId" class="invalid-feedback">Field is required</small> -->
+<!-- <small id="helpId" class="invalid-feedback">Field is required</small>
       </div>
 
       <div class="mt-3 card">
@@ -135,7 +132,6 @@
           <tbody>
             <tr *ngFor="let item of customer; let i = index">
               <th translate scope="row">{{ i + 1 }}</th>
-              <!-- <td>{{ item. }}</td> -->
               <td>{{ item.date | date: "dd/MM/YYYY" }}</td>
               <td>{{ item.customer_name }}</td>
               <td>{{ item.customer_ar_name }}</td>
@@ -144,13 +140,13 @@
               <td>{{ item.total_amt }}</td>
               <td></td>
             </tr>
-            <!-- <tr>
+            <<tr>
             <th colspan="4"></th>
             <th translate scope="col">Total :</th>
-          </tr> -->
+          </tr> --
           </tbody>
         </table>
       </div>
     </form>
   </div>
-</div>
+</div> -->

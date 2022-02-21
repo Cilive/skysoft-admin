@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DepositAmount } from 'src/app/components/reports/deposit-amount/Deposit-Amount.modal';
-import { deposite_amount } from 'src/app/model/api';
+import { BRANCH_DEPOSIT } from 'src/app/model/api';
 import { ApiResponse } from 'src/app/model/shared';
 import { environment } from 'src/environments/environment';
 
@@ -44,7 +44,7 @@ export class DepositamountService {
         : {}
     );
     return this.http.get<ApiResponse<any>>(
-      environment.domain + deposite_amount,
+      environment.domain + BRANCH_DEPOSIT,
 
       {
         params: params,

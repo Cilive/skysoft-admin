@@ -5,9 +5,9 @@ import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
-import { FuelData } from '../components/vat-fuel-master/vat-fuel-master.model';
-import { FueldataService } from '../services/fueldata/fueldata.service';
-import { FuelstockService } from '../services/fuelstock/fuelstock.service';
+import { FuelData } from '../vat-fuel-master/vat-fuel-master.model';
+import { FueldataService } from '../../services/fueldata/fueldata.service';
+import { FuelstockService } from '../../services/fuelstock/fuelstock.service';
 import { FuelStocks } from './fuelstocks.modal';
 
 @Component({
