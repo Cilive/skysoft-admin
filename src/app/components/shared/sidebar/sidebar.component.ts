@@ -200,7 +200,6 @@ export class SidebarComponent implements OnInit, AfterViewInit {
             title: 'Cashmaster',
           },
 
-
           {
             icon: 'bx bxs-business',
             path: '/branch/dashboard',

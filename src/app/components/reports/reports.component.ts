@@ -140,14 +140,14 @@ export class ReportsComponent implements OnInit, AfterViewInit {
         this.routes = [
           {
             icon: 'bx bx-transfer',
-            path: '/branch/customer_Balance',
-            title: 'Transactions',
+            path: 'branch_customer-Balance',
+            title: 'Customer Balance',
           },
-          {
-            icon: 'bx bxs-report',
-            path: '/branch/reports',
-            title: 'Reports',
-          },
+          // {
+          //   icon: 'bx bxs-report',
+          //   path: '/branch/reports',
+          //   title: 'Reports',
+          // },
         ];
         break;
 
