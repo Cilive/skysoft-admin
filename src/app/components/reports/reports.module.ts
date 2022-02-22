@@ -24,7 +24,12 @@ import { MonthlyBlancesheetComponent } from './monthly-blancesheet/monthly-blanc
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
+
+
+import { SessionReportsComponent } from './session-reports/session-reports.component';
+
 import { CustomerBalanceBranchComponent } from './customer-balance-branch/customer-balance-branch.component';
+
 
 const routes: Routes = [
   {
@@ -92,9 +97,16 @@ const routes: Routes = [
     component: SupplierDetailsComponent,
   },
   {
+
+    path: 'session_Reports',
+    component: SessionReportsComponent,
+  },
+
+
     path: 'coustomerBalanceBranch',
     component: CustomerBalanceBranchComponent,
   },
+
 ];
 
 @NgModule({
@@ -115,7 +127,11 @@ const routes: Routes = [
     DepositAmountComponent,
     IncomeAndExpenditureReportsComponent,
     MonthlyBlancesheetComponent,
+
+    SessionReportsComponent,
+
     CustomerBalanceBranchComponent,
+
   ],
   imports: [
     CommonModule,
