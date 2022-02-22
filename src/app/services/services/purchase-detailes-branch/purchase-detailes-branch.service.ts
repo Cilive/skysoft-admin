@@ -28,8 +28,7 @@ export class PurchaseDetailesBranchService {
     //   to = id.date.toJSON();
     // }
     let params: any = {
-      branches: id.branches,
-      supplier_name: id.supplier_name,
+      supplier: id.suppier_name,
       // amount: id.amount,
       // from: from,
       // to: to,

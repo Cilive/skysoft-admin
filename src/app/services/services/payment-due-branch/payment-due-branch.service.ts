@@ -21,8 +21,10 @@ export class PaymentDueBranchService {
     //   to = id.date.toJSON();
     // }
     let params: any = {
-      branches: id.branches,
-      supplier: id.supplier,
+      // branches: id.branches,
+      contact: id.contact_en_name,
+      invoice_type: id.invoice_type,
+
       // dispence: id.dispence,
       // amount: id.amount,
       // from: from,

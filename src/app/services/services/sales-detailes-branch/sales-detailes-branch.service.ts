@@ -28,7 +28,7 @@ export class SalesDetailesBranchService {
     //   to = id.date.toJSON();
     // }
     let params: any = {
-      branches: id.branches,
+      // branches: id.branches,
       customer: id.customer,
       // amount: id.amount,
       // from: from,

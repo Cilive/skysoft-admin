@@ -113,7 +113,7 @@ const routes: Routes = [
     component: DepositBranchComponent,
   },
   {
-    path: 'ExpensedetailesBranch',
+    path: 'Expensedetailes',
     component: ExpenceDetailsBranchComponent,
   },
   {
@@ -125,15 +125,15 @@ const routes: Routes = [
     component: PaymentDueBranchComponent,
   },
   {
-    path: 'expensedetailesBranch',
+    path: 'PaymentinreportBranch',
     component: PaymentInReportBranchComponent,
   },
   {
-    path: 'expensedetailesBranch',
+    path: 'Paymentout',
     component: PaymentOutReportBranchComponent,
   },
   {
-    path: 'expensedetailesBranch',
+    path: 'paymentBranch',
     component: PaymentDetailesBranchComponent,
   },
   {

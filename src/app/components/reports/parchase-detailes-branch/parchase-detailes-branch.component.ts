@@ -25,7 +25,7 @@ export class ParchaseDetailesBranchComponent implements OnInit {
     // total_amt: 0,
     // company: '',
     // transaction_type: '',
-    branches: '',
+    // branches: '',
     qty: 0,
     total_amt: 0,
     vat_percenatge: 0,

@@ -23,8 +23,9 @@ export class DepositBranchService {
     let params: any = {
       branch: id.branch,
       owner: id.owner,
-      account: id.account,
+      account: id.ac_holder_name,
       // customer: id.customer,
+
       // amount: id.amount,
       // from: from,
       // to: to,

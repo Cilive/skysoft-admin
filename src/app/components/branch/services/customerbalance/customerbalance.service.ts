@@ -31,6 +31,7 @@ export class CustomerbalanceService {
     // }
     let params: any = {
       branches: id.branches,
+
       // customer: id.customer,
       // ar_name: id.customer_ar_name,
       // name: id.customer_name,

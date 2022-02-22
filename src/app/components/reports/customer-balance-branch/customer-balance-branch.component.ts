@@ -5,7 +5,7 @@ import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
-import { CustomerbalanceService } from '../../branch/services/customerbalance/customerbalance.service';
+import { CustomerbalancebranchService } from 'src/app/services/services/customerbalancebranch/customerbalancebranch.service';
 import { Customerbalance } from '../customer-balance/customer-balance.modal';
 import { CustomerbalanceBranch } from './CustomerBalanceBranch.modal';
 
@@ -50,7 +50,7 @@ export class CustomerBalanceBranchComponent implements OnInit {
 
   constructor(
     private toast: AlertService,
-    private customeres: CustomerbalanceService
+    private customeres: CustomerbalancebranchService
   ) {}
 
   ngOnInit(): void {}

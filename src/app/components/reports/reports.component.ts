@@ -154,7 +154,7 @@ export class ReportsComponent implements OnInit, AfterViewInit {
             title: 'Customer Balance',
           },
           {
-            path: 'ExpenceDetailsBranch',
+            path: 'Expensedetailes',
             icon: 'bx bx-spreadsheet',
             title: 'Expense Details',
           },
@@ -174,12 +174,12 @@ export class ReportsComponent implements OnInit, AfterViewInit {
             title: 'Payment Due',
           },
           {
-            path: 'Paymentinreport',
+            path: 'PaymentinreportBranch',
             icon: 'bx bx-spreadsheet',
             title: 'Payment In Reprt',
           },
           {
-            path: 'meterreadingBranch',
+            path: 'Paymentout',
             icon: 'bx bx-spreadsheet',
             title: 'Payment Out Report',
           },

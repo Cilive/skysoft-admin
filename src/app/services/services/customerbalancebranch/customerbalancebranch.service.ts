@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class CustomerbalanceService {
+export class CustomerbalancebranchService {
   constructor(private http: HttpClient) {}
   // post_paymen_out(data: Debtors) {
   //   // const formData = convertJsontoFormData(data);
@@ -31,7 +31,7 @@ export class CustomerbalanceService {
     let params: any = {
       invoice_no: id.invoice_no,
       ar_name: id.ar_name,
-      name: id.name,
+      name: id.customer_name,
       lan: id.lan,
       phone: id.phone,
 
