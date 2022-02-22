@@ -25,7 +25,7 @@ export class SessionReportsService {
       (params.from = `${id.from_date.getFullYear()}-${
         id.from_date.getMonth() + 1
       }-${id.from_date.getDate()}`),
-        (params.to = `${id.date.getFullYear()}-${
+        (params.to = `${id.to_date.getFullYear()}-${
           id.to_date.getMonth() + 1
         }-${id.to_date.getDate()}`);
     }

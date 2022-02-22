@@ -3,7 +3,7 @@
     <h6 translate>Generate Session </h6>
   </div>
   <div class="col-md-12">
-    <!-- <form id="Form" (submit)="onSubmit()" (reset)="onReset()"> -->
+    <form id="Form" (submit)="onSubmit()" (reset)="onReset()">
       <div class="row mt-3">
         <div class="form-group col-md-2">
           <label translate for="company">From</label>
@@ -79,7 +79,7 @@
           Reset
         </button>
       </div>
-    <!-- </form> -->
+    </form>
     <div class="modal-footer">
       <div class="form-group col-md-3">
         <!-- <input
@@ -128,13 +128,13 @@
             <th translate scope="col">Closing Bank</th>
             <th translate scope="col">Closing Cash</th>
             <th translate scope="col">Total</th>
+            <th translate scope="col">Branch</th>
             <th translate scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of sessionreportsowner; let i = index"> -->
+          <tr *ngFor="let item of sessionreportsowner; let i = index">
             <th translate scope="row">{{ i + 1 }}</th>
-            <!-- <td>{{ item. }}</td> -->
              <td>{{ item.date | date: "dd/MM/YYYY" }}</td>
             <td>{{ item.opening_balance_bank}}</td>
             <td>{{ item.cash_opening_balance }}</td>
@@ -142,6 +142,11 @@
             <td>{{ item.closing_balance_cash }}</td>
             <td>{{ item.total_transactions }}</td>
             <td>{{ item.branch_name }}</td>
+            <td>
+          <div class="d-flex justify-content-around">
+            <i title="Edit" class="bx bx-right-arrow"></i>
+          </div>
+        </td>
 
 
             <!-- <td>{{ item.owner }}</td> -->

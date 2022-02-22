@@ -58,7 +58,7 @@ export class SessionReportsComponent implements OnInit {
       console.log(this.data);
       this.session_reports.get_session_reports(this.data).subscribe((res) => {
         if (res.msg === 'Success') {
-          this.toast.success('Metre Reading Added Successfully');
+          this.toast.success('Session Reports fetched Successfully');
           this.sessionreportsowner = res.data.data;
           console.log(this.data);
           clearForm('Form');
