@@ -137,7 +137,7 @@ const routes: Routes = [
     component: PaymentDetailesBranchComponent,
   },
   {
-    path: 'expensedetailesBranch',
+    path: 'PurchasedetailesBranch',
     component: ParchaseDetailesBranchComponent,
   },
 ];
