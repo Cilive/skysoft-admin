@@ -10,6 +10,7 @@ import { SessionService } from 'src/app/services/session/session.service';
 import { StoreService } from 'src/app/services/store/store.service';
 // import { OwnersService } from 'src/app/services/owners/owners.service';
 import { Branch } from '../../branch/branch.modal';
+import { Branchmanager } from '../branch-manager/branch-manager.model';
 import { Session } from './session.modal';
 
 @Component({
@@ -54,7 +55,7 @@ export class SessionComponent implements OnInit {
   };
   // editMode = false;
   // id: number;
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   // Ownerlist: CompanyOwnerComponent[] = [];
   session: Session[];
 

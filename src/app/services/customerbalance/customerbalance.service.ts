@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Branch } from 'src/app/components/branch/branch.modal';
 import { Customerbalance } from 'src/app/components/reports/customer-balance/customer-balance.modal';
-import { customerbalance } from 'src/app/model/api';
+import { BRANCH_CUSTOMERBALANCE } from 'src/app/model/api';
 import { ApiResponse } from 'src/app/model/shared';
 import { environment } from 'src/environments/environment';
 
@@ -57,7 +57,7 @@ export class CustomerbalanceService {
         : {}
     );
     return this.http.get<ApiResponse<any>>(
-      environment.domain + customerbalance,
+      environment.domain + BRANCH_CUSTOMERBALANCE,
 
       {
         params: params,
@@ -65,14 +65,9 @@ export class CustomerbalanceService {
     );
   }
 
-  get_branches(id) {
-    return this.http.get<ApiResponse<Branch[]>>(
-      environment.domain + 'administrator/branches/' + id + '/'
-    );
-  }
   single_get_customer_balance(id) {
     return this.http.get<ApiResponse<Customerbalance>>(
-      environment.domain + customerbalance + id + '/'
+      environment.domain + BRANCH_CUSTOMERBALANCE + id + '/'
     );
   }
 

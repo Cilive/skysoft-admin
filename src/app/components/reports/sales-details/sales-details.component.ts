@@ -9,6 +9,7 @@ import {
 } from 'src/app/services/general/general.service';
 import { SalesdetilesService } from 'src/app/services/salesdetailes/salesdetiles.service';
 import { Branch } from '../../branch/branch.modal';
+import { Branchmanager } from '../../owner/branch-manager/branch-manager.model';
 // import { BranchManagerService } from '../../branch/services/branch-manager/branch-manager.service';
 import { CustomerProfile } from '../../owner/customer-profile/customer-profile.modal';
 import { Salesdetailes } from './sales-setailes.modal';
@@ -58,7 +59,7 @@ export class SalesDetailsComponent implements OnInit {
     item: '',
     amount: '',
   };
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   // Customer: CustomerProfile[] = [];
   // customerList: CustomerProfile[] = [];
   salesdetailes: Salesdetailes[] = [];

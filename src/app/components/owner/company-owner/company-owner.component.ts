@@ -9,6 +9,7 @@ import {
 import { OwnersService } from 'src/app/services/owners/owners.service';
 
 import { Branch } from '../../branch/branch.modal';
+import { Branchmanager } from '../branch-manager/branch-manager.model';
 import { Owner } from './company-owner.model';
 
 @Component({
@@ -30,7 +31,7 @@ export class CompanyOwnerComponent implements OnInit {
   editMode = false;
   body = {};
   id: number;
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   Ownerlist: CompanyOwnerComponent[] = [];
 
   constructor(

@@ -8,6 +8,7 @@ import {
   validateForm,
 } from 'src/app/services/general/general.service';
 import { Branch } from '../../branch/branch.modal';
+import { Branchmanager } from '../../owner/branch-manager/branch-manager.model';
 // import { BranchManagerService } from '../../branch/services/branch-manager/branch-manager.service';
 import { Customerbalance } from './customer-balance.modal';
 
@@ -43,7 +44,7 @@ export class CustomerBalanceComponent implements OnInit {
     updated_at: new Date(),
     lan: '',
   };
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   // editMode = false;
   customer: Customerbalance[] = [];
   Ar_name;

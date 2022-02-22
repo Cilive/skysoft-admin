@@ -44,11 +44,25 @@ export class BranchManagerComponent implements OnInit {
     last_login: undefined,
     groups: [],
     user_permissions: [],
+    en_name: '',
+    ar_name: '',
+    en_place: '',
+    ar_place: '',
+    en_district: '',
+    ar_district: '',
+    cr_no: '',
+    vat_no: '',
+    lan_no: '',
+    logo: null,
+    status: false,
+    company: 0,
+    value: undefined,
+    supplierProfile: '',
   };
   employeesList: Branchmanager[] = [];
   Branch_ManagerList: Branchmanager[];
   // branch: any;
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
 
   constructor(
     private modalService: BsModalService,

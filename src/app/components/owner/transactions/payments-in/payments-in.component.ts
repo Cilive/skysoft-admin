@@ -10,6 +10,7 @@ import {
 } from 'src/app/services/general/general.service';
 import { PaymentInService } from 'src/app/services/payment-in/payment-in.service';
 import { SupplierProfileService } from 'src/app/services/supplier-profile/supplier-profile.service';
+import { Branchmanager } from '../../branch-manager/branch-manager.model';
 import { CustomerProfile } from '../../customer-profile/customer-profile.modal';
 import { SupplierProfile } from '../../supplier-profile/supplier-profile.model';
 import { Credit } from './payment-in.modal';
@@ -40,7 +41,7 @@ export class PaymentsInComponent implements OnInit {
     updated_at: new Date(),
     balance_amt: null,
   };
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   // Customer: CustomerProfile[] = [];
   supplierList: SupplierProfile[] = [];
   paymentin: Credit[] = [];
