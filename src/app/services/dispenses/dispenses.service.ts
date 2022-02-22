@@ -23,34 +23,32 @@ export class DispensesService {
   }
 
   get_dispenses() {
-    return this.http.get<ApiResponse<any>>(
-      environment.domain +  DISPENSES 
-    );
+    return this.http.get<ApiResponse<any>>(environment.domain + DISPENSES);
   }
   update_dispense(data, id) {
     console.log(data);
 
     return this.http.put<ApiResponse<{}>>(
-      environment.domain +  DISPENSES  + id + '/',
+      environment.domain + DISPENSES + id + '/',
       data
     );
   }
   delete_dispense(id) {
     return this.http.delete<ApiResponse<any>>(
-      environment.domain +  DISPENSES  + id + '/'
+      environment.domain + DISPENSES + id + '/'
     );
   }
   //dispense listing api
   get_dispense(id) {
     return this.http.get<ApiResponse<Branch[]>>(
-      environment.domain + 'clients/c1.localhost/private/dispense/' + id + '/'
+      environment.domain + 'clients/private/dispense/' + id + '/'
     );
   }
   // branch listing api
 
   get_brnch_dispence() {
     return this.http.get<ApiResponse<Dispense[]>>(
-      environment.domain + 'clients/c1.localhost/private/dispense/'
+      environment.domain + 'clients/private/dispense/'
 
       // `${environment.domain}clients/c1.localhost/private/branch_dispence/'
     );

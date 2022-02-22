@@ -11,6 +11,7 @@ import {
   validateForm,
 } from 'src/app/services/general/general.service';
 import { OwnersService } from 'src/app/services/owners/owners.service';
+import { Branchmanager } from '../../branch-manager/branch-manager.model';
 // import { BankAccounts } from '../../bank-account-master/bank-account-master.model';
 import { Deposit } from './deposit.model';
 
@@ -32,7 +33,7 @@ export class DepositComponent implements OnInit {
     bank_ac_id: null,
     // id: null,
   };
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   editMode = false;
   owners: { name: string; id?: number }[] = [];
   deposits: Deposit[] = [];

@@ -9,6 +9,7 @@ import {
   validateForm,
 } from 'src/app/services/general/general.service';
 import { PaymentOutService } from 'src/app/services/payment-out/payment-out.service';
+import { Branchmanager } from '../../branch-manager/branch-manager.model';
 import { CustomerProfile } from '../../customer-profile/customer-profile.modal';
 import { Debtors } from './payment-out.modal';
 
@@ -41,7 +42,7 @@ export class PaymentsOutComponent implements OnInit {
     id: null,
     phone_no: null,
   };
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   Customer: CustomerProfile[] = [];
   customerList: CustomerProfile[] = [];
   paymentout: Debtors[] = [];

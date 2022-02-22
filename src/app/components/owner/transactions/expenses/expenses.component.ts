@@ -28,6 +28,7 @@ import {
   validateForm,
 } from 'src/app/services/general/general.service';
 import { BankAccounts } from '../../bank-account-master/bank-account-master.model';
+import { Branchmanager } from '../../branch-manager/branch-manager.model';
 import { Fuelmaster } from '../../vat-fuel-master/vat-fuel-master.model';
 import { Expense } from './expense.modal';
 
@@ -63,7 +64,7 @@ export class ExpensesComponent implements OnInit {
     customer_name: '',
     payable_amt: '',
   };
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   fuelList: Fuelmaster[] = [];
   // customerList: CustomerProfile[] = [];
   // Customer: CustomerProfile[] = [];

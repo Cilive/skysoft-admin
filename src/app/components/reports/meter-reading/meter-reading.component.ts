@@ -9,6 +9,7 @@ import {
 } from 'src/app/services/general/general.service';
 import { MeterReadigService } from 'src/app/services/meter-readig/meter-readig.service';
 import { Branch } from '../../branch/branch.modal';
+import { Branchmanager } from '../../owner/branch-manager/branch-manager.model';
 import { Dispense } from '../../owner/dispense/dispense .modal';
 import { Meterreading } from './meter-reading.modal';
 
@@ -37,7 +38,7 @@ export class MeterReadingComponent implements OnInit {
     employee_name: '',
     payable_amount_sum: 0,
   };
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   // Customer: CustomerProfile[] = [];
   // customerList: CustomerProfile[] = [];
   // salesdetailes: Salesdetailes[] = [];

@@ -112,6 +112,12 @@ export class SidebarComponent implements OnInit, AfterViewInit {
           },
           {
             icon: 'bx bxs-business',
+            path: '/owner/fuelstock',
+            title: 'Fuel Stock',
+          },
+
+          {
+            icon: 'bx bxs-business',
             path: '/owner/invoicelisting',
             title: 'Invoice Listing',
           },
@@ -174,6 +180,17 @@ export class SidebarComponent implements OnInit, AfterViewInit {
         this.routes = [
           {
             icon: 'bx bxs-business',
+            path: '/branch/session',
+            title: 'Session',
+          },
+          {
+            icon: 'bx bxs-business',
+            path: '/branch/fuelstocks',
+            title: 'Fuel Stock',
+          },
+
+          {
+            icon: 'bx bxs-business',
             path: '/branch/invoicelisting',
             title: 'Invoice Listing',
           },
@@ -182,17 +199,8 @@ export class SidebarComponent implements OnInit, AfterViewInit {
             path: '/branch/cashmaster',
             title: 'Cashmaster',
           },
-          // {
-          //   icon: 'bx bxs-business',
-          //   path: '/branch/dashboard',
-          //   title: 'Dash Board',
-          // },
 
-          // {
-          //   icon: 'bx bxs-user-account',
-          //   path: '/branch/branch-employee',
-          //   title: 'Employees',
-          // },
+
           {
             icon: 'bx bxs-business',
             path: '/branch/dashboard',
@@ -209,11 +217,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
             path: '/branch/fuel',
             title: 'Fuel Management',
           },
-          // {
-          //   icon: 'bx bxs-spreadsheet',
-          //   path: '/branch/invoices',
-          //   title: 'Invoices',
-          // },
+
           {
             icon: 'bx bxs-bank',
             path: '/branch/bank_Accounts',

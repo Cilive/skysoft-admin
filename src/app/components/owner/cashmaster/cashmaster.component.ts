@@ -9,6 +9,7 @@ import {
 } from 'src/app/services/general/general.service';
 import { OwnersService } from 'src/app/services/owners/owners.service';
 import { Branch } from '../../branch/branch.modal';
+import { Branchmanager } from '../branch-manager/branch-manager.model';
 import { Owner } from '../company-owner/company-owner.model';
 import { Cashmaster } from './cashmaster.modal';
 // import { BankAccounts } from './bank-account-master.model';
@@ -29,7 +30,7 @@ export class CashmasterComponent implements OnInit {
     branches: '',
   };
   editMode = false;
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   ownersList: Owner[] = [];
 
   constructor(

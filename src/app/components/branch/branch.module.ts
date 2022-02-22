@@ -26,7 +26,7 @@ import { FuelRateMasterComponent } from './components/fuel-rate-master/fuel-rate
 import { InvoicesComponent } from './components/invoices/invoices.component';
 import { PumpEmployeeComponent } from './components/pump-employee/pump-employee.component';
 import { PurchaseInvoiceComponent } from './components/purchase-invoice/purchase-invoice.component';
-import { ReportsComponent } from './components/reports/reports.component';
+// import { ReportsComponent } from './components/reports/reports.component';
 import { SalesInvoiceComponent } from './components/sales-invoice/sales-invoice.component';
 import { SupplierProfileComponent } from './components/supplier-profile/supplier-profile.component';
 import { DepositComponent } from './components/transactions/deposit/deposit.component';
@@ -37,14 +37,30 @@ import { TransacionsComponent } from './components/transactions/transacions.comp
 import { UsersComponent } from './components/users/users.component';
 import { VatFuelMasterComponent } from './components/vat-fuel-master/vat-fuel-master.component';
 import { CashmasterComponent } from './components/cashmaster/cashmaster.component';
-import { cashmaster } from 'src/app/model/api';
+
 import { InvoicelistingComponent } from './components/invoicelisting/invoicelisting.component';
+import { FuelstocksComponent } from './fuelstocks/fuelstocks.component';
+import { SessionComponent } from './components/session/session.component';
 
 const routes: Routes = [
   {
     path: '',
     component: BranchComponent,
     children: [
+      {
+        path: 'session',
+        component: SessionComponent,
+      },
+
+      {
+        path: 'fuelstocks',
+        component: FuelstocksComponent,
+      },
+      {
+        path: '',
+        redirectTo: 'fuelstocks',
+        pathMatch: 'full',
+      },
       {
         path: 'invoicelisting',
         component: InvoicelistingComponent,
@@ -201,7 +217,7 @@ const routes: Routes = [
     TransacionsComponent,
     FuelRateMasterComponent,
     FuelManagementComponent,
-    ReportsComponent,
+    // ReportsComponent,
     DispenseComponent,
     UsersComponent,
     CompanyOwnerComponent,
@@ -221,6 +237,8 @@ const routes: Routes = [
     StockManegmentComponent,
     CashmasterComponent,
     InvoicelistingComponent,
+    FuelstocksComponent,
+    SessionComponent,
   ],
   imports: [
     CommonModule,
