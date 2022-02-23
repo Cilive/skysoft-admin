@@ -59,12 +59,12 @@ export class SalesinvoiceService {
   // }
   get_old_balance(id) {
     return this.http.get<ApiResponse<Oldbalance>>(
-      environment.domain + `clients/c1.localhost/manager/old_balance/${id}/`
+      environment.domain + `clients/manager/old_balance/${id}/`
     );
   }
   get_bank(id) {
     return this.http.get<ApiResponse<BankAccounts[]>>(
-      environment.domain + `clients/c1.localhost/manager/branch_bankac/`
+      environment.domain + `clients/manager/branch_bankac/`
     );
   }
   get_branch_sale_invoices(id) {

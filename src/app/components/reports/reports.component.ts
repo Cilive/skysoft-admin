@@ -139,11 +139,6 @@ export class ReportsComponent implements OnInit, AfterViewInit {
       case Role.maneger === role:
         this.routes = [
           {
-            path: 'DepositBranch',
-            icon: 'bx bx-spreadsheet',
-            title: 'Deposit',
-          },
-          {
             path: 'meterreadingBranch',
             icon: 'bx bx-spreadsheet',
             title: 'Metre Reading',
@@ -154,9 +149,20 @@ export class ReportsComponent implements OnInit, AfterViewInit {
             title: 'Customer Balance',
           },
           {
+            path: 'DepositBranch',
+            icon: 'bx bx-spreadsheet',
+            title: 'Deposit',
+          },
+
+          {
             path: 'Expensedetailes',
             icon: 'bx bx-spreadsheet',
             title: 'Expense Details',
+          },
+          {
+            path: 'Paymentdue',
+            icon: 'bx bx-spreadsheet',
+            title: 'Payment Due',
           },
           {
             path: 'PurchasedetailesBranch',
@@ -169,19 +175,29 @@ export class ReportsComponent implements OnInit, AfterViewInit {
             title: 'Sales Detailes',
           },
           {
-            path: 'Paymentdue',
+            path: 'sessionreportBranch',
             icon: 'bx bx-spreadsheet',
-            title: 'Payment Due',
+            title: 'Session Report',
           },
           {
-            path: 'PaymentinreportBranch',
+            path: 'PaymentinBranch',
             icon: 'bx bx-spreadsheet',
-            title: 'Payment In Reprt',
+            title: 'Payment in',
           },
           {
-            path: 'Paymentout',
+            path: 'PaymentoutBranch',
             icon: 'bx bx-spreadsheet',
-            title: 'Payment Out Report',
+            title: 'Payment Out',
+          },
+          // {
+          //   path: 'accountsladgerlisting',
+          //   icon: 'bx bx-spteadsheet',
+          //   title: 'Accounts Ladger',
+          // },
+          {
+            path: 'IncomeexpenditureBranch',
+            icon: 'bx bx-spreadsheet',
+            title: 'Income And Expenditure',
           },
         ];
         break;

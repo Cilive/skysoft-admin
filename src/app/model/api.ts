@@ -57,12 +57,12 @@ export const BRANCH_CUSTOMERBALANCE =
   'clients/manager/report/customer_balance/';
 export const BRANCH_METER_READING = 'clients/manager/report/meter_reading/';
 export const BRANCH_REPORT_DEPOSIT = 'clients/manager/report/deposit/';
-export const BRANCH_EXPENSEDETAILES =
-  'clients/manager/report/expense_detailes/';
-
+export const BRANCH_EXPENSEDETAILES = 'clients/manager/report/expense/';
 export const BRANCH_SALES_DETAILES = 'clients/manager/report/sale/';
 export const BRANCH_PURCHASE_DETAILES = 'clients/manager/report/purchase/';
 export const BRANCH_PAYMENT_DUE = 'clients/manager/report/payment_due/';
 export const BRANCH_PAYMENT_OUT = 'clients/manager/report/payment_out/';
 export const BRANCH_PAYMENT_IN = 'clients/manager/report/payment_in/';
-// export const BRANCH_ = 'clients/manager/report/expense_detailes/';
+export const BRANCH_REPORT_SESSION = 'clients/manager/session_report/';
+export const BRANCH_ACCOUNTS_LADGER = 'clients/manager/accounts_report/';
+export const BRANCH_INCOME_EXPNDITURE = 'clients/manager/report/income/';

@@ -32,8 +32,12 @@ import { PaymentDetailesBranchComponent } from './payment-detailes-branch/paymen
 import { PaymentDueBranchComponent } from './payment-due-branch/payment-due-branch.component';
 import { PaymentInReportBranchComponent } from './payment-in-report-branch/payment-in-report-branch.component';
 import { PaymentOutReportBranchComponent } from './payment-out-report-branch/payment-out-report-branch.component';
-import { ParchaseDetailesBranchComponent } from './parchase-detailes-branch/parchase-detailes-branch.component';
+// import { ParchaseDetailesBranchComponent } from './parchase-detailes-branch/parchase-detailes-branch.component';
 import { SalesDetailesBranchComponent } from './sales-detailes-branch/sales-detailes-branch.component';
+import { IncomeExpentitureBranchComponent } from './income-expentiture-branch/income-expentiture-branch.component';
+import { ParchaseDetailesBranchComponent } from './parchase-detailes-branch/purchase-detailes-branch.component';
+import { SessionReportBranchComponent } from './session-report-branch/session-report-branch.component';
+import { AccountsLadgerBranchComponent } from './accounts-ladger-branch/accounts-ladger-branch.component';
 
 const routes: Routes = [
   {
@@ -140,8 +144,32 @@ const routes: Routes = [
     path: 'PurchasedetailesBranch',
     component: ParchaseDetailesBranchComponent,
   },
+  {
+    path: 'sessionreportBranch',
+    component: SessionReportBranchComponent,
+  },
+  {
+    path: 'PaymentinBranch',
+    component: PaymentInReportBranchComponent,
+  },
+  {
+    path: 'PaymentoutBranch',
+    component: PaymentOutReportBranchComponent,
+  },
+  {
+    path: '',
+    redirectTo: 'accountsladgerlisting',
+    pathMatch: 'full',
+  },
+  {
+    path: 'accountsladgerlisting',
+    component: AccountsLadgerBranchComponent,
+  },
+  {
+    path: 'IncomeexpenditureBranch',
+    component: IncomeExpentitureBranchComponent,
+  },
 ];
-
 @NgModule({
   declarations: [
     ReportsComponent,
@@ -170,6 +198,9 @@ const routes: Routes = [
     PaymentOutReportBranchComponent,
     ParchaseDetailesBranchComponent,
     SalesDetailesBranchComponent,
+    IncomeExpentitureBranchComponent,
+    SessionReportBranchComponent,
+    AccountsLadgerBranchComponent,
   ],
   imports: [
     CommonModule,

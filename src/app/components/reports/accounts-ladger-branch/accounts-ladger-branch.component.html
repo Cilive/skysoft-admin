@@ -1,0 +1,40 @@
+<div class="card m-auto col-md-12">
+  <div class="modal-header">
+    <h6 translate>Accounts Ladger</h6>
+  </div>
+
+  <div class="mt-3 card">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th translate scope="col">#</th>
+          <th translate scope="col">balance</th>
+          <th translate scope="col">Debit Balance</th>
+          <th translate scope="col">Credi Balance</th>
+          <th translate scope="col">Total Transaction</th>
+          <th translate scope="col">Total Sales</th>
+          <th translate scope="col">Total Purchase</th>
+          <th translate scope="col">Account Holdaer Name</th>
+          <th translate scope="col">Ac Name</th>
+          <th translate scope="col">Ac No</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of accoutsladger; let i = index">
+          <th translate scope="row">{{ i + 1 }}</th>
+          <!-- <td>{{ item. }}</td> -->
+          <td>{{ item.balance | date: "dd/MM/YYYY" }}</td>
+          <td>{{ item.debit_balance }}</td>
+          <td>{{ item.credit_balance }}</td>
+          <td>{{ item.total_transactions }}</td>
+          <td>{{ item.total_sales }}</td>
+          <td>{{ item.total_purchase }}</td>
+          <td>{{ item.bank_ac_holder_name }}</td>
+          <td>{{ item.cash_ac_name }}</td>
+          <td>{{ item.account_no }}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
