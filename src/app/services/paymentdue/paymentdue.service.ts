@@ -90,7 +90,7 @@ export class PaymentdueService {
   // }
   get_branches() {
     return this.http.get<ApiResponse<Branch[]>>(
-      environment.domain + 'clients/c1.localhost/private/report/payment_due'
+      environment.domain + 'clients/private/report/payment_due'
     );
   }
   // get_old_balance(id) {

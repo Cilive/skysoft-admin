@@ -77,11 +77,11 @@ export class ReportsComponent implements OnInit, AfterViewInit {
             icon: 'bx bx-spreadsheet',
             title: 'Customer Balance',
           },
-          {
-            path: 'customer_Details',
-            icon: 'bx bx-spreadsheet',
-            title: 'Customer Details',
-          },
+          // {
+          //   path: 'customer_Details',
+          //   icon: 'bx bx-spreadsheet',
+          //   title: 'Customer Details',
+          // },
           {
             path: 'deposit_Amount',
             icon: 'bx bx-spreadsheet',

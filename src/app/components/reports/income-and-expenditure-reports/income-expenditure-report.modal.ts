@@ -1,4 +1,4 @@
-export interface IncomeBranch {
+export interface Income {
   total_amt: number;
   type: string;
   to_date: Date;
@@ -9,4 +9,5 @@ export interface IncomeBranch {
   total_purchase: number;
   total_sale: number;
   balance: number;
+  branches: string | number;
 }

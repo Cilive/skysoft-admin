@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BRANCH_INCOME_EXPNDITURE } from 'src/app/model/api';
+import { Branch } from 'src/app/components/branch/branch.modal';
+import { income_expenditure } from 'src/app/model/api';
 import { ApiResponse } from 'src/app/model/shared';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
-export class IncomeExpentitureBranchService {
+export class IncomeExpendtitureService {
   constructor(private http: HttpClient) {}
 
   // post_paymen_out(data: Debtors) {
@@ -50,11 +51,16 @@ export class IncomeExpentitureBranchService {
         : {}
     );
     return this.http.get<ApiResponse<any>>(
-      environment.domain + BRANCH_INCOME_EXPNDITURE,
+      environment.domain + income_expenditure,
 
       {
         params: params,
       }
+    );
+  }
+  get_branches() {
+    return this.http.get<ApiResponse<Branch[]>>(
+      environment.domain + 'clients/private/repoet/income/'
     );
   }
 }

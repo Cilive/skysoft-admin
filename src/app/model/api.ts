@@ -30,6 +30,7 @@ export const paymentoutreport = 'clients/private/report/payment_out/';
 export const paymentinreport = 'clients/private/report/payment_in/';
 export const DASHBOARD = 'clients/private/dashboard';
 export const fuelstock = 'clients/private/fuel_stock/';
+export const income_expenditure = 'clients/private/report/income/';
 
 /**
  * Branch Apis

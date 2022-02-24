@@ -1,5 +1,7 @@
 export interface Session {
   id?: number;
+  session_id: number;
+
   opening_balance_bank?: number;
   cash_opening_balance?: number;
   closing_balance_bank?: null;

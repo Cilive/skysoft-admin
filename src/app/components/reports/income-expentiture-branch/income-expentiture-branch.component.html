@@ -12,69 +12,157 @@
       class="form-control"
     />
   </div> -->
-  <div class="m-2 d-flex justify-content-between">
-    <div class="form-group col-md-6">
-      <div class="card"></div>
-      <table class="table table-bordered">
-        <tr>
-          <th translate scope="col">#</th>
-          <th translate scope="col">Date</th>
-          <th translate scope="col">Description</th>
-          <th translate scope="col">Income</th>
-        </tr>
-        <tr>
-          <td scope="col">1</td>
-          <td scope="col">1/1/2021</td>
-          <td scope="col">1000</td>
-          <td scope="col">500</td>
-        </tr>
-        <tr>
-          <th colspan="2"></th>
-          <th translate scope="col">Total :</th>
-          <td>SR.1100</td>
-        </tr>
-      </table>
-      <label> <th>Total</th> </label>
+  <div class="col-md-12">
+    <form id="Form" (submit)="onSubmit()" (reset)="onReset()">
+      <div class="row mt-3">
+        <div class="form-group col-md-2">
+          <label translate for="company">From</label>
+          <input
+            translate
+            type="text"
+            placeholder="From Date"
+            [(ngModel)]="data.from_date"
+            bsDatepicker
+            [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+            class="form-control"
+            name="date"
+          />
+          <small id="helpId" class="invalid-feedback">Field is required</small>
+        </div>
+        <!-- <div class="col-md-0" style="padding-top: 35px">To</div> -->
 
-      <div class="form-group col-md-4">
-        <input class="form-control" name="Total" placeholder="Total" />
+        <div class="form-group col-md-2">
+          <label translate for="company">To</label>
+          <input
+            translate
+            type="text"
+            placeholder="To Date"
+            [(ngModel)]="data.to_date"
+            bsDatepicker
+            [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+            class="form-control"
+            name="date"
+          />
+          <small id="helpId" class="invalid-feedback">Field is required</small>
+        </div>
       </div>
-    </div>
+      <div class="modal-footer">
+        <button translate type="submit" class="btn btn-outline-primary">
+          {{ "Submit" }}
+        </button>
+        <button translate type="reset" class="btn btn-outline-warning">
+          Reset
+        </button>
+      </div>
+    </form>
 
-    <div class="form-group col-md-6">
-      <table class="table table-bordered">
-        <tr>
-          <th translate scope="col">#</th>
-          <th translate scope="col">Date</th>
-          <th translate scope="col">Discription</th>
-          <th translate scope="col">Expence</th>
-        </tr>
+    <div class="m-2 d-flex justify-content-between">
+      <div class="form-group col-md-6">
+        <div class="card"></div>
+        <table class="table table-bordered">
+          <tr>
+            <th translate scope="col">#</th>
+            <!-- <th translate scope="col">Date</th> -->
+            <th translate scope="col">Discription</th>
+            <th translate scope="col">Expenditure</th>
+          </tr>
+          <tr *ngFor="let item of income; let i = index">
+            <th ng-if="item.type === true" scope="row">{{ i + 1 }}</th>
+            <td *ngIf="item.type == '1'">Sales</td>
+            <td *ngIf="item.type == '1'">{{ item.total_amt }}</td>
+          </tr>
+          <!-- <tr>
+            <th translate scope="col">#</th>
 
-        <tr>
-          <th colspan="2"></th>
-          <th translate scope="col">Total :</th>
-          <td>SR.1100</td>
-        </tr>
-      </table>
-      <label> <th>Total</th> </label>
+            <th translate scope="col">Description</th>
+            <th translate scope="col">Income</th>
+          </tr>
+          <tr *ngFor="let item of income; let i = index">
+            <th translate scope="row">{{ i + 1 }}</th>
+            <td *ngIf="item.type == '2'">Sales</td>
+            <td *ngIf="item.type == '2'">{{ item.total_amt }}</td>
+          </tr> -->
 
-      <div class="form-group col-md-4">
-        <input class="form-control" name="Total" placeholder="Total" />
+          <!-- <tr>
+            <th colspan="2"></th>
+            <th translate scope="col">Total :</th>
+
+          </tr> -->
+          <!-- <tr *ngFor="let item of income; let i = index">
+            <td>{{ item.total_sale }}</td>
+          </tr> -->
+        </table>
+
+        <label> <th>Total Sale</th> </label>
+
+        <div class="form-group col-md-4">
+          <input
+            class="form-control"
+            name="Total"
+            placeholder="Total Sale"
+            [(ngModel)]="total_sale"
+            type="number"
+            id="total_sale"
+          />
+        </div>
       </div>
 
-      <label> <th>Balance</th> </label>
+      <div class="form-group col-md-6">
+        <table class="table table-bordered">
+          <tr>
+            <th translate scope="col">#</th>
+            <!-- <th translate scope="col">Date</th> -->
+            <th translate scope="col">Discription</th>
+            <th translate scope="col">Expenditure</th>
+          </tr>
+          <tr *ngFor="let item of income; let i = index">
+            <th *ngIf="item.type == '1'" scope="row">{{ i + 1 }}</th>
+            <td *ngIf="item.type == '1'">Purchase</td>
+            <td *ngIf="item.type == '1'">{{ item.total_amt }}</td>
+          </tr>
+          <!-- <tr *ngFor="let item of income; let i = index">
+            <th translate scope="row">{{ i + 1 }}</th>
+            <td *ngif="item.type == 1">Purchase</td>
+            <td *ngif="item.type == 1">{{ item.total_amt }}</td>
+            <td></td>
+          </tr> -->
+          <!-- <div *ngIf="item.type == '1'"> -->
 
-      <div class="form-group col-md-auto">
-        <input class="form-control" placeholder="Balance" name="selectss" />
+          <!-- <tr>
+            <th colspan="2"></th>
+            <th translate scope="col">Total :</th>
+          </tr> -->
+          <!-- <tr *ngFor="let item of income; let i = index">
+            <td>{{ item.total_purchase }}</td>
+          </tr> -->
+        </table>
 
-        <!-- <input
-        type="text"
-        id="fname"
-        name="fname"
-        type="text"
-        placeholder="Profit or Loss"
-        class="form-control"
-      /> -->
+        <label> <th>Total Purchase</th> </label>
+
+        <div class="form-group col-md-4">
+          <input
+            class="form-control"
+            name="Total"
+            placeholder="Total Purchase"
+            [(ngModel)]="total_purchase"
+            type="number"
+            id="total_purchase"
+          />
+        </div>
+        <div class="row-mt-12">
+          <label> <th>Balance</th> </label>
+
+          <div class="col-md-15">
+            <input
+              class="form-control"
+              placeholder="balance"
+              name="balance"
+              [(ngModel)]="balance"
+              type="number"
+              id="balance"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </div>

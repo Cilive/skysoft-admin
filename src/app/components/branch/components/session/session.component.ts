@@ -24,6 +24,7 @@ export class SessionComponent implements OnInit {
   data: Session = {
     branch_name: '',
     id: null,
+    session_id: 0,
   };
   // editMode = false;
   // id: number;
@@ -64,34 +65,49 @@ export class SessionComponent implements OnInit {
     }
   }
 
-  onUpdate() {
-    if (validateForm('form')) {
-      console.log(this.data);
-      let item = this.sessions;
-      // console.log(item.closing_balance_cash);
+  public onUpdate(id) {
+    console.log('Current Session id', id);
 
-      // this.sessions.update_session(this.data, this.data.id).subscribe((res) => {
-      //   if (res.msg === 'Success') {
-      //     this.toast.success('Session Updated Successfully');
-      //     this.ngOnInit();
+    this.sessions.update_session(id).subscribe((res) => {
+      if (res.msg === 'Success') {
+        this.toast.success('Session Closed Successfully');
+        console.log(res.data);
 
-      //     // this.onReset();
-      //   }
-      // });
-    }
+        // console.log('server response', this.session);
+
+        this.ngOnInit();
+      }
+    });
   }
-  onEdit(item) {
-    console.log(item.id);
-    //  this.session.single_get_purchase_invoice(data.id).subscribe((res) => {
-    //   this.data = res.data.session;
-    // const item = res.data;
 
-    // this.editMode = true;
-    this.data = {
-      branch_name: item.branch_name,
-      id: item.id,
-    };
-  }
+  // onUpdate() {
+  //   if (validateForm('form')) {
+  //     console.log(this.data);
+  //     // let item = this.sessions;
+  //     // console.log(item.closing_balance_cash);
+
+  //     this.sessions.update_session(id).subscribe((res) => {
+  //       if (res.msg === 'Success') {
+  //         this.toast.success('Session Clossed Successfully');
+  //         this.ngOnInit();
+
+  //         // this.onReset();
+  //       }
+  //     });
+  //   }
+  // }
+  // onEdit(item) {
+  //   console.log(item.id);
+  //  this.session.single_get_purchase_invoice(data.id).subscribe((res) => {
+  //   this.data = res.data.session;
+  // const item = res.data;
+
+  // this.editMode = true;
+  // this.data = {
+  //   branch_name: item.branch_name,
+  //   id: item.id,
+  // };
+
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }
