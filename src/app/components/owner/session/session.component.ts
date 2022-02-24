@@ -129,21 +129,26 @@ export class SessionComponent implements OnInit {
   //       this.ngOnInit();
   //     }
   //   });
-  onUpdate() {
-    if (validateForm('form')) {
-      console.log(this.data);
-      let item = this.sessions;
-      // console.log(item.closing_balance_cash);
-
-      // this.sessions.update_session(this.data, this.data.id).subscribe((res) => {
-      //   if (res.msg === 'Success') {
-      //     this.toast.success('Session Updated Successfully');
-      //     this.ngOnInit();
-
-      //     // this.onReset();
-      //   }
-      // });
+  public onUpdate(id,branch_id) {
+    console.log('Current Session id', id);
+    console.log('Current Branch id', branch_id);
+    let branch={
+      branches:branch_id
     }
+    console.log("object ",branch);
+
+
+
+    this.sessions.update_session(id,branch).subscribe((res) => {
+      if (res.msg === 'Success') {
+        this.toast.success('Session Closed Successfully');
+        console.log(res.data);
+
+        // console.log('server response', this.session);
+
+        this.ngOnInit();
+      }
+    });
   }
   onEdit(item) {
     console.log(item.id);

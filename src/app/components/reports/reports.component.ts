@@ -134,6 +134,17 @@ export class ReportsComponent implements OnInit, AfterViewInit {
             icon: 'bx bx-spreadsheet',
             title: 'Sales Details',
           },
+          {
+            path: 'session_Reports',
+            icon: 'bx bx-spreadsheet',
+            title: 'Session Reports',
+          },
+          {
+            path: 'account_Ledger',
+            icon: 'bx bx-spreadsheet',
+            title: 'Account Ledger',
+          },
+
         ];
         break;
       case Role.maneger === role:
@@ -153,6 +164,7 @@ export class ReportsComponent implements OnInit, AfterViewInit {
             path: '/branch/reports',
             title: 'Reports',
           },
+
         ];
         break;
 

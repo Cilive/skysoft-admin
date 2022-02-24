@@ -29,6 +29,7 @@ import { HttpClient } from '@angular/common/http';
 import { SessionReportsComponent } from './session-reports/session-reports.component';
 
 import { CustomerBalanceBranchComponent } from './customer-balance-branch/customer-balance-branch.component';
+import { AccountLedgerComponent } from './account-ledger/account-ledger.component';
 
 
 const routes: Routes = [
@@ -97,12 +98,16 @@ const routes: Routes = [
     component: SupplierDetailsComponent,
   },
   {
+    path: 'account_Ledger',
+    component: AccountLedgerComponent,
+  },
+  {
 
     path: 'session_Reports',
     component: SessionReportsComponent,
   },
 
-
+  {
     path: 'coustomerBalanceBranch',
     component: CustomerBalanceBranchComponent,
   },
@@ -131,6 +136,7 @@ const routes: Routes = [
     SessionReportsComponent,
 
     CustomerBalanceBranchComponent,
+      AccountLedgerComponent,
 
   ],
   imports: [

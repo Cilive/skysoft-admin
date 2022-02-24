@@ -2,6 +2,7 @@ export interface Session {
   id?: number;
   opening_balance_bank?: number;
   cash_opening_balance?: number;
+  branch_name?: string;
   closing_balance_bank?: null;
   closing_balance_cash?: null;
   total_transactions?: null;

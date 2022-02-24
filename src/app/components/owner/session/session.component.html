@@ -91,7 +91,7 @@
           <label translate for=""></label>
           <div class="col-md-3">
             <input
-           
+
             type="number"
             class="form-control"
           />
@@ -116,7 +116,6 @@
 
       <!-- </div> -->
     </form>
-    <form id="form" (submit)="onUpdate()">
       <div class="text-centre mt-3 card">
         <table class="table table-bordered">
           <thead>
@@ -155,12 +154,12 @@
 
             <tr *ngFor="let item of session; let i = index">
               <th translate scope="row">{{ i + 1 }}</th>
-              <td>{{ item.branches }}</td>
+              <td>{{ item.branch_name }}</td>
               <td>{{ item.cash_opening_balance }}</td>
               <td>{{ item.opening_balance_bank }}</td>
               <td>{{ item.closing_balance_bank }}</td>
               <td>{{ item.closing_balance_cash }}</td>
-              <td>{{ item.id }}</td>
+              <!-- <td>{{ item.id }}</td> -->
               <!-- <div *ngIf="data.status === true"> -->
               <td class="text-center">
                 <!-- <button class="btn btn-danger">
@@ -174,14 +173,15 @@
                 </button> -->
                 <!-- <button  >Click Me</button> -->
                 <button
-                  type="onUpdate"
-                  id="type"
-                  class="btn btn-outline-warning"
-                  *ngIf="item.status === false"
-                  [disabled]="false"
-                >
-                  {{ "onUpdate" | translate }}
-                </button>
+                type="onUpdate"
+                id="session close"
+                class="btn btn-outline-danger"
+                (click)="onUpdate(item.id,item.branches)"
+                *ngIf="item.status === false"
+                [disabled]="false"
+              >
+                {{ "Close Session" | translate }}
+              </button>
               </td>
               <!-- <div class="d-flex justify-content-around">
                 <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>
@@ -190,7 +190,6 @@
           </tbody>
         </table>
       </div>
-    </form>
   </div>
 </div>
 <!-- </div> -->

@@ -3,6 +3,7 @@ import { BranchManagerService } from 'src/app/services/branch-manager/branch-man
 import { SessionReportsService } from 'src/app/services/session-reports/session-reports.service';
 import { Branch } from '../../branch/branch.modal';
 import { SessionReportsOwner } from './session.modal';
+import { Branchmanager } from '../../owner/branch-manager/branch-manager.model';
 import {
   clearForm,
   validateForm,
@@ -28,7 +29,7 @@ export class SessionReportsComponent implements OnInit {
    total_transactions:   null,
    branch_name: '',
   };
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   sessionreportsowner: SessionReportsOwner[] = [];
 
 

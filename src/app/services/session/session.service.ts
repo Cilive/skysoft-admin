@@ -64,14 +64,21 @@ export class SessionService {
   //     data
   //   );
   // }
-  update_session(data: Session, id: number) {
-    console.log(data);
+  // update_session(data: Session, id: number) {
+  //   console.log(data);
 
-    return this.http.put<ApiResponse<{}>>(
-      environment.domain + SESSION + id + '/',
+  //   return this.http.put<ApiResponse<{}>>(
+  //     environment.domain + SESSION + id + '/',
+  //     data
+  //   );
+  // }
+  update_session(session_id: number,data) {
+    return this.http.put<ApiResponse<any>>(
+      environment.domain + SESSION + session_id + '/',
       data
     );
   }
+
   // single_get_purchase_invoice(id) {
   //   return this.http.get<ApiResponse<purchaseInvoice>>(
   //     environment.domain + purchseinvoices + id + '/'
