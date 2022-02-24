@@ -1,0 +1,328 @@
+<form class="card" id="form" (submit)="editMode ? onUpdate() : onSubmit()">
+  <div class="modal-header">
+    <div class="col-md-12">
+      <h6 translate>Generate Sales Invoice</h6>
+      <div class="row col-md-12">
+        <div class="form-group col-md-3">
+          <!-- <label translate for="company">Date</label> -->
+          <input
+            translate
+            type="text"
+            placeholder="Date"
+            bsDatepicker
+            [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+            [(ngModel)]="data.date"
+            class="form-control"
+            required
+            name="date"
+          />
+          <small id="helpId" class="invalid-feedback">Field is required</small>
+        </div>
+
+        <div class="form-group col-md-3">
+          <!-- <label translate for=""> Payment Type </label> -->
+          <select
+            type="text"
+            class="form-control"
+            name="selectss"
+            [(ngModel)]="data.payment_type"
+            required
+            id="type"
+          >
+            <option translate [value]="null" selected hidden>
+              Payment Type
+            </option>
+
+            <option translate [ngValue]="1" scope="col">Cash</option>
+            <option translate [ngValue]="2" scope="col">Bank</option>
+          </select>
+
+          <small id="helpId" class="invalid-feedback">Field is required</small>
+        </div>
+        <div *ngIf="data.payment_type === 2" class="form-group col-md-3">
+          <!-- <label translate for=""> Branch</label> -->
+          <!-- branch listing  api posting -->
+          <select
+            class="form-control"
+            name="banck"
+            placeholder="bank"
+            [(ngModel)]="data.bank_ac_id"
+            class="form-control"
+            id="type"
+            data-live-search="true"
+            required
+          >
+            <option translate selected hidden [ngValue]="null">
+              select Bank
+            </option>
+
+            <option
+              [style]="item.is_default === true ? 'color:var(--primary)' : ''"
+              *ngFor="let item of bankList"
+              [ngValue]="item.id"
+            >
+              {{ item.acc_holder_name }}
+
+              <!-- *ngFor="let item of bankaccounts; let i = index" -->
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="m-2">
+    <div class="">
+      <div class="p-2">
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label translate for=""> Customer Name</label>
+            <!-- branch listing  api posting -->
+            <select
+              class="form-control"
+              name="customers"
+              [(ngModel)]="data.contact"
+              class="form-control"
+              id="type"
+              required
+              (change)="old_balance()"
+            >
+              <!-- (change)="custemerlistin()" -->
+              <option translate selected hidden [ngValue]="null">
+                select customer
+              </option>
+
+              <option *ngFor="let item of customerList" [ngValue]="item.id">
+                {{ item.en_name }}
+              </option>
+            </select>
+          </div>
+          <!-- <div class="form-group col-md-3">
+            <label translate for=""> Customer Name </label>
+            <select
+              class="form-control"
+              name="selectss"
+              [(ngModel)]="data.customer_name"
+              id="type"
+            
+            >
+ <option translate value="col" selected hidden value="">
+          
+        </option>
+
+
+          </select>
+
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div> -->
+          <div class="form-group col-md-3">
+            <label translate for=""> Fuel</label>
+            <!-- branch listing  api posting -->
+            <select
+              class="form-control"
+              name="fuels"
+              [(ngModel)]="fuelse"
+              class="form-control"
+              id="type"
+              data-live-search="true"
+              required
+              (change)="fuels()"
+            >
+              <option translate [ngValue]="null" selected hidden>select</option>
+
+              <option *ngFor="let item of fuelList" [ngValue]="item">
+                {{ item.name }} - {{ item.rate }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group col-md-3">
+            <label translate for="company">Litre</label>
+            <input
+              translate
+              type="number"
+              class="form-control"
+              [(ngModel)]="data.qty"
+              required
+              name="qty"
+              (change)="onChangeLitre()"
+              step="any"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+
+          <div class="form-group col-md-3">
+            <label translate for="company">Vat %</label>
+            <input
+              translate
+              type="number"
+              class="form-control"
+              [(ngModel)]="data.fuelvat_percentage"
+              required
+              name="fuelvat_percentage"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label translate for="company">Gross Amount</label>
+            <input
+              translate
+              type="number"
+              class="form-control"
+              [(ngModel)]="data.gross_amt"
+              required
+              name="gamnt"
+            />
+
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+
+          <div class="form-group col-md-3">
+            <label translate for="company">Net Amount</label>
+            <input
+              min="0"
+              translate
+              type="number"
+              [(ngModel)]="data.total_amt"
+              class="form-control"
+              required
+              name="namnt"
+            />
+
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+
+          <div class="form-group col-md-3">
+            <label translate for="company">Payable Amount</label>
+            <input
+              min="0"
+              translate
+              type="number"
+              class="form-control"
+              [(ngModel)]="data.paid_amt"
+              required
+              name="total"
+            />
+
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+          <div *ngIf="editMode != true" class="form-group col-md-3">
+            <label translate for="company">Old Balance</label>
+            <input
+              disabled
+              class="form-control"
+              [(ngModel)]="old_balance_num"
+              name="old_balance"
+            />
+          </div>
+          <div *ngIf="editMode == true" class="form-group col-md-3">
+            <label translate for="company">Penting Balance</label>
+            <input
+              disabled
+              class="form-control"
+              [(ngModel)]="data.balance_amt"
+              name="old_balance"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center modal-footer">
+    <button
+      [disabled]="data.paid_amt <= data.total_amt - data.balance_amt"
+      class="btn btn-outline-primary"
+      type="submit"
+      [disabled]="data.paid_amt >= data.total_amt - data.paid_amt"
+    >
+      {{ editMode ? "Update" : "Submit" }}
+    </button>
+
+    <button
+      translate
+      class="btn btn-outline-warning"
+      type="button"
+      (click)="onReset()"
+    >
+      Reset
+    </button>
+  </div>
+</form>
+<div class="mt-3 card">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th translate scope="col">Date</th>
+        <th translate scope="col">Invoice No</th>
+        <th translate scope="col">customer Name</th>
+        <th translate scope="col">Payable Amount</th>
+        <th translate scope="col">Balance Amount</th>
+        <th translate scope="col">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of salesInvoiceList; let i = index">
+        <th translate scope="row">{{ i + 1 }}</th>
+        <td>{{ item.invoice_no }}</td>
+        <td>{{ item.customer_name }}</td>
+
+        <td>{{ item.total_amt }}</td>
+        <td>{{ item.balance_amt }}</td>
+
+        <td>
+          <div class="d-flex justify-content-around">
+            <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>
+            <i
+              title="Delete"
+              class="bx bxs-trash"
+              (click)="openModal(template)"
+            ></i>
+            <!-- <i
+              (click)="onSuspend(item.id)"
+              title="Suspend"
+              class="bx bx-x-circle"
+            ></i> -->
+          </div>
+
+          <ng-template #template>
+            <div class="modal-body text-center">
+              <p translate>Do you want to confirm?</p>
+              <div class="modal-footer">
+                <button
+                  translate
+                  type="button"
+                  class="btn btn-outline-danger"
+                  (click)="onDelete(item.id)"
+                >
+                  Yes
+                </button>
+                <button
+                  translate
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="decline()"
+                >
+                  No
+                </button>
+              </div>
+            </div>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -47,6 +47,27 @@
           />
           <small class="invalid-feedback">Field required</small>
         </div>
+        <div class="form-group col-md-4">
+          <label translate for=""> Owner</label>
+          <!-- branch listing  api posting -->
+          <select
+            class="form-control"
+            name="branches"
+            [(ngModel)]="data.owner"
+            class="form-control"
+            id="type"
+            data-live-search="true"
+            required
+          >
+            <option translate value="col" selected hidden value="">
+              select
+            </option>
+
+            <option *ngFor="let item of ownersList" [value]="item.id">
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
       </div>
       <div class="row">
         <div class="form-group col-md-4">
@@ -62,23 +83,83 @@
           />
           <small class="invalid-feedback">Field required</small>
         </div>
-        <div class="form-group col-md-4">
+        <!-- <div class="form-group col-md-4">
           <label translate for="bnk_branch">Branch</label>
           <input
             translate
-            type="text"
+            type="number"
             class="form-control"
-            name="bnk_branch"
-            [(ngModel)]="data.branch"
-            id="bnk_branch"
+            name="initial_balance"
+            [(ngModel)]="data.initial_balance"
+            id="initial_balance"
+            required
+          />
+          <small class="invalid-feedback">Field required</small>
+        </div> -->
+        <div class="form-group col-md-4">
+          <label translate for=""> Branch</label>
+          <!-- branch listing  api posting -->
+          <select
+            class="form-control"
+            name="branches"
+            [(ngModel)]="data.branches"
+            class="form-control"
+            id="type"
+            data-live-search="true"
+            required
+          >
+            <option translate value="col" selected hidden value="">
+              select
+            </option>
+
+            <option *ngFor="let item of branchesList" [value]="item.id">
+              {{ item.en_name }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editMode !== true" class="form-group col-md-4">
+          <label translate for="ACC_NO">Initial Balance</label>
+          <input
+            translate
+            type="number"
+            class="form-control"
+            name="initial_balance"
+            [(ngModel)]="data.initial_balance"
+            id="initial_balance"
             required
           />
           <small class="invalid-feedback">Field required</small>
         </div>
+        <div class="form-check ml-auto col-md-6 text-right">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            Default
+          </label>
+        </div>
+        <div class="form-check ml-auto col-md-6 text-right">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+            [(ngModel)]="data.is_default"
+            name="default"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            Default
+          </label>
+        </div>
       </div>
       <div class="modal-footer">
-        <button translate type="submit" class="btn btn-outline-primary">
-          {{ editMode === true ? "Update" : "Submit" }}
+        <button type="submit" class="btn btn-outline-primary">
+          {{
+            editMode === true ? ("Update" | translate) : ("Submit" | translate)
+          }}
         </button>
         <button translate type="reset" class="btn btn-outline-warning">
           Reset
@@ -99,7 +180,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of bankaccounts; let i = index">
+      <tr
+        [class]="item.is_default === true ? 'text-primary' : ''"
+        *ngFor="let item of bankaccounts; let i = index"
+      >
         <th translate scope="row">{{ i + 1 }}</th>
         <td>{{ item.bank_name }}</td>
         <td>{{ item.acc_holder_name }}</td>

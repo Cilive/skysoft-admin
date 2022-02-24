@@ -17,6 +17,7 @@ export interface Company {
   username?: string;
   password?: string;
   email: string;
+  branchcount: string;
 }
 
 export interface User {

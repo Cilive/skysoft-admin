@@ -26,7 +26,6 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   title;
   username: string;
   isTopLevel: boolean = false;
-  cmd = console;
   isNotificationsOn = false;
   direction = 'ltr';
   enset = true;
@@ -94,8 +93,6 @@ export class SidebarComponent implements OnInit, AfterViewInit {
    */
   private generateRoutes(): void {
     const role = parseInt(new StoreService().retrieve('role'));
-    console.log(typeof role);
-
     switch (true) {
       case Role.admin === role:
         this.routes = [
@@ -111,8 +108,35 @@ export class SidebarComponent implements OnInit, AfterViewInit {
           {
             icon: 'bx bxs-business',
             path: '/owner/dashboard',
-            title: 'dashboard',
+            title: 'Dashboard',
           },
+          {
+            icon: 'bx bxs-business',
+            path: '/owner/fuelstock',
+            title: 'Fuel Stock',
+          },
+
+          {
+            icon: 'bx bxs-business',
+            path: '/owner/invoicelisting',
+            title: 'Invoice Listing',
+          },
+          {
+            icon: 'bx bxs-business',
+            path: '/owner/session',
+            title: 'Session',
+          },
+          {
+            icon: 'bx bxs-business',
+            path: '/owner/cashmaster',
+            title: 'Cash Master',
+          },
+          {
+            icon: 'bx bxs-business',
+            path: '/owner/addbranch',
+            title: 'Add Branch',
+          },
+
           {
             icon: 'bx bxs-user-account',
             path: '/owner/users',
@@ -124,11 +148,11 @@ export class SidebarComponent implements OnInit, AfterViewInit {
             path: '/owner/fuel',
             title: 'Fuel Management',
           },
-          {
-            icon: 'bx bxs-spreadsheet',
-            path: '/owner/invoices',
-            title: 'Invoices',
-          },
+          // {
+          //   icon: 'bx bxs-spreadsheet',
+          //   path: '/owner/invoices',
+          //   title: 'Invoices',
+          // },
           {
             icon: 'bx bxs-bank',
             path: '/owner/bank_Accounts',
@@ -155,11 +179,33 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       case Role.maneger === role:
         this.routes = [
           {
-            path: '/branch/dashboard',
             icon: 'bx bxs-business',
-            title: 'Dash Board',
+            path: '/branch/session',
+            title: 'Session',
+          },
+          {
+            icon: 'bx bxs-business',
+            path: '/branch/fuelstocks',
+            title: 'Fuel Stock',
           },
 
+          {
+            icon: 'bx bxs-business',
+            path: '/branch/invoicelisting',
+            title: 'Invoice Listing',
+          },
+          {
+            icon: 'bx bxs-business',
+            path: '/branch/cashmaster',
+            title: 'Cashmaster',
+          },
+
+
+          {
+            icon: 'bx bxs-business',
+            path: '/branch/dashboard',
+            title: 'Dashboard',
+          },
           {
             icon: 'bx bxs-user-account',
             path: '/branch/users',
@@ -171,11 +217,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
             path: '/branch/fuel',
             title: 'Fuel Management',
           },
-          {
-            icon: 'bx bxs-spreadsheet',
-            path: '/branch/invoices',
-            title: 'Invoices',
-          },
+
           {
             icon: 'bx bxs-bank',
             path: '/branch/bank_Accounts',

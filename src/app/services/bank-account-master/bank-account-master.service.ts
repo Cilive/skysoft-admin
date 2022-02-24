@@ -44,4 +44,33 @@ export class BankAccountMasterService {
       {}
     );
   }
+
+  get_branchwaisebank(id) {
+    return this.http.get<ApiResponse<BankAccounts[]>>(
+      environment.domain + '/clients/c1.localhost/private/bank/' + id + '/'
+    );
+  }
+  // get_bankac(id) {
+  //   return this.http.get<ApiResponse<BankAccounts[]>>(
+  //     environment.domain +
+  //       'clients/c1.localhost/private/branch_bankac' +
+  //       '/' +
+  //       id +
+  //       '/'
+  //   );
+  // }
+  // get_Bank(id) {
+  //   return this.http.get<ApiResponse<BankAccounts[]>>(
+  //     environment.domain +
+  //       'clients/c1.localhost/private/branch_bankac' +
+  //       '/' +
+  //       id +
+  //       '/'
+  //   );
+  // }
+  get_bank_ac(id) {
+    return this.http.get<ApiResponse<BankAccounts[]>>(
+      `${environment.domain}clients/c1.localhost/private/branch_bankac/${id}/`
+    );
+  }
 }

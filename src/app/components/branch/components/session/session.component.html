@@ -1,0 +1,135 @@
+<div class="card m-auto col-md-12">
+  <div class="modal-header">
+    <h6 translate>Session</h6>
+  </div>
+  <div class="col-md-12">
+    <form id="Form" (submit)="onSubmit()">
+      <div class="row">
+        <!-- <div class="mt-4"> -->
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="mt-2 btn btn-outline-primary">
+          {{ "Submit" | translate }}
+        </button>
+        <!-- <button type="submit" class="btn btn-outline-primary"> -->
+        <!-- </button> -->
+        <!-- <button translate type="update" class="btn btn-outline-warning">
+            {{ "Update" | translate }}
+          </button> -->
+      </div>
+      <!-- </div> -->
+
+      <div></div>
+
+      <!-- </form> -->
+    </form>
+    <form id="form" (submit)="onUpdate()">
+      <div class="text-centre mt-3 card">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th class="text-center" rowspan="2">#</th>
+              <th class="text-center" rowspan="2">Branches</th>
+              <th class="text-center" colspan="2">Opening Balance</th>
+              <th class="text-center" colspan="2">closing Balance</th>
+              <th class="text-center" rowspan="2">Action</th>
+            </tr>
+            <tr>
+              <th class="text-center">cash</th>
+              <th class="text-center">Bank</th>
+              <th class="text-center">cash</th>
+              <th class="text-center">Bank</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let item of session; let i = index">
+              <th translate scope="row">{{ i + 1 }}</th>
+              <td>{{ item.branch_name }}</td>
+              <td>{{ item.cash_opening_balance }}</td>
+              <td>{{ item.opening_balance_bank }}</td>
+              <td>{{ item.closing_balance_bank }}</td>
+              <td>{{ item.closing_balance_cash }}</td>
+              <!-- <div *ngIf="data.status === true"> -->
+              <td class="text-center">
+                <!-- <button class="btn btn-danger">
+                  Closing Session
+                </button> -->
+                <!-- <button>
+                  mat-button *ngFor="let button of filterButtons"
+                  [ngClass]="{'active': button.isClicked}"
+                  (click)="setActive(button)">
+                  {{ button.text }}
+                </button> -->
+                <!-- <button  >Click Me</button> -->
+                <button
+                  type="onUpdate"
+                  id="type"
+                  class="btn btn-outline-warning"
+                  *ngIf="item.status === false"
+                  [disabled]="false"
+                >
+                  {{ "onUpdate" | translate }}
+                </button>
+              </td>
+              <!-- <div class="d-flex justify-content-around">
+                <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>
+              </div> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- </div> -->
+<!-- <td>{{ item.status }}</td> -->
+
+<!-- <td> -->
+<!-- <tr *ngFor="let item of session; let i = index"> -->
+
+<!-- </select> -->
+<!-- </tr> -->
+
+<!-- <div class="d-flex justify-content-around">
+                  <i
+                    title="Edit"
+                    class="bx bxs-edit"
+                    (click)="onEdit(item)"
+                  ></i>
+                  <i
+                    title="Delete"
+                    class="bx bxs-trash"
+                    (click)="openModal(template)"
+                  ></i>
+                </div>
+
+                <ng-template #template>
+                  <div class="modal-body text-center">
+                    <p translate>Do you want to confirm?</p>
+                    <div class="modal-footer">
+                      <button
+                        translate
+                        type="button"
+                        class="btn btn-outline-danger"
+                        (click)="onDelete(item.id)"
+                      >
+                        Yes
+                      </button>
+                      <button
+                        translate
+                        type="button"
+                        class="btn btn-primary"
+                        (click)="decline()"
+                      >
+                        No
+                      </button>
+                    </div>
+                  </div>
+                </ng-template> -->
+<!-- </td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+<!-- </td> -->

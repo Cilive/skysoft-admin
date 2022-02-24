@@ -1,7 +1,212 @@
-<div class="mt-3 card">
+<div class="card m-auto col-md-12">
+  <div class="modal-header">
+    <h6 translate>Generate Payment Out</h6>
+  </div>
+  <div class="col-md-12">
+    <form id="Form" (submit)="onSubmit()" (reset)="onReset()">
+      <div class="row mt-3">
+        <div class="form-group col-md-2">
+          <label translate for="company">From</label>
+          <input
+            translate
+            type="text"
+            placeholder="Date"
+            bsDatepicker
+            [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+            [(ngModel)]="data.updated_at"
+            class="form-control"
+            name="date"
+          />
+          <small id="helpId" class="invalid-feedback">Field is required</small>
+        </div>
+        <!-- <div class="col-md-0" style="padding-top: 35px">To</div> -->
+
+        <div class="form-group col-md-2">
+          <label translate for="company">To</label>
+          <input
+            translate
+            type="text"
+            placeholder="Date"
+            bsDatepicker
+            [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+            [(ngModel)]="data.date"
+            class="form-control"
+            name="date"
+          />
+          <small id="helpId" class="invalid-feedback">Field is required</small>
+        </div>
+        <div class="form-group col-md-2">
+          <label translate for=""> Branch</label>
+          <!-- branch listing  api posting -->
+          <select
+            class="form-control"
+            name="branches"
+            placeholder="Branch"
+            [(ngModel)]="data.branch"
+            class="form-control"
+            id="type"
+            data-live-search="true"
+            (change)="dispencerlistin()"
+            required
+          >
+            <option translate selected hidden Value="">select Branch</option>
+
+            <option *ngFor="let item of branchesList" [ngValue]="item.id">
+              {{ item.en_name }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+          <label translate for=""> Select Dispence</label>
+
+          <select
+            class="form-control"
+            name="dispencers"
+            placeholder="Branch"
+            [(ngModel)]="data.dispencer"
+            class="form-control"
+            id="type"
+            data-live-search="true"
+            (change)="dispencerlistin()"
+          >
+            <option translate selected hidden Value="">Select Dispence</option>
+
+            <option *ngFor="let item of dispencerList" [ngValue]="item.id">
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+
+        <!-- <div class="form-group col-md-2">
+          <label translate for="company">Invoice No</label>
+          <input
+            translate
+            type="text"
+            placeholder="Invoice No"
+            [(ngModel)]="data.invoice_no"
+            class="form-control"
+            name="invoice no"
+          />
+          <small id="helpId" class="invalid-feedback">Field is required</small>
+        </div> -->
+      </div>
+      <div class="modal-footer">
+        <button translate type="submit" class="btn btn-outline-primary">
+          {{ "Submit" }}
+        </button>
+        <button translate type="reset" class="btn btn-outline-warning">
+          Reset
+        </button>
+      </div>
+    </form>
+    <div class="modal-footer">
+      <div class="form-group col-md-3">
+        <label translate for=""> Payable Amount</label>
+        <input
+          translate
+          type="text"
+          placeholder="Payable Amount"
+          [(ngModel)]="payable_amount_sum"
+          class="form-control"
+          name="Amount"
+          id="type"
+        />
+      </div>
+      <!-- <div class="form-group col-md-3">
+        <input
+          translate
+          type="text"
+          placeholder=" Vat Amount"
+          [(ngModel)]="net_vat_sum"
+          class="form-control"
+          name="Amount"
+          id="type"
+        />
+      </div>
+      <div class="form-group col-md-3">
+        <input
+          translate
+          type="text"
+          placeholder="Gross Amount"
+          [(ngModel)]="gross_amt_sum"
+          class="form-control"
+          name="Amount"
+          id="type"
+        />
+
+      </div> -->
+    </div>
+
+    <div class="mt-3 card">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th translate scope="col">#</th>
+            <th translate scope="col">Date</th>
+            <th translate scope="col">Start Reading</th>
+            <th translate scope="col">End Reading</th>
+            <th translate scope="col">Amount</th>
+            <th translate scope="col">Litre</th>
+            <th translate scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of meterreading; let i = index">
+            <th translate scope="row">{{ i + 1 }}</th>
+            <!-- <td>{{ item. }}</td> -->
+            <td>{{ item.date | date: "dd/MM/YYYY" }}</td>
+            <td>{{ item.start_reading }}</td>
+            <td>{{ item.end_reading }}</td>
+            <td>{{ item.payable_amt }}</td>
+            <td>{{ item.fuel }}</td>
+
+            <!-- <td>{{ item.owner }}</td> -->
+            <td></td>
+          </tr>
+          <!-- <tr>
+            <th colspan="4"></th>
+            <th translate scope="col">Total :</th>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="mt-3 card">
   <div class="modal-header">
     <h6 translate>View Readings</h6>
-    <div class="row col-md-8 ml-auto">
+    <div class="row col-md-8 ml-auto"> -->
+<!-- <div class="card m-auto col-md-12">
+  <div class="modal-header">
+    <h6 translate>Generate Payment Out</h6>
+  </div> -->
+<!-- <div class="col-md-12">
+    <form id="Form" (submit)="onSubmit()" (reset)="onReset()">
+    <div class="form-group col-md-2">
+          <label translate for=""> Branch</label>
+          branch listing  api posting
+          <select
+            class="form-control"
+            name="branches"
+            placeholder="Branch"
+            [(ngModel)]="data.branches"
+            class="form-control"
+            id="type"
+            data-live-search="true"
+            (change)="customerlistin()"
+            required
+          >
+            <option translate selected hidden Value="">select Branch</option>
+
+            <option *ngFor="let item of branchesList" [ngValue]="item.id">
+              {{ item.en_name }}
+            </option>
+          </select>
+        </div>
+          />
+          <small id="helpId" class="invalid-feedback">Field is required</small>
+        </div>
       <div class="form-group col-md-4 ml-auto">
         <label translate for="">Select Dispense</label>
         <select
@@ -42,37 +247,18 @@
       </div>
     </div>
 
-    <!-- <button translate type="button" class="btn btn-primary" (click)="staticModal.show()">
-      Add Filters
-    </button> -->
-    <!-- <div
-      class="modal fade"
-      bsModal
-      #staticModal="bs-modal"
-      tabindex="-1"
-      role="dialog"
-      aria-label translateledby="dialog-static-name"
-    >
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 id="dialog-static-name" class="modal-title pull-left">
-              ADD Filters
-            </h4>
-            <button translate
-              type="button"
-              class="btn-close close pull-right"
-              aria-label translate="Close"
-              (click)="staticModal.hide()"
-            >
-              <span translate aria-hidden="true" class="visually-hidden">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body"></div>
-        </div>
+
+   <div class="modal-footer">
+        <button translate type="submit" class="btn btn-outline-primary">
+          {{ "Submit" }}
+        </button>
+        <button translate type="reset" class="btn btn-outline-warning">
+          Reset
+        </button>
       </div>
-    </div> -->
-  </div>
+
+    </form>
+
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -92,9 +278,9 @@
         <td>{{ item.date | date: "dd/MM/YYYY" }}</td>
         <td>{{ item.amount }}</td>
         <td>{{ item.owner_name }}</td>
-        <td>
-          <!-- <div class="d-flex justify-content-around">
-            <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i> 
+        <td> -->
+<!-- <div class="d-flex justify-content-around">
+            <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>
             <i
               title="Delete"
               class="bx bxs-trash"
@@ -107,7 +293,7 @@
             ></i>
           </div> -->
 
-          <!-- <ng-template #template>
+<!-- <ng-template #template>
             <div class="modal-body text-center">
               <p translate>Do you want to confirm?</p>
               <div class="modal-footer">
@@ -128,11 +314,11 @@
               </div>
             </div>
           </ng-template> -->
-        </td>
+<!-- </td>
       </tr>
     </tbody>
   </table>
   <p translate class="mx-auto text-center" *ngIf="readings.length === 0">
     No Data
   </p>
-</div>
+</div> -->

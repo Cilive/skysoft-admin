@@ -21,7 +21,7 @@ const routes: Routes = [
   {
     path: 'branch',
     loadChildren: async () =>
-      (await import('../owner/branch/branch.module')).BranchModule,
+      (await import('../branch/branch.module')).BranchModule,
   },
   {
     path: 'login',

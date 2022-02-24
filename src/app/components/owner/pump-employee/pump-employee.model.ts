@@ -6,9 +6,9 @@ export interface Employee {
   name: string;
   id?: number;
   username: string;
-  branches: number;
+  branches: string | number;
   iqama_no: string;
-  account?: {
+  user?: {
     email: string;
   };
 }

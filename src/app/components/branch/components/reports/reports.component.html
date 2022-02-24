@@ -1,0 +1,27 @@
+<div class="col-md-12 mt-5 mx-auto row m-auto" style="height: 400px">
+  <div class="row col-md-12 grid">
+    <div
+      [routerLink]="[item.path]"
+      routerLinkActive="active-child"
+      class="menu card d-flex justify-content-center col-md-2 m-3"
+      style="position: relative; height: 100px"
+      *ngFor="let item of tileItems"
+    >
+      {{ item.title | translate }}
+      <div class="overlay">
+        <i class="{{ item.icon }} m-2"></i>
+      </div>
+    </div>
+    <!-- <div
+      [routerLink]="[item.routerLink]"
+      routerLinkActive="active-child"
+      class="menu card d-flex justify-content-center col-md-3 m-3"
+      *ngFor="let item of tileList; let i = index"
+      style="position: relative; height: 100px"
+    >
+      {{ item.title | translate }}
+      <div class="overlay">
+        <i class=" {{ item.icon }} m-2"></i>
+      </div> -->
+  </div>
+</div>

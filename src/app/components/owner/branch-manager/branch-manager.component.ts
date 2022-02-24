@@ -7,6 +7,7 @@ import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
+import { Branch } from '../../branch/branch.modal';
 import { Branchmanager } from './branch-manager.model';
 
 @Component({
@@ -27,15 +28,47 @@ export class BranchManagerComponent implements OnInit {
     phone: '',
     username: '',
     iqama_no: '',
-    branches: 1,
+    branches: '',
+    // user: '',
+    is_superuser: false,
+    is_company: false,
+    is_active: false,
+    is_employee: false,
+    is_branch_user: false,
+    is_staff: false,
+    is_admin: false,
+    is_super_admin: false,
+    created_at: undefined,
+    updated_at: undefined,
+    date_joined: undefined,
+    last_login: undefined,
+    groups: [],
+    user_permissions: [],
+    en_name: '',
+    ar_name: '',
+    en_place: '',
+    ar_place: '',
+    en_district: '',
+    ar_district: '',
+    cr_no: '',
+    vat_no: '',
+    lan_no: '',
+    logo: null,
+    status: false,
+    company: 0,
+    value: undefined,
+    supplierProfile: '',
   };
   employeesList: Branchmanager[] = [];
   Branch_ManagerList: Branchmanager[];
+  // branch: any;
+  branchesList: Branchmanager[] = [];
 
   constructor(
     private modalService: BsModalService,
     private toast: AlertService,
-    private Branchmanager: BranchManagerService
+    private Branchmanager: BranchManagerService,
+    private branches: BranchManagerService
   ) {}
 
   ngOnInit(): void {
@@ -45,9 +78,17 @@ export class BranchManagerComponent implements OnInit {
         this.Branch_ManagerList = res.data;
       }
     });
+    this.branches.get_branches().subscribe((res) => {
+      if (res.msg === 'Success') {
+        console.log(res.data);
+
+        this.branchesList = res.data;
+      }
+    });
   }
 
   public onSubmit(): void {
+    // console.log(this.data);
     if (validateForm('emp_form')) {
       this.Branchmanager.post_branch_manager(this.data).subscribe((res) => {
         if (res.msg === 'Success') {
@@ -78,11 +119,26 @@ export class BranchManagerComponent implements OnInit {
       username: item.username,
       password: item.password,
       iqama_no: item.iqama_no,
-      email: item.email,
+      email: item.user.email,
       name: item.name,
       phone: item.phone,
       id: item.id,
       branches: item.branches,
+
+      is_superuser: item.is_superuser,
+      is_company: item.is_company,
+      is_active: item.is_active,
+      is_employee: item.is_employee,
+      is_branch_user: item.is_branch_user,
+      is_staff: item.is_staff,
+      is_admin: item.is_admin,
+      is_super_admin: item.is_super_admin,
+      created_at: item.created_at,
+      updated_at: item.updated_at,
+      date_joined: item.date_joined,
+      last_login: item.last_login,
+      groups: item.groups,
+      user_permissions: item.user_permissions,
     };
   }
   public onUpdate() {

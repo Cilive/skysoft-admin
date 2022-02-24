@@ -34,7 +34,13 @@ import { ExpenceComponent } from './dashboard/expence/expence.component';
 import { TotalPurchaseComponent } from './dashboard/total-purchase/total-purchase.component';
 import { BankAccountSummeryComponent } from './dashboard/bank-account-summery/bank-account-summery.component';
 import { StockManagementComponent } from './dashboard/stock-management/stock-management.component';
-import { BranchEmployeeComponent } from './branch/branch-employee/branch-employee.component';
+import { BranchEmployeeComponent } from '../branch/components/branch-employee/branch-employee.component';
+import { AddbranchComponent } from './addbranch/addbranch.component';
+import { CashmasterComponent } from './cashmaster/cashmaster.component';
+import { SessionComponent } from './session/session.component';
+import { InvoicelistingComponent } from './invoicelisting/invoicelisting.component';
+import { FulestockComponent } from './fulestock/fulestock.component';
+// import { FuelstocksComponent } from '../branch/fuelstocks/fuelstocks.component';
 
 const routes: Routes = [
   {
@@ -42,6 +48,36 @@ const routes: Routes = [
     // redirectTo: 'supplierprofile', pathMatch: 'full',
     component: OwnerComponent,
     children: [
+      {
+        path: 'fuelstock',
+        component: FulestockComponent,
+      },
+      {
+        path: '',
+        redirectTo: 'fuelstock',
+        pathMatch: 'full',
+      },
+      {
+        path: '',
+        redirectTo: 'invoicelisting',
+        pathMatch: 'full',
+      },
+      {
+        path: 'invoicelisting',
+        component: InvoicelistingComponent,
+      },
+      {
+        path: 'session',
+        component: SessionComponent,
+      },
+      {
+        path: 'cashmaster',
+        component: CashmasterComponent,
+      },
+      {
+        path: 'addbranch',
+        component: AddbranchComponent,
+      },
       {
         path: '',
         redirectTo: 'dashboard',
@@ -195,6 +231,11 @@ const routes: Routes = [
     TotalPurchaseComponent,
     BankAccountSummeryComponent,
     StockManagementComponent,
+    AddbranchComponent,
+    CashmasterComponent,
+    SessionComponent,
+    InvoicelistingComponent,
+    FulestockComponent,
   ],
   imports: [
     CommonModule,
