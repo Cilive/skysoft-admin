@@ -40,6 +40,8 @@ import { CashmasterComponent } from './cashmaster/cashmaster.component';
 import { SessionComponent } from './session/session.component';
 import { InvoicelistingComponent } from './invoicelisting/invoicelisting.component';
 import { FulestockComponent } from './fulestock/fulestock.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ForgotPasswordOtpComponent } from './forgot-password-otp/forgot-password-otp.component';
 // import { FuelstocksComponent } from '../branch/fuelstocks/fuelstocks.component';
 
 const routes: Routes = [
@@ -48,6 +50,10 @@ const routes: Routes = [
     // redirectTo: 'supplierprofile', pathMatch: 'full',
     component: OwnerComponent,
     children: [
+      {
+        path: 'changepassword',
+        component: ChangePasswordComponent,
+      },
       {
         path: 'fuelstock',
         component: FulestockComponent,
@@ -96,30 +102,30 @@ const routes: Routes = [
         redirectTo: 'branch-employee',
         pathMatch: 'full',
       },
-      {
-        path: 'bank-account-summery',
-        component: BankAccountSummeryComponent,
-      },
-      {
-        path: 'cash-sales-summery',
-        component: CashSalesSummeryComponent,
-      },
-      {
-        path: 'expence',
-        component: ExpenceComponent,
-      },
-      {
-        path: 'online-sales',
-        component: OnlineSalesComponent,
-      },
+      // {
+      //   path: 'bank-account-summery',
+      //   component: BankAccountSummeryComponent,
+      // },
+      // {
+      //   path: 'cash-sales-summery',
+      //   component: CashSalesSummeryComponent,
+      // },
+      // {
+      //   path: 'expence',
+      //   component: ExpenceComponent,
+      // },
+      // {
+      //   path: 'online-sales',
+      //   component: OnlineSalesComponent,
+      // },
       {
         path: 'stock-management',
         component: StockManagementComponent,
       },
-      {
-        path: 'total-purchase',
-        component: TotalPurchaseComponent,
-      },
+      // {
+      //   path: 'total-purchase',
+      //   component: TotalPurchaseComponent,
+      // },
 
       {
         path: 'supplier_Profile',
@@ -236,6 +242,8 @@ const routes: Routes = [
     SessionComponent,
     InvoicelistingComponent,
     FulestockComponent,
+    ChangePasswordComponent,
+    ForgotPasswordOtpComponent,
   ],
   imports: [
     CommonModule,

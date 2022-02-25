@@ -88,6 +88,15 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   back() {
     this.location.back();
   }
+  //password change function
+
+  changepasword() {
+    // localStorage.clear();
+    this.router.navigate(['/owner/changepassword']);
+  }
+  changeback() {
+    this.location.back();
+  }
   /**
    * Function to generate Routes
    */
@@ -105,6 +114,11 @@ export class SidebarComponent implements OnInit, AfterViewInit {
         break;
       case Role.owner === role:
         this.routes = [
+          // {
+          //   icon: 'bx bxs-business',
+          //   path: '/owner/changepassword',
+          //   title: 'change password',
+          // },
           {
             icon: 'bx bxs-business',
             path: '/owner/dashboard',
