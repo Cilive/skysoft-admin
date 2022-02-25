@@ -36,15 +36,13 @@ export class ReportsComponent implements OnInit, AfterViewInit {
       return str1.charAt(0).toUpperCase() + str1.slice(1);
     };
 
-    //  this.title= capitalize()
-
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
         this.tileItems = capitalize(e.url.split('/').pop()).replace(
           /[^a-zA-Z ]/g,
           ' '
         );
-      
+
       }
     });
 
@@ -130,6 +128,11 @@ export class ReportsComponent implements OnInit, AfterViewInit {
             path: 'sales_Details',
             icon: 'bx bx-spreadsheet',
             title: 'Sales Details',
+          },
+          {
+            path: 'session_Reports',
+            icon: 'bx bx-spreadsheet',
+            title: 'session Reports',
           },
         ];
         break;

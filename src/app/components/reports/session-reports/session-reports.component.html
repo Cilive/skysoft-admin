@@ -1,9 +1,9 @@
 <div class="card m-auto col-md-12">
   <div class="modal-header">
-    <h6 translate>Generate Payment Out</h6>
+    <h6 translate>Generate Session </h6>
   </div>
   <div class="col-md-12">
-    <form id="Form" (submit)="onSubmit()" (reset)="onReset()">
+    <!-- <form id="Form" (submit)="onSubmit()" (reset)="onReset()"> -->
       <div class="row mt-3">
         <div class="form-group col-md-2">
           <label translate for="company">From</label>
@@ -13,13 +13,13 @@
             placeholder="Date"
             bsDatepicker
             [bsConfig]="{ containerClass: 'theme-dark-blue' }"
-            [(ngModel)]="data.updated_at"
+            [(ngModel)]="data.from_date"
             class="form-control"
-            name="date"
+            name="from_date"
           />
           <small id="helpId" class="invalid-feedback">Field is required</small>
         </div>
-        <!-- <div class="col-md-0" style="padding-top: 35px">To</div> -->
+        <div class="col-md-0" style="padding-top: 35px">To</div>
 
         <div class="form-group col-md-2">
           <label translate for="company">To</label>
@@ -29,9 +29,9 @@
             placeholder="Date"
             bsDatepicker
             [bsConfig]="{ containerClass: 'theme-dark-blue' }"
-            [(ngModel)]="data.date"
+            [(ngModel)]="data.to_date"
             class="form-control"
-            name="date"
+            name="to_date"
           />
           <small id="helpId" class="invalid-feedback">Field is required</small>
         </div>
@@ -41,38 +41,19 @@
           <select
             class="form-control"
             name="branches"
+            class="form-control"
+            name="branches"
             placeholder="Branch"
             [(ngModel)]="data.branch"
             class="form-control"
             id="type"
             data-live-search="true"
-            (change)="dispencerlistin()"
             required
           >
             <option translate selected hidden Value="">select Branch</option>
 
             <option *ngFor="let item of branchesList" [ngValue]="item.id">
               {{ item.en_name }}
-            </option>
-          </select>
-        </div>
-        <div class="form-group col-md-3">
-          <label translate for=""> Select Dispence</label>
-
-          <select
-            class="form-control"
-            name="dispencers"
-            placeholder="Branch"
-            [(ngModel)]="data.dispencer"
-            class="form-control"
-            id="type"
-            data-live-search="true"
-            (change)="dispencerlistin()"
-          >
-            <option translate selected hidden Value="">Select Dispence</option>
-
-            <option *ngFor="let item of dispencerList" [ngValue]="item.id">
-              {{ item.name }}
             </option>
           </select>
         </div>
@@ -98,11 +79,10 @@
           Reset
         </button>
       </div>
-    </form>
+    <!-- </form> -->
     <div class="modal-footer">
       <div class="form-group col-md-3">
-        <label translate for=""> Payable Amount</label>
-        <input
+        <!-- <input
           translate
           type="text"
           placeholder="Payable Amount"
@@ -110,7 +90,7 @@
           class="form-control"
           name="Amount"
           id="type"
-        />
+        /> -->
       </div>
       <!-- <div class="form-group col-md-3">
         <input
@@ -143,26 +123,30 @@
           <tr>
             <th translate scope="col">#</th>
             <th translate scope="col">Date</th>
-            <th translate scope="col">Start Reading</th>
-            <th translate scope="col">End Reading</th>
-            <th translate scope="col">Amount</th>
-            <th translate scope="col">Litre</th>
+            <th translate scope="col">Opening Bank</th>
+            <th translate scope="col">Opening Cash</th>
+            <th translate scope="col">Closing Bank</th>
+            <th translate scope="col">Closing Cash</th>
+            <th translate scope="col">Total</th>
             <th translate scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of meterreading; let i = index">
+          <tr *ngFor="let item of sessionreportsowner; let i = index"> -->
             <th translate scope="row">{{ i + 1 }}</th>
             <!-- <td>{{ item. }}</td> -->
-            <td>{{ item.date | date: "dd/MM/YYYY" }}</td>
-            <td>{{ item.start_reading }}</td>
-            <td>{{ item.end_reading }}</td>
-            <td>{{ item.payable_amt }}</td>
-            <td>{{ item.fuel }}</td>
+             <td>{{ item.date | date: "dd/MM/YYYY" }}</td>
+            <td>{{ item.opening_balance_bank}}</td>
+            <td>{{ item.cash_opening_balance }}</td>
+            <td>{{ item.closing_balance_bank }}</td>
+            <td>{{ item.closing_balance_cash }}</td>
+            <td>{{ item.total_transactions }}</td>
+            <td>{{ item.branch_name }}</td>
+
 
             <!-- <td>{{ item.owner }}</td> -->
             <td></td>
-          </tr>
+          <!-- </tr> -->
           <!-- <tr>
             <th colspan="4"></th>
             <th translate scope="col">Total :</th>
