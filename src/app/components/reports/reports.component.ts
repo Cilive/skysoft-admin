@@ -42,6 +42,7 @@ export class ReportsComponent implements OnInit, AfterViewInit {
           /[^a-zA-Z ]/g,
           ' '
         );
+
       }
     });
 
