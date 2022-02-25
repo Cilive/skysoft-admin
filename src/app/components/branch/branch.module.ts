@@ -39,7 +39,7 @@ import { VatFuelMasterComponent } from './components/vat-fuel-master/vat-fuel-ma
 import { CashmasterComponent } from './components/cashmaster/cashmaster.component';
 
 import { InvoicelistingComponent } from './components/invoicelisting/invoicelisting.component';
-import { FuelstocksComponent } from './fuelstocks/fuelstocks.component';
+import { FuelstocksComponent } from './components/fuelstocks/fuelstocks.component';
 import { SessionComponent } from './components/session/session.component';
 
 const routes: Routes = [

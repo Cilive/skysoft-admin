@@ -42,6 +42,7 @@ export class ReportsComponent implements OnInit, AfterViewInit {
           /[^a-zA-Z ]/g,
           ' '
         );
+
       }
     });
 
@@ -71,11 +72,11 @@ export class ReportsComponent implements OnInit, AfterViewInit {
             icon: 'bx bx-spreadsheet',
             title: 'Customer Balance',
           },
-          {
-            path: 'customer_Details',
-            icon: 'bx bx-spreadsheet',
-            title: 'Customer Details',
-          },
+          // {
+          //   path: 'customer_Details',
+          //   icon: 'bx bx-spreadsheet',
+          //   title: 'Customer Details',
+          // },
           {
             path: 'deposit_Amount',
             icon: 'bx bx-spreadsheet',
@@ -138,19 +139,65 @@ export class ReportsComponent implements OnInit, AfterViewInit {
       case Role.maneger === role:
         this.routes = [
           {
+            path: 'meterreadingBranch',
+            icon: 'bx bx-spreadsheet',
+            title: 'Metre Reading',
+          },
+          {
             path: 'coustomerBalanceBranch',
             icon: 'bx bx-spreadsheet',
-            title: 'test',
+            title: 'Customer Balance',
           },
           {
-            icon: 'bx bx-transfer',
-            path: '/branch/customer_Balance',
-            title: 'Transactions',
+            path: 'DepositBranch',
+            icon: 'bx bx-spreadsheet',
+            title: 'Deposit',
+          },
+
+          {
+            path: 'Expensedetailes',
+            icon: 'bx bx-spreadsheet',
+            title: 'Expense Details',
           },
           {
-            icon: 'bx bxs-report',
-            path: '/branch/reports',
-            title: 'Reports',
+            path: 'Paymentdue',
+            icon: 'bx bx-spreadsheet',
+            title: 'Payment Due',
+          },
+          {
+            path: 'PurchasedetailesBranch',
+            icon: 'bx bx-spreadsheet',
+            title: 'Purchase Detailes',
+          },
+          {
+            path: 'SalesdetailesBranch',
+            icon: 'bx bx-spreadsheet',
+            title: 'Sales Detailes',
+          },
+          {
+            path: 'sessionreportBranch',
+            icon: 'bx bx-spreadsheet',
+            title: 'Session Report',
+          },
+          {
+            path: 'PaymentinBranch',
+            icon: 'bx bx-spreadsheet',
+            title: 'Payment in',
+          },
+          {
+            path: 'PaymentoutBranch',
+            icon: 'bx bx-spreadsheet',
+            title: 'Payment Out',
+          },
+          // {
+          //   path: 'accountsladgerlisting',
+          //   icon: 'bx bx-spteadsheet',
+          //   title: 'Accounts Ladger',
+          // },
+          {
+            path: 'IncomeexpenditureBranch',
+            icon: 'bx bx-spreadsheet',
+            title: 'Income And Expenditure',
           },
         ];
         break;

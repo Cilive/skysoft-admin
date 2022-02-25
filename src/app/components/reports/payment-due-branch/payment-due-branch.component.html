@@ -1,0 +1,192 @@
+<form class="card" id="form" (submit)="onSubmit()">
+  <div class="modal-header">
+    <div class="col-md-12">
+      <h6 translate>Generate Payment Due</h6>
+      <div class="row col-md-12">
+        <div class="row mt-3">
+          <div class="form-group col-md-2">
+            <label translate for="company">From</label>
+            <input
+              translate
+              type="text"
+              placeholder="Date"
+              bsDatepicker
+              [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+              [(ngModel)]="data.updated_at"
+              class="form-control"
+              name="date"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+          <!-- <div class="col-md-0" style="padding-top: 35px">To</div> -->
+
+          <div class="form-group col-md-2">
+            <label translate for="company">To</label>
+            <input
+              translate
+              type="text"
+              placeholder="Date"
+              bsDatepicker
+              [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+              [(ngModel)]="data.date"
+              class="form-control"
+              name="date"
+            />
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+
+          <!-- <div class="form-group col-md-3">
+            <label translate for=""> Branch</label>
+            <select
+              class="form-control"
+              name="branches"
+              placeholder="Branch"
+              class="form-control"
+              id="type"
+              data-live-search="true"
+              required
+              (change)="custemerlistin()"
+              (change)="Supplierlisting()"
+            >
+              <option translate selected hidden [ngValue]="null">
+                select Branch
+              </option>
+            </select>
+          </div> -->
+          <div class="form-group col-md-3">
+            <label translate for=""> Invoice Type </label>
+            <select
+              type="text"
+              class="form-control"
+              name="selectss"
+              [(ngModel)]="data.invoice_type"
+              id="type"
+              required
+            >
+              <option translate [value]="null" selected hidden>
+                Invoice Type
+              </option>
+
+              <option translate [ngValue]="1" scope="col">Payment In</option>
+              <option translate [ngValue]="2" scope="col">Payment Out</option>
+            </select>
+
+            <small id="helpId" class="invalid-feedback"
+              >Field is required</small
+            >
+          </div>
+          <div *ngIf="data.invoice_type === 2" class="form-group col-md-3">
+            <label translate for=""> Customer</label>
+            <!-- branch listing  api posting -->
+            <select
+              class="form-control"
+              name="customer"
+              placeholder="Customer"
+              [(ngModel)]="data.contact_en_name"
+              class="form-control"
+              id="contact_en_name"
+              data-live-search="true"
+              required
+            >
+              <option translate selected hidden [ngValue]="null">
+                Select Customer
+              </option>
+
+              <option *ngFor="let item of customerList" [ngValue]="item.id">
+                {{ item.en_name }}
+
+                <!-- *ngFor="let item of bankaccounts; let i = index" -->
+              </option>
+            </select>
+          </div>
+        </div>
+        <div *ngIf="data.invoice_type === 1" class="form-group col-md-3">
+          <label translate for=""> Supplier</label>
+          <!-- branch listing  api posting -->
+          <select
+            class="form-control"
+            name="supplier"
+            placeholder="Supplier"
+            [(ngModel)]="data.contact_en_name"
+            class="form-control"
+            id="contact_en_name"
+            data-live-search="true"
+            required
+          >
+            <option translate selected hidden [ngValue]="null">
+              Select Supplier
+            </option>
+
+            <option *ngFor="let item of supplierList" [ngValue]="item.id">
+              {{ item.en_name }}
+
+              <!-- *ngFor="let item of bankaccounts; let i = index" -->
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
+  <div class="modal-footer">
+    <button class="btn btn-outline-primary" type="submit">
+      {{ "Submit" }}
+    </button>
+
+    <button
+      translate
+      class="btn btn-outline-warning"
+      type="button"
+      (click)="onReset()"
+    >
+      Reset
+    </button>
+  </div>
+
+  <div class="modal-footer">
+    <div class="form-group col-md-3">
+      <label translate for="">Amount</label>
+
+      <input
+        translate
+        type="text"
+        placeholder=" Amount"
+        [(ngModel)]="amount"
+        class="form-control"
+        name="Amount"
+        id="type"
+      />
+    </div>
+  </div>
+</form>
+
+<div class="mt-3 card">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th translate scope="col">#</th>
+        <th translate scope="col">Date</th>
+        <th translate scope="col">Name</th>
+        <th translate scope="col">Phone No</th>
+        <th translate scope="col">Amount</th>
+        <th translate scope="col">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of Paymentdue; let i = index">
+        <th translate scope="row">{{ i + 1 }}</th>
+        <td>{{ item.invoice_no }}</td>
+        <td>{{ item.contact_en_name }}</td>
+        <td>{{ item.phone_no }}</td>
+        <td>{{ item.total_amt }}</td>
+
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -77,7 +77,7 @@ export class PurchasedetailesService {
   }
   get_Supplier_Profile(id) {
     return this.http.get<ApiResponse<[]>>(
-      `${environment.domain}clients/c1.localhost/private/supplier/${id}/`
+      `${environment.domain}clients/private/supplier/${id}/`
     );
   }
 }

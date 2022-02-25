@@ -22,12 +22,10 @@ export class SessionService {
     return this.http.get<ApiResponse<any>>(environment.domain + BRANCH_SESSION);
   }
 
-  update_session(data: Session, id: number) {
-    console.log(data);
-
-    return this.http.put<ApiResponse<{}>>(
-      environment.domain + BRANCH_SESSION + id + '/',
-      data
+  update_session(session_id: number) {
+    return this.http.put<ApiResponse<any>>(
+      environment.domain + BRANCH_SESSION + session_id + '/',
+      {}
     );
   }
 

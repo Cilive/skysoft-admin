@@ -7,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
   tileList: Tiles = [
-    {
-      icon: 'bx bxs-branch',
-      routerLink: '/branch/branch_manager',
-      title: 'Branch Managers',
-    },
+    // {
+    //   icon: 'bx bxs-branch',
+    //   routerLink: '/branch/branch_manager',
+    //   title: 'Branch Managers',
+    // },
     {
       icon: 'bx bxs-group',
       routerLink: '/branch/employees',

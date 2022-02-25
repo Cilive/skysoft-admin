@@ -24,6 +24,7 @@ export class SessionComponent implements OnInit {
   data: Session = {
     branch_name: '',
     id: null,
+    session_id: 0,
   };
   // editMode = false;
   // id: number;
@@ -34,7 +35,7 @@ export class SessionComponent implements OnInit {
   constructor(
     private modalService: BsModalService,
     private sessions: SessionService,
-    private toast: AlertService // private branches: BranchManagerService
+    private toast: AlertService
   ) {
     console.log(new StoreService().retrieve('id'));
   }
@@ -43,38 +44,11 @@ export class SessionComponent implements OnInit {
     this.sessions.get_session().subscribe((res) => {
       this.session = res.data;
     });
-    // this.branches.get_branches().subscribe((res) => {
-    //   if (res.msg === 'Success') {
-    //     console.log(res.data);
-    //     this.branchesList = res.data;
-    //   }
-    // });
     {
       this.Disabled = false;
       this.data.status = false;
     }
   }
-  // onReset() {
-  //   clearForm('Form');
-
-  // open_session() {
-  //   if (validateForm('sessionForm')) {
-  //     this.sessions.post_session(this.data).subscribe((res) => {
-  //       if (res.msg === 'Success') {
-  //         this.toast.success('session Added successfully');
-  //         clearForm('sessionForm');
-  //         this.ngOnInit();
-  //       }
-  //     });
-  //   }
-  // }
-  // setActive(button: any): void {
-  //   for (let but of this.filterButtons) {
-  //     but.isClicked = false;
-  //   }
-
-  //   button.isClicked = true;
-  // }
 
   onSubmit() {
     if (validateForm('Form')) {
@@ -90,74 +64,51 @@ export class SessionComponent implements OnInit {
       });
     }
   }
+
+  public onUpdate(id) {
+    console.log('Current Session id', id);
+
+    this.sessions.update_session(id).subscribe((res) => {
+      if (res.msg === 'Success') {
+        this.toast.success('Session Closed Successfully');
+        console.log(res.data);
+
+        // console.log('server response', this.session);
+
+        this.ngOnInit();
+      }
+    });
+  }
+
   // onUpdate() {
-  //   console.log(this.data);
-  //   this.sessions.update_session(this.data).subscribe((res) => {
-  //     if (res.msg === 'Success') {
-  //       this.toast.success('session Updated  successfully');
-  //       clearForm('Form');
-  //       this.editMode = false;
-  //       this.ngOnInit();
-  //     }
-  //   });
-  onUpdate() {
-    if (validateForm('form')) {
-      console.log(this.data);
-      let item = this.sessions;
-      // console.log(item.closing_balance_cash);
+  //   if (validateForm('form')) {
+  //     console.log(this.data);
+  //     // let item = this.sessions;
+  //     // console.log(item.closing_balance_cash);
 
-      // this.sessions.update_session(this.data, this.data.id).subscribe((res) => {
-      //   if (res.msg === 'Success') {
-      //     this.toast.success('Session Updated Successfully');
-      //     this.ngOnInit();
+  //     this.sessions.update_session(id).subscribe((res) => {
+  //       if (res.msg === 'Success') {
+  //         this.toast.success('Session Clossed Successfully');
+  //         this.ngOnInit();
 
-      //     // this.onReset();
-      //   }
-      // });
-    }
-  }
-  onEdit(item) {
-    console.log(item.id);
-    //  this.session.single_get_purchase_invoice(data.id).subscribe((res) => {
-    //   this.data = res.data.session;
-    // const item = res.data;
+  //         // this.onReset();
+  //       }
+  //     });
+  //   }
+  // }
+  // onEdit(item) {
+  //   console.log(item.id);
+  //  this.session.single_get_purchase_invoice(data.id).subscribe((res) => {
+  //   this.data = res.data.session;
+  // const item = res.data;
 
-    // this.editMode = true;
-    this.data = {
-      // opening_balance_bank: item.opening_balance_bank,
-      // cash_opening_balance: item.cash_opening_balance,
-      // closing_balance_bank: item.closing_balance_bank,
-      // closing_balance_cash: item.closing_balance_cash,
-      // total_transactions: item.total_transactions,
-      // total_sales: item.total_sales,
-      // total_purchase: item.total_purchase,
-      // total_expense: item.total_expense,
-      // total_cash_sales: item.total_cash_sales,
-      // total_cash_purchase: item.total_cash_purchase,
-      // total_bank_purchase: item.total_bank_purchase,
-      // total_bank_sales: item.total_bank_sales,
-      // date: item.date,
-      // created_at: item.created_at,
-      // updated_at: item.update_at,
-      // status: item.status,
-      // company: item.company,
-      // bank: item.bank,
-      branch_name: item.branch_name,
-      id: item.id,
-    };
-  }
+  // this.editMode = true;
+  // this.data = {
+  //   branch_name: item.branch_name,
+  //   id: item.id,
+  // };
+
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }
-
-  // decline(): void {}
-  // onDelete(id) {
-  //   this.sessions.delete_session(id).subscribe((res) => {
-  //     if (res.msg === 'Success') {
-  //       this.modalRef?.hide();
-  //       this.ngOnInit();
-  //       this.toast.success('session Deleted  successfully');
-  //     }
-  //   });
-  // }
 }

@@ -33,6 +33,7 @@ export const DASHBOARD = 'clients/private/dashboard';
 export const sessionreportsowner = 'clients/private/session_report/';
 
 export const fuelstock = 'clients/private/fuel_stock/';
+export const income_expenditure = 'clients/private/report/income/';
 
 
 /**
@@ -57,4 +58,16 @@ export const BRANCH_PAYMENTOUT = '/clients/manager/report/debtors';
 export const BRANCH_FUELSTOCKS = 'clients/manager/fuel_stock/';
 export const BRANCH_SESSION = 'clients/manager/session/';
 
-export const BRANCH_CUSTOMERBALANCE = 'clients/manager/report/customer_balance';
+export const BRANCH_CUSTOMERBALANCE =
+  'clients/manager/report/customer_balance/';
+export const BRANCH_METER_READING = 'clients/manager/report/meter_reading/';
+export const BRANCH_REPORT_DEPOSIT = 'clients/manager/report/deposit/';
+export const BRANCH_EXPENSEDETAILES = 'clients/manager/report/expense/';
+export const BRANCH_SALES_DETAILES = 'clients/manager/report/sale/';
+export const BRANCH_PURCHASE_DETAILES = 'clients/manager/report/purchase/';
+export const BRANCH_PAYMENT_DUE = 'clients/manager/report/payment_due/';
+export const BRANCH_PAYMENT_OUT = 'clients/manager/report/payment_out/';
+export const BRANCH_PAYMENT_IN = 'clients/manager/report/payment_in/';
+export const BRANCH_REPORT_SESSION = 'clients/manager/session_report/';
+export const BRANCH_ACCOUNTS_LADGER = 'clients/manager/accounts_report/';
+export const BRANCH_INCOME_EXPNDITURE = 'clients/manager/report/income/';

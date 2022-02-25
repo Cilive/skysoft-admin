@@ -1,0 +1,181 @@
+<div class="card m-auto col-md-12">
+  <div class="modal-header">
+    <h6 translate>Session Report</h6>
+  </div>
+  <div class="col-md-12">
+    <form id="Form" (submit)="onSubmit()">
+      <div class="row mt-3">
+        <div class="form-group col-md-2">
+          <label translate for="company">From</label>
+          <input
+            translate
+            type="text"
+            placeholder="Date"
+            bsDatepicker
+            [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+            [(ngModel)]="data.from_date"
+            class="form-control"
+            name="date"
+          />
+          <small id="helpId" class="invalid-feedback">Field is required</small>
+        </div>
+        <!-- <div class="col-md-0" style="padding-top: 35px">To</div> -->
+
+        <div class="form-group col-md-2">
+          <label translate for="company">To</label>
+          <input
+            translate
+            type="text"
+            placeholder="Date"
+            bsDatepicker
+            [bsConfig]="{ containerClass: 'theme-dark-blue' }"
+            [(ngModel)]="data.to_date"
+            class="form-control"
+            name="date"
+          />
+          <small id="helpId" class="invalid-feedback">Field is required</small>
+        </div>
+
+        <div class="row">
+          <div class="mt-4 form-group col-md-2">
+            <button type="submit" class="mt-2 btn btn-outline-primary">
+              {{ "Submit" | translate }}
+            </button>
+          </div>
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+    </form>
+
+    <form id="form" (submit)="onUpdate()">
+      <div class="text-centre mt-3 card">
+        <table class="table table-bordered">
+          <thead>
+            <!-- <tr>
+              <th class="text-center" rowspan="2">#</th>
+              <th class="text-center" rowspan="2">Date</th>
+              <th class="text-center" rowspan="2">Branch</th>
+              <th class="text-center" colspan="2">Opening Balance</th>
+              <th class="text-center" colspan="2">closing Balance</th>
+              <th class="text-center" rowspan="2">Action</th>
+            </tr>
+            <tr>
+              <th class="text-center">cash</th>
+              <th class="text-center">Bank</th>
+              <th class="text-center">cash</th>
+              <th class="text-center">Bank</th>
+            </tr> -->
+
+            <tr>
+              <th translate scope="col">#</th>
+              <th translate scope="col">Date</th>
+              <th translate scope="col">Opening Bank</th>
+              <th translate scope="col">Opening Cash</th>
+              <th translate scope="col">Closing Bank</th>
+              <th translate scope="col">Closing Cash</th>
+              <th translate scope="col">Total</th>
+              <th translate scope="col">Branch</th>
+              <th translate scope="col">Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let item of sessionreportBranch; let i = index">
+              <th translate scope="row">{{ i + 1 }}</th>
+              <!-- <td>{{ item.branches }}</td> -->
+
+              <!-- <td>{{ item.branch_name }}</td>
+              <td>{{ item.cash_opening_balance }}</td>
+              <td>{{ item.opening_balance_bank }}</td>
+              <td>{{ item.closing_balance_bank }}</td>
+              <td>{{ item.closing_balance_cash }}</td> -->
+              <td>{{ item.date | date: "dd/MM/YYYY" }}</td>
+              <td>{{ item.opening_balance_bank }}</td>
+              <td>{{ item.cash_opening_balance }}</td>
+              <td>{{ item.closing_balance_bank }}</td>
+              <td>{{ item.closing_balance_cash }}</td>
+              <td>{{ item.total_transactions }}</td>
+              <td>{{ item.branch_name }}</td>
+              <td class="text-center">
+                <form class="card" id="form">
+                  <button
+                    class="d-flex justify-content-around"
+                    type="button"
+                    (click)="accountView(item.id)"
+                  >
+                    <i title="Edit" class="bx bx-right-arrow"></i>
+                  </button>
+                  <!-- [routerLink]="['/branch/reports/accountsladgerlisting']" -->
+
+                  <!-- <h6 translate>Generate Sales Invoice</h6> -->
+                  <!-- <button
+                    [routerLink]="['/branch/reports/accountsladgerlisting']"
+                    type="button"
+                    class="btn btn-info"
+                  >
+                    {{ "Close Session" | translate }}
+                  </button> -->
+                </form>
+              </td>
+              <!-- [routerLink]="['branch/accounts-ladger-branch']"
+                  type="Button "
+                  class="btn btn-outline-warning"
+                > -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- </div> -->
+<!-- <td>{{ item.status }}</td> -->
+
+<!-- <td> -->
+<!-- <tr *ngFor="let item of session; let i = index"> -->
+
+<!-- </select> -->
+<!-- </tr> -->
+
+<!-- <div class="d-flex justify-content-around">
+                  <i
+                    title="Edit"
+                    class="bx bxs-edit"
+                    (click)="onEdit(item)"
+                  ></i>
+                  <i
+                    title="Delete"
+                    class="bx bxs-trash"
+                    (click)="openModal(template)"
+                  ></i>
+                </div>
+
+                <ng-template #template>
+                  <div class="modal-body text-center">
+                    <p translate>Do you want to confirm?</p>
+                    <div class="modal-footer">
+                      <button
+                        translate
+                        type="button"
+                        class="btn btn-outline-danger"
+                        (click)="onDelete(item.id)"
+                      >
+                        Yes
+                      </button>
+                      <button
+                        translate
+                        type="button"
+                        class="btn btn-primary"
+                        (click)="decline()"
+                      >
+                        No
+                      </button>
+                    </div>
+                  </div>
+                </ng-template> -->
+<!-- </td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+<!-- </td> -->
