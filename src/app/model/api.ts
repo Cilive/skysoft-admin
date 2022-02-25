@@ -33,6 +33,7 @@ export const sessionreportsowner = 'clients/private/session_report/';
 export const fuelstock = 'clients/private/fuel_stock/';
 export const income_expenditure = 'clients/private/report/income/';
 export const changepassword = 'clients/private/password_change/';
+export const account_ladeger = 'clients/private/accounts_report/';
 
 /**
  * Branch Apis

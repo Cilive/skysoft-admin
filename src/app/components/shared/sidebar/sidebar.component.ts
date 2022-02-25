@@ -119,6 +119,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
           //   path: '/owner/changepassword',
           //   title: 'change password',
           // },
+
           {
             icon: 'bx bxs-business',
             path: '/owner/dashboard',

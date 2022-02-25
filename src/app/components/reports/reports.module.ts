@@ -45,6 +45,10 @@ import { AccoundLadgerComponent } from './accound-ladger/accound-ladger.componen
 
 const routes: Routes = [
   {
+    path: 'Accountladger',
+    component: AccoundLadgerComponent,
+  },
+  {
     path: '',
     component: ReportsComponent,
   },

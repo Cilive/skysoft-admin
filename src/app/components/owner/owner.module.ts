@@ -41,7 +41,6 @@ import { SessionComponent } from './session/session.component';
 import { InvoicelistingComponent } from './invoicelisting/invoicelisting.component';
 import { FulestockComponent } from './fulestock/fulestock.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
-import { ForgotPasswordOtpComponent } from './forgot-password-otp/forgot-password-otp.component';
 // import { FuelstocksComponent } from '../branch/fuelstocks/fuelstocks.component';
 
 const routes: Routes = [
@@ -243,7 +242,6 @@ const routes: Routes = [
     InvoicelistingComponent,
     FulestockComponent,
     ChangePasswordComponent,
-    ForgotPasswordOtpComponent,
   ],
   imports: [
     CommonModule,

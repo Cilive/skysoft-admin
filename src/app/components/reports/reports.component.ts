@@ -42,7 +42,6 @@ export class ReportsComponent implements OnInit, AfterViewInit {
           /[^a-zA-Z ]/g,
           ' '
         );
-
       }
     });
 
@@ -62,6 +61,11 @@ export class ReportsComponent implements OnInit, AfterViewInit {
     switch (true) {
       case Role.owner === role:
         this.routes = [
+          // {
+          //   path: 'Accountladger',
+          //   icon: 'bx bx-spreadsheet',
+          //   title: 'Account Ladger',
+          // },
           {
             path: 'readings',
             icon: 'bx bx-spreadsheet',
