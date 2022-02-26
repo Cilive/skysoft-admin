@@ -41,8 +41,13 @@ import { IncomeExpentitureBranchComponent } from './income-expentiture-branch/in
 import { ParchaseDetailesBranchComponent } from './parchase-detailes-branch/purchase-detailes-branch.component';
 import { SessionReportBranchComponent } from './session-report-branch/session-report-branch.component';
 import { AccountsLadgerBranchComponent } from './accounts-ladger-branch/accounts-ladger-branch.component';
+import { AccoundLadgerComponent } from './accound-ladger/accound-ladger.component';
 
 const routes: Routes = [
+  {
+    path: 'Accountladger',
+    component: AccoundLadgerComponent,
+  },
   {
     path: '',
     component: ReportsComponent,
@@ -212,6 +217,7 @@ const routes: Routes = [
     IncomeExpentitureBranchComponent,
     SessionReportBranchComponent,
     AccountsLadgerBranchComponent,
+    AccoundLadgerComponent,
   ],
   imports: [
     CommonModule,

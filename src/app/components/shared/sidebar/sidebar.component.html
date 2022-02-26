@@ -58,16 +58,7 @@
           [placement]="'bottom'"
           containerClass="carry"
           [outsideClick]="true"
-          class="
-            bx bx-user
-            border
-            p-1
-            text-white
-            rounded-circle
-            float-right
-            m-auto
-            profile
-          "
+          class="bx bx-user border p-1 text-white rounded-circle float-right m-auto profile"
         ></i>
 
         <p
@@ -115,9 +106,22 @@
 </div>
 
 <ng-template #logg>
-  <div (click)="logout()" style="cursor: pointer" class="col-md-12 pop-content">
+  <Button
+    class="btn btn-primary"
+    (click)="logout()"
+    style="cursor: pointer"
+    class="col-md-12 pop-content"
+  >
     Logout
-  </div>
+  </Button>
+
+  <Button
+    class="btn btn-primary"
+    (click)="changepasword()"
+    class="col-md-12 pop-content"
+  >
+    Change Password
+  </Button>
 </ng-template>
 
 <ng-template #notification>

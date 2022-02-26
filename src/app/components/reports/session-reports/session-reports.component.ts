@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertService } from 'src/app/services/alert/alert.service';
 import { BranchManagerService } from 'src/app/services/branch-manager/branch-manager.service';
-import { SessionReportsService } from 'src/app/services/session-reports/session-reports.service';
-import { Branch } from '../../branch/branch.modal';
-import { SessionReportsOwner } from './session.modal';
 import {
   clearForm,
   validateForm,
 } from 'src/app/services/general/general.service';
-import { AlertService } from 'src/app/services/alert/alert.service';
-
+import { SessionReportsService } from 'src/app/services/session-reports/session-reports.service';
+import { Branchmanager } from '../../owner/branch-manager/branch-manager.model';
+import { SessionReportsOwner } from './session.modal';
 @Component({
   selector: 'app-session-reports',
   templateUrl: './session-reports.component.html',
@@ -28,20 +28,22 @@ export class SessionReportsComponent implements OnInit {
     total_transactions: null,
     branch_name: '',
   };
-  branchesList: Branch[] = [];
+  branchesList: Branchmanager[] = [];
   sessionreportsowner: SessionReportsOwner[] = [];
 
   constructor(
     private branches: BranchManagerService,
     private session_reports: SessionReportsService,
-    private toast: AlertService
+    private toast: AlertService,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
     this.branches.get_branches().subscribe((res) => {
       if (res.msg === 'Success') {
         console.log(res.data);
-        // this.branchesList = res.data;
+
+        this.branchesList = res.data;
       }
     });
   }
@@ -55,7 +57,7 @@ export class SessionReportsComponent implements OnInit {
       console.log(this.data);
       this.session_reports.get_session_reports(this.data).subscribe((res) => {
         if (res.msg === 'Success') {
-          this.toast.success('Metre Reading Added Successfully');
+          this.toast.success('Session Reports fetched Successfully');
           this.sessionreportsowner = res.data.data;
           console.log(this.data);
           clearForm('Form');
@@ -63,5 +65,15 @@ export class SessionReportsComponent implements OnInit {
         }
       });
     }
+  }
+
+  accountView(id) {
+    console.log('Navigation Function Running', id);
+
+    this.route.navigate(['owner/reports/Accountladger'], {
+      queryParams: {
+        id: id,
+      },
+    });
   }
 }
