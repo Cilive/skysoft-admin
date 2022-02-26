@@ -44,10 +44,6 @@ export class ReportsComponent implements OnInit, AfterViewInit {
           /[^a-zA-Z ]/g,
           ' '
         );
-        // document.title = capitalize(e.url.split('/').pop()).replace(
-        //   /[^a-zA-Z ]/g,
-        //   ' '
-        // );
       }
     });
 

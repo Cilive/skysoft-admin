@@ -9,10 +9,9 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { BsModalRef } from 'ngx-bootstrap/modal';
+
 import { Role } from 'src/app/model/shared';
 import { AlertService } from 'src/app/services/alert/alert.service';
-import { validateForm } from 'src/app/services/general/general.service';
 
 import { StoreService } from 'src/app/services/store/store.service';
 
@@ -106,23 +105,23 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       case Role.owner === role:
         this.routes = [
           {
-            icon: 'bx bxs-business',
+            icon: 'bx bxs-dashboard',
             path: '/owner/dashboard',
             title: 'Dashboard',
           },
           {
-            icon: 'bx bxs-business',
+            icon: 'bx bx-candles',
             path: '/owner/fuelstock',
             title: 'Fuel Stock',
           },
 
           {
-            icon: 'bx bxs-business',
+            icon: 'bx bx-receipt',
             path: '/owner/invoicelisting',
             title: 'Invoice Listing',
           },
           {
-            icon: 'bx bxs-business',
+            icon: 'bx bx-timer',
             path: '/owner/session',
             title: 'Session',
           },
@@ -199,7 +198,6 @@ export class SidebarComponent implements OnInit, AfterViewInit {
             path: '/branch/cashmaster',
             title: 'Cashmaster',
           },
-
 
           {
             icon: 'bx bxs-business',
