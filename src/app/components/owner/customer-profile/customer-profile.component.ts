@@ -1,4 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
@@ -10,9 +16,17 @@ import {
 } from 'src/app/services/general/general.service';
 import { Branch } from '../../branch/branch.modal';
 import { Branchmanager } from '../branch-manager/branch-manager.model';
-// import { CompanyProfileService } from '../customer-profile/customer-profile.service';
-// import { Branch } from 'src/app/services/customer-profile/customer-profile.service';
 import { CustomerProfile } from './customer-profile.modal';
+
+import jsPDF from 'jspdf';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import htmlToPdfmake from 'html-to-pdfmake';
 
 @Component({
   selector: 'app-customer-profile',
@@ -20,10 +34,27 @@ import { CustomerProfile } from './customer-profile.modal';
   styleUrls: ['./customer-profile.component.scss'],
 })
 export class CustomerProfileComponent implements OnInit {
+  //pdf  generating function
+
+  title = 'htmltopdf';
+
+  @ViewChild('pdfTable') pdfTable: ElementRef;
+
+  public downloadAsPDF() {
+    const doc = new jsPDF();
+
+    const pdfTable = this.pdfTable.nativeElement;
+
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+
+    const documentDefinition = { content: html };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
   modalRef?: BsModalRef;
   editMode: boolean;
   customers: CustomerProfile[] = [];
-  title: Branch;
+  titles: Branch;
   CustomerProfileForm: FormGroup;
   data: CustomerProfile = {
     en_name: '',

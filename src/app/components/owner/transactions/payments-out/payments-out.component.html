@@ -37,7 +37,7 @@
         </div>
         <div class="form-group col-md-2">
           <label translate for=""> Branch</label>
-          <!-- branch listing  api posting -->
+          <!-- branch listing -->
           <select
             class="form-control"
             name="branches"
@@ -97,11 +97,17 @@
         <button translate type="reset" class="btn btn-outline-warning">
           Reset
         </button>
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="downloadAsPDF()"
+        >
+          Download Pdf
+        </button>
       </div>
     </form>
     <div class="modal-footer">
       <div class="form-group col-md-3">
-        <!-- <label translate for=""> Amount</label> -->
         <input
           translate
           type="text"
@@ -117,32 +123,33 @@
       </div>
     </div>
 
-    <div class="mt-3 card">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th translate scope="col">sl.no</th>
-            <th translate scope="col">Date</th>
-            <th translate scope="col">Customer Name</th>
-            <th translate scope="col">Phone Number</th>
-            <th translate scope="col">Amount</th>
-            <th translate scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of paymentout; let i = index">
-            <th translate scope="row">{{ i + 1 }}</th>
-            <!-- <td>{{ item. }}</td> -->
-            <td>{{ item.date | date: "dd/MM/YYYY" }}</td>
-            <td>{{ item.customer_name }}</td>
-            <td>{{ item.phone_no }}</td>
-            <td>{{ item.balance_amt }}</td>
+    <div id="pdfTable" #pdfTable>
+      <div class="mt-3 card">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th translate scope="col">sl.no</th>
+              <th translate scope="col">Date</th>
+              <th translate scope="col">Customer Name</th>
+              <th translate scope="col">Phone Number</th>
+              <th translate scope="col">Amount</th>
+              <th translate scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of paymentout; let i = index">
+              <th translate scope="row">{{ i + 1 }}</th>
 
-            <!-- <td>{{ item.owner }}</td> -->
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+              <td>{{ item.date | date: "dd/MM/YYYY" }}</td>
+              <td>{{ item.customer_name }}</td>
+              <td>{{ item.phone_no }}</td>
+              <td>{{ item.balance_amt }}</td>
+
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

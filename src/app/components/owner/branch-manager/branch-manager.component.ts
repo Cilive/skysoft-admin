@@ -1,4 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
@@ -10,12 +16,40 @@ import {
 import { Branch } from '../../branch/branch.modal';
 import { Branchmanager } from './branch-manager.model';
 
+import jsPDF from 'jspdf';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import htmlToPdfmake from 'html-to-pdfmake';
+
 @Component({
   selector: 'app-branch-manager',
   templateUrl: './branch-manager.component.html',
   styleUrls: ['./branch-manager.component.scss'],
 })
 export class BranchManagerComponent implements OnInit {
+  //pdf generating function
+
+  title = 'htmltopdf';
+
+  @ViewChild('pdfTable') pdfTable: ElementRef;
+
+  public downloadAsPDF() {
+    const doc = new jsPDF();
+
+    const pdfTable = this.pdfTable.nativeElement;
+
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+
+    const documentDefinition = { content: html };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
   passError: boolean = false;
   logoData: FormData;
   modalRef?: BsModalRef;
@@ -73,11 +107,15 @@ export class BranchManagerComponent implements OnInit {
 
   ngOnInit(): void {
     // this.prepareForm();
+
     this.Branchmanager.get_branch_manager().subscribe((res) => {
       if (res.msg === 'Success') {
         this.Branch_ManagerList = res.data;
       }
     });
+
+    //branch listing function
+
     this.branches.get_branches().subscribe((res) => {
       if (res.msg === 'Success') {
         console.log(res.data);

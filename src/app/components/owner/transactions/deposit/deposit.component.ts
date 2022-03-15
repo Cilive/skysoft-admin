@@ -1,4 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Branch } from 'src/app/components/branch/branch.modal';
 import { BankAccounts } from 'src/app/components/branch/components/bank-account-master/bank-account-master.model';
@@ -12,8 +18,18 @@ import {
 } from 'src/app/services/general/general.service';
 import { OwnersService } from 'src/app/services/owners/owners.service';
 import { Branchmanager } from '../../branch-manager/branch-manager.model';
-// import { BankAccounts } from '../../bank-account-master/bank-account-master.model';
+
 import { Deposit } from './deposit.model';
+
+import jsPDF from 'jspdf';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import htmlToPdfmake from 'html-to-pdfmake';
 
 @Component({
   selector: 'app-deposit',
@@ -21,6 +37,24 @@ import { Deposit } from './deposit.model';
   styleUrls: ['./deposit.component.scss'],
 })
 export class DepositComponent implements OnInit {
+  //pdf  generating function
+
+  title = 'htmltopdf';
+
+  @ViewChild('pdfTable') pdfTable: ElementRef;
+
+  public downloadAsPDF() {
+    const doc = new jsPDF();
+
+    const pdfTable = this.pdfTable.nativeElement;
+
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+
+    const documentDefinition = { content: html };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
   passError: boolean;
   modalRef?: BsModalRef;
   logoData: FormData;

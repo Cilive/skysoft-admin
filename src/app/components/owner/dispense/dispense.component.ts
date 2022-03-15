@@ -35,6 +35,8 @@ import htmlToPdfmake from 'html-to-pdfmake';
   styleUrls: ['./dispense.component.scss'],
 })
 export class DispenseComponent implements OnInit {
+  //pdf  generating function
+
   title = 'htmltopdf';
 
   @ViewChild('pdfTable') pdfTable: ElementRef;

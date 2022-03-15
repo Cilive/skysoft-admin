@@ -43,7 +43,7 @@
         </div>
         <div class="form-group col-md-3">
           <label translate for=""> Branch</label>
-          <!-- branch listing  api posting -->
+          <!-- branch listing  -->
           <select
             class="form-control"
             name="branches"
@@ -63,34 +63,10 @@
             </option>
           </select>
         </div>
-        <!-- <div class="form-group col-md-2">
-          <label translate for="bnk_name">Bank Ac Id</label>
-          <input
-            translate
-            placeholder="Bank Ac Id"
-            type="text"
-            class="form-control"
-            name="bnk_name"
-            [(ngModel)]="data.amount"
-            id="bnk_name"
-            required
-          />
-            <option translate selected hidden [ngValue]="null">
-              select Bank Ac
-            </option>
 
-            <option
-              [style]="item.is_default === true ? 'color:var(--primary)' : ''"
-              *ngFor="let item of bankacList"
-              [ngValue]="item.id"
-            >
-              {{ item.acc_holder_name }}
-
-              *ngFor="let item of bankaccounts; let i = index"
-            </option> -->
         <div class="form-group col-md-2">
           <label translate for=""> Bank Ac Id</label>
-          <!-- branch listing  api posting -->
+          <!-- banck AC listing  -->
           <select
             class="form-control"
             name="banck"
@@ -102,8 +78,6 @@
             (change)="bank_ac_listing()"
             required
           >
-            <!-- (change)="branchlisting()" -->
-
             <option translate selected hidden [ngValue]="null">
               Bank Ac Id
             </option>
@@ -114,8 +88,6 @@
               [ngValue]="item.id"
             >
               {{ item.acc_holder_name }}
-
-              <!-- *ngFor="let item of bankaccounts; let i = index" -->
             </option>
           </select>
 
@@ -144,66 +116,71 @@
         <button translate type="reset" class="btn btn-outline-warning">
           Reset
         </button>
+
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="downloadAsPDF()"
+        >
+          Download Pdf
+        </button>
       </div>
     </form>
   </div>
 </div>
-<div class="mt-3 card">
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th translate scope="col">#</th>
-        <th translate scope="col">Date</th>
-        <th translate scope="col">Amount</th>
-        <th translate scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of deposits; let i = index">
-        <th translate scope="row">{{ i + 1 }}</th>
-        <td>{{ item.date | date: "dd/MM/YYYY" }}</td>
-        <td>{{ item.amount }}</td>
-        <!-- <td>{{ item.owner }}</td> -->
-        <td>
-          <div class="d-flex justify-content-around">
-            <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>
-            <i
-              title="Delete"
-              class="bx bxs-trash"
-              (click)="openModal(template)"
-            ></i>
-            <!-- <i
-              (click)="onSuspend(item.id)"
-              title="Suspend"
-              class="bx bx-x-circle"
-            ></i> -->
-          </div>
+<div id="pdfTable" #pdfTable>
+  <div class="mt-3 card">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th translate scope="col">#</th>
+          <th translate scope="col">Date</th>
+          <th translate scope="col">Amount</th>
+          <th translate scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of deposits; let i = index">
+          <th translate scope="row">{{ i + 1 }}</th>
+          <td>{{ item.date | date: "dd/MM/YYYY" }}</td>
+          <td>{{ item.amount }}</td>
 
-          <ng-template #template>
-            <div class="modal-body text-center">
-              <p translate>Do you want to confirm?</p>
-              <div class="modal-footer">
-                <button
-                  translate
-                  type="button"
-                  class="btn btn-outline-danger"
-                  (click)="onDelete(item.id)"
-                >
-                  Yes
-                </button>
-                <button
-                  translate
-                  type="button"
-                  class="btn btn-primary"
-                  (click)="decline()"
-                >
-                  No
-                </button>
-              </div>
+          <td>
+            <div class="d-flex justify-content-around">
+              <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>
+              <i
+                title="Delete"
+                class="bx bxs-trash"
+                (click)="openModal(template)"
+              ></i>
             </div>
-          </ng-template>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+
+            <ng-template #template>
+              <div class="modal-body text-center">
+                <p translate>Do you want to confirm?</p>
+                <div class="modal-footer">
+                  <button
+                    translate
+                    type="button"
+                    class="btn btn-outline-danger"
+                    (click)="onDelete(item.id)"
+                  >
+                    Yes
+                  </button>
+                  <button
+                    translate
+                    type="button"
+                    class="btn btn-primary"
+                    (click)="decline()"
+                  >
+                    No
+                  </button>
+                </div>
+              </div>
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

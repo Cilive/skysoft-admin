@@ -1,23 +1,10 @@
-// import { Component, OnInit, TemplateRef } from '@angular/core';
-// import { Branch } from 'src/app/components/branch/branch.modal';
-// import { AlertService } from 'src/app/services/alert/alert.service';
-// import { BankAccountMasterService } from 'src/app/services/bank-account-master/bank-account-master.service';
-// import { BranchManagerService } from 'src/app/services/branch-manager/branch-manager.service';
-// import { CustomerProfileService } from 'src/app/services/customer-profile/customer-profile.service';
-// import { ExpenseService } from 'src/app/services/expense/expense.service';
-// import { FueldataService } from 'src/app/services/fueldata/fueldata.service';
-// import {
-//   clearForm,
-//   validateForm,
-// } from 'src/app/services/general/general.service';
-// import { BankAccounts } from '../../bank-account-master/bank-account-master.model';
-// import { CustomerProfile } from '../../customer-profile/customer-profile.modal';
-// import {
-//   BranchSaleInvoices,
-//   Invoice,
-//   Oldbalance,
-// } from '../../sales-invoice/invoice.model';
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { Branch } from 'src/app/components/branch/branch.modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import { BankAccountMasterService } from 'src/app/services/bank-account-master/bank-account-master.service';
@@ -32,12 +19,39 @@ import { Branchmanager } from '../../branch-manager/branch-manager.model';
 import { Fuelmaster } from '../../vat-fuel-master/vat-fuel-master.model';
 import { Expense } from './expense.modal';
 
+import jsPDF from 'jspdf';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import htmlToPdfmake from 'html-to-pdfmake';
 @Component({
   selector: 'app-expenses',
   templateUrl: './expenses.component.html',
   styleUrls: ['./expenses.component.scss'],
 })
 export class ExpensesComponent implements OnInit {
+  //pdf  generating function
+
+  title = 'htmltopdf';
+
+  @ViewChild('pdfTable') pdfTable: ElementRef;
+
+  public downloadAsPDF() {
+    const doc = new jsPDF();
+
+    const pdfTable = this.pdfTable.nativeElement;
+
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+
+    const documentDefinition = { content: html };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
   passError: boolean;
   logoData: FormData;
   editMode: boolean;

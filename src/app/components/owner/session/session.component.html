@@ -4,52 +4,10 @@
   </div>
   <div class="col-md-12">
     <form id="Form" (submit)="onSubmit()">
-      <!-- <div class="row mt-3">
-        <div class="form-group col-md-4">
-          <label translate for="owner_name"> Name</label>
-          <input
-            translate
-            type="text"
-            class="form-control"
-            name="owner_name"
-            [(ngModel)]="data.name"
-            id="owner_name"
-            required
-          />
-          <small class="invalid-feedback">Field required</small>
-        </div>
-        <div class="form-group col-md-4">
-          <label translate for="owner_mail"> Email</label>
-          <input
-            translate
-            type="text"
-            class="form-control"
-            name="owner_mail"
-            [(ngModel)]="data.email"
-            id="owner_mail"
-            placeholder="Mail"
-            required
-          />
-          <small class="invalid-feedback">Field required</small>
-        </div>
-        <div class="form-group col-md-4">
-          <label translate for="bnk_name"> Phone</label>
-          <input
-            translate
-            type="text"
-            class="form-control"
-            name="bnk_name"
-            [(ngModel)]="data.phone"
-            id="bnk_name"
-            placeholder="Mobile"
-            required
-          />
-          <small class="invalid-feedback">Field required</small>
-        </div> -->
       <div class="row">
         <div class="form-group col-md-3">
           <label translate for=""> Branch</label>
-          <!-- branch listing  api posting -->
+          <!-- branch listing   -->
           <select
             class="form-control"
             name="branches"
@@ -69,126 +27,71 @@
           </select>
         </div>
 
-        <!-- </div> -->
-        <!-- <input  class="btn btn-default" value="Foo"> -->
         <div class="mt-4">
           <button type="submit" class="mt-2 btn btn-outline-primary">
             {{ "Submit" | translate }}
           </button>
         </div>
-        <div class="modal-footer">
-          <!-- <button type="submit" class="btn btn-outline-primary"> -->
-          <!-- </button> -->
-          <!-- <button translate type="update" class="btn btn-outline-warning">
-            {{ "Update" | translate }}
-          </button> -->
+        <div class="mt-4">
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            (click)="downloadAsPDF()"
+          >
+            Download Pdf
+          </button>
         </div>
+
+        <div class="modal-footer"></div>
       </div>
 
-      <div>
-        <!-- <div class="row">
-          <th translate scope="col">Bank Opening Balance</th>
-          <label translate for=""></label>
-          <div class="col-md-3">
-            <input
-           
-            type="number"
-            class="form-control"
-          />
-            <div class="form-control" id="null"></div>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <th translate scope="col">Cash Opening Balance</th>
-          <div class="form-group col-md-3">
-            <input
-            type=""
-            class="form-control"
-          />
-            branch listing  api posting
-            <div class="form-control" id="null"></div>
-          </div>
-        </div> -->
-      </div>
-
-      <!-- </form> -->
-
-      <!-- </div> -->
+      <div></div>
     </form>
     <form id="form" (submit)="onUpdate()">
-      <div class="text-centre mt-3 card">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th class="text-center" rowspan="2">#</th>
-              <th class="text-center" rowspan="2">Branches</th>
-              <th class="text-center" colspan="2">Opening Balance</th>
-              <th class="text-center" colspan="2">closing Balance</th>
-              <th class="text-center" rowspan="2">Action</th>
-            </tr>
-            <tr>
-              <th class="text-center">cash</th>
-              <th class="text-center">Bank</th>
-              <th class="text-center">cash</th>
-              <th class="text-center">Bank</th>
-              <!-- <button type="button" class="btn btn-danger">Danger</button> -->
-            </tr>
-          </thead>
+      <div id="pdfTable" #pdfTable>
+        <div class="text-centre mt-3 card">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th class="text-center" rowspan="2">#</th>
+                <th class="text-center" rowspan="2">Branches</th>
+                <th class="text-center" colspan="2">Opening Balance</th>
+                <th class="text-center" colspan="2">closing Balance</th>
+                <th class="text-center" rowspan="2">Action</th>
+              </tr>
+              <tr>
+                <th class="text-center">cash</th>
+                <th class="text-center">Bank</th>
+                <th class="text-center">cash</th>
+                <th class="text-center">Bank</th>
+              </tr>
+            </thead>
 
-          <tbody>
-            <!-- <td class="text-center" translate scope="col"></td>
-            <td class="text-center" translate scope="col"></td>
-            <td class="text-center" translate scope="col"></td>
-            <td class="text-center" translate scope="col"></td>
-            <td class="text-center" translate scope="col"></td>
-            <td class="text-center" translate scope="col"></td> -->
+            <tbody>
+              <tr *ngFor="let item of session; let i = index">
+                <th translate scope="row">{{ i + 1 }}</th>
+                <td>{{ item.branches }}</td>
+                <td>{{ item.cash_opening_balance }}</td>
+                <td>{{ item.opening_balance_bank }}</td>
+                <td>{{ item.closing_balance_bank }}</td>
+                <td>{{ item.closing_balance_cash }}</td>
+                <td>{{ item.id }}</td>
 
-            <!-- branch listing  api posting -->
-            <!-- <select
-              type="button"
-              name="Button"
-              [(ngModel)]="data.status"
-              class="form-control"
-              id="type"
-            > -->
-
-            <tr *ngFor="let item of session; let i = index">
-              <th translate scope="row">{{ i + 1 }}</th>
-              <td>{{ item.branches }}</td>
-              <td>{{ item.cash_opening_balance }}</td>
-              <td>{{ item.opening_balance_bank }}</td>
-              <td>{{ item.closing_balance_bank }}</td>
-              <td>{{ item.closing_balance_cash }}</td>
-              <td>{{ item.id }}</td>
-              <!-- <div *ngIf="data.status === true"> -->
-              <td class="text-center">
-                <!-- <button class="btn btn-danger">
-                  Closing Session
-                </button> -->
-                <!-- <button>
-                  mat-button *ngFor="let button of filterButtons"
-                  [ngClass]="{'active': button.isClicked}"
-                  (click)="setActive(button)">
-                  {{ button.text }}
-                </button> -->
-                <!-- <button  >Click Me</button> -->
-                <button
-                  type="onUpdate"
-                  id="type"
-                  class="btn btn-outline-warning"
-                  *ngIf="item.status === false"
-                  [disabled]="false"
-                >
-                  {{ "onUpdate" | translate }}
-                </button>
-              </td>
-              <!-- <div class="d-flex justify-content-around">
-                <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>
-              </div> -->
-            </tr>
-          </tbody>
-        </table>
+                <td class="text-center">
+                  <button
+                    type="onUpdate"
+                    id="type"
+                    class="btn btn-outline-warning"
+                    *ngIf="item.status === false"
+                    [disabled]="false"
+                  >
+                    {{ "onUpdate" | translate }}
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </form>
   </div>

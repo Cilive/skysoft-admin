@@ -1,4 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Branch } from 'src/app/components/branch/branch.modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
@@ -14,7 +20,16 @@ import { Branchmanager } from '../../branch-manager/branch-manager.model';
 import { CustomerProfile } from '../../customer-profile/customer-profile.modal';
 import { SupplierProfile } from '../../supplier-profile/supplier-profile.model';
 import { Credit } from './payment-in.modal';
-// import { Credit } from './payment-in.modal';
+
+import jsPDF from 'jspdf';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import htmlToPdfmake from 'html-to-pdfmake';
 
 @Component({
   selector: 'app-payments-in',
@@ -22,6 +37,24 @@ import { Credit } from './payment-in.modal';
   styleUrls: ['./payments-in.component.scss'],
 })
 export class PaymentsInComponent implements OnInit {
+  //pdf  generating function
+
+  title = 'htmltopdf';
+
+  @ViewChild('pdfTable') pdfTable: ElementRef;
+
+  public downloadAsPDF() {
+    const doc = new jsPDF();
+
+    const pdfTable = this.pdfTable.nativeElement;
+
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+
+    const documentDefinition = { content: html };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
   passError: boolean;
   modalRef?: BsModalRef;
   logoData: FormData;
