@@ -1,4 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import {
@@ -10,12 +16,40 @@ import { FueldataService } from '../../services/fueldata/fueldata.service';
 import { FuelstockService } from '../../services/fuelstock/fuelstock.service';
 import { FuelStocks } from './fuelstocks.modal';
 
+import jsPDF from 'jspdf';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import htmlToPdfmake from 'html-to-pdfmake';
+
 @Component({
   selector: 'app-fuelstocks',
   templateUrl: './fuelstocks.component.html',
   styleUrls: ['./fuelstocks.component.scss'],
 })
 export class FuelstocksComponent implements OnInit {
+  //pdf  generating function
+
+  title = 'htmltopdf';
+
+  @ViewChild('pdfTable') pdfTable: ElementRef;
+
+  public downloadAsPDF() {
+    const doc = new jsPDF();
+
+    const pdfTable = this.pdfTable.nativeElement;
+
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+
+    const documentDefinition = { content: html };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
   modalRef?: BsModalRef;
   fuelstockes = [];
   data: FuelStocks = {

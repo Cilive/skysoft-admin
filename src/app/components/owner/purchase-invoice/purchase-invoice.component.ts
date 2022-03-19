@@ -72,7 +72,7 @@ export class PurchaseInvoiceComponent implements OnInit {
     date: null,
     fuelvat_percentage: null,
     total_amt: null,
-    // old_balance: null,
+
     branches: null,
     fuel: null,
     paid_amt: null,
@@ -82,10 +82,6 @@ export class PurchaseInvoiceComponent implements OnInit {
     bank_ac_id: null,
     gross_amt: null,
     vat_amount: null,
-    // invoice_no: null,
-    // customer_name: '',
-    // balance_amt: null,
-    // is_default: false,
   };
   branchesList: Branchmanager[] = [];
   fuelList: Fuelmaster[] = [];
@@ -111,6 +107,7 @@ export class PurchaseInvoiceComponent implements OnInit {
     private supplierService: SupplierProfileService
   ) {}
 
+  //branch listing
   ngOnInit(): void {
     this.branches.get_branches().subscribe((res) => {
       if (res.msg === 'Success') {
@@ -178,7 +175,6 @@ export class PurchaseInvoiceComponent implements OnInit {
         date: item.date,
         fuelvat_percentage: item.fuelvat_percentage,
         total_amt: item.total_amt,
-        // old_balance: item.old_balance,
         branches: item.branches,
         fuel: item.fuel,
         paid_amt: item.paid_amt,
@@ -188,10 +184,8 @@ export class PurchaseInvoiceComponent implements OnInit {
         bank_ac_id: item.bank_ac_id,
         gross_amt: item.gross_amt,
         vat_amount: item.vat_amount,
-        // invoice_no: item.invoice_no,
         balance_amt: item.balance_amt,
         id: item.id,
-        // is_default: item.is_default,
       };
       this.fuel
         .get_single_fuel(item.fuel)
@@ -276,112 +270,3 @@ export class PurchaseInvoiceComponent implements OnInit {
     return a && b && a.id == b.id;
   }
 }
-
-//   branchesList: Branch[] = [];
-//   fuelList: Fuelmaster[] = [];
-//   customerList: CustomerProfile[] = [];
-//   Customer: CustomerProfile[] = [];
-//   fuelRate: number;
-//   old_balance_num: number;
-//   bankList: BankAccounts[] = [];
-
-//   constructor(
-//     private branches: BranchManagerService,
-//     private fuel: FueldataService,
-//     private customerService: CustomerProfileService,
-//     private invoice: PurchaseinvoiceService,
-//     private toast: AlertService,
-//     private bank: BankAccountMasterService
-//   ) {}
-
-//   ngOnInit(): void {
-//     this.branches.get_branches().subscribe((res) => {
-//       if (res.msg === 'Success') {
-//         console.log(res.data);
-
-//         this.branchesList = res.data;
-//       }
-//     });
-//     this.fuel.get_fuelDetails().subscribe((res) => {
-//       if (res.msg === 'Success') {
-//         console.log(res.data);
-
-//         this.fuelList = res.data;
-//       }
-//     });
-//   }
-//   public onSubmit(): void {
-//     if (validateForm('form')) {
-//       // console.log(this.data);
-//       this.invoice.post_sales_invoice(this.data).subscribe((res) => {
-//         if (res.msg === 'Success') {
-//           this.toast.success('invoice Added Successfully');
-//           this.onReset();
-//           this.ngOnInit();
-//         }
-
-//   onUpdate() {}
-//   public onReset(): void {
-//     clearForm('form');
-//     this.editMode = false;
-//   }
-//   onEdit(item: purchaseInvoice) {
-//     this.editMode = true;
-//     this.data = {
-//       type: item.type,
-//       date: item.date,
-//       fuelvat_percentage: item.fuelvat_percentage,
-//       total_amt: item.total_amt,
-//       old_balance: item.old_balance,
-//       branches: item.branches,
-//       fuel: item.fuel,
-//       paid_amt: item.paid_amt,
-//       payment_type: item.payment_type,
-//       qty: item.qty,
-//       contact: item.contact,
-//       bank_ac_id: item.bank_ac_id,
-//       gross_amt: item.gross_amt,
-//       vat_amount: item.vat_amount,
-//     };
-//   }
-
-//   custemerlistin(): void {
-//     this.customerService
-//       .get_branchwaisecustomer(this.data.branches)
-//       .subscribe((res) => {
-//         if (res.msg === 'Success') {
-//           console.log(res.data);
-
-//           this.customerList = res.data;
-//         }
-//       });
-//     this.invoice.get_bank(this.data.branches).subscribe((res) => {
-//       if (res.msg === 'Success') {
-//         console.log(res.data);
-
-//         this.bankList = res.data;
-//       }
-//     });
-//   }
-//   old_balance(): void {
-//     this.invoice.get_old_balance(this.data.contact).subscribe((res) => {
-//       if (res.msg === 'Success') {
-//         console.log(res.data);
-
-//         this.old_balance_num = res.data.balance_amt_sum;
-//       }
-//     });
-//   }
-
-//   fuels(): void {
-//     this.data.fuelvat_percentage = this.fuelse.fuel_vat;
-//     this.fuelRate = this.fuelse.rate;
-//     this.data.fuel = this.fuelse.id;
-//   }
-//   onChangeLitre() {
-//     this.data.gross_amt = this.data.qty * this.fuelRate;
-//     this.data.vat_amount =
-//       (this.data.gross_amt * this.data.fuelvat_percentage) / 100;
-//     this.data.total_amt = this.data.gross_amt + this.data.vat_amount;
-//   }
-// }

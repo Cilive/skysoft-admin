@@ -1,4 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import {
@@ -10,12 +16,40 @@ import { CustomerProfile } from '../../branch/components/customer-profile/custom
 import { CustomerProfileService } from '../../branch/services/customer-profile/customer-profile.service';
 import { SalesdetailesBranch } from './sales-detales-branch.modal';
 
+import jsPDF from 'jspdf';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import htmlToPdfmake from 'html-to-pdfmake';
+
 @Component({
   selector: 'app-sales-detailes-branch',
   templateUrl: './sales-detailes-branch.component.html',
   styleUrls: ['./sales-detailes-branch.component.scss'],
 })
 export class SalesDetailesBranchComponent implements OnInit {
+  //pdf  generating function
+
+  title = 'htmltopdf';
+
+  @ViewChild('pdfTable') pdfTable: ElementRef;
+
+  public downloadAsPDF() {
+    const doc = new jsPDF();
+
+    const pdfTable = this.pdfTable.nativeElement;
+
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+
+    const documentDefinition = { content: html };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
   passError: boolean;
   modalRef?: BsModalRef;
   logoData: FormData;

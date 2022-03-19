@@ -1,4 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import {
@@ -10,12 +16,40 @@ import { Dispense } from '../../branch/components/dispense/dispeanse.modal';
 import { DispensesService } from '../../branch/services/dispenses/dispenses.service';
 import { MeterreadingBranch } from './meter-reading-branch.modal';
 
+import jsPDF from 'jspdf';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import htmlToPdfmake from 'html-to-pdfmake';
+
 @Component({
   selector: 'app-meter-reading-branch',
   templateUrl: './meter-reading-branch.component.html',
   styleUrls: ['./meter-reading-branch.component.scss'],
 })
 export class MeterReadingBranchComponent implements OnInit {
+  //pdf  generating function
+
+  title = 'htmltopdf';
+
+  @ViewChild('pdfTable') pdfTable: ElementRef;
+
+  public downloadAsPDF() {
+    const doc = new jsPDF();
+
+    const pdfTable = this.pdfTable.nativeElement;
+
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+
+    const documentDefinition = { content: html };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
   passError: boolean;
   modalRef?: BsModalRef;
   logoData: FormData;

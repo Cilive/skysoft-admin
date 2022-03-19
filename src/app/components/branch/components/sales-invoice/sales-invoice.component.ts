@@ -1,4 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import {
@@ -20,12 +26,40 @@ import {
   Oldbalances,
 } from './sales-invoice.modal';
 
+import jsPDF from 'jspdf';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import htmlToPdfmake from 'html-to-pdfmake';
+
 @Component({
   selector: 'app-sales-invoice',
   templateUrl: './sales-invoice.component.html',
   styleUrls: ['./sales-invoice.component.scss'],
 })
 export class SalesInvoiceComponent implements OnInit {
+  //pdf  generating function
+
+  title = 'htmltopdf';
+
+  @ViewChild('pdfTable') pdfTable: ElementRef;
+
+  public downloadAsPDF() {
+    const doc = new jsPDF();
+
+    const pdfTable = this.pdfTable.nativeElement;
+
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+
+    const documentDefinition = { content: html };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
   passError: boolean;
   logoData: FormData;
   editMode: boolean;
@@ -37,7 +71,6 @@ export class SalesInvoiceComponent implements OnInit {
     date: null,
     fuelvat_percentage: null,
     total_amt: null,
-    // old_balance: null,
     fuel: null,
     paid_amt: null,
     payment_type: null,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import {
@@ -9,12 +9,40 @@ import { CustomerbalancebranchService } from 'src/app/services/services/customer
 import { Customerbalance } from '../customer-balance/customer-balance.modal';
 import { CustomerbalanceBranch } from './CustomerBalanceBranch.modal';
 
+import jsPDF from 'jspdf';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import htmlToPdfmake from 'html-to-pdfmake';
+
 @Component({
   selector: 'app-customer-balance-branch',
   templateUrl: './customer-balance-branch.component.html',
   styleUrls: ['./customer-balance-branch.component.scss'],
 })
 export class CustomerBalanceBranchComponent implements OnInit {
+  //pdf  generating function
+
+  title = 'htmltopdf';
+
+  @ViewChild('pdfTable') pdfTable: ElementRef;
+
+  public downloadAsPDF() {
+    const doc = new jsPDF();
+
+    const pdfTable = this.pdfTable.nativeElement;
+
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+
+    const documentDefinition = { content: html };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
   passError: boolean;
   submitMode: boolean;
   modalRef?: BsModalRef;

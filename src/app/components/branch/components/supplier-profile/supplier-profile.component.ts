@@ -1,4 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
@@ -9,12 +15,40 @@ import {
 import { SupplierProfileService } from '../../services/supplier-profile/supplier-profile.service';
 import { SupplierProfile } from './supplier-profile.model';
 
+import jsPDF from 'jspdf';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import htmlToPdfmake from 'html-to-pdfmake';
+
 @Component({
   selector: 'app-supplier-profile',
   templateUrl: './supplier-profile.component.html',
   styleUrls: ['./supplier-profile.component.scss'],
 })
 export class SupplierProfileComponent implements OnInit {
+  //pdf  generating function
+
+  title = 'htmltopdf';
+
+  @ViewChild('pdfTable') pdfTable: ElementRef;
+
+  public downloadAsPDF() {
+    const doc = new jsPDF();
+
+    const pdfTable = this.pdfTable.nativeElement;
+
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+
+    const documentDefinition = { content: html };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
   logoData: FormData;
   modalRef?: BsModalRef;
   editMode: boolean;
@@ -142,110 +176,3 @@ export class SupplierProfileComponent implements OnInit {
     });
   }
 }
-
-//   logoData: FormData;
-//   modalRef?: BsModalRef;
-//   editMode: boolean;
-//   supplierForm: FormGroup;
-//   suppliers: SupplierProfile[] = [];
-//   data: SupplierProfile = {
-//     en_name: '',
-//     ar_name: '',
-//     en_place: '',
-//     ar_place: '',
-//     en_district: '',
-//     ar_district: '',
-//     vat_no: 0,
-//     lan_no: 0,
-//     mobile_no: 0,
-//     type: 2,
-//   };
-
-//   constructor(
-//     private modalService: BsModalService,
-//     private supplierService: SupplierProfileService,
-//     private toast: AlertService
-//   ) {}
-
-//   ngOnInit(): void {
-//     // this.prepareForm();
-//     this.supplierService.get_supplier_profiles().subscribe((res) => {
-//       this.suppliers = res.data;
-//     });
-//   }
-//   public onSubmit(): void {
-//     if (validateForm('form')) {
-//       // console.log(this.data);
-//       this.supplierService.post_supplier_profile(this.data).subscribe((res) => {
-//         if (res.msg === 'Success') {
-//           this.toast.success('Supplier Added Successfully');
-//           this.ngOnInit();
-//         }
-//       });
-//     }
-//   }
-//   public onUpdate() {
-//     if (validateForm('form')) {
-//       this.supplierService
-//         .update_supplier_profile(this.data)
-//         .subscribe((res) => {
-//           if (res.msg === 'Success') {
-//             this.toast.success('Supplier Updated Successfully');
-//             this.ngOnInit();
-//           }
-//         });
-//     }
-//   }
-
-//   public onReset(): void {
-//     this.supplierForm.reset();
-//     // clearForm('form');
-//     this.editMode = false;
-//   }
-
-//   public selectFile(event): void {
-//     this.supplierForm.value['logo'] = event.target.files[0].name;
-//   }
-
-//   public onEdit(item: SupplierProfile): void {
-//     this.editMode = true;
-//     this.supplierForm.setValue(item);
-//     this.data = {
-//       en_name: item.en_name,
-//       ar_name: item.ar_name,
-//       en_place: item.en_place,
-//       ar_place: item.ar_place,
-//       en_district: item.en_district,
-//       ar_district: item.ar_district,
-//       vat_no: item.vat_no,
-//       lan_no: item.lan_no,
-//       mobile_no: item.mobile_no,
-//       type: item.type,
-//     };
-//   }
-
-//   public onDelete(id) {
-//     this.supplierService.delete_supplier_profile(id).subscribe((res) => {
-//       if (res.msg === 'Success') {
-//         this.modalRef.hide();
-//         this.ngOnInit();
-//         this.toast.success('Supplier Deletion Successful');
-//       }
-//     });
-//   }
-//   public onSuspend(id) {
-//     this.supplierService.suspend_supplier_profile(id).subscribe((res) => {
-//       if (res.msg === 'Success') {
-//         this.toast.success('Supplier Added to Suspended List');
-//       }
-//     });
-//   }
-
-//   openModal(template: TemplateRef<any>) {
-//     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
-//   }
-
-//   decline(): void {
-//     this.modalRef?.hide();
-//   }
-// }

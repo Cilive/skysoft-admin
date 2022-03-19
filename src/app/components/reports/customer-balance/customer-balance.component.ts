@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import { BranchManagerService } from 'src/app/services/branch-manager/branch-manager.service';
@@ -12,17 +12,44 @@ import { Branchmanager } from '../../owner/branch-manager/branch-manager.model';
 // import { BranchManagerService } from '../../branch/services/branch-manager/branch-manager.service';
 import { Customerbalance } from './customer-balance.modal';
 
+import jsPDF from 'jspdf';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import htmlToPdfmake from 'html-to-pdfmake';
+
 @Component({
   selector: 'app-customer-balance',
   templateUrl: './customer-balance.component.html',
   styleUrls: ['./customer-balance.component.scss'],
 })
 export class CustomerBalanceComponent implements OnInit {
+  //pdf  generating function
+
+  title = 'htmltopdf';
+
+  @ViewChild('pdfTable') pdfTable: ElementRef;
+
+  public downloadAsPDF() {
+    const doc = new jsPDF();
+
+    const pdfTable = this.pdfTable.nativeElement;
+
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+
+    const documentDefinition = { content: html };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
   passError: boolean;
   submitMode: boolean;
   modalRef?: BsModalRef;
   logoData: FormData;
-  // branch: Branch;
   data: Customerbalance = {
     invoice_no: 0,
     date: undefined,
@@ -45,11 +72,9 @@ export class CustomerBalanceComponent implements OnInit {
     lan: '',
   };
   branchesList: Branchmanager[] = [];
-  // editMode = false;
   customer: Customerbalance[] = [];
   Ar_name;
   amount: Customerbalance[] = [];
-  // gross_amt_sum: Expensedetailes[] = [];
 
   constructor(
     private branches: BranchManagerService,
@@ -78,8 +103,7 @@ export class CustomerBalanceComponent implements OnInit {
           this.toast.success('Customer Balance Added Successfully');
           this.customer = res.data.data;
           console.log(this.data);
-          // this.amount = res.data.amount.net_amount_sum;
-          // this.net_vat_sum = res.data.total.net_vat_sum;
+
           this.amount = res.data.amount.amount;
           clearForm('Form');
           this.ngOnInit();
@@ -97,7 +121,3 @@ export class CustomerBalanceComponent implements OnInit {
     });
   }
 }
-
-//  openModal(template: TemplateRef<any>) {
-// this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
-// }

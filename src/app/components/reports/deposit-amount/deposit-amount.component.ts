@@ -1,4 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import { BankAccountMasterService } from 'src/app/services/bank-account-master/bank-account-master.service';
@@ -14,12 +20,40 @@ import { BankAccounts } from '../../owner/bank-account-master/bank-account-maste
 import { Branchmanager } from '../../owner/branch-manager/branch-manager.model';
 import { DepositAmount } from './Deposit-Amount.modal';
 
+import jsPDF from 'jspdf';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import htmlToPdfmake from 'html-to-pdfmake';
+
 @Component({
   selector: 'app-deposit-amount',
   templateUrl: './deposit-amount.component.html',
   styleUrls: ['./deposit-amount.component.scss'],
 })
 export class DepositAmountComponent implements OnInit {
+  //pdf  generating function
+
+  title = 'htmltopdf';
+
+  @ViewChild('pdfTable') pdfTable: ElementRef;
+
+  public downloadAsPDF() {
+    const doc = new jsPDF();
+
+    const pdfTable = this.pdfTable.nativeElement;
+
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+
+    const documentDefinition = { content: html };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
   passError: boolean;
   modalRef?: BsModalRef;
   logoData: FormData;
@@ -55,12 +89,6 @@ export class DepositAmountComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.deposit.get_deposit_amount().subscribe((res) =>{
-    // this.deposits = res.data.((t) => {
-    //   t.date = new Date(t.date);
-    //   return t;
-    // });
-    // });
     this.owner.get_owners().subscribe((res) => {
       this.owners = res.data;
     });
@@ -77,24 +105,7 @@ export class DepositAmountComponent implements OnInit {
   onReset() {
     clearForm('bankForm');
   }
-  // onSubmit() {
-  //   if (validateForm('bnkForm')) {
-  //     console.log(this.data);
-  //     this.deposit.get_deposit_amount(this.data).subscribe((res) => {
-  //       if (res.msg === 'Success') {
-  //         this.toast.success('Deposit Added');
-  //         this.Depositamount = res.data.data;
 
-  //         console.log(this.data);
-
-  //         this.amount = res.data.amount.amount;
-
-  //         clearForm('bnkForm');
-  //         this.ngOnInit();
-  //       }
-  //     });
-  //   }
-  // }
   onSubmit() {
     if (validateForm('bankForm')) {
       console.log(this.data);

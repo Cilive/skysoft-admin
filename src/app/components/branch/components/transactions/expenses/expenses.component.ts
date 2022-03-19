@@ -1,4 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import {
   clearForm,
@@ -10,19 +16,45 @@ import { BankAccounts } from '../../bank-account-master/bank-account-master.mode
 import { FuelData } from '../../vat-fuel-master/vat-fuel-master.model';
 import { BranchExpense } from './expenses.modal';
 
+import jsPDF from 'jspdf';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import htmlToPdfmake from 'html-to-pdfmake';
+
 @Component({
   selector: 'app-expenses',
   templateUrl: './expenses.component.html',
   styleUrls: ['./expenses.component.scss'],
 })
 export class ExpensesComponent implements OnInit {
+  //pdf  generating function
+
+  title = 'htmltopdf';
+
+  @ViewChild('pdfTable') pdfTable: ElementRef;
+
+  public downloadAsPDF() {
+    const doc = new jsPDF();
+
+    const pdfTable = this.pdfTable.nativeElement;
+
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+
+    const documentDefinition = { content: html };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
   passError: boolean;
   logoData: FormData;
   editMode: boolean;
   fuelse: FuelData;
 
-  // branch: Branch;
-  // oldbalance: Oldbalance;
   data: BranchExpense = {
     payment_type: 0,
     qty: 0,
@@ -37,25 +69,17 @@ export class ExpensesComponent implements OnInit {
     bank_ac_id: 0,
     amount: '',
   };
-  // branchesList: Branch[] = [];
   fuelList: FuelData[] = [];
-  // customerList: CustomerProfile[] = [];
-  // Customer: CustomerProfile[] = [];
   fuelRate: number;
   old_balance_num: number;
   bankList: BankAccounts[] = [];
-  // salesinvoice: BranchSaleInvoices[] = [];
   modalRef: any;
   modalService: any;
-  // salesInvoiceList: BranchSaleInvoices[];
   balance;
   payableLimit: BranchExpense[] = [];
   expense: BranchExpense[] = [];
 
   constructor(
-    // private branches: BranchManagerService,
-    // private fuel: FueldataService,
-    // private customerService: CustomerProfileService,
     private Expense: ExpenseService,
     private toast: AlertService,
     private bank: BankAccountMasterService
@@ -68,18 +92,7 @@ export class ExpensesComponent implements OnInit {
         return t;
       });
     });
-    // this.branches.get_branches().subscribe((res) => {
-    //   if (res.msg === 'Success') {
-    //     console.log(res.data);
-    //     this.branchesList = res.data;
-    //   }
-    // });
-    // this.fuel.get_fuelDetails().subscribe((res) => {
-    //   if (res.msg === 'Success') {
-    //     console.log(res.data);
-    //     this.fuelList = res.data;
-    //   }
-    // });
+
     this.Expense.get_bank(this.data).subscribe((res) => {
       if (res.msg === 'Success') {
         console.log(res.data);
@@ -100,12 +113,6 @@ export class ExpensesComponent implements OnInit {
           // this.onReset();
           this.ngOnInit();
         }
-
-        // public onSubmit(): void {
-        //   // console.log(this.data);
-        //   if (validateForm('form') && this.passError) {
-        //     this.salesinvoice.postSupplier(this.supplierForm.value).subscribe(res => {
-        // this.onReset();
       });
     }
   }
@@ -127,9 +134,6 @@ export class ExpensesComponent implements OnInit {
     clearForm('form');
     this.editMode = false;
   }
-  // public onChangePayable() {}
-  // onEdit(data: BranchSaleInvoices) {
-  //   this.editMode = true;
 
   public onEdit(item: BranchExpense): void {
     this.editMode = true;
@@ -137,7 +141,6 @@ export class ExpensesComponent implements OnInit {
       payment_type: item.payment_type,
       qty: item.qty,
       type: item.type,
-      // branches: item.branches,
       exp_type: item.exp_type,
       ref_no: item.ref_no,
       paid_amt: item.paid_amt,
@@ -146,38 +149,13 @@ export class ExpensesComponent implements OnInit {
       total_amt: item.total_amt,
       id: item.id,
       date: item.date,
-      // exp_type: item.exp_type,
       amount: item.amount,
       invoice_no: item.invoice_no,
-      // customer_name: item.customer_name,
-      // payable_amt: item.payable_amt,
-      // contact: item.contact,
     };
-
-    // is_default: item.is_default,
   }
-  //     this.fuel
-  //       .get_single_fuel(item.fuel)
-  //       .subscribe((res) => (this.fuelse = res.data));
-  //   });
-  // }
 
   custemerlistin(): void {
-    // this.customerService;
-    // .get_branchwaisecustomer(this.data.branches)
-    // .subscribe((res) => {
-    //   if (res.msg === 'Success') {
-    //     console.log(res.data);
-
-    //     this.customerList = res.data;
-    //   }
-    // });
-
-    // this.Expense.get_branch_expense(this.data.branches).subscribe(
-    //   (res) => {
-    //     if (res.msg === 'Success')
     {
-      // this.salesInvoiceList = res.data;
     }
   }
 

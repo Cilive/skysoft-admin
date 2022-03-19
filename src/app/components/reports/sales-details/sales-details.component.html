@@ -1,6 +1,6 @@
 <div class="card m-auto col-md-12">
   <div class="modal-header">
-    <h6 translate>Generate Payment Out</h6>
+    <h6 translate>Sales Detailes</h6>
   </div>
   <div class="col-md-12">
     <form id="Form" (submit)="onSubmit()" (reset)="onReset()">
@@ -37,7 +37,7 @@
         </div>
         <div class="form-group col-md-2">
           <label translate for=""> Branch</label>
-          <!-- branch listing  api posting -->
+          <!-- branch listing   -->
           <select
             class="form-control"
             name="branches"
@@ -97,6 +97,13 @@
         <button translate type="reset" class="btn btn-outline-warning">
           Reset
         </button>
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="downloadAsPDF()"
+        >
+          Download Pdf
+        </button>
       </div>
     </form>
     <div class="modal-footer">
@@ -111,9 +118,6 @@
           name="Amount"
           id="type"
         />
-        <!-- <option translate selected hidden Value="">Customer Name</option> -->
-
-        <!-- <small id="helpId" class="invalid-feedback">Field is required</small> -->
       </div>
       <div class="form-group col-md-3">
         <label translate for=""> Net Vat</label>
@@ -126,9 +130,6 @@
           name="Amount"
           id="type"
         />
-        <!-- <option translate selected hidden Value="">Customer Name</option> -->
-
-        <!-- <small id="helpId" class="invalid-feedback">Field is required</small> -->
       </div>
       <div class="form-group col-md-3">
         <label translate for="">Gross Amount</label>
@@ -141,122 +142,40 @@
           name="Amount"
           id="type"
         />
-        <!-- <option translate selected hidden Value="">Customer Name</option> -->
-
-        <!-- <small id="helpId" class="invalid-feedback">Field is required</small> -->
       </div>
     </div>
 
-    <div class="mt-3 card">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th translate scope="col">sl.no</th>
-            <th translate scope="col">Date</th>
-            <th translate scope="col">Customer Name</th>
-            <th translate scope="col">Item</th>
-            <th translate scope="col">Qty</th>
-            <th translate scope="col">Amount</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of salese; let i = index">
-            <th translate scope="row">{{ i + 1 }}</th>
-            <!-- <td>{{ item. }}</td> -->
-            <td>{{ item.date | date: "dd/MM/YYYY" }}</td>
-            <td>{{ item.customer }}</td>
-            <td>{{ item.description }}</td>
-            <td>{{ item.qty }}</td>
-            <td>{{ item.price }}</td>
+    <div id="pdfTable" #pdfTable>
+      <div class="mt-3 card">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th translate scope="col">sl.no</th>
+              <th translate scope="col">Date</th>
+              <th translate scope="col">Customer Name</th>
+              <th translate scope="col">Item</th>
+              <th translate scope="col">Qty</th>
+              <th translate scope="col">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of salese; let i = index">
+              <th translate scope="row">{{ i + 1 }}</th>
+              <td>{{ item.date | date: "dd/MM/YYYY" }}</td>
+              <td>{{ item.customer }}</td>
+              <td>{{ item.description }}</td>
+              <td>{{ item.qty }}</td>
+              <td>{{ item.price }}</td>
 
-            <!-- <td>{{ item.owner }}</td> -->
-            <td></td>
-          </tr>
-          <tr>
-            <th colspan="4"></th>
-            <th translate scope="col">Total :</th>
-          </tr>
-        </tbody>
-      </table>
+              <td></td>
+            </tr>
+            <tr>
+              <th colspan="4"></th>
+              <th translate scope="col">Total :</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
-
-<!-- 
-<div class="mt-3 card">
-  <div class="row col-md-8 ml-auto">
-    <div class="form-group col-md-3">
-    <label translate for=""></label>
-    <select
-    class="form-control"
-    name="selectss"
-    >
-    <option translate value="">Company</option>
-    </select>
-    </div>
-    <div class="form-group col-md-3">
-      <label translate for=""></label>
-    
-      <select
-      class="form-control"
-      name="selectss"
-      >
-        <option translate value="">Month</option>
-        <option translate value="">January</option>
-        <option translate value="">February</option>
-        <option translate value="">March</option>
-        <option translate value="">April</option>
-        <option translate value="">May</option>
-        <option translate value="">June</option>
-        <option translate value="">July</option>
-        <option translate value="">August</option>
-        <option translate value="">September</option>
-        <option translate value="">October</option>
-        <option translate value="">November</option>
-        <option translate value="">December</option>
-      </select>
-    </div>
-    <div class="form-group col-md-3">
-      <label translate for=""></label>
-      <select
-      class="form-control"
-      name="selectss"
-      >
-      <option translate value="">Yearly</option>
-      <option translate value="">2021</option>
-      <option translate value="">2022</option>
-      <option translate value="">2023</option>
-      <option translate value="">2024</option>
-      </select>
-    </div>
-  </div>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th translate scope="col">Sl.no</th>
-        <th translate scope="col">Date</th>
-        <th translate scope="col">Company</th>
-        <th translate scope="col">Item</th>
-        <th translate scope="col">Qty</th>
-        <th translate scope="col">Amount</th>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>25-12-2021</td>
-        <td>Al Noor</td>
-        <td>Perfume</td>
-        <td>100.box</td>
-        <td>SR.10000</td>
-      </tr>
-      <tr>
-
-        <th colspan="4"></th>
-        <th translate scope="col">Total :</th>
-        <td>SR.10000</td>
-      </tr>
-    </thead>
-    <tbody>
-     
-    </tbody>
-  </table>
-</div> -->

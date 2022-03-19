@@ -1,4 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import { BranchManagerService } from 'src/app/services/branch-manager/branch-manager.service';
@@ -9,12 +15,41 @@ import {
 import { SessionReportsService } from 'src/app/services/session-reports/session-reports.service';
 import { Branchmanager } from '../../owner/branch-manager/branch-manager.model';
 import { SessionReportsOwner } from './session.modal';
+
+import jsPDF from 'jspdf';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import htmlToPdfmake from 'html-to-pdfmake';
+
 @Component({
   selector: 'app-session-reports',
   templateUrl: './session-reports.component.html',
   styleUrls: ['./session-reports.component.scss'],
 })
 export class SessionReportsComponent implements OnInit {
+  //pdf  generating function
+
+  title = 'htmltopdf';
+
+  @ViewChild('pdfTable') pdfTable: ElementRef;
+
+  public downloadAsPDF() {
+    const doc = new jsPDF();
+
+    const pdfTable = this.pdfTable.nativeElement;
+
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+
+    const documentDefinition = { content: html };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
   data: SessionReportsOwner = {
     date: Date(),
     from_date: new Date(),

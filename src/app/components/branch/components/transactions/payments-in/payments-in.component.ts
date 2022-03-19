@@ -1,4 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import {
@@ -10,12 +16,40 @@ import { SupplierProfileService } from '../../../services/supplier-profile/suppl
 import { SupplierProfile } from '../../supplier-profile/supplier-profile.model';
 import { Credit } from './paymentin.modal';
 
+import jsPDF from 'jspdf';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import htmlToPdfmake from 'html-to-pdfmake';
+
 @Component({
   selector: 'app-payments-in',
   templateUrl: './payments-in.component.html',
   styleUrls: ['./payments-in.component.scss'],
 })
 export class PaymentsInComponent implements OnInit {
+  //pdf  generating function
+
+  title = 'htmltopdf';
+
+  @ViewChild('pdfTable') pdfTable: ElementRef;
+
+  public downloadAsPDF() {
+    const doc = new jsPDF();
+
+    const pdfTable = this.pdfTable.nativeElement;
+
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+
+    const documentDefinition = { content: html };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
   passError: boolean;
   modalRef?: BsModalRef;
   logoData: FormData;
@@ -35,8 +69,7 @@ export class PaymentsInComponent implements OnInit {
     updated_at: new Date(),
     balance_amt: null,
   };
-  // branchesList: Branch[] = [];
-  // Customer: CustomerProfile[] = [];
+ 
   supplierList: SupplierProfile[] = [];
   paymentin: Credit[] = [];
   amount: Credit[] = [];
@@ -50,15 +83,7 @@ export class PaymentsInComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.branches.get_branches().subscribe((res) => {
-    //   if (res.msg === 'Success') {
-    //     console.log(res.data);
-    //     this.branchesList = res.data;
-    //   }
-    // });
-    // this.paymentservice.get_payment_in().subscribe((res) => {
-    //   this.payment = res.data;
-    // });
+   
     this.supplierService.get_supplier_profile().subscribe((res) => {
       if (res.msg === 'Success') {
         console.log(res.data);
@@ -90,16 +115,7 @@ export class PaymentsInComponent implements OnInit {
     }
   }
 
-  // Supplierlistin(): void {
-  //   this.supplierService.get_supplier_profile().subscribe((res) => {
-  //     if (res.msg === 'Success') {
-  //       console.log(res.data);
-  //       this.supplierList = res.data;
-  //     }
-  //   });
-  // }
-
-  // Supplierlisting(): void {
+  
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });

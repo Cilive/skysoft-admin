@@ -1,4 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import {
@@ -10,22 +16,47 @@ import { SupplierProfile } from '../../branch/components/supplier-profile/suppli
 import { SupplierProfileService } from '../../branch/services/supplier-profile/supplier-profile.service';
 import { PurchasedetilesBranch } from './purchase-detailes-branch.modal';
 
+import jsPDF from 'jspdf';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import htmlToPdfmake from 'html-to-pdfmake';
+
 @Component({
   selector: 'app-parchase-detailes-branch',
   templateUrl: './parchase-detailes-branch.component.html',
   styleUrls: ['./parchase-detailes-branch.component.scss'],
 })
 export class ParchaseDetailesBranchComponent implements OnInit {
+  //pdf  generating function
+
+  title = 'htmltopdf';
+
+  @ViewChild('pdfTable') pdfTable: ElementRef;
+
+  public downloadAsPDF() {
+    const doc = new jsPDF();
+
+    const pdfTable = this.pdfTable.nativeElement;
+
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+
+    const documentDefinition = { content: html };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
   passError: boolean;
   modalRef?: BsModalRef;
   logoData: FormData;
   data: PurchasedetilesBranch = {
     invoice_no: null,
     date: undefined,
-    // total_amt: 0,
-    // company: '',
-    // transaction_type: '',
-    // branches: '',
+
     qty: 0,
     total_amt: 0,
     vat_percenatge: 0,
@@ -42,16 +73,11 @@ export class ParchaseDetailesBranchComponent implements OnInit {
     net_vat_sum: 0,
     updated_at: new Date(),
   };
-  // Customer: CustomerProfile[] = [];
   supplierList: SupplierProfile[] = [];
   purchase: PurchasedetilesBranch[] = [];
-  // editMode = false;
   net_amount_sum: PurchasedetilesBranch[] = [];
   net_vat_sum: PurchasedetilesBranch[] = [];
   gross_amt_sum: PurchasedetilesBranch[] = [];
-
-  // paymentin: Credit[] = [];
-  // amount: Credit[] = [];
 
   constructor(
     private toast: AlertService,
@@ -68,10 +94,6 @@ export class ParchaseDetailesBranchComponent implements OnInit {
         this.supplierList = res.data;
       }
     });
-
-    // this.purchase.get_purchase_detailes().subscribe((res) => {
-    //   this.purchase = res.data;
-    // });
   }
   public onReset(): void {
     clearForm('Form');
@@ -88,7 +110,6 @@ export class ParchaseDetailesBranchComponent implements OnInit {
           this.net_amount_sum = res.data.total.net_amount_sum;
           this.net_vat_sum = res.data.total.net_vat_sum;
           this.gross_amt_sum = res.data.total.gross_amt_sum;
-          // this.paymentin = res.data[res.data.length - 1].amount;
           clearForm('Form');
 
           this.ngOnInit();

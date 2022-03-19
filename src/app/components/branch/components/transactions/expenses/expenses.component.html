@@ -4,7 +4,6 @@
       <h6 translate>Generate Expense</h6>
       <div class="row col-md-12">
         <div class="form-group col-md-3">
-          <!-- <label translate for="company">Date</label> -->
           <input
             translate
             type="text"
@@ -18,29 +17,8 @@
           />
           <small id="helpId" class="invalid-feedback">Field is required</small>
         </div>
-        <!-- <div class="form-group col-md-3">
-          <select
-            class="form-control"
-            name="branches"
-            placeholder="Branch"
-            [(ngModel)]="data.branches"
-            class="form-control"
-            id="type"
-            data-live-search="true"
-            required
-            (change)="custemerlistin()"
-          >
-            <option translate selected hidden [ngValue]="null">
-              select Branch
-            </option>
 
-            <option *ngFor="let item of branchesList" [ngValue]="item.id">
-              {{ item.en_name }}
-            </option>
-          </select>
-        </div> -->
         <div class="form-group col-md-3">
-          <!-- <label translate for=""> Payment Type </label> -->
           <select
             type="text"
             class="form-control"
@@ -60,8 +38,7 @@
           <small id="helpId" class="invalid-feedback">Field is required</small>
         </div>
         <div *ngIf="data.payment_type === 2" class="form-group col-md-3">
-          <!-- <label translate for=""> Branch</label> -->
-          <!-- branch listing  api posting -->
+          <!-- branch listing -->
           <select
             class="form-control"
             name="banck"
@@ -83,15 +60,12 @@
               [ngValue]="item.id"
             >
               {{ item.acc_holder_name }}
-
-              <!-- *ngFor="let item of bankaccounts; let i = index" -->
             </option>
           </select>
         </div>
       </div>
     </div>
   </div>
-  <!-- </div> -->
   <div class="m-2">
     <div class="">
       <div class="p-2">
@@ -162,16 +136,6 @@
                 >Field is required</small
               >
             </div>
-            <!-- *ngIf="editMode != true"  -->
-            <!-- <div *ngIf="editMode == true" class="form-group col-md-3">
-            <label translate for="company">Penting Balance</label>
-            <input
-              disabled
-              class="form-control"
-              [(ngModel)]="data.balance_amt"
-              name="old_balance"
-            />
-          </div> -->
           </div>
         </div>
       </div>
@@ -200,7 +164,6 @@
         <th translate scope="col">Ref.No</th>
         <th translate scope="col">Expense Type</th>
         <th translate scope="col">TotalAmount</th>
-        <!-- <th translate scope="col">Balance Amount</th> -->
         <th translate scope="col">Action</th>
       </tr>
     </thead>
@@ -214,15 +177,8 @@
         <td>{{ item.exp_type }}</td>
         <td>{{ item.total_amt }}</td>
 
-        <!-- <td>{{ item.invoice_no }}</td>
-        <td>{{ item.customer_name }}</td>
-
-        <td>{{ item.total_amt }}</td>
-        <td>{{ item.balance_amt }}</td> -->
-
         <td>
           <div class="d-flex justify-content-around">
-            <!-- <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i> -->
             <i
               title="Delete"
               class="bx bxs-trash"
@@ -263,367 +219,3 @@
     </tbody>
   </table>
 </div>
-
-<!-- <form class="card" id="form" (submit)="editMode ? onUpdate() : onSubmit()">
-  <div class="modal-header">
-    <div class="col-md-12">
-      <h6 translate>Generate Sales Invoice</h6>
-      <div class="row col-md-12">
-        <div class="form-group col-md-3">
-          <input
-            translate
-            type="text"
-            placeholder="Date"
-            bsDatepicker
-            [bsConfig]="{ containerClass: 'theme-dark-blue' }"
-            [(ngModel)]="data.date"
-            class="form-control"
-            required
-            name="date"
-          />
-          <small id="helpId" class="invalid-feedback">Field is required</small>
-        </div>
-        <div class="form-group col-md-3">
-          <select
-            class="form-control"
-            name="branches"
-            placeholder="Branch"
-            [(ngModel)]="data.branches"
-            class="form-control"
-            id="type"
-            data-live-search="true"
-            required
-          >
-            <option translate selected hidden [ngValue]="null">
-              select Branch
-            </option>
-
-            <option *ngFor="let item of branchesList" [ngValue]="item.id">
-              {{ item.en_name }}
-            </option>
-          </select>
-        </div>
-        <div *ngIf="data.branches != null" class="form-group col-md-3">
-          <select
-            type="text"
-            class="form-control"
-            name="selectss"
-            [(ngModel)]="data.payment_type"
-            id="type"
-            required
-          >
-            <option translate [value]="null" selected hidden>
-              Payment Type
-            </option>
-
-            <option translate [ngValue]="1" scope="col">Cash</option>
-            <option translate [ngValue]="2" scope="col">Bank</option>
-          </select>
-
-          <small id="helpId" class="invalid-feedback">Field is required</small>
-        </div>
-        <div *ngIf="data.payment_type === 2" class="form-group col-md-3">
-          <select
-            class="form-control"
-            name="banck"
-            placeholder="bank"
-            [(ngModel)]="data.bank_ac_id"
-            class="form-control"
-            id="type"
-            data-live-search="true"
-            required
-          >
-            <option translate selected hidden [ngValue]="null">
-              select Bank
-            </option>
-
-            <option
-              [style]="item.is_default === true ? 'color:var(--primary)' : ''"
-              *ngFor="let item of bankList"
-              [ngValue]="item.id"
-            >
-              {{ item.acc_holder_name }}
-            </option>
-          </select>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="m-2">
-    <div class="">
-      <div class="p-2">
-        <div class="form-row">
-          <div class="form-group col-md-3">
-            <label translate for=""> Expense Name</label>
-            <select
-              class="form-control"
-              name="customers"
-              [(ngModel)]="data.expense_name"
-              class="form-control"
-              id="type"
-              data-live-search="true"
-              required
-            >
-              <option translate selected hidden [ngValue]="null">
-                select customer
-              </option>
-            </select>
-          </div>
-
-          <div class="form-group col-md-3">
-            <label translate for=""> Expense Type</label>
-            <select
-              class="form-control"
-              name="fuels"
-              [(ngModel)]="data.exp_type"
-              class="form-control"
-              id="type"
-              data-live-search="true"
-              required
-            ></select>
-          </div>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-3">
-          <label translate for="company">Gross Amount</label>
-          <input
-            translate
-            type="number"
-            class="form-control"
-            [(ngModel)]="data.gross_amt"
-            required
-            name="gamnt"
-          />
-
-          <small id="helpId" class="invalid-feedback">Field is required</small>
-        </div>
-
-        <div class="form-group col-md-3">
-          <label translate for="company">Net Amount</label>
-          <input
-            min="0"
-            translate
-            type="number"
-            [(ngModel)]="data.total_amt"
-            class="form-control"
-            required
-            name="namnt"
-          />
-
-          <small id="helpId" class="invalid-feedback">Field is required</small>
-        </div>
-
-        <div class="form-group col-md-3">
-          <label translate for="company">Payable Amount</label>
-          <input
-            min="0"
-            translate
-            type="number"
-            class="form-control"
-            [(ngModel)]="data.paid_amt"
-            required
-            name="total"
-          />
-
-          <small id="helpId" class="invalid-feedback">Field is required</small>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="d-flex justify-content-center modal-footer">
-    <button class="btn btn-outline-primary" type="submit">
-      {{ editMode ? "Update" : "Submit" }}
-    </button>
-
-    <button
-      translate
-      class="btn btn-outline-warning"
-      type="button"
-      (click)="onReset()"
-    >
-      Reset
-    </button>
-  </div>
-</form>
-<div class="mt-3 card">
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th translate scope="col">Sl.no</th>
-        <th translate scope="col">Date</th>
-        <th translate scope="col">Expense Name</th>
-        <th translate scope="col">Type</th>
-        <th translate scope="col">Amount</th>
-        <th translate scope="col">Action</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr *ngFor="let item of Expenses; let i = index">
-        <th translate scope="row">{{ i + 1 }}</th>
-        <td>{{ item.date }}</td>
-        <td>{{ item.expense_name }}</td>
-
-        <td>{{ item.total_amt }}</td>
-        <td>{{ item.amount }}</td>
-
-        <td>
-          <div class="d-flex justify-content-around">
-            <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>
-          </div>
-
-          <ng-template #template>
-            <div class="modal-body text-center">
-              <p translate>Do you want to confirm?</p>
-              <div class="modal-footer">
-                <button
-                  translate
-                  type="button"
-                  class="btn btn-outline-danger"
-                  (click)="onDelete(item.id)"
-                >
-                  Yes
-                </button>
-              </div>
-            </div>
-          </ng-template>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div> -->
-
-<!-- <div class="mt-3 card">
-  <div class="row col-md-12 ml-auto">
-<div class="form-group col-md-2">
-<label translate for=""></label>
-<input
-translate
-type="text"
-placeholder="Date"
-class="form-control"
-bsDatepicker
->
-</div>
-<div class="form-group col-md-3">
-  <label translate for=""></label>
-  <input
-  translate
-  type="text"
-  class="form-control"
-  placeholder="Expence Name"
-  >
-</div>
-<div class="form-group col-md-3">
-  <label translate for=""></label>
-  <select
-  class="form-control"
-
-  name="selectss"
-
-  >
-  <option translate value="">Transaction Type</option>
-    <option translate value="">Bank</option>
-    <option translate value="">Cash</option>
-    <option translate value="">Credit</option>
-  </select>
-
-</div>
-  <div class="form-group col-md-2">
-    <label translate for=""></label>
-    <select
-    class="form-control"
-    name="selectss"
-    >
-    <option translate value="">Bank Account</option>
-    <option translate value="">Bank Account 2</option>
-  </select>
-
-
-  </div>
-  <div class="form-group col-md-2">
-    <label translate for=""></label>
-    <input
-    translate
-    type="text"
-    class="form-control"
-    placeholder="Amount"
-    >
-  </div>
-
-  </div>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th translate scope="col">Sl.no</th>
-        <th translate scope="col">Date</th>
-        <th translate scope="col">Expense Name</th>
-        <th translate scope="col">Type</th>
-        <th translate scope="col">Amount</th>
-        <th translate scope="col">Action</th>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>25-12-2021</td>
-        <td>System Service</td>
-        <td>Cash</td>
-        <td>SR.100</td>
-        <td>print</td>
-        </tr>
-        <tr>
-          <td>2</td>
-        <td>26-12-2021</td>
-        <td>Internet Bill</td>
-        <td>Bank</td>
-        <td>SR.500</td>
-        <td>print</td>
-        </tr>
-    </thead>
-    <tbody> -->
-<!-- TODO: implement table data loops -->
-<!-- <tr *ngFor="let item of bankaccounts; let i = index">
-        <th translate scope="row">{{ i + 1 }}</th>
-        <td>{{ item.bank_name }}</td>
-        <td>{{ item.acc_holder_name }}</td>
-        <td>{{ item.acc_no }}</td>
-        <td>
-          <div class="d-flex justify-content-around">
-            <i title="Edit" class="bx bxs-edit" (click)="onEdit(item)"></i>
-            <i
-              title="Delete"
-              class="bx bxs-trash"
-              (click)="openModal(template)"
-            ></i>
-
-          </div>
-
-          <ng-template #template>
-            <div class="modal-body text-center">
-              <p translate>Do you want to confirm?</p>
-              <div class="modal-footer">
-                <button
-                  translate
-                  type="button"
-                  class="btn btn-outline-danger"
-                  (click)="onDelete(item.id)"
-                >
-                  Yes
-                </button>
-                <button
-                  translate
-                  type="button"
-                  class="btn btn-primary"
-                  (click)="decline()"
-                >
-                  No
-                </button>
-              </div>
-            </div>
-          </ng-template>
-        </td>
-      </tr> -->
-<!-- </tbody>
-  </table>
-</div> -->

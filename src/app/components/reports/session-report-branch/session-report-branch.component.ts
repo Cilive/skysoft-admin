@@ -1,4 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AlertService } from 'src/app/services/alert/alert.service';
@@ -9,18 +15,43 @@ import {
 import { SessionReportBranchService } from 'src/app/services/services/session-report-branch/session-report-branch.service';
 import { SessionReportBranch } from './session-report-branch.modal';
 
+import jsPDF from 'jspdf';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+import htmlToPdfmake from 'html-to-pdfmake';
+
 @Component({
   selector: 'app-session-report-branch',
   templateUrl: './session-report-branch.component.html',
   styleUrls: ['./session-report-branch.component.scss'],
 })
 export class SessionReportBranchComponent implements OnInit {
+  //pdf  generating function
+
+  title = 'htmltopdf';
+
+  @ViewChild('pdfTable') pdfTable: ElementRef;
+
+  public downloadAsPDF() {
+    const doc = new jsPDF();
+
+    const pdfTable = this.pdfTable.nativeElement;
+
+    var html = htmlToPdfmake(pdfTable.innerHTML);
+
+    const documentDefinition = { content: html };
+
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
   modalRef?: BsModalRef;
   Disabled: false;
-  // myFlag = true;
-  // owners = [];
-  // baranchlist: Branch[] = [];
-  // session: Session[] = [];
+
   data: SessionReportBranch = {
     id: null,
     branch_name: '',
@@ -33,9 +64,7 @@ export class SessionReportBranchComponent implements OnInit {
     from_date: new Date(),
     date: '',
   };
-  // editMode = false;
-  // id: number;
-  // Ownerlist: CompanyOwnerComponent[] = [];
+
   sessionreportBranch: SessionReportBranch[] = [];
 
   constructor(
@@ -43,9 +72,7 @@ export class SessionReportBranchComponent implements OnInit {
     private sessionReport: SessionReportBranchService,
     private toast: AlertService,
     private route: Router
-  ) {
-    // console.log(new StoreService().retrieve('id'));
-  }
+  ) {}
 
   ngOnInit(): void {
     this.sessionReport.get_session_report(this.data).subscribe((res) => {
@@ -68,7 +95,6 @@ export class SessionReportBranchComponent implements OnInit {
         if (res.msg === 'Success') {
           this.toast.success('session Added successfully');
           this.sessionreportBranch = res.data.data;
-          // console.log('server response', this.sessionreportBranch);
           clearForm('Form');
         }
       });
@@ -79,16 +105,6 @@ export class SessionReportBranchComponent implements OnInit {
     if (validateForm('form')) {
       console.log(this.data);
       let item = this.sessionReport;
-      // console.log(item.closing_balance_cash);
-
-      // this.sessions.update_session(this.data, this.data.id).subscribe((res) => {
-      //   if (res.msg === 'Success') {
-      //     this.toast.success('Session Updated Successfully');
-      //     this.ngOnInit();
-
-      //     // this.onReset();
-      //   }
-      // });
     }
   }
   accountView(id) {
